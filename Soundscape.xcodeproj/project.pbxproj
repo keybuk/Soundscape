@@ -19,6 +19,7 @@
 		D2AC67242321948700548388 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC67232321948700548388 /* AVFoundation.framework */; };
 		D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67252321964500548388 /* OggVorbisFile.swift */; };
 		D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC672D2321A20800548388 /* OggVorbisError.swift */; };
+		D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		D2AC67232321948700548388 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D2AC67252321964500548388 /* OggVorbisFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OggVorbisFile.swift; sourceTree = "<group>"; };
 		D2AC672D2321A20800548388 /* OggVorbisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OggVorbisError.swift; sourceTree = "<group>"; };
+		D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode+OggVorbis.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AC671D2321934500548388 /* AudioManager.swift */,
+				D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */,
 				D2AC67252321964500548388 /* OggVorbisFile.swift */,
 				D2AC672D2321A20800548388 /* OggVorbisError.swift */,
 			);
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AC671E2321934500548388 /* AudioManager.swift in Sources */,
+				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
