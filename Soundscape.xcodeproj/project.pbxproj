@@ -15,6 +15,8 @@
 		D2AC67102321809A00548388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670E2321809A00548388 /* LaunchScreen.storyboard */; };
 		D2AC671923218EA700548388 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC671723218EA700548388 /* Ogg.framework */; };
 		D2AC671A23218EA700548388 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC671823218EA700548388 /* Vorbis.framework */; };
+		D2AC671E2321934500548388 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC671D2321934500548388 /* AudioManager.swift */; };
+		D2AC67242321948700548388 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC67232321948700548388 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		D2AC671723218EA700548388 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogg.framework; sourceTree = "<group>"; };
 		D2AC671823218EA700548388 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Vorbis.framework; sourceTree = "<group>"; };
 		D2AC671C23218F4200548388 /* Soundscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soundscape-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2AC671D2321934500548388 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		D2AC67232321948700548388 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,7 @@
 			files = (
 				D2AC671923218EA700548388 /* Ogg.framework in Frameworks */,
 				D2AC671A23218EA700548388 /* Vorbis.framework in Frameworks */,
+				D2AC67242321948700548388 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +69,7 @@
 		D2AC67022321809900548388 /* Soundscape */ = {
 			isa = PBXGroup;
 			children = (
+				D2AC67202321944100548388 /* Audio */,
 				D2AC67032321809900548388 /* AppDelegate.swift */,
 				D2AC67052321809900548388 /* SceneDelegate.swift */,
 				D2AC67072321809900548388 /* ContentView.swift */,
@@ -87,10 +93,19 @@
 		D2AC671B23218EC600548388 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2AC67232321948700548388 /* AVFoundation.framework */,
 				D2AC671723218EA700548388 /* Ogg.framework */,
 				D2AC671823218EA700548388 /* Vorbis.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2AC67202321944100548388 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D2AC671D2321934500548388 /* AudioManager.swift */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AC671E2321934500548388 /* AudioManager.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
 				D2AC67082321809900548388 /* ContentView.swift in Sources */,
