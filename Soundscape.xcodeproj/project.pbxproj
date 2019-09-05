@@ -13,6 +13,8 @@
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
 		D2AC670D2321809A00548388 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670C2321809A00548388 /* Preview Assets.xcassets */; };
 		D2AC67102321809A00548388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670E2321809A00548388 /* LaunchScreen.storyboard */; };
+		D2AC671923218EA700548388 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC671723218EA700548388 /* Ogg.framework */; };
+		D2AC671A23218EA700548388 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC671823218EA700548388 /* Vorbis.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,9 @@
 		D2AC670C2321809A00548388 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2AC670F2321809A00548388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2AC67112321809A00548388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2AC671723218EA700548388 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogg.framework; sourceTree = "<group>"; };
+		D2AC671823218EA700548388 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Vorbis.framework; sourceTree = "<group>"; };
+		D2AC671C23218F4200548388 /* Soundscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soundscape-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AC671923218EA700548388 /* Ogg.framework in Frameworks */,
+				D2AC671A23218EA700548388 /* Vorbis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AC67022321809900548388 /* Soundscape */,
+				D2AC671B23218EC600548388 /* Frameworks */,
 				D2AC67012321809900548388 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +68,7 @@
 				D2AC67052321809900548388 /* SceneDelegate.swift */,
 				D2AC67072321809900548388 /* ContentView.swift */,
 				D2AC67092321809A00548388 /* Assets.xcassets */,
+				D2AC671C23218F4200548388 /* Soundscape-Bridging-Header.h */,
 				D2AC670E2321809A00548388 /* LaunchScreen.storyboard */,
 				D2AC67112321809A00548388 /* Info.plist */,
 				D2AC670B2321809A00548388 /* Preview Content */,
@@ -73,6 +82,15 @@
 				D2AC670C2321809A00548388 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2AC671B23218EC600548388 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2AC671723218EA700548388 /* Ogg.framework */,
+				D2AC671823218EA700548388 /* Vorbis.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +306,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Soundscape/Preview Content\"";
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Soundscape/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -295,6 +317,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.Soundscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Soundscape/Soundscape-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -308,6 +331,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Soundscape/Preview Content\"";
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Soundscape/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,6 +342,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.Soundscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Soundscape/Soundscape-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
