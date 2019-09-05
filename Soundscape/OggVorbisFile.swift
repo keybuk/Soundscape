@@ -74,7 +74,7 @@ final class OggVorbisFile {
         var framesRead: Int
         repeat {
             var pcmChannels: UnsafeMutablePointer<UnsafeMutablePointer<Float>?>?
-            framesRead = ov_read_float(&vorbisFile, &pcmChannels, Int32(frames), &currentBitstream)
+            framesRead = ov_read_float(&vorbisFile, &pcmChannels, Int32(framesRemaining), &currentBitstream)
             guard framesRead >= 0 else { throw OggVorbisError(fromResult: Int32(framesRead)) }
 
             _framePosition += AVAudioFramePosition(framesRead)
