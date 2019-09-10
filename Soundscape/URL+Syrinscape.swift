@@ -9,7 +9,6 @@
 import Foundation
 
 extension URL {
-
     func authenticatedForSyrinscape() -> URL? {
         guard
             var components = URLComponents(url: self, resolvingAgainstBaseURL: false),
@@ -22,5 +21,4 @@ extension URL {
         ]
         return components.url
     }
-
 }

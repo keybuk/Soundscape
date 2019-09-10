@@ -9,7 +9,6 @@
 import Foundation
 
 final class SyrinscapeAuth {
-
     static let shared = SyrinscapeAuth()
 
     let secItemServer = "syrinscape.com"
@@ -120,5 +119,4 @@ final class SyrinscapeAuth {
             throw NSError(domain: NSOSStatusErrorDomain, code: Int(err), userInfo: nil)
         }
     }
-
 }
