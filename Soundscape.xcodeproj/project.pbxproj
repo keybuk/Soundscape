@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
+		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
 		D2AC67082321809900548388 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67072321809900548388 /* ContentView.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
+		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D241A1BF2321D6860009CFF3 /* Syrinscape */ = {
+			isa = PBXGroup;
+			children = (
+				D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */,
+				D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */,
+			);
+			name = Syrinscape;
+			sourceTree = "<group>";
+		};
 		D2AC66F72321809900548388 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +88,7 @@
 		D2AC67022321809900548388 /* Soundscape */ = {
 			isa = PBXGroup;
 			children = (
+				D241A1BF2321D6860009CFF3 /* Syrinscape */,
 				D2AC67202321944100548388 /* Audio */,
 				D2AC67032321809900548388 /* AppDelegate.swift */,
 				D2AC67052321809900548388 /* SceneDelegate.swift */,
@@ -190,8 +204,10 @@
 			files = (
 				D2AC671E2321934500548388 /* AudioManager.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
+				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
+				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D2AC67082321809900548388 /* ContentView.swift in Sources */,
