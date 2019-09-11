@@ -15,7 +15,6 @@
 		D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1EE232824200009CFF3 /* SyrinscapeDownloadError.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
-		D2AC67082321809900548388 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67072321809900548388 /* ContentView.swift */; };
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
 		D2AC670D2321809A00548388 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670C2321809A00548388 /* Preview Assets.xcassets */; };
 		D2AC67102321809A00548388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670E2321809A00548388 /* LaunchScreen.storyboard */; };
@@ -32,7 +31,11 @@
 		D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FA2329914C0065A48B /* Soundset+Sync.swift */; };
 		D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FC232994090065A48B /* Soundset+Category.swift */; };
 		D2B2560123299B290065A48B /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560023299B290065A48B /* PreviewContent.swift */; };
+		D2B2560523299C570065A48B /* SoundsetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560423299C570065A48B /* SoundsetRow.swift */; };
 		D2B2560723299C9A0065A48B /* Soundset+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560623299C9A0065A48B /* Soundset+UI.swift */; };
+		D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560223299C020065A48B /* SoundsetsList.swift */; };
+		D2B2560A2329A3CB0065A48B /* SoundsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B256092329A3CB0065A48B /* SoundsetView.swift */; };
+		D2B2560C2329A5B20065A48B /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560B2329A5B20065A48B /* HostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +48,6 @@
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D2AC67072321809900548388 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2AC67092321809A00548388 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AC670C2321809A00548388 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2AC670F2321809A00548388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +66,11 @@
 		D2B255FA2329914C0065A48B /* Soundset+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Sync.swift"; sourceTree = "<group>"; };
 		D2B255FC232994090065A48B /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
 		D2B2560023299B290065A48B /* PreviewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
+		D2B2560223299C020065A48B /* SoundsetsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetsList.swift; sourceTree = "<group>"; };
+		D2B2560423299C570065A48B /* SoundsetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetRow.swift; sourceTree = "<group>"; };
 		D2B2560623299C9A0065A48B /* Soundset+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+UI.swift"; sourceTree = "<group>"; };
+		D2B256092329A3CB0065A48B /* SoundsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetView.swift; sourceTree = "<group>"; };
+		D2B2560B2329A5B20065A48B /* HostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +125,9 @@
 				D2B255F6232983890065A48B /* Data Model */,
 				D241A1BF2321D6860009CFF3 /* Syrinscape */,
 				D2AC67202321944100548388 /* Audio */,
+				D2AC673D2321A49A00548388 /* UI */,
 				D2AC67032321809900548388 /* AppDelegate.swift */,
 				D2AC67052321809900548388 /* SceneDelegate.swift */,
-				D2AC67072321809900548388 /* ContentView.swift */,
 				D2AC67092321809A00548388 /* Assets.xcassets */,
 				D2AC671C23218F4200548388 /* Soundscape-Bridging-Header.h */,
 				D2AC670E2321809A00548388 /* LaunchScreen.storyboard */,
@@ -160,6 +166,17 @@
 				D2AC672D2321A20800548388 /* OggVorbisError.swift */,
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		D2AC673D2321A49A00548388 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D2B2560B2329A5B20065A48B /* HostView.swift */,
+				D2B2560223299C020065A48B /* SoundsetsList.swift */,
+				D2B2560423299C570065A48B /* SoundsetRow.swift */,
+				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		D2B255F6232983890065A48B /* Data Model */ = {
@@ -246,6 +263,7 @@
 			files = (
 				D2AC671E2321934500548388 /* AudioManager.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
+				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
@@ -258,11 +276,13 @@
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
+				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
-				D2AC67082321809900548388 /* ContentView.swift in Sources */,
 				D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */,
 				D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */,
 				D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */,
+				D2B2560523299C570065A48B /* SoundsetRow.swift in Sources */,
+				D2B2560A2329A3CB0065A48B /* SoundsetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

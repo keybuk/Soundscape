@@ -22,14 +22,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appDelegate = UIApplication.shared.delegate! as! AppDelegate
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        let hostView = HostView()
             .environmentObject(appDelegate.audio)
             .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(rootView: hostView)
             self.window = window
             window.makeKeyAndVisible()
         }
