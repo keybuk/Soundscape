@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
-		D241A1E723280F0D0009CFF3 /* SyrinscapeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1E623280F0D0009CFF3 /* SyrinscapeCategory.swift */; };
 		D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */; };
 		D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1EA232819F70009CFF3 /* SyrinscapeManifestClient.swift */; };
 		D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1EC23281BC60009CFF3 /* SyrinscapeChapterClient.swift */; };
@@ -30,14 +29,13 @@
 		D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */; };
 		D2B255F5232983760065A48B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B255F4232983760065A48B /* CoreData.framework */; };
 		D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */; };
-		D2B255FB2329914C0065A48B /* SyrinscapeSoundset+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FA2329914C0065A48B /* SyrinscapeSoundset+Sync.swift */; };
-		D2B255FD232994090065A48B /* SyrinscapeSoundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FC232994090065A48B /* SyrinscapeSoundset+Category.swift */; };
+		D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FA2329914C0065A48B /* Soundset+Sync.swift */; };
+		D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FC232994090065A48B /* Soundset+Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
 		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
-		D241A1E623280F0D0009CFF3 /* SyrinscapeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeCategory.swift; sourceTree = "<group>"; };
 		D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeChaptersClient.swift; sourceTree = "<group>"; };
 		D241A1EA232819F70009CFF3 /* SyrinscapeManifestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeManifestClient.swift; sourceTree = "<group>"; };
 		D241A1EC23281BC60009CFF3 /* SyrinscapeChapterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeChapterClient.swift; sourceTree = "<group>"; };
@@ -61,8 +59,8 @@
 		D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeSync.swift; sourceTree = "<group>"; };
 		D2B255F4232983760065A48B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D2B255F8232983970065A48B /* Soundscape.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Soundscape.xcdatamodel; sourceTree = "<group>"; };
-		D2B255FA2329914C0065A48B /* SyrinscapeSoundset+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SyrinscapeSoundset+Sync.swift"; sourceTree = "<group>"; };
-		D2B255FC232994090065A48B /* SyrinscapeSoundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SyrinscapeSoundset+Category.swift"; sourceTree = "<group>"; };
+		D2B255FA2329914C0065A48B /* Soundset+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Sync.swift"; sourceTree = "<group>"; };
+		D2B255FC232994090065A48B /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,6 @@
 			children = (
 				D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */,
 				D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */,
-				D241A1E623280F0D0009CFF3 /* SyrinscapeCategory.swift */,
 				D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */,
 				D241A1EA232819F70009CFF3 /* SyrinscapeManifestClient.swift */,
 				D241A1EC23281BC60009CFF3 /* SyrinscapeChapterClient.swift */,
@@ -164,8 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
-				D2B255FC232994090065A48B /* SyrinscapeSoundset+Category.swift */,
-				D2B255FA2329914C0065A48B /* SyrinscapeSoundset+Sync.swift */,
+				D2B255FC232994090065A48B /* Soundset+Category.swift */,
+				D2B255FA2329914C0065A48B /* Soundset+Sync.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -246,17 +243,16 @@
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
 				D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */,
-				D2B255FD232994090065A48B /* SyrinscapeSoundset+Category.swift in Sources */,
+				D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
-				D241A1E723280F0D0009CFF3 /* SyrinscapeCategory.swift in Sources */,
 				D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D2AC67082321809900548388 /* ContentView.swift in Sources */,
-				D2B255FB2329914C0065A48B /* SyrinscapeSoundset+Sync.swift in Sources */,
+				D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */,
 				D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */,
 				D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */,
 			);

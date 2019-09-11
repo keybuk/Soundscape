@@ -1,5 +1,5 @@
 //
-//  SyrinscapeSoundset+Sync.swift
+//  Soundset+Sync.swift
 //  Soundscape
 //
 //  Created by Scott James Remnant on 9/11/19.
@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-extension SyrinscapeSoundset {
-    static func syncFrom(_ chapterOptions: SyrinscapeChaptersClient.ChapterOptions, category: SyrinscapeCategory, on managedObjectContext: NSManagedObjectContext) {
+extension Soundset {
+    static func syncFrom(_ chapterOptions: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, on managedObjectContext: NSManagedObjectContext) {
         guard chapterOptions.isBundled || chapterOptions.isPurchased,
             let slug = chapterOptions.slug,
             let _ = chapterOptions.title,
@@ -18,7 +18,7 @@ extension SyrinscapeSoundset {
             let _ = chapterOptions.downloadUpdatedDate
             else { return }
 
-        let fetchRequest: NSFetchRequest<SyrinscapeSoundset> = SyrinscapeSoundset.fetchRequest()
+        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "slug == %@", slug)
 
         managedObjectContext.perform {
@@ -27,7 +27,7 @@ extension SyrinscapeSoundset {
                 if let soundset = results.first {
                     soundset.updateFrom(chapterOptions, category: category, on: managedObjectContext)
                 } else {
-                    let soundset = SyrinscapeSoundset(context: managedObjectContext)
+                    let soundset = Soundset(context: managedObjectContext)
                     soundset.updateFrom(chapterOptions, category: category, on: managedObjectContext)
                 }
             } catch let error {
@@ -36,7 +36,7 @@ extension SyrinscapeSoundset {
         }
     }
 
-    func updateFrom(_ chapterOptions: SyrinscapeChaptersClient.ChapterOptions, category: SyrinscapeCategory, on managedObjectContext: NSManagedObjectContext) {
+    func updateFrom(_ chapterOptions: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, on managedObjectContext: NSManagedObjectContext) {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
@@ -45,7 +45,7 @@ extension SyrinscapeSoundset {
             self.category = category
             slug = chapterOptions.slug!
             title = chapterOptions.title!
-            manifestURL = chapterOptions.manifestURL!
+            url = chapterOptions.manifestURL!
             updatedDate = chapterOptions.downloadUpdatedDate!
 
             if hasChanges {
@@ -67,12 +67,12 @@ extension SyrinscapeSoundset {
         }
     }
 
-    func downloadImage(url: URL, property: WritableKeyPath<SyrinscapeSoundset, Data?>, on managedObjectContext: NSManagedObjectContext) {
+    func downloadImage(url: URL, property: WritableKeyPath<Soundset, Data?>, on managedObjectContext: NSManagedObjectContext) {
         downloadImage(url: url) { result in
             switch result {
             case let .success(imageData):
                 managedObjectContext.perform {
-                    var soundset = managedObjectContext.object(with: self.objectID) as! SyrinscapeSoundset
+                    var soundset = managedObjectContext.object(with: self.objectID) as! Soundset
                     soundset[keyPath: property] = imageData
 
                     do {

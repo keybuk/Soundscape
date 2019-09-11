@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="SyrinscapeSoundset" representedClassName="SyrinscapeSoundset" syncable="YES" codeGenerationType="class">
-        <attribute name="categoryRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="Soundset" representedClassName="Soundset" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="downloadedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="inactiveImageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="manifestURL" attributeType="URI"/>
-        <attribute name="slug" attributeType="String" defaultValueString=""/>
-        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <attribute name="slug" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
         <attribute name="updatedDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" attributeType="URI"/>
     </entity>
     <elements>
-        <element name="SyrinscapeSoundset" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

@@ -17,11 +17,11 @@ final class SyrinscapeSync {
     }
 
     func syncChapters() {
-        let categoryIterator = SyrinscapeCategory.allCases.makeIterator()
+        let categoryIterator = SoundsetCategory.allCases.makeIterator()
         syncNextCategory(iterator: categoryIterator)
     }
 
-    func syncNextCategory(iterator categoryIterator: SyrinscapeCategory.AllCases.Iterator) {
+    func syncNextCategory(iterator categoryIterator: SoundsetCategory.AllCases.Iterator) {
         var categoryIterator = categoryIterator
         guard let category = categoryIterator.next() else { return }
 
@@ -30,7 +30,7 @@ final class SyrinscapeSync {
             switch result {
             case .success(_):
                 for chapter in chaptersClient.chapters {
-                    SyrinscapeSoundset.syncFrom(chapter, category: category, on: self.managedObjectContext)
+                    Soundset.syncFrom(chapter, category: category, on: self.managedObjectContext)
                 }
             case .failure(let error):
                 print("Failed to download \(category): \(error.localizedDescription)")
