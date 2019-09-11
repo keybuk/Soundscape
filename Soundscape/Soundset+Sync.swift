@@ -18,6 +18,20 @@ extension Soundset {
             let _ = chapterOptions.downloadUpdatedDate
             else { return }
 
+        let customMoodsSKUs = [
+            // Fantasy
+            "5d6d7750244411e58461f23c9170c08b",
+            "698b015e726011e6a63bf23c9170c08b",
+            "786df12c726011e6afb8f23c9170c08b",
+            // Sci-Fi
+            "8b56b392248611e5a8aaf23c9170c08b",
+            "395c553a943b11e69f2cf23c9170c08b",
+            "46506e2a943b11e6ad9ff23c9170c08b"
+        ]
+        if let sku = chapterOptions.sku, customMoodsSKUs.contains(sku) {
+            return
+        }
+
         let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "slug == %@", slug)
 
