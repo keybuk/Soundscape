@@ -32,6 +32,7 @@
 		D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FA2329914C0065A48B /* Soundset+Sync.swift */; };
 		D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255FC232994090065A48B /* Soundset+Category.swift */; };
 		D2B2560123299B290065A48B /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560023299B290065A48B /* PreviewContent.swift */; };
+		D2B2560723299C9A0065A48B /* Soundset+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560623299C9A0065A48B /* Soundset+UI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		D2B255FA2329914C0065A48B /* Soundset+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Sync.swift"; sourceTree = "<group>"; };
 		D2B255FC232994090065A48B /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
 		D2B2560023299B290065A48B /* PreviewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
+		D2B2560623299C9A0065A48B /* Soundset+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+UI.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
 				D2B255FC232994090065A48B /* Soundset+Category.swift */,
+				D2B2560623299C9A0065A48B /* Soundset+UI.swift */,
 				D2B255FA2329914C0065A48B /* Soundset+Sync.swift */,
 			);
 			name = "Data Model";
@@ -250,6 +253,7 @@
 				D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
+				D2B2560723299C9A0065A48B /* Soundset+UI.swift in Sources */,
 				D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
