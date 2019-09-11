@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SyrinscapeCategory: Hashable, CaseIterable {
+enum SyrinscapeCategory: Int16, CaseIterable {
     case fantasy
     case sciFi
     case boardgame

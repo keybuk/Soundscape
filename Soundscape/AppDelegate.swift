@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Startup the audio manager and setup the session.
         audio = AudioManager()
+
+        // Sync soundsets from Syrinscape.
+        let syncContext = persistentContainer.newBackgroundContext()
+        let syrinscapeSync = SyrinscapeSync(context: syncContext)
+        syrinscapeSync.syncChapters()
+
         return true
     }
 
