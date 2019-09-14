@@ -82,8 +82,6 @@
 		D2AC67252321964500548388 /* OggVorbisFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OggVorbisFile.swift; sourceTree = "<group>"; };
 		D2AC672D2321A20800548388 /* OggVorbisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OggVorbisError.swift; sourceTree = "<group>"; };
 		D2AC672F2321A46300548388 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		D2AC673F2321A4A300548388 /* PlaylistRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistRow.swift; sourceTree = "<group>"; };
-		D2AC67402321A4A300548388 /* _PlayerRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _PlayerRow.swift; sourceTree = "<group>"; };
 		D2AC674F2321A5DC00548388 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode+OggVorbis.swift"; sourceTree = "<group>"; };
 		D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeSync.swift; sourceTree = "<group>"; };
