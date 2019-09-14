@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SoundsetView: View {
     @ObservedObject var soundset: Soundset
+    @EnvironmentObject var persistentContainer: NSPersistentContainer
 
     var body: some View {
         List {
@@ -30,6 +32,11 @@ struct SoundsetView: View {
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle("\(soundset.title!)", displayMode: .automatic)
+        .onAppear {
+            if self.soundset.isUpdatePending {
+                self.soundset.updateFromServer(context: self.persistentContainer.newBackgroundContext())
+            }
+        }
     }
 }
 
@@ -51,6 +58,7 @@ struct SoundsetView_Previews: PreviewProvider {
         NavigationView {
             SoundsetView(soundset: previewContent.soundsets[0])
         }
+        .environmentObject(previewContent.persistentContainer)
     }
 }
 #endif
