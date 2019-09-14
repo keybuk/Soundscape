@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SoundsetView: View {
-    var soundset: Soundset
+    @ObservedObject var soundset: Soundset
 
     var body: some View {
         List {
