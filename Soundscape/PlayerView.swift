@@ -39,17 +39,17 @@ struct PlayerStatusButton: View {
     @State var progress: Double = 0
 
     var body: some View {
-        Button(action: self.togglePlaying) {
-            ZStack {
+        ZStack {
+            Button(action: self.togglePlaying) {
                 if isPlaying {
                     Image(systemName: "stop.fill")
                 } else {
                     Image(systemName: "play.fill")
                 }
-                ProgressCircle(progress: progress)
             }
-            .frame(width: 30, height: 30)
+            ProgressCircle(progress: progress)
         }
+        .frame(width: 30, height: 30)
         .onReceive(player.status.receive(on: RunLoop.main)) { status in
             switch status {
             case .stopped:
