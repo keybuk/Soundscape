@@ -293,7 +293,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
             _tag = nil
         case "Chapter.Samples.SoundSample.Duration":
             _soundSample!.duration = Int(text!)
-        case "Chapter.Samples.SoundSample.Tag":
+        case "Chapter.Samples.SoundSample.Tags.Tag":
             _soundSample!.tags.append(_tag!)
             _tag = nil
         case "Chapter.Samples.SoundSample.Attribution":
