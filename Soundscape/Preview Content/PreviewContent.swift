@@ -13,15 +13,15 @@ import UIKit
 
 struct PreviewContent {
 
-    let container: NSPersistentContainer
-    var managedObjectContext: NSManagedObjectContext { container.viewContext }
+    let persistentContainer: NSPersistentContainer
+    var managedObjectContext: NSManagedObjectContext { persistentContainer.viewContext }
 
     var soundsets: [Soundset]
 
     init() {
-        container = NSPersistentContainer(name: "Soundscape")
-        container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-        container.loadPersistentStores { (storeDescription, error) in
+        persistentContainer = NSPersistentContainer(name: "Soundscape")
+        persistentContainer.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        persistentContainer.loadPersistentStores { (storeDescription, error) in
             if let error = error { fatalError("\(error.localizedDescription)") }
         }
 

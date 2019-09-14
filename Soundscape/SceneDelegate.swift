@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let hostView = HostView()
             .environmentObject(appDelegate.audio)
             .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
+            .environmentObject(appDelegate.persistentContainer)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

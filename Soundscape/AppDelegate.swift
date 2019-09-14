@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+extension NSPersistentContainer: ObservableObject {}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
