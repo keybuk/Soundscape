@@ -226,8 +226,6 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
                 text = ""
             }
         }
-
-        text = ""
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
