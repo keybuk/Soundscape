@@ -9,8 +9,8 @@
 import Foundation
 
 enum ElementOrder: Int16 {
-    case inOrder
-    case shuffle
+    case ordered
+    case shuffled
     case random
 }
 

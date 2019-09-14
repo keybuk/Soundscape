@@ -44,10 +44,10 @@ extension Element {
         element.isOverlapping = clientElement.allowPlaylistOverlap
 
         switch clientElement.randomisePlaylist {
-        case "shuffle": element.order = .shuffle
-        case "inorder": element.order = .inOrder
-        case "random": element.order = .shuffle
-        default: element.order = .inOrder
+        case "shuffle": element.order = .shuffled
+        case "inorder": element.order = .ordered
+        case "random": element.order = .random
+        default: element.order = .ordered
         }
 
         let newEntries: [PlaylistEntry] = clientElement.playlist.compactMap {
