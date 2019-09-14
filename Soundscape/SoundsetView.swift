@@ -12,6 +12,7 @@ import CoreData
 struct SoundsetView: View {
     @ObservedObject var soundset: Soundset
     @EnvironmentObject var persistentContainer: NSPersistentContainer
+    @EnvironmentObject var audio: AudioManager
 
     var body: some View {
         List {
@@ -19,14 +20,10 @@ struct SoundsetView: View {
                 EmptyView()
             }
             
-            Section(header: Text("Moods").font(.headline)) {
-                Text("Test")
-                Text("Another Test")
-            }
-
-            Section(header: Text("Elements").font(.headline)) {
-                Text("Test")
-                Text("Another Test")
+            Section {
+                ForEach(soundset.elements!.array as! [Element]) { element in
+                    PlayerView(player: Player(element: element, audio: self.audio))
+                }
             }
 
         }
@@ -59,6 +56,7 @@ struct SoundsetView_Previews: PreviewProvider {
             SoundsetView(soundset: previewContent.soundsets[0])
         }
         .environmentObject(previewContent.persistentContainer)
+        .environmentObject(AudioManager())
     }
 }
 #endif
