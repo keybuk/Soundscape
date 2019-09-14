@@ -10,14 +10,17 @@ import Foundation
 import CoreData
 
 extension Soundset {
-    static func syncFrom(_ chapterOptions: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, on managedObjectContext: NSManagedObjectContext) {
-        guard chapterOptions.isBundled || chapterOptions.isPurchased,
-            let slug = chapterOptions.slug,
-            let _ = chapterOptions.title,
-            let _ = chapterOptions.manifestURL,
-            let _ = chapterOptions.downloadUpdatedDate
+    static let currentSchemaVersion: Int16 = 1
+
+    static func createFrom(_ clientChapter: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, context managedObjectContext: NSManagedObjectContext) {
+        guard clientChapter.isBundled || clientChapter.isPurchased,
+            let slug = clientChapter.slug,
+            let title = clientChapter.title,
+            let manifestURL = clientChapter.manifestURL,
+            let downloadUpdatedDate = clientChapter.downloadUpdatedDate
             else { return }
 
+        // Ignore the "Custom Moods" soundsets.
         let customMoodsSKUs = [
             // Fantasy
             "5d6d7750244411e58461f23c9170c08b",
@@ -28,7 +31,7 @@ extension Soundset {
             "395c553a943b11e69f2cf23c9170c08b",
             "46506e2a943b11e6ad9ff23c9170c08b"
         ]
-        if let sku = chapterOptions.sku, customMoodsSKUs.contains(sku) {
+        if let sku = clientChapter.sku, customMoodsSKUs.contains(sku) {
             return
         }
 
@@ -36,63 +39,51 @@ extension Soundset {
         fetchRequest.predicate = NSPredicate(format: "slug == %@", slug)
 
         managedObjectContext.perform {
+            let soundset: Soundset
             do {
                 let results = try fetchRequest.execute()
-                if let soundset = results.first {
-                    soundset.updateFrom(chapterOptions, category: category, on: managedObjectContext)
-                } else {
-                    let soundset = Soundset(context: managedObjectContext)
-                    soundset.updateFrom(chapterOptions, category: category, on: managedObjectContext)
+                soundset = results.first ?? Soundset(context: managedObjectContext)
+            } catch let error {
+                print("Failed to fetch soundset \(slug): \(error.localizedDescription)")
+                return
+            }
+
+            soundset.category = category
+            soundset.slug = slug
+            soundset.title = title
+            soundset.url = manifestURL
+            soundset.updatedDate = downloadUpdatedDate
+
+            do {
+                if soundset.hasChanges {
+                    try managedObjectContext.save()
                 }
             } catch let error {
-                print("Failed to fetch soundset for \(slug): \(error.localizedDescription)")
+                print("Failed to save changes to soundset \(slug): \(error.localizedDescription)")
+                return
+            }
+
+            if soundset.imageData == nil, let url = clientChapter.backgroundImageURL {
+                soundset.downloadImage(url: url, property: \.imageData)
+            }
+
+            if soundset.inactiveImageData == nil, let url = clientChapter.inactiveBackgroundImageURL {
+                soundset.downloadImage(url: url, property: \.inactiveImageData)
             }
         }
     }
 
-    func updateFrom(_ chapterOptions: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, on managedObjectContext: NSManagedObjectContext) {
-        // Must be called from managedObjectContext.perform
-        dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
-
-        if updatedDate == nil || updatedDate! != chapterOptions.downloadUpdatedDate! {
-            // These are verified as present by syncChapter()
-            self.category = category
-            slug = chapterOptions.slug!
-            title = chapterOptions.title!
-            url = chapterOptions.manifestURL!
-            updatedDate = chapterOptions.downloadUpdatedDate!
-
-            if hasChanges {
-                do {
-                    try managedObjectContext.save()
-                } catch let error {
-                    print("Failed to save context for \(slug!): \(error.localizedDescription)")
-                    return
-                }
-            }
-        }
-
-        if imageData == nil, let url = chapterOptions.backgroundImageURL {
-            downloadImage(url: url, property: \.imageData, on: managedObjectContext)
-        }
-
-        if inactiveImageData == nil, let url = chapterOptions.inactiveBackgroundImageURL {
-            downloadImage(url: url, property: \.inactiveImageData, on: managedObjectContext)
-        }
-    }
-
-    func downloadImage(url: URL, property: WritableKeyPath<Soundset, Data?>, on managedObjectContext: NSManagedObjectContext) {
+    func downloadImage(url: URL, property: ReferenceWritableKeyPath<Soundset, Data?>) {
         downloadImage(url: url) { result in
             switch result {
             case let .success(imageData):
-                managedObjectContext.perform {
-                    var soundset = managedObjectContext.object(with: self.objectID) as! Soundset
-                    soundset[keyPath: property] = imageData
+                self.managedObjectContext?.perform {
+                    self[keyPath: property] = imageData
 
                     do {
-                        try managedObjectContext.save()
+                        try self.managedObjectContext?.save()
                     } catch let error {
-                        print("Failed to save context for \(soundset.slug!) inactive image: \(error.localizedDescription)")
+                        print("Failed to save context for \(self.slug!) inactive image: \(error.localizedDescription)")
                         return
                     }
                 }

@@ -29,8 +29,8 @@ final class SyrinscapeSync {
         chaptersClient.download(category: category) { result in
             switch result {
             case .success(_):
-                for chapter in chaptersClient.chapters {
-                    Soundset.syncFrom(chapter, category: category, on: self.managedObjectContext)
+                for clientChapter in chaptersClient.chapters {
+                    Soundset.createFrom(clientChapter, category: category, context: self.managedObjectContext)
                 }
             case .failure(let error):
                 print("Failed to download \(category): \(error.localizedDescription)")
