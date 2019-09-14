@@ -119,21 +119,28 @@ final class Player: ObservableObject {
         let startTime = AVAudioTime(sampleTime: lastRenderSampleTime + delaySamples, atRate: sampleRate)
 
         // Calculate the delay for the next sample.
-        // When the playlist is overlapping (delay begins at sample start), we subtract the length
-        // of the sample we're about to play, thus using our existing logic for scheduling based
-        // on whether it actually overlaps or not.
         var delayBeforeNext: Double = .random(in: element.sampleGap)
-        if element.isOverlapping {
-            delayBeforeNext -= Double(file.length) / file.processingFormat.sampleRate
-        }
 
-        player.scheduleFile(file) {
+        player.scheduleFile(file, startHandler: {
+            DispatchQueue.main.async {
+                // If the next sample overlaps, we have to schedule it as soon we're playing the
+                // current sample. We add the sample length to the delay to obtain the play time
+                // from the current start. For overlapping samples we always treat the delay as
+                // based from the start time.
+                if delayBeforeNext < 0 {
+                    delayBeforeNext += Double(file.length) / file.processingFormat.sampleRate
+                    self.wantFile(in: delayBeforeNext)
+                } else if self.element.isOverlapping {
+                    self.wantFile(in: delayBeforeNext)
+                }
+            }
+        }) {
             DispatchQueue.main.async {
                 self.audio.engine.detach(player)
                 if self.currentPlayer == player { self.currentPlayer = nil }
 
                 // If the next sample doesn't overlap, schedule it.
-                if delayBeforeNext >= 0 {
+                if delayBeforeNext >= 0 && !self.element.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
             }
@@ -145,14 +152,6 @@ final class Player: ObservableObject {
         currentSampleLength = file.length
         currentDelay = delaySamples
         progressUpdater.isPaused = false
-
-        // If the next sample overlaps, we have to schedule it early. For that we need to calculate
-        // when we expect to start playing this sample, and then add the length of the sample to
-        // the result serving as a baseline for the next one.
-        if delayBeforeNext < 0 {
-            let delayBase = delay + Double(file.length) / file.processingFormat.sampleRate
-            wantFile(in: delayBase + delayBeforeNext)
-        }
     }
 
     func wantFile(in delay: Double) {
@@ -164,10 +163,9 @@ final class Player: ObservableObject {
             let downloadStart = Date()
 
             playlistEntry.openFile { result in
-                // Subtract the amount of time the download took from the delay.
+                // Subtract the amount of time the potential download took from the delay.
                 let downloadDuration = downloadStart.distance(to: Date())
                 let adjustedDelay = max(0, delay - downloadDuration)
-                print("Download took \(downloadDuration)s")
 
                 switch result {
                 case let .success(file):
