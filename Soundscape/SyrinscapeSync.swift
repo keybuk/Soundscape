@@ -23,7 +23,10 @@ final class SyrinscapeSync {
 
     func syncNextCategory(iterator categoryIterator: SoundsetCategory.AllCases.Iterator) {
         var categoryIterator = categoryIterator
-        guard let category = categoryIterator.next() else { return }
+        guard let category = categoryIterator.next() else {
+            syncSoundsets()
+            return
+        }
 
         let chaptersClient = SyrinscapeChaptersClient()
         chaptersClient.download(category: category) { result in
@@ -37,6 +40,30 @@ final class SyrinscapeSync {
             }
 
             self.syncNextCategory(iterator: categoryIterator)
+        }
+    }
+
+    func syncSoundsets() {
+        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "downloadedDate == nil OR downloadedDate < updatedDate")
+
+        managedObjectContext.perform {
+            do {
+                let results = try fetchRequest.execute()
+                let soundsetIterator = results.makeIterator()
+                self.syncNextSoundset(iterator: soundsetIterator)
+            } catch let error {
+                print("Out of date check failed: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func syncNextSoundset(iterator soundsetIterator: Array<Soundset>.Iterator) {
+        var soundsetIterator = soundsetIterator
+        guard let soundset = soundsetIterator.next() else { return }
+
+        soundset.updateFromServer(context: managedObjectContext) {
+            self.syncNextSoundset(iterator: soundsetIterator)
         }
     }
 }

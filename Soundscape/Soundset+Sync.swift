@@ -53,6 +53,7 @@ extension Soundset {
             soundset.title = title
             soundset.url = manifestURL
             soundset.updatedDate = downloadUpdatedDate
+            soundset.schemaVersion = Self.currentSchemaVersion
 
             do {
                 if soundset.hasChanges {
@@ -118,5 +119,82 @@ extension Soundset {
             completionHandler(.success(data))
         }
         task.resume()
+    }
+
+    var isUpdatePending: Bool {
+        downloadedDate == nil || downloadedDate! < updatedDate! || schemaVersion < Self.currentSchemaVersion
+    }
+
+    func updateFromServer(context managedObjectContext: NSManagedObjectContext, completionHander: (() -> Void)? = nil) {
+        let manifestClient = SyrinscapeManifestClient()
+        manifestClient.download(fromURL: url!) { result in
+            switch result {
+            case .success(_):
+                if let chapterFile = manifestClient.soundsetFile(matching: "chapter.xml"),
+                    let chapterURL = chapterFile.url
+                {
+                    let chapterClient = SyrinscapeChapterClient()
+                    chapterClient.download(fromURL: chapterURL) { result in
+                        switch result {
+                        case .success(_):
+                            managedObjectContext.perform {
+                                let soundset = managedObjectContext.object(with: self.objectID) as! Soundset
+                                print("Updating \(soundset.slug!)")
+                                soundset.updateFrom(chapterClient, manifestClient: manifestClient)
+                                print("Done!")
+                            }
+                            completionHander?()
+                        case let .failure(error):
+                            print("Failed to download chapter from \(chapterURL): \(error.localizedDescription)")
+                            completionHander?()
+                            return
+                        }
+                    }
+                } else {
+                    print("Missing chapter file from \(self.url!)")
+                    completionHander?()
+                    return
+                }
+            case let .failure(error):
+                print("Failed to download manifest from \(self.url!): \(error.localizedDescription)")
+                completionHander?()
+                return
+            }
+        }
+    }
+
+    func updateFrom(_ clientChapter: SyrinscapeChapterClient, manifestClient: SyrinscapeManifestClient) {
+        // Must be called from managedObjectContext.perform
+        dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
+
+        for sample in clientChapter.samples {
+            Sample.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
+        }
+
+        var newElements: [Element] = []
+        newElements.append(contentsOf: clientChapter.musicElements.compactMap {
+            Element.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
+        })
+        newElements.append(contentsOf: clientChapter.sfxElements.compactMap {
+            Element.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
+        })
+        newElements.append(contentsOf: clientChapter.loopElements.compactMap {
+            Element.createFrom($0, kind: .loop, soundset: self, context: managedObjectContext!)
+        })
+        newElements.append(contentsOf: clientChapter.oneshotElements.compactMap {
+            Element.createFrom($0, kind: $0.isGlobalOneshot ? .globalOneshot : .oneshot, soundset: self, context: managedObjectContext!)
+        })
+        elements = NSOrderedSet(array: newElements)
+
+        downloadedDate = updatedDate
+        schemaVersion = Self.currentSchemaVersion
+
+        do {
+            if hasChanges {
+                try managedObjectContext?.save()
+            }
+        } catch let error {
+            print("Failed to save changes to soundset \(slug!): \(error.localizedDescription)")
+        }
     }
 }

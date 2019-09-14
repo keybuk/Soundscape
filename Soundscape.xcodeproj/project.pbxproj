@@ -13,6 +13,8 @@
 		D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1EA232819F70009CFF3 /* SyrinscapeManifestClient.swift */; };
 		D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1EC23281BC60009CFF3 /* SyrinscapeChapterClient.swift */; };
 		D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1EE232824200009CFF3 /* SyrinscapeDownloadError.swift */; };
+		D250FFE9232ADB3600EA515B /* PlaylistEntry+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */; };
+		D250FFEB232ADCC000EA515B /* PlaylistEntry+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
@@ -36,6 +38,11 @@
 		D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560223299C020065A48B /* SoundsetsList.swift */; };
 		D2B2560A2329A3CB0065A48B /* SoundsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B256092329A3CB0065A48B /* SoundsetView.swift */; };
 		D2B2560C2329A5B20065A48B /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560B2329A5B20065A48B /* HostView.swift */; };
+		D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560D2329C2870065A48B /* Sample+Sync.swift */; };
+		D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560F232AD7540065A48B /* Element+Sync.swift */; };
+		D2B25612232AD7A10065A48B /* Element+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B25611232AD7A10065A48B /* Element+Kind.swift */; };
+		D2B25614232AD7D50065A48B /* Element+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B25613232AD7D50065A48B /* Element+Order.swift */; };
+		D2B25616232AD8AF0065A48B /* Element+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B25615232AD8AF0065A48B /* Element+Range.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +52,8 @@
 		D241A1EA232819F70009CFF3 /* SyrinscapeManifestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeManifestClient.swift; sourceTree = "<group>"; };
 		D241A1EC23281BC60009CFF3 /* SyrinscapeChapterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeChapterClient.swift; sourceTree = "<group>"; };
 		D241A1EE232824200009CFF3 /* SyrinscapeDownloadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeDownloadError.swift; sourceTree = "<group>"; };
+		D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistEntry+Sync.swift"; sourceTree = "<group>"; };
+		D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistEntry+Range.swift"; sourceTree = "<group>"; };
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,18 +68,32 @@
 		D2AC67232321948700548388 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D2AC67252321964500548388 /* OggVorbisFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OggVorbisFile.swift; sourceTree = "<group>"; };
 		D2AC672D2321A20800548388 /* OggVorbisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OggVorbisError.swift; sourceTree = "<group>"; };
+		D2AC672F2321A46300548388 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D2AC673F2321A4A300548388 /* PlaylistRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistRow.swift; sourceTree = "<group>"; };
+		D2AC67402321A4A300548388 /* PlayerRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRow.swift; sourceTree = "<group>"; };
+		D2AC67412321A4A300548388 /* ProgressCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
+		D2AC67492321A52900548388 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		D2AC674A2321A52900548388 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		D2AC674B2321A52900548388 /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		D2AC674F2321A5DC00548388 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode+OggVorbis.swift"; sourceTree = "<group>"; };
 		D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeSync.swift; sourceTree = "<group>"; };
 		D2B255F4232983760065A48B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D2B255F8232983970065A48B /* Soundscape.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Soundscape.xcdatamodel; sourceTree = "<group>"; };
 		D2B255FA2329914C0065A48B /* Soundset+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Sync.swift"; sourceTree = "<group>"; };
 		D2B255FC232994090065A48B /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
+		D2B255FE232999090065A48B /* TestTavernView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTavernView.swift; sourceTree = "<group>"; };
 		D2B2560023299B290065A48B /* PreviewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
 		D2B2560223299C020065A48B /* SoundsetsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetsList.swift; sourceTree = "<group>"; };
 		D2B2560423299C570065A48B /* SoundsetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetRow.swift; sourceTree = "<group>"; };
 		D2B2560623299C9A0065A48B /* Soundset+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+UI.swift"; sourceTree = "<group>"; };
 		D2B256092329A3CB0065A48B /* SoundsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetView.swift; sourceTree = "<group>"; };
 		D2B2560B2329A5B20065A48B /* HostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostView.swift; sourceTree = "<group>"; };
+		D2B2560D2329C2870065A48B /* Sample+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sample+Sync.swift"; sourceTree = "<group>"; };
+		D2B2560F232AD7540065A48B /* Element+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Sync.swift"; sourceTree = "<group>"; };
+		D2B25611232AD7A10065A48B /* Element+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Kind.swift"; sourceTree = "<group>"; };
+		D2B25613232AD7D50065A48B /* Element+Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Order.swift"; sourceTree = "<group>"; };
+		D2B25615232AD8AF0065A48B /* Element+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Range.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +209,13 @@
 				D2B255FC232994090065A48B /* Soundset+Category.swift */,
 				D2B2560623299C9A0065A48B /* Soundset+UI.swift */,
 				D2B255FA2329914C0065A48B /* Soundset+Sync.swift */,
+				D2B2560D2329C2870065A48B /* Sample+Sync.swift */,
+				D2B25611232AD7A10065A48B /* Element+Kind.swift */,
+				D2B25613232AD7D50065A48B /* Element+Order.swift */,
+				D2B25615232AD8AF0065A48B /* Element+Range.swift */,
+				D2B2560F232AD7540065A48B /* Element+Sync.swift */,
+				D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */,
+				D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -265,24 +295,31 @@
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
 				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
+				D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
+				D2B25612232AD7A10065A48B /* Element+Kind.swift in Sources */,
 				D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */,
+				D250FFEB232ADCC000EA515B /* PlaylistEntry+Range.swift in Sources */,
 				D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
+				D2B25616232AD8AF0065A48B /* Element+Range.swift in Sources */,
 				D2B2560723299C9A0065A48B /* Soundset+UI.swift in Sources */,
 				D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
+				D2B25614232AD7D50065A48B /* Element+Order.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
+				D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */,
 				D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */,
 				D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */,
 				D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */,
 				D2B2560523299C570065A48B /* SoundsetRow.swift in Sources */,
 				D2B2560A2329A3CB0065A48B /* SoundsetView.swift in Sources */,
+				D250FFE9232ADB3600EA515B /* PlaylistEntry+Sync.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Element" representedClassName="Element" syncable="YES" codeGenerationType="class">
+        <attribute name="initialVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="isOverlapping" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isRepeating" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="kindRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="maxSampleGap" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maxStartDelay" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="minSampleGap" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="minStartDelay" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="orderRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="slug" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="playlistEntries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PlaylistEntry" inverseName="element" inverseEntity="PlaylistEntry"/>
+        <relationship name="soundset" maxCount="1" deletionRule="Nullify" destinationEntity="Soundset" inverseName="elements" inverseEntity="Soundset"/>
+    </entity>
+    <entity name="PlaylistEntry" representedClassName="PlaylistEntry" syncable="YES" codeGenerationType="class">
+        <attribute name="maxVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="minVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="element" maxCount="1" deletionRule="Nullify" destinationEntity="Element" inverseName="playlistEntries" inverseEntity="Element"/>
+        <relationship name="sample" maxCount="1" deletionRule="Nullify" destinationEntity="Sample" inverseName="playlistEntries" inverseEntity="Sample"/>
+    </entity>
+    <entity name="Sample" representedClassName="Sample" syncable="YES" codeGenerationType="class">
+        <attribute name="title" attributeType="String"/>
+        <attribute name="url" attributeType="URI"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="playlistEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaylistEntry" inverseName="sample" inverseEntity="PlaylistEntry"/>
+    </entity>
     <entity name="Soundset" representedClassName="Soundset" syncable="YES" codeGenerationType="class">
         <attribute name="categoryRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="downloadedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -10,8 +37,12 @@
         <attribute name="title" attributeType="String"/>
         <attribute name="updatedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" attributeType="URI"/>
+        <relationship name="elements" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Element" inverseName="soundset" inverseEntity="Element"/>
     </entity>
     <elements>
-        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Element" positionX="-27" positionY="72" width="128" height="238"/>
+        <element name="PlaylistEntry" positionX="-9" positionY="144" width="128" height="103"/>
+        <element name="Sample" positionX="-45" positionY="63" width="128" height="103"/>
+        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>
