@@ -17,6 +17,7 @@
 		D250FFE9232ADB3600EA515B /* PlaylistEntry+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */; };
 		D250FFEB232ADCC000EA515B /* PlaylistEntry+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */; };
 		D250FFED232C6DB000EA515B /* Element+PlaylistIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFEC232C6DB000EA515B /* Element+PlaylistIterator.swift */; };
+		D250FFEF232C840200EA515B /* PlaylistEntry+Open.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFEE232C840200EA515B /* PlaylistEntry+Open.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistEntry+Sync.swift"; sourceTree = "<group>"; };
 		D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistEntry+Range.swift"; sourceTree = "<group>"; };
 		D250FFEC232C6DB000EA515B /* Element+PlaylistIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+PlaylistIterator.swift"; sourceTree = "<group>"; };
+		D250FFEE232C840200EA515B /* PlaylistEntry+Open.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistEntry+Open.swift"; sourceTree = "<group>"; };
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				D250FFEC232C6DB000EA515B /* Element+PlaylistIterator.swift */,
 				D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */,
 				D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */,
+				D250FFEE232C840200EA515B /* PlaylistEntry+Open.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				D2B25614232AD7D50065A48B /* Element+Order.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
+				D250FFEF232C840200EA515B /* PlaylistEntry+Open.swift in Sources */,
 				D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */,
 				D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */,
 				D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */,

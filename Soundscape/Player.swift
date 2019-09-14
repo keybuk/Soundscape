@@ -158,39 +158,24 @@ final class Player: ObservableObject {
     func wantFile(in delay: Double) {
         print("Want next file in \(delay)s")
 
-        if let playlistEntry = playlistIterator?.next(),
-            let sample = playlistEntry.sample
+        if let playlistEntry = playlistIterator?.next()
         {
             let volume = Float.random(in: playlistEntry.volume)
+            let downloadStart = Date()
 
-            if sample.isCached,
-                let sampleFile = try? OggVorbisFile(forReading: sample.cacheURL)
-            {
-                print("Playing \(sample.title!) in \(delay)s")
-                scheduleFile(sampleFile, volume: volume, delay: delay)
-            } else {
-                let downloadStart = Date()
-                sample.downloadFromSyrinscape { result in
-                    DispatchQueue.main.async {
-                        // Subtract the amount of time the download took from the delay.
-                        let downloadDuration = downloadStart.distance(to: Date())
-                        let adjustedDelay = max(0, delay - downloadDuration)
-                        print("Download took \(downloadDuration)s")
+            playlistEntry.openFile { result in
+                // Subtract the amount of time the download took from the delay.
+                let downloadDuration = downloadStart.distance(to: Date())
+                let adjustedDelay = max(0, delay - downloadDuration)
+                print("Download took \(downloadDuration)s")
 
-                        switch result {
-                        case .success(_):
-                            guard let sampleFile = try? OggVorbisFile(forReading: sample.cacheURL) else {
-                                print("Failed to open the file downloaded")
-                                return self.wantFile(in: adjustedDelay)
-                            }
-
-                            print("Playing \(sample.title!) in \(adjustedDelay)s")
-                            self.scheduleFile(sampleFile, volume: volume, delay: adjustedDelay)
-                        case .failure(let error):
-                            print("Failed to download: \(error.localizedDescription)")
-                            return self.wantFile(in: adjustedDelay)
-                        }
-                    }
+                switch result {
+                case let .success(file):
+                    print("Playing \(playlistEntry.sample!.title!) in \(adjustedDelay)s")
+                    self.scheduleFile(file, volume: volume, delay: adjustedDelay)
+                case let .failure(error):
+                    print("Failed to open sample file: \(error.localizedDescription)")
+                    self.wantFile(in: adjustedDelay)
                 }
             }
         } else {
