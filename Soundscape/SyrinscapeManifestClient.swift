@@ -17,11 +17,17 @@ final class SyrinscapeManifestClient: NSObject, XMLParserDelegate {
         var size: Int?
         var filename: String?
     }
+
+    func soundsetFile(matching filename: String) -> SoundsetFile? {
+        soundsetFiles.first {
+            $0.filename == filename || ($0.filename?.hasSuffix("/\(filename)") ?? false)
+        }
+    }
     
     private var baseURL: URL?
     private var elementPathComponents: [String]?
     private var text: String?
-    private var soundsetFile: SoundsetFile?
+    private var _soundsetFile: SoundsetFile?
     
     func download(fromURL url: URL, completionHandler: @escaping (Result<Void, Error>) -> Void) {
         let url = url.authenticatedForSyrinscape() ?? url
@@ -71,7 +77,7 @@ final class SyrinscapeManifestClient: NSObject, XMLParserDelegate {
         
         switch elementPath {
         case "SoundsetManifest.Files.SoundsetFile":
-            soundsetFile = SoundsetFile()
+            _soundsetFile = SoundsetFile()
         default:
             text = ""
         }
@@ -87,17 +93,17 @@ final class SyrinscapeManifestClient: NSObject, XMLParserDelegate {
         let elementPath = elementPathComponents!.joined(separator: ".")
         switch elementPath {
         case "SoundsetManifest.Files.SoundsetFile.Url":
-            soundsetFile!.url = URL(string: text!, relativeTo: baseURL)
+            _soundsetFile!.url = URL(string: text!, relativeTo: baseURL)
         case "SoundsetManifest.Files.SoundsetFile.Hash":
-            soundsetFile!.hash = text!
+            _soundsetFile!.hash = text!
         case "SoundsetManifest.Files.SoundsetFile.Filesize":
-            soundsetFile!.size = Int(text!)
+            _soundsetFile!.size = Int(text!)
         case "SoundsetManifest.Files.SoundsetFile.Filename":
-            soundsetFile!.filename = text!
+            _soundsetFile!.filename = text!
             
         case "SoundsetManifest.Files.SoundsetFile":
-            soundsetFiles.append(soundsetFile!)
-            soundsetFile = nil
+            soundsetFiles.append(_soundsetFile!)
+            _soundsetFile = nil
             
         default: break
         }

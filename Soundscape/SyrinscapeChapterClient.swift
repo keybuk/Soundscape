@@ -74,13 +74,13 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         var reverbPreset: String?
         var playlist: [PlaylistEntry] = []
         var reverseDirection: Bool = false
-        var minStartDelay: Float?
-        var maxStartDelay: Float?
+        var minStartDelay: Double?
+        var maxStartDelay: Double?
         var randomisePlaylist: String?
         var repeatPlaylist: Bool = false
         var allowPlaylistOverlap: Bool = false
-        var minTriggerWait: Float?
-        var maxTriggerWait: Float?
+        var minTriggerWait: Double?
+        var maxTriggerWait: Double?
         var minAngle: Float?
         var maxAngle: Float?
         var minDistance: Float?
@@ -134,12 +134,12 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
     private var baseURL: URL?
     private var elementPathComponents: [String]?
     private var text: String?
-    private var tag: Tag?
-    private var soundSample: SoundSample?
-    private var element: Element?
-    private var playlistEntry: PlaylistEntry?
-    private var mood: Mood?
-    private var elementParameter: ElementParameter?
+    private var _tag: Tag?
+    private var _soundSample: SoundSample?
+    private var _element: Element?
+    private var _playlistEntry: PlaylistEntry?
+    private var _mood: Mood?
+    private var _elementParameter: ElementParameter?
     private var _reverbPreset: ReverbPreset?
 
     func download(fromURL url: URL, completionHandler: @escaping (Result<Void, Error>) -> Void) {
@@ -190,27 +190,27 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
 
         switch elementPath {
         case "Chapter.Category":
-            tag = Tag()
+            _tag = Tag()
         case "Chapter.Tags.Tag":
-            tag = Tag()
+            _tag = Tag()
         case "Chapter.Samples.SoundSample":
-            soundSample = SoundSample()
+            _soundSample = SoundSample()
         case "Chapter.Samples.SoundSample.Category":
-            tag = Tag()
+            _tag = Tag()
         case "Chapter.Samples.SoundSample.Tags.Tag":
-            tag = Tag()
+            _tag = Tag()
         case "Chapter.MusicElements.MusicElement":
-            element = Element()
+            _element = Element()
         case "Chapter.SfxElements.SFXElement":
-            element = Element()
+            _element = Element()
         case "Chapter.LoopElements.LoopElement":
-            element = Element()
+            _element = Element()
         case "Chapter.OneshotElements.OneshotElement":
-            element = Element()
+            _element = Element()
         case "Chapter.Moods.Mood":
-            mood = Mood()
+            _mood = Mood()
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter":
-            elementParameter = ElementParameter()
+            _elementParameter = ElementParameter()
         case "Chapter.ReverbPreset":
             _reverbPreset = ReverbPreset()
         case "Chapter.ReverbPresets.ReverbPreset":
@@ -219,8 +219,8 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         default:
             switch elementName {
             // Match either of the four element types.
-            case "PlaylistEntry" where element != nil:
-                playlistEntry = PlaylistEntry()
+            case "PlaylistEntry" where _element != nil:
+                _playlistEntry = PlaylistEntry()
 
             default:
                 text = ""
@@ -262,8 +262,8 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.CreatorUrl":
             creatorURL = URL(string: text!, relativeTo: baseURL)
         case "Chapter.Category":
-            category = tag!
-            tag = nil
+            category = _tag!
+            _tag = nil
         case "Chapter.OwnedBy":
             ownedBy = text!
         case "Chapter.CreatedBy":
@@ -279,72 +279,72 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.PreviewOgg":
             previewOGGURL = URL(string: text!, relativeTo: URL(string: "https://syrinscape-us.s3.amazonaws.com/media"))
         case "Chapter.Tags.Tag":
-            tags.append(tag!)
-            tag = nil
+            tags.append(_tag!)
+            _tag = nil
         case "Chapter.InitialGain":
             initialGain = Float(text!)
 
         case "Chapter.Samples.SoundSample.Uuid":
-            soundSample!.uuid = text!
+            _soundSample!.uuid = text!
         case "Chapter.Samples.SoundSample.Extension":
-            soundSample!.fileExtension = text!
+            _soundSample!.fileExtension = text!
         case "Chapter.Samples.SoundSample.Title":
-            soundSample!.title = text!
+            _soundSample!.title = text!
         case "Chapter.Samples.SoundSample.Category":
-            soundSample!.category = tag!
-            tag = nil
+            _soundSample!.category = _tag!
+            _tag = nil
         case "Chapter.Samples.SoundSample.Duration":
-            soundSample!.duration = Int(text!)
+            _soundSample!.duration = Int(text!)
         case "Chapter.Samples.SoundSample.Tag":
-            soundSample!.tags.append(tag!)
-            tag = nil
+            _soundSample!.tags.append(_tag!)
+            _tag = nil
         case "Chapter.Samples.SoundSample.Attribution":
-            soundSample!.attribution = text!
+            _soundSample!.attribution = text!
         case "Chapter.Samples.SoundSample.Is3d":
-            soundSample!.is3D = text! == "true"
+            _soundSample!.is3D = text! == "true"
         case "Chapter.Samples.SoundSample.Created":
             let formatter = ISO8601DateFormatter()
             formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-            soundSample!.createdDate = formatter.date(from: text!)
+            _soundSample!.createdDate = formatter.date(from: text!)
         case "Chapter.Samples.SoundSample.Updated":
             let formatter = ISO8601DateFormatter()
             formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-            soundSample!.updatedDate = formatter.date(from: text!)
+            _soundSample!.updatedDate = formatter.date(from: text!)
         case "Chapter.Samples.SoundSample.UploadedBy":
-            soundSample!.uploadedBy = text!
+            _soundSample!.uploadedBy = text!
         case "Chapter.Samples.SoundSample":
-            samples.append(soundSample!)
-            soundSample = nil
+            samples.append(_soundSample!)
+            _soundSample = nil
 
         case "Chapter.MusicElements.MusicElement":
-            musicElements.append(element!)
-            element = nil
+            musicElements.append(_element!)
+            _element = nil
         case "Chapter.SfxElements.SFXElement":
-            sfxElements.append(element!)
-            element = nil
+            sfxElements.append(_element!)
+            _element = nil
         case "Chapter.LoopElements.LoopElement":
-            loopElements.append(element!)
-            element = nil
+            loopElements.append(_element!)
+            _element = nil
         case "Chapter.OneshotElements.OneshotElement":
-            oneshotElements.append(element!)
-            element = nil
+            oneshotElements.append(_element!)
+            _element = nil
 
         case "Chapter.Moods.Mood.Title":
-            mood!.title = text!
+            _mood!.title = text!
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter.ElementSlug":
-            elementParameter!.elementSlug = text!
+            _elementParameter!.elementSlug = text!
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter.Plays":
-            elementParameter!.plays = text! == "true"
+            _elementParameter!.plays = text! == "true"
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter.Intensity":
-            elementParameter!.intensity = Float(text!)
+            _elementParameter!.intensity = Float(text!)
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter.Volume":
-            elementParameter!.volume = Float(text!)
+            _elementParameter!.volume = Float(text!)
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter":
-            mood!.elementParameters.append(elementParameter!)
-            elementParameter = nil
+            _mood!.elementParameters.append(_elementParameter!)
+            _elementParameter = nil
         case "Chapter.Moods.Mood":
-            moods.append(mood!)
-            mood = nil
+            moods.append(_mood!)
+            _mood = nil
 
         case "Chapter.ReverbPreset":
             reverbPreset = _reverbPreset
@@ -359,85 +359,85 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         default:
             switch elementName {
             // Match any tag
-            case "Title" where tag != nil:
-                tag!.title = text!
-            case "Slug" where tag != nil:
-                tag!.slug = text!
+            case "Title" where _tag != nil:
+                _tag!.title = text!
+            case "Slug" where _tag != nil:
+                _tag!.slug = text!
 
             // Match the playlist entry of any element type.
-            case "SampleFile" where playlistEntry != nil:
-                playlistEntry!.sampleFile = text!
-            case "MinGain" where playlistEntry != nil:
-                playlistEntry!.minGain = Float(text!)
-            case "MaxGain" where playlistEntry != nil:
-                playlistEntry!.maxGain = Float(text!)
-            case "MinElementIntensity" where playlistEntry != nil:
-                playlistEntry!.minElementIntensity = Float(text!)
-            case "MaxElementIntensity" where playlistEntry != nil:
-                playlistEntry!.maxElementIntensity = Float(text!)
-            case "Position" where playlistEntry != nil:
-                playlistEntry!.position = Int(text!)
+            case "SampleFile" where _playlistEntry != nil:
+                _playlistEntry!.sampleFile = text!
+            case "MinGain" where _playlistEntry != nil:
+                _playlistEntry!.minGain = Float(text!)
+            case "MaxGain" where _playlistEntry != nil:
+                _playlistEntry!.maxGain = Float(text!)
+            case "MinElementIntensity" where _playlistEntry != nil:
+                _playlistEntry!.minElementIntensity = Float(text!)
+            case "MaxElementIntensity" where _playlistEntry != nil:
+                _playlistEntry!.maxElementIntensity = Float(text!)
+            case "Position" where _playlistEntry != nil:
+                _playlistEntry!.position = Int(text!)
 
             // Match either of the four element types.
-            case "Slug" where element != nil:
-                element!.slug = text!
-            case "Title" where element != nil:
-                element!.title = text!
-            case "IconFile" where element != nil:
-                element!.iconFile = text!
-            case "IconFileHires" where element != nil:
-                element!.iconFileHires = text!
-            case "IconHoverFile" where element != nil:
-                element!.iconHoverFile = text!
-            case "IconHoverFileHires" where element != nil:
-                element!.iconHoverFileHires = text!
-            case "IconActiveFile" where element != nil:
-                element!.iconActiveFile = text!
-            case "IconActiveFileHires" where element != nil:
-                element!.iconActiveFileHires = text!
-            case "Credits" where element != nil:
-                element!.credits = text!
-            case "InitialGain" where element != nil:
-                element!.initialGain = Float(text!)
-            case "InitialIntensity" where element != nil:
-                element!.initialIntensity = Float(text!)
-            case "BypassEffects" where element != nil:
-                element!.bypassEffects = text! == "true"
-            case "BypassPosition" where element != nil:
-                element!.bypassPosition = text! == "true"
-            case "ReverbPreset" where element != nil:
-                element!.reverbPreset = text!
-            case "PlaylistEntry" where element != nil:
-                element!.playlist.append(playlistEntry!)
-                playlistEntry = nil
-            case "ReverseDirection" where element != nil:
-                element!.reverseDirection = text! == "true"
-            case "MinStartDelay" where element != nil:
-                element!.minStartDelay = Float(text!)
-            case "MaxStartDelay" where element != nil:
-                element!.maxStartDelay = Float(text!)
-            case "RandomisePlaylist" where element != nil:
-                element!.randomisePlaylist = text! // shuffle inorder random
-            case "RepeatPlaylist" where element != nil:
-                element!.repeatPlaylist = text! == "true"
-            case "AllowPlaylistOverlap" where element != nil:
-                element!.allowPlaylistOverlap = text! == "true"
-            case "MinTriggerWait" where element != nil:
-                element!.minTriggerWait = Float(text!)
-            case "MaxTriggerWait" where element != nil:
-                element!.maxTriggerWait = Float(text!)
-            case "MinAngle" where element != nil:
-                element!.minAngle = Float(text!)
-            case "MaxAngle" where element != nil:
-                element!.maxAngle = Float(text!)
-            case "MinDistance" where element != nil:
-                element!.minDistance = Float(text!)
-            case "MaxDistance" where element != nil:
-                element!.maxDistance = Float(text!)
-            case "Speed" where element != nil:
-                element!.speed = Float(text!)
-            case "IsGlobalOneshot" where element != nil:
-                element!.isGlobalOneshot = text! == "true"
+            case "Slug" where _element != nil:
+                _element!.slug = text!
+            case "Title" where _element != nil:
+                _element!.title = text!
+            case "IconFile" where _element != nil:
+                _element!.iconFile = text!
+            case "IconFileHires" where _element != nil:
+                _element!.iconFileHires = text!
+            case "IconHoverFile" where _element != nil:
+                _element!.iconHoverFile = text!
+            case "IconHoverFileHires" where _element != nil:
+                _element!.iconHoverFileHires = text!
+            case "IconActiveFile" where _element != nil:
+                _element!.iconActiveFile = text!
+            case "IconActiveFileHires" where _element != nil:
+                _element!.iconActiveFileHires = text!
+            case "Credits" where _element != nil:
+                _element!.credits = text!
+            case "InitialGain" where _element != nil:
+                _element!.initialGain = Float(text!)
+            case "InitialIntensity" where _element != nil:
+                _element!.initialIntensity = Float(text!)
+            case "BypassEffects" where _element != nil:
+                _element!.bypassEffects = text! == "true"
+            case "BypassPosition" where _element != nil:
+                _element!.bypassPosition = text! == "true"
+            case "ReverbPreset" where _element != nil:
+                _element!.reverbPreset = text!
+            case "PlaylistEntry" where _element != nil:
+                _element!.playlist.append(_playlistEntry!)
+                _playlistEntry = nil
+            case "ReverseDirection" where _element != nil:
+                _element!.reverseDirection = text! == "true"
+            case "MinStartDelay" where _element != nil:
+                _element!.minStartDelay = Double(text!)
+            case "MaxStartDelay" where _element != nil:
+                _element!.maxStartDelay = Double(text!)
+            case "RandomisePlaylist" where _element != nil:
+                _element!.randomisePlaylist = text! // shuffle inorder random
+            case "RepeatPlaylist" where _element != nil:
+                _element!.repeatPlaylist = text! == "true"
+            case "AllowPlaylistOverlap" where _element != nil:
+                _element!.allowPlaylistOverlap = text! == "true"
+            case "MinTriggerWait" where _element != nil:
+                _element!.minTriggerWait = Double(text!)
+            case "MaxTriggerWait" where _element != nil:
+                _element!.maxTriggerWait = Double(text!)
+            case "MinAngle" where _element != nil:
+                _element!.minAngle = Float(text!)
+            case "MaxAngle" where _element != nil:
+                _element!.maxAngle = Float(text!)
+            case "MinDistance" where _element != nil:
+                _element!.minDistance = Float(text!)
+            case "MaxDistance" where _element != nil:
+                _element!.maxDistance = Float(text!)
+            case "Speed" where _element != nil:
+                _element!.speed = Float(text!)
+            case "IsGlobalOneshot" where _element != nil:
+                _element!.isGlobalOneshot = text! == "true"
 
             // Match either the global reverb preset or from the list.
             case "Name" where _reverbPreset != nil:
