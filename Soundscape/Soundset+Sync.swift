@@ -12,12 +12,12 @@ import CoreData
 extension Soundset {
     static let currentSchemaVersion: Int16 = 1
 
-    static func createFrom(_ clientChapter: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, context managedObjectContext: NSManagedObjectContext) {
-        guard clientChapter.isBundled || clientChapter.isPurchased,
-            let slug = clientChapter.slug,
-            let title = clientChapter.title,
-            let manifestURL = clientChapter.manifestURL,
-            let downloadUpdatedDate = clientChapter.downloadUpdatedDate
+    static func createFrom(_ chapterClient: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, context managedObjectContext: NSManagedObjectContext) {
+        guard chapterClient.isBundled || chapterClient.isPurchased,
+            let slug = chapterClient.slug,
+            let title = chapterClient.title,
+            let manifestURL = chapterClient.manifestURL,
+            let downloadUpdatedDate = chapterClient.downloadUpdatedDate
             else { return }
 
         // Ignore the "Custom Moods" soundsets.
@@ -31,7 +31,7 @@ extension Soundset {
             "395c553a943b11e69f2cf23c9170c08b",
             "46506e2a943b11e6ad9ff23c9170c08b"
         ]
-        if let sku = clientChapter.sku, customMoodsSKUs.contains(sku) {
+        if let sku = chapterClient.sku, customMoodsSKUs.contains(sku) {
             return
         }
 
@@ -64,11 +64,11 @@ extension Soundset {
                 return
             }
 
-            if soundset.imageData == nil, let url = clientChapter.backgroundImageURL {
+            if soundset.imageData == nil, let url = chapterClient.backgroundImageURL {
                 soundset.downloadImage(url: url, property: \.imageData)
             }
 
-            if soundset.inactiveImageData == nil, let url = clientChapter.inactiveBackgroundImageURL {
+            if soundset.inactiveImageData == nil, let url = chapterClient.inactiveBackgroundImageURL {
                 soundset.downloadImage(url: url, property: \.inactiveImageData)
             }
         }
@@ -122,7 +122,8 @@ extension Soundset {
     }
 
     var isUpdatePending: Bool {
-        downloadedDate == nil || downloadedDate! < updatedDate! || schemaVersion < Self.currentSchemaVersion
+        true
+//        downloadedDate == nil || downloadedDate! < updatedDate! || schemaVersion < Self.currentSchemaVersion
     }
 
     func updateFromServer(context managedObjectContext: NSManagedObjectContext, completionHander: (() -> Void)? = nil) {
@@ -163,25 +164,25 @@ extension Soundset {
         }
     }
 
-    func updateFrom(_ clientChapter: SyrinscapeChapterClient, manifestClient: SyrinscapeManifestClient) {
+    func updateFrom(_ chapterClient: SyrinscapeChapterClient, manifestClient: SyrinscapeManifestClient) {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
-        for sample in clientChapter.samples {
+        for sample in chapterClient.samples {
             Sample.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
         }
 
         var newElements: [Element] = []
-        newElements.append(contentsOf: clientChapter.musicElements.compactMap {
+        newElements.append(contentsOf: chapterClient.musicElements.compactMap {
             Element.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: clientChapter.sfxElements.compactMap {
+        newElements.append(contentsOf: chapterClient.sfxElements.compactMap {
             Element.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: clientChapter.loopElements.compactMap {
+        newElements.append(contentsOf: chapterClient.loopElements.compactMap {
             Element.createFrom($0, kind: .loop, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: clientChapter.oneshotElements.compactMap {
+        newElements.append(contentsOf: chapterClient.oneshotElements.compactMap {
             Element.createFrom($0, kind: $0.isGlobalOneshot ? .globalOneshot : .oneshot, soundset: self, context: managedObjectContext!)
         })
         elements = NSOrderedSet(array: newElements)
