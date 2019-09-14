@@ -55,15 +55,6 @@ extension PlaylistEntry {
         playlistEntry!.minVolume = clientEntry.minGain ?? 1
         playlistEntry!.maxVolume = clientEntry.maxGain ?? 1
 
-        do {
-            if playlistEntry!.hasChanges {
-                try managedObjectContext.save()
-            }
-        } catch let error {
-            print("Failed to save context for playlist entry: \(error.localizedDescription)")
-            return nil
-        }
-
         return playlistEntry
     }
 }

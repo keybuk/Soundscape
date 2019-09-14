@@ -55,15 +55,6 @@ extension Element {
         }
         element.playlistEntries = NSOrderedSet(array: newEntries)
 
-        do {
-            if element.hasChanges {
-                try managedObjectContext.save()
-            }
-        } catch let error {
-            print("Failed to save changes to element \(slug): \(error.localizedDescription)")
-            return nil
-        }
-
         return element
     }
 }
