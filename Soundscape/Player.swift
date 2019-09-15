@@ -194,7 +194,7 @@ final class Player: ObservableObject {
 
     lazy var progressUpdater: CADisplayLink = {
         let progressUpdater = CADisplayLink(target: self, selector: #selector(publishProgress))
-        progressUpdater.add(to: .current, forMode: .default)
+        progressUpdater.add(to: RunLoop.main, forMode: .default)
         progressUpdater.isPaused = true
         return progressUpdater
     }()
