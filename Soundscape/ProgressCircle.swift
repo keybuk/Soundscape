@@ -45,7 +45,7 @@ struct ProgressCircle: View {
 
     func lineWidth(size: CGSize) -> CGFloat {
         let length = min(size.width, size.height)
-        return length / log2(length) / 1.5
+        return length / (2 * log2(length))
     }
 }
 
