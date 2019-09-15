@@ -34,6 +34,9 @@ struct ProgressCircle: View {
 
     var body: some View {
         GeometryReader { g in
+            Circle()
+                .stroke(lineWidth: self.lineWidth(size: g.size))
+                .foregroundColor(Color(UIColor.secondarySystemFill))
             ProgressArc(progress: self.progress)
                 .stroke(style: StrokeStyle(lineWidth: self.lineWidth(size: g.size), lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
                 .animation(.linear)
