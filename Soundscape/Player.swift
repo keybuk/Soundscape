@@ -38,6 +38,8 @@ final class Player: ObservableObject {
     private var currentSampleLength: AVAudioFramePosition?
     private var currentDelay: AVAudioFramePosition?
 
+    private var resumeAction: (() -> Void)?
+
     init(element: Element, audio: AudioManager) {
         self.element = element
         self.audio = audio
@@ -70,16 +72,32 @@ final class Player: ObservableObject {
     }
 
     func configurationChange(_ notification: Notification) {
+        // This is not called on the main thread.
         guard let _ = mixer else { return }
 
         connectMixer()
+
+        if let resumeAction = resumeAction {
+            self.resumeAction = nil
+
+            startEngine()
+            resumeAction()
+        }
     }
 
     func engineReset(_ notification: Notification) {
+        // This is not called on the main thread.
         guard let _ = mixer else { return }
 
         mixer = nil
         createMixerAndAttach()
+
+        if let resumeAction = resumeAction {
+            self.resumeAction = nil
+
+            startEngine()
+            resumeAction()
+        }
     }
 
     func startEngine() {
@@ -111,9 +129,26 @@ final class Player: ObservableObject {
         audio.engine.attach(player)
         audio.engine.connect(player, to: mixer, fromBus: 0, toBus: bus, format: file.processingFormat)
 
+        guard let lastRenderSampleTime = player.lastRenderTime?.sampleTime else {
+            // Engine is unexpectedly not available, likely due to an in-progress configuration
+            // change, or reset. Set an action to retry playing this file when engine is restored.
+            assert(resumeAction == nil, "Unexpectedly backed up multiple resume actions")
+
+            let unavailableStart = Date()
+            resumeAction = {
+                // Subtract the amount of time the reset took from the delay.
+                let unavailableDuration = unavailableStart.distance(to: Date())
+                let adjustedDelay = max(0, delay - unavailableDuration)
+
+                self.scheduleFile(file, volume: volume, delay: adjustedDelay)
+            }
+
+            print("Engine not available!")
+            audio.engine.detach(player)
+            return
+        }
+
         // Calculate the play time of this sample based on the delay given.
-        // FIXME: handle engine not being running due to in-flight configuration change.
-        let lastRenderSampleTime = player.lastRenderTime!.sampleTime
         let sampleRate = player.outputFormat(forBus: 0).sampleRate
         let delaySamples = AVAudioFramePosition(delay * sampleRate)
         let startTime = AVAudioTime(sampleTime: lastRenderSampleTime + delaySamples, atRate: sampleRate)
