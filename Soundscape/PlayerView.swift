@@ -47,7 +47,7 @@ struct PlayerStatusButton: View {
                     Image(systemName: "play.fill")
                 }
             }
-            ProgressCircle(progress: progress)
+            ProgressCircle(progress: $progress)
         }
         .frame(width: 30, height: 30)
         .onReceive(player.status.receive(on: RunLoop.main)) { status in

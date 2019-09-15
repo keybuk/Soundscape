@@ -30,7 +30,7 @@ struct ProgressArc: Shape {
 }
 
 struct ProgressCircle: View {
-    let progress: Double
+    @Binding var progress: Double
 
     var body: some View {
         GeometryReader { g in
@@ -56,7 +56,7 @@ struct AnimationTest: View {
 
     var body: some View {
         VStack {
-            ProgressCircle(progress: progress)
+            ProgressCircle(progress: $progress)
             Slider(value: $newProgress, in: -1.0...1.0)
             Button(action: {
                 self.progress = self.newProgress
@@ -68,27 +68,35 @@ struct AnimationTest: View {
     }
 }
 
+struct CircleTest: View {
+    @State var progress: Double
+
+    var body: some View {
+        ProgressCircle(progress: $progress)
+    }
+}
+
 struct ProgressCircle_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
-                ProgressCircle(progress: 0.8)
-                ProgressCircle(progress: 0.4)
-                ProgressCircle(progress: -0.4)
+                CircleTest(progress: 0.8)
+                CircleTest(progress: 0.4)
+                CircleTest(progress: -0.4)
             }
             .frame(height: 30)
 
             HStack {
-                ProgressCircle(progress: 0.8)
-                ProgressCircle(progress: 0.4)
-                ProgressCircle(progress: -0.4)
+                CircleTest(progress: 0.8)
+                CircleTest(progress: 0.4)
+                CircleTest(progress: -0.4)
             }
             .frame(height: 44)
 
             HStack {
-                ProgressCircle(progress: 0.8)
-                ProgressCircle(progress: 0.4)
-                ProgressCircle(progress: -0.4)
+                CircleTest(progress: 0.8)
+                CircleTest(progress: 0.4)
+                CircleTest(progress: -0.4)
             }
             .frame(height: 88)
 
