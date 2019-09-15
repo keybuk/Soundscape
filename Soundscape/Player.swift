@@ -190,10 +190,9 @@ final class Player: ObservableObject {
     }
 
     func wantFile(in delay: Double) {
-        print("Want next file in \(delay)s")
+        if let playlistEntry = playlistIterator?.next() {
+            print("Want next file in \(delay)s")
 
-        if let playlistEntry = playlistIterator?.next()
-        {
             let volume = Float.random(in: playlistEntry.volume)
             let downloadStart = Date()
 
@@ -211,8 +210,8 @@ final class Player: ObservableObject {
                     self.wantFile(in: adjustedDelay)
                 }
             }
-        } else {
-            // Out of samples, or iterator reset.
+        } else if let _ = playlistIterator {
+            // Out of samples.
             stop()
         }
     }
