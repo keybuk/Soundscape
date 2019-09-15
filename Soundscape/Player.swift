@@ -45,7 +45,7 @@ final class Player: ObservableObject {
 
         NotificationCenter.default.addObserver(forName: AudioManager.configurationChangeNotification,
                                                object: audio, queue: nil, using: configurationChange)
-        NotificationCenter.default.addObserver(forName: AudioManager.configurationChangeNotification,
+        NotificationCenter.default.addObserver(forName: AudioManager.engineResetNotification,
                                                object: audio, queue: nil, using: engineReset)
     }
 
