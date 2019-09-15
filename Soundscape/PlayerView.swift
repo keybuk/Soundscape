@@ -55,11 +55,15 @@ struct PlayerStatusButton: View {
             case .stopped:
                 self.isPlaying = false
             case let .waiting(progress):
-                self.isPlaying = true
-                self.progress = -progress
+                withAnimation(self.progress <= 0 ? .linear : nil) {
+                    self.isPlaying = true
+                    self.progress = -progress
+                }
             case let .playing(progress):
-                self.isPlaying = true
-                self.progress = progress
+                withAnimation(.linear) {
+                    self.isPlaying = true
+                    self.progress = progress
+                }
             }
         }
     }

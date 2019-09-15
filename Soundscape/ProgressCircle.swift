@@ -39,7 +39,6 @@ struct ProgressCircle: View {
                 .foregroundColor(Color(UIColor.secondarySystemFill))
             ProgressArc(progress: self.progress)
                 .stroke(style: StrokeStyle(lineWidth: self.lineWidth(size: g.size), lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
-                .animation(.linear)
         }
     }
 
@@ -59,7 +58,9 @@ struct AnimationTest: View {
             ProgressCircle(progress: $progress)
             Slider(value: $newProgress, in: -1.0...1.0)
             Button(action: {
-                self.progress = self.newProgress
+                withAnimation(self.newProgress < 0 && self.progress > 0 ? nil : .linear) {
+                    self.progress = self.newProgress
+                }
             }) {
                 Text("Change")
             }
