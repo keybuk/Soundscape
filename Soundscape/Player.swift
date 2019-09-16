@@ -217,19 +217,19 @@ final class Player: ObservableObject {
                     self.wantFile(in: adjustedDelay, isFirst: isFirst)
                 }
             }
-        } else if let _ = playlistIterator {
-            // Out of samples.
-            stop()
+        } else {
+            // Reached the end of the playlist.
+            playlistIterator = nil
+            progressUpdater.isPaused = true
+            status.send(.stopped)
         }
     }
 
     func stop() {
         playlistIterator = nil
-        progressUpdater.isPaused = true
         if let currentPlayer = currentPlayer {
             currentPlayer.stop()
         }
-        status.send(.stopped)
     }
 
     lazy var progressUpdater: CADisplayLink = {
