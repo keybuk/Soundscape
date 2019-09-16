@@ -218,11 +218,10 @@ final class Player: ObservableObject {
 
     func stop() {
         playlistIterator = nil
+        progressUpdater.isPaused = true
         if let currentPlayer = currentPlayer {
             currentPlayer.stop()
-            self.currentPlayer = nil
         }
-        progressUpdater.isPaused = true
         status.send(.stopped)
     }
 
