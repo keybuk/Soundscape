@@ -15,10 +15,14 @@ extension NSPersistentContainer: ObservableObject {}
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var audio: AudioManager!
+    var stage: Stage!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Startup the audio manager and setup the session.
         audio = AudioManager()
+
+        // Shared stage for all UI.
+        stage = Stage()
 
         // Sync soundsets from Syrinscape.
         let syncContext = persistentContainer.newBackgroundContext()

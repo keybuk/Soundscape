@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D23D8BFF23302963007E2A58 /* Mood+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8BFE23302963007E2A58 /* Mood+UI.swift */; };
+		D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0023303EAC007E2A58 /* Stage.swift */; };
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
 		D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		D23D8BFE23302963007E2A58 /* Mood+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+UI.swift"; sourceTree = "<group>"; };
+		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
 		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
 		D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeChaptersClient.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AC671D2321934500548388 /* AudioManager.swift */,
+				D23D8C0023303EAC007E2A58 /* Stage.swift */,
 				D2AC672F2321A46300548388 /* Player.swift */,
 				D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */,
 				D2AC67252321964500548388 /* OggVorbisFile.swift */,
@@ -350,6 +353,7 @@
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressCircle.swift in Sources */,
 				D250FFF5232C962900EA515B /* PlayerView.swift in Sources */,
+				D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */,
 				D250FFEF232C840200EA515B /* PlaylistEntry+Open.swift in Sources */,
 				D23D8BFF23302963007E2A58 /* Mood+UI.swift in Sources */,
 				D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */,

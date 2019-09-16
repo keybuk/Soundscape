@@ -13,6 +13,7 @@ struct SoundsetView: View {
     @ObservedObject var soundset: Soundset
     @EnvironmentObject var persistentContainer: NSPersistentContainer
     @EnvironmentObject var audio: AudioManager
+    @EnvironmentObject var stage: Stage
 
     var body: some View {
         List {
@@ -28,13 +29,13 @@ struct SoundsetView: View {
             
             Section(header: Text("Elements").font(.headline)) {
                 ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind != .oneshot })) { element in
-                    PlayerView(player: Player(element: element, audio: self.audio))
+                    PlayerView(player: self.stage.playerForElement(element, audio: self.audio))
                 }
             }
 
             Section(header: Text("Sounds").font(.headline)) {
                 ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind == .oneshot })) { element in
-                    PlayerView(player: Player(element: element, audio: self.audio))
+                    PlayerView(player: self.stage.playerForElement(element, audio: self.audio))
                 }
             }
         }
