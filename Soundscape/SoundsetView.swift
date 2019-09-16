@@ -19,8 +19,14 @@ struct SoundsetView: View {
             Section(header: SoundsetViewHeaderImage(image: soundset.image)) {
                 EmptyView()
             }
+
+            Section(header: Text("Moods").font(.headline)) {
+                ForEach(soundset.moods!.array as! [Mood]) { mood in
+                    Text("\(mood.title!)")
+                }
+            }
             
-            Section {
+            Section(header: Text("Elements").font(.headline)) {
                 ForEach(soundset.elements!.array as! [Element]) { element in
                     PlayerView(player: Player(element: element, audio: self.audio))
                 }

@@ -37,6 +37,14 @@ struct PreviewContent {
         soundset.imageData = UIImage(named: "LakeTown")?.jpegData(compressionQuality: 1.0)
         soundsets.append(soundset)
 
+        var mood = Mood(context: managedObjectContext)
+        mood.title = "Drinking Time"
+        soundset.addToMoods(mood)
+
+        mood = Mood(context: managedObjectContext)
+        mood.title = "Fighting Time"
+        soundset.addToMoods(mood)
+
         // Tavern Music
         var element = Element(context: managedObjectContext)
         element.kind = .music
@@ -46,6 +54,17 @@ struct PreviewContent {
         element.sampleGap = 3...6
         element.order = .shuffled
         soundset.addToElements(element)
+
+        var elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = true
+        elementParameter.volume = 0.4
+        (soundset.moods!.array[0] as! Mood).addToElementParameters(elementParameter)
+
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = false
+        (soundset.moods!.array[1] as! Mood).addToElementParameters(elementParameter)
 
         var sample = Sample(context: managedObjectContext)
         sample.uuid = "bf94ecc2-c07a-11e2-926a-f23c9170c08b"
@@ -103,6 +122,17 @@ struct PreviewContent {
         element.order = .shuffled
         soundset.addToElements(element)
 
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = false
+        (soundset.moods!.array[0] as! Mood).addToElementParameters(elementParameter)
+
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = true
+        elementParameter.volume = 0.6
+        (soundset.moods!.array[1] as! Mood).addToElementParameters(elementParameter)
+
         sample = Sample(context: managedObjectContext)
         sample.uuid = "5c41b8ae-9c0e-415c-9c74-e2e65f42ccf3"
         sample.title = "Tavernbrawlmusic - Dusty Windowsills"
@@ -157,6 +187,17 @@ struct PreviewContent {
         element.sampleGap = 3...6
         element.order = .shuffled
         soundset.addToElements(element)
+
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = false
+        (soundset.moods!.array[0] as! Mood).addToElementParameters(elementParameter)
+
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = true
+        elementParameter.volume = 0.8
+        (soundset.moods!.array[1] as! Mood).addToElementParameters(elementParameter)
 
         sample = Sample(context: managedObjectContext)
         sample.uuid = "ff0a9876-8d5b-11e3-bdff-f23c9170c08b"
@@ -240,6 +281,17 @@ struct PreviewContent {
         element.initialVolume = 0.5
         element.order = .shuffled
         soundset.addToElements(element)
+
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = false
+        (soundset.moods!.array[0] as! Mood).addToElementParameters(elementParameter)
+
+        elementParameter = ElementParameter(context: managedObjectContext)
+        elementParameter.element = element
+        elementParameter.isPlaying = true
+        elementParameter.volume = 1.0
+        (soundset.moods!.array[1] as! Mood).addToElementParameters(elementParameter)
 
         sample = Sample(context: managedObjectContext)
         sample.uuid = "5c7bc590-891a-4f7e-9501-0bc5c375c01c"
