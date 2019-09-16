@@ -11,34 +11,36 @@ import Foundation
 extension Element {
     struct PlaylistIterator: Sequence, IteratorProtocol {
         private let element: Element
-        private var indices: [Array<PlaylistEntry>.Index]
+        private var playlist: [PlaylistEntry]
 
         init(element: Element) {
             self.element = element
-            self.indices = []
+            self.playlist = []
 
-            fillIndices()
+            fillPlaylist()
         }
 
-        mutating func fillIndices() {
+        mutating func fillPlaylist() {
+            let playlistEntries = element.playlistEntries!.array as! [PlaylistEntry]
+
             switch element.order {
             case .ordered:
-                indices = Array(element.playlistEntries!.array.indices)
+                playlist = playlistEntries
             case .shuffled:
-                indices = element.playlistEntries!.array.indices.shuffled()
+                playlist = playlistEntries.shuffled()
             case .random:
-                indices = [element.playlistEntries!.array.indices.randomElement()!]
+                playlist = [playlistEntries.randomElement()].compactMap { $0 }
             }
         }
 
         mutating func next() -> PlaylistEntry? {
-            if indices.isEmpty {
+            if playlist.isEmpty {
                 guard element.isRepeating else { return nil }
-                fillIndices()
+                fillPlaylist()
             }
-            guard !indices.isEmpty else { return nil }
 
-            return element.playlistEntries!.object(at: indices.removeFirst()) as? PlaylistEntry
+            guard !playlist.isEmpty else { return nil }
+            return playlist.removeFirst()
         }
     }
 
