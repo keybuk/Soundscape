@@ -12,8 +12,6 @@ enum ElementKind: Int16 {
     case music
     case effect
     case oneshot
-    case globalOneshot
-    case loop
 }
 
 extension Element {

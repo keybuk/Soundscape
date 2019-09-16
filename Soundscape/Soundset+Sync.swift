@@ -179,11 +179,8 @@ extension Soundset {
         newElements.append(contentsOf: chapterClient.sfxElements.compactMap {
             Element.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: chapterClient.loopElements.compactMap {
-            Element.createFrom($0, kind: .loop, soundset: self, context: managedObjectContext!)
-        })
         newElements.append(contentsOf: chapterClient.oneshotElements.compactMap {
-            Element.createFrom($0, kind: $0.isGlobalOneshot ? .globalOneshot : .oneshot, soundset: self, context: managedObjectContext!)
+            Element.createFrom($0, kind: .oneshot, soundset: self, context: managedObjectContext!)
         })
         elements = NSOrderedSet(array: newElements)
 
