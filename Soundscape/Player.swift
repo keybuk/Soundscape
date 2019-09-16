@@ -44,15 +44,15 @@ final class Player: ObservableObject {
         self.element = element
         self.audio = audio
         _setVolume = element.initialVolume
+    }
+
+    func createMixerAndAttach() {
+        guard mixer == nil else { return }
 
         NotificationCenter.default.addObserver(forName: AudioManager.configurationChangeNotification,
                                                object: audio, queue: nil, using: configurationChange)
         NotificationCenter.default.addObserver(forName: AudioManager.engineResetNotification,
                                                object: audio, queue: nil, using: engineReset)
-    }
-
-    func createMixerAndAttach() {
-        guard mixer == nil else { return }
 
         mixer = AVAudioMixerNode()
         mixer!.volume = _setVolume
