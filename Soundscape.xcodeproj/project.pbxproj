@@ -22,6 +22,8 @@
 		D250FFF3232C8D8D00EA515B /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */; };
 		D250FFF5232C962900EA515B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF4232C962900EA515B /* PlayerView.swift */; };
 		D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */; };
+		D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF8233024AC00EA515B /* Mood+Sync.swift */; };
+		D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		D250FFF4232C962900EA515B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayRoutePicker.swift; sourceTree = "<group>"; };
+		D250FFF8233024AC00EA515B /* Mood+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+Sync.swift"; sourceTree = "<group>"; };
+		D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementParameter+Sync.swift"; sourceTree = "<group>"; };
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */,
 				D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */,
 				D250FFEE232C840200EA515B /* PlaylistEntry+Open.swift */,
+				D250FFF8233024AC00EA515B /* Mood+Sync.swift */,
+				D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -312,11 +318,13 @@
 			files = (
 				D2AC671E2321934500548388 /* AudioManager.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
+				D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */,
 				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
 				D250FFF1232C876F00EA515B /* Element+UI.swift in Sources */,
+				D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
 				D2B25612232AD7A10065A48B /* Element+Kind.swift in Sources */,
 				D241A1F1232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift in Sources */,

@@ -12,8 +12,20 @@
         <attribute name="orderRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="slug" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
+        <relationship name="elementParameters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ElementParameter" inverseName="element" inverseEntity="ElementParameter"/>
         <relationship name="playlistEntries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PlaylistEntry" inverseName="element" inverseEntity="PlaylistEntry"/>
         <relationship name="soundset" maxCount="1" deletionRule="Nullify" destinationEntity="Soundset" inverseName="elements" inverseEntity="Soundset"/>
+    </entity>
+    <entity name="ElementParameter" representedClassName="ElementParameter" syncable="YES" codeGenerationType="class">
+        <attribute name="isPlaying" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="volume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="element" maxCount="1" deletionRule="Nullify" destinationEntity="Element" inverseName="elementParameters" inverseEntity="Element"/>
+        <relationship name="mood" maxCount="1" deletionRule="Nullify" destinationEntity="Mood" inverseName="elementParameters" inverseEntity="Mood"/>
+    </entity>
+    <entity name="Mood" representedClassName="Mood" syncable="YES" codeGenerationType="class">
+        <attribute name="title" attributeType="String"/>
+        <relationship name="elementParameters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ElementParameter" inverseName="mood" inverseEntity="ElementParameter"/>
+        <relationship name="soundset" maxCount="1" deletionRule="Nullify" destinationEntity="Soundset" inverseName="moods" inverseEntity="Soundset"/>
     </entity>
     <entity name="PlaylistEntry" representedClassName="PlaylistEntry" syncable="YES" codeGenerationType="class">
         <attribute name="maxVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
@@ -38,11 +50,14 @@
         <attribute name="updatedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" attributeType="URI"/>
         <relationship name="elements" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Element" inverseName="soundset" inverseEntity="Element"/>
+        <relationship name="moods" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Mood" inverseName="soundset" inverseEntity="Mood"/>
     </entity>
     <elements>
-        <element name="Element" positionX="-27" positionY="72" width="128" height="238"/>
+        <element name="Element" positionX="-27" positionY="72" width="128" height="253"/>
         <element name="PlaylistEntry" positionX="-9" positionY="144" width="128" height="103"/>
         <element name="Sample" positionX="-45" positionY="63" width="128" height="103"/>
-        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Mood" positionX="-36" positionY="135" width="128" height="88"/>
+        <element name="ElementParameter" positionX="-27" positionY="144" width="128" height="103"/>
     </elements>
 </model>

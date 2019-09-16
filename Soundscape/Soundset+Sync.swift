@@ -187,6 +187,12 @@ extension Soundset {
         })
         elements = NSOrderedSet(array: newElements)
 
+        var newMoods: [Mood] = []
+        newMoods.append(contentsOf: chapterClient.moods.compactMap {
+            Mood.createFrom($0, soundset: self, context: managedObjectContext!)
+        })
+        moods = NSOrderedSet(array: newMoods)
+
         downloadedDate = updatedDate
         schemaVersion = Self.currentSchemaVersion
 
