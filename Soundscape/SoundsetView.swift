@@ -27,11 +27,16 @@ struct SoundsetView: View {
             }
             
             Section(header: Text("Elements").font(.headline)) {
-                ForEach(soundset.elements!.array as! [Element]) { element in
+                ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind != .oneshot })) { element in
                     PlayerView(player: Player(element: element, audio: self.audio))
                 }
             }
 
+            Section(header: Text("Sounds").font(.headline)) {
+                ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind == .oneshot })) { element in
+                    PlayerView(player: Player(element: element, audio: self.audio))
+                }
+            }
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle("\(soundset.title!)", displayMode: .automatic)

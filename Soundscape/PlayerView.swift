@@ -21,8 +21,6 @@ struct PlayerView: View {
                     if player.element.kind == .music {
                         Image(systemName: "music.note")
                     } else if player.element.kind == .effect {
-                        Image(systemName: "speaker.2")
-                    } else {
                         Image(systemName: "bolt")
                     }
                 }
