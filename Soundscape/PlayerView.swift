@@ -26,7 +26,6 @@ struct PlayerView: View {
                         Image(systemName: "bolt")
                     }
                 }
-                .font(.headline)
                 Slider(value: $player.volume, in: 0...1)
             }
         }
