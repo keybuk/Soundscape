@@ -114,10 +114,12 @@ final class Player: ObservableObject {
         createMixerAndAttach()
         startEngine()
 
-        playlistIterator = element.makePlaylistIterator()
+        if playlistIterator == nil {
+            playlistIterator = element.makePlaylistIterator()
+        }
 
         let delay = withStartDelay ? .random(in: element.startDelay) : 0
-        wantFile(in: delay)
+        wantFile(in: delay, isFirst: true)
     }
 
     func scheduleFile(_ file: OggVorbisFile, volume: Float, delay: Double) {
@@ -189,8 +191,13 @@ final class Player: ObservableObject {
         progressUpdater.isPaused = false
     }
 
-    func wantFile(in delay: Double) {
-        if let playlistEntry = playlistIterator?.next() {
+    func wantFile(in delay: Double, isFirst: Bool = false) {
+        if element.kind == .oneshot && !isFirst {
+            // Don't queue additional files for oneshot elements, but keep the iterator for next time.
+            progressUpdater.isPaused = true
+            status.send(.stopped)
+        } else if let playlistEntry = playlistIterator?.next() {
+            // Queue up the next file.
             print("Want next file in \(delay)s")
 
             let volume = Float.random(in: playlistEntry.volume)
@@ -207,7 +214,7 @@ final class Player: ObservableObject {
                     self.scheduleFile(file, volume: volume, delay: adjustedDelay)
                 case let .failure(error):
                     print("Failed to open sample file: \(error.localizedDescription)")
-                    self.wantFile(in: adjustedDelay)
+                    self.wantFile(in: adjustedDelay, isFirst: isFirst)
                 }
             }
         } else if let _ = playlistIterator {

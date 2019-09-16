@@ -35,7 +35,8 @@ extension Element {
 
         mutating func next() -> PlaylistEntry? {
             if playlist.isEmpty {
-                guard element.isRepeating else { return nil }
+                // Oneshot playlists always repeat since they only ever play one at a time,
+                guard element.isRepeating || element.kind == .oneshot else { return nil }
                 fillPlaylist()
             }
 
