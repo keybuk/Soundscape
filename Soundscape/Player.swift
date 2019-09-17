@@ -95,6 +95,8 @@ final class Player: ObservableObject {
             self.resumeAction = nil
 
             startEngine()
+            // Normally we schedule on the main queue, but we don't access anything from Core Data
+            // here so this is fine.
             resumeAction()
         }
     }
@@ -111,6 +113,8 @@ final class Player: ObservableObject {
             self.resumeAction = nil
 
             startEngine()
+            // Normally we schedule on the main queue, but we don't access anything from Core Data
+            // here so this is fine.
             resumeAction()
         }
     }
