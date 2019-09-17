@@ -28,7 +28,7 @@ final class Stage: ObservableObject {
     }
 
     func playMood(_ mood: Mood, audio: AudioManager) {
-        let elementParameters = (mood.elementParameters!.allObjects as! [ElementParameter])
+        let elementParameters = mood.elementParameters! as! Set<ElementParameter>
         let playingElementParameters = elementParameters.filter({ $0.isPlaying })
         let playingElements = playingElementParameters.map({ $0.element! })
 
