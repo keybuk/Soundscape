@@ -14,6 +14,7 @@ final class Player: ObservableObject {
     var element: Element
     var audio: AudioManager
     var mixer: AVAudioMixerNode?
+    private var dummyPlayer: AVAudioPlayerNode?
 
     @Published private var _setVolume: Float
     var volume: Float {
@@ -59,6 +60,10 @@ final class Player: ObservableObject {
         // TODO: reverb
 
         audio.engine.attach(mixer!)
+
+        dummyPlayer = AVAudioPlayerNode()
+        audio.engine.attach(dummyPlayer!)
+
         connectMixer()
     }
 
@@ -68,6 +73,11 @@ final class Player: ObservableObject {
         let mainMixer = audio.engine.mainMixerNode
         audio.engine.connect(mixer, to: mainMixer,
                              fromBus: 0, toBus: mainMixer.nextAvailableInputBus,
+                             format: mainMixer.outputFormat(forBus: 0))
+
+        // nextAvailableInputBus ignores connected mixers without players attached
+        audio.engine.connect(dummyPlayer!, to: mixer,
+                             fromBus: 0, toBus: mixer.nextAvailableInputBus,
                              format: mainMixer.outputFormat(forBus: 0))
     }
 
@@ -90,6 +100,7 @@ final class Player: ObservableObject {
         guard let _ = mixer else { return }
 
         mixer = nil
+        dummyPlayer = nil
         createMixerAndAttach()
 
         if let resumeAction = resumeAction {
