@@ -43,9 +43,11 @@ final class Stage: ObservableObject {
         // Start the rest of the players.
         for elementParameter in playingElementParameters {
             let player = playerForElement(elementParameter.element!, audio: audio)
-            guard case .stopped = player.status.value else { continue }
             player.volume = elementParameter.volume
-            player.play(withStartDelay: true)
+
+            if case .stopped = player.status.value {
+                player.play(withStartDelay: true)
+            }
         }
     }
 }
