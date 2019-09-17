@@ -19,6 +19,7 @@ extension Sample {
     }
 
     func downloadFromSyrinscape(completionHandler: @escaping (Result<Void, Error>) -> Void) {
+        print("Downloading \(url!)")
         let task = URLSession.shared.dataTask(with: url!.authenticatedForSyrinscape() ?? url!) { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
