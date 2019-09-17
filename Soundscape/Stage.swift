@@ -20,11 +20,32 @@ final class Stage: ObservableObject {
 
         if let player = players.first(where: { $0.value?.element == element }) {
             return player.value!
-
         } else {
             let player = Player(element: element, audio: audio)
             players.append(WeakBox(value: player))
             return player
+        }
+    }
+
+    func playMood(_ mood: Mood, audio: AudioManager) {
+        let elementParameters = (mood.elementParameters!.allObjects as! [ElementParameter])
+        let playingElementParameters = elementParameters.filter({ $0.isPlaying })
+        let playingElements = playingElementParameters.map({ $0.element! })
+
+        // Stop any player not in the current mood.
+        for player in players.compactMap({ $0.value }) {
+            if !playingElements.contains(player.element) {
+                if case .stopped = player.status.value { continue }
+                player.stop()
+            }
+        }
+
+        // Start the rest of the players.
+        for elementParameter in playingElementParameters {
+            let player = playerForElement(elementParameter.element!, audio: audio)
+            guard case .stopped = player.status.value else { continue }
+            player.volume = elementParameter.volume
+            player.play(withStartDelay: true)
         }
     }
 }

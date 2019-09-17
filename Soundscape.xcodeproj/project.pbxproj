@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D23D8BFF23302963007E2A58 /* Mood+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8BFE23302963007E2A58 /* Mood+UI.swift */; };
 		D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0023303EAC007E2A58 /* Stage.swift */; };
+		D23D8C03233054AB007E2A58 /* MoodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C02233054AB007E2A58 /* MoodRow.swift */; };
+		D23D8C0523306F34007E2A58 /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0423306F34007E2A58 /* ElementRow.swift */; };
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
 		D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		D23D8BFE23302963007E2A58 /* Mood+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+UI.swift"; sourceTree = "<group>"; };
 		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		D23D8C02233054AB007E2A58 /* MoodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRow.swift; sourceTree = "<group>"; };
+		D23D8C0423306F34007E2A58 /* ElementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
 		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
 		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
 		D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeChaptersClient.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				D2B2560223299C020065A48B /* SoundsetsList.swift */,
 				D2B2560423299C570065A48B /* SoundsetRow.swift */,
 				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
+				D23D8C02233054AB007E2A58 /* MoodRow.swift */,
+				D23D8C0423306F34007E2A58 /* ElementRow.swift */,
 				D250FFF4232C962900EA515B /* PlayerView.swift */,
 				D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
@@ -329,6 +335,7 @@
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
+				D23D8C0523306F34007E2A58 /* ElementRow.swift in Sources */,
 				D250FFF1232C876F00EA515B /* Element+UI.swift in Sources */,
 				D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
@@ -339,6 +346,7 @@
 				D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */,
 				D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */,
 				D250FFED232C6DB000EA515B /* Element+PlaylistIterator.swift in Sources */,
+				D23D8C03233054AB007E2A58 /* MoodRow.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
 				D2B25616232AD8AF0065A48B /* Element+Range.swift in Sources */,

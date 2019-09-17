@@ -12,8 +12,6 @@ import CoreData
 struct SoundsetView: View {
     @ObservedObject var soundset: Soundset
     @EnvironmentObject var persistentContainer: NSPersistentContainer
-    @EnvironmentObject var audio: AudioManager
-    @EnvironmentObject var stage: Stage
 
     var body: some View {
         List {
@@ -23,19 +21,19 @@ struct SoundsetView: View {
 
             Section(header: Text("Moods").font(.headline)) {
                 ForEach(soundset.moods!.array as! [Mood]) { mood in
-                    Text("\(mood.title!)")
+                    MoodRow(mood: mood)
                 }
             }
             
             Section(header: Text("Elements").font(.headline)) {
                 ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind != .oneshot })) { element in
-                    PlayerView(player: self.stage.playerForElement(element, audio: self.audio))
+                    ElementRow(element: element)
                 }
             }
 
             Section(header: Text("Sounds").font(.headline)) {
                 ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind == .oneshot })) { element in
-                    PlayerView(player: self.stage.playerForElement(element, audio: self.audio))
+                    ElementRow(element: element)
                 }
             }
         }
@@ -69,6 +67,7 @@ struct SoundsetView_Previews: PreviewProvider {
         }
         .environmentObject(previewContent.persistentContainer)
         .environmentObject(AudioManager())
+        .environmentObject(Stage())
     }
 }
 #endif
