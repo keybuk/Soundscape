@@ -33,11 +33,15 @@ final class Player: ObservableObject {
 
     var status = CurrentValueSubject<Status, Never>(.stopped)
 
-    private var playlistIterator: Element.PlaylistIterator?
+    struct Playing {
+        var player: AVAudioPlayerNode
+        var length: AVAudioFramePosition
+        var delay: AVAudioFramePosition
+    }
 
-    private var currentPlayer: AVAudioPlayerNode?
-    private var currentSampleLength: AVAudioFramePosition?
-    private var currentDelay: AVAudioFramePosition?
+    var playing: [Playing] = []
+
+    private var playlistIterator: Element.PlaylistIterator?
 
     private var resumeAction: (() -> Void)?
 
@@ -185,7 +189,7 @@ final class Player: ObservableObject {
         }) {
             DispatchQueue.main.async {
                 self.audio.engine.detach(player)
-                if self.currentPlayer == player { self.currentPlayer = nil }
+                self.playing = self.playing.filter({ $0.player != player })
 
                 // If the next sample doesn't overlap, schedule it.
                 if delayBeforeNext >= 0 && !self.element.isOverlapping {
@@ -196,9 +200,7 @@ final class Player: ObservableObject {
         player.play(at: startTime)
 
         // Save key values for progress calculation.
-        currentPlayer = player
-        currentSampleLength = file.length
-        currentDelay = delaySamples
+        playing.append(Playing(player: player, length: file.length, delay: delaySamples))
         progressUpdater.isPaused = false
     }
 
@@ -238,9 +240,11 @@ final class Player: ObservableObject {
 
     func stop() {
         playlistIterator = nil
-        if let currentPlayer = currentPlayer {
-            currentPlayer.stop()
+
+        for playingMember in self.playing {
+            playingMember.player.stop()
         }
+        self.playing.removeAll()
     }
 
     lazy var progressUpdater: CADisplayLink = {
@@ -252,17 +256,15 @@ final class Player: ObservableObject {
 
     @objc
     func publishProgress() {
-        guard let currentPlayer = currentPlayer,
-            let lastRenderTime = currentPlayer.lastRenderTime,
-            let playerTime = currentPlayer.playerTime(forNodeTime: lastRenderTime),
-            let currentSampleLength = currentSampleLength,
-            let currentDelay = currentDelay
+        guard let playingMember = playing.first,
+            let lastRenderTime = playingMember.player.lastRenderTime,
+            let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
             else { return }
 
         if playerTime.sampleTime < 0 {
-            status.send(.waiting(Double(-playerTime.sampleTime) / Double(currentDelay)))
+            status.send(.waiting(Double(-playerTime.sampleTime) / Double(playingMember.delay)))
         } else {
-            status.send(.playing(Double(playerTime.sampleTime) / Double(currentSampleLength)))
+            status.send(.playing(Double(playerTime.sampleTime) / Double(playingMember.length)))
         }
     }
 }
