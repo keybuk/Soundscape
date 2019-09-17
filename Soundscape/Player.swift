@@ -167,7 +167,7 @@ final class Player: ObservableObject {
         let startTime = AVAudioTime(sampleTime: lastRenderSampleTime + delaySamples, atRate: sampleRate)
 
         // Calculate the delay for the next sample.
-        var delayBeforeNext: Double = .random(in: element.sampleGap)
+        let delayBeforeNext: Double = .random(in: element.sampleGap)
 
         player.scheduleFile(file, startHandler: {
             DispatchQueue.main.async {
@@ -176,8 +176,8 @@ final class Player: ObservableObject {
                 // from the current start. For overlapping samples we always treat the delay as
                 // based from the start time.
                 if delayBeforeNext < 0 {
-                    delayBeforeNext += Double(file.length) / file.processingFormat.sampleRate
-                    self.wantFile(in: delayBeforeNext)
+                    let adjustedDelay = delayBeforeNext + Double(file.length) / file.processingFormat.sampleRate
+                    self.wantFile(in: adjustedDelay)
                 } else if self.element.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
