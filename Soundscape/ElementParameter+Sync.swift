@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension ElementParameter {
-    @discardableResult
     static func createFrom(_ clientElementParameter: SyrinscapeChapterClient.ElementParameter, mood: Mood, context managedObjectContext: NSManagedObjectContext) -> ElementParameter? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))

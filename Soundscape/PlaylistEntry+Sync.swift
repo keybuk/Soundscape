@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension PlaylistEntry {
-    @discardableResult
     static func createFrom(_ clientEntry: SyrinscapeChapterClient.PlaylistEntry, element: Element, context managedObjectContext: NSManagedObjectContext) -> PlaylistEntry? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))

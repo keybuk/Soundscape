@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension Element {
-    @discardableResult
     static func createFrom(_ clientElement: SyrinscapeChapterClient.Element, kind: ElementKind, soundset: Soundset, context managedObjectContext: NSManagedObjectContext) -> Element? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))

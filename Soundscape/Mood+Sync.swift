@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension Mood {
-    @discardableResult
     static func createFrom(_ clientMood: SyrinscapeChapterClient.Mood, soundset: Soundset, context managedObjectContext: NSManagedObjectContext) -> Mood? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
