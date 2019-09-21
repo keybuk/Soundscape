@@ -28,6 +28,8 @@
 		D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */; };
 		D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF8233024AC00EA515B /* Mood+Sync.swift */; };
 		D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */; };
+		D252711A23354EAC0091A823 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252711923354EAC0091A823 /* SearchResultsView.swift */; };
+		D252711C2336A6FC0091A823 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252711B2336A6FC0091A823 /* SearchController.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayRoutePicker.swift; sourceTree = "<group>"; };
 		D250FFF8233024AC00EA515B /* Mood+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+Sync.swift"; sourceTree = "<group>"; };
 		D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementParameter+Sync.swift"; sourceTree = "<group>"; };
+		D252711923354EAC0091A823 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		D252711B2336A6FC0091A823 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				D250FFF4232C962900EA515B /* PlayerView.swift */,
 				D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
+				D252711923354EAC0091A823 /* SearchResultsView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				D23D8BFE23302963007E2A58 /* Mood+UI.swift */,
 				D250FFF8233024AC00EA515B /* Mood+Sync.swift */,
 				D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */,
+				D252711B2336A6FC0091A823 /* SearchController.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 				D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */,
 				D250FFEB232ADCC000EA515B /* PlaylistEntry+Range.swift in Sources */,
 				D2B255FD232994090065A48B /* Soundset+Category.swift in Sources */,
+				D252711C2336A6FC0091A823 /* SearchController.swift in Sources */,
 				D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */,
 				D250FFED232C6DB000EA515B /* Element+PlaylistIterator.swift in Sources */,
 				D23D8C03233054AB007E2A58 /* MoodRow.swift in Sources */,
@@ -357,6 +364,7 @@
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
 				D2AC67302321A46300548388 /* Player.swift in Sources */,
 				D2B25614232AD7D50065A48B /* Element+Order.swift in Sources */,
+				D252711A23354EAC0091A823 /* SearchResultsView.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressCircle.swift in Sources */,
