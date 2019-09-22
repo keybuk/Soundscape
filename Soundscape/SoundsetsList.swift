@@ -22,9 +22,13 @@ struct SoundsetsList: View {
     var body: some View {
         List {
             NavigationLink(destination: SearchResultsView(search: SearchController(search: search, context: managedObjectContext)), isActive: $isSearching) {
-                TextField("Search", text: $search, onCommit: {
-                    self.isSearching = true
-                })
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("Search", text: $search, onCommit: {
+                        self.isSearching = true
+                    })
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
             }
             ForEach(soundsets) { soundset in
                 NavigationLink(destination: SoundsetView(soundset: soundset)) {
