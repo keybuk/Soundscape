@@ -36,7 +36,12 @@ struct SearchResultsView: View {
                 .fontWeight(.bold))
             {
                 ForEach(search.elements) { element in
-                    ElementRow(element: element)
+                    VStack(alignment: .leading) {
+                        Text(
+                            "\(element.soundset!.title!)")
+                            .font(.caption)
+                        ElementRow(element: element)
+                    }
                 }
             }
         }
