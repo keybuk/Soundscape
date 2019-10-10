@@ -33,12 +33,15 @@ struct PlayerView: View {
 struct PlayerStatusButton: View {
     @ObservedObject var player: Player
     @State var isPlaying: Bool = false
+    @State var isDownloading: Bool = false
     @State var progress: Double = 0
 
     var body: some View {
         ZStack {
             Button(action: self.togglePlaying) {
-                if isPlaying {
+                if isDownloading {
+                    Image(systemName: "icloud.and.arrow.down")
+                } else if isPlaying {
                     Image(systemName: "stop.fill")
                 } else {
                     Image(systemName: "play.fill")
@@ -48,10 +51,13 @@ struct PlayerStatusButton: View {
         }
         .frame(width: 30, height: 30)
         .onReceive(player.status.receive(on: RunLoop.main)) { status in
+            self.isDownloading = false
             switch status {
             case .stopped:
                 self.isPlaying = false
                 self.progress = 0
+            case .downloading:
+                self.isDownloading = true
             case let .waiting(progress):
                 self.isPlaying = true
                 self.progress = -progress
