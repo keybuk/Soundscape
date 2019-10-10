@@ -62,6 +62,7 @@ final class SyrinscapeSync {
                     element.slug = elementSlug
                     element.title = elementTitle
                     element.isRepeating = true
+                    element.initialVolume = 1 / 3
 
                     let sampleUUID = "xx-\(sampleTitle)"
                     let sampleFetchRequest: NSFetchRequest<Sample> = Sample.fetchRequest()
