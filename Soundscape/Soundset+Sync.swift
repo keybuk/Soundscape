@@ -127,6 +127,7 @@ extension Soundset {
     }
 
     func updateFromServer(context managedObjectContext: NSManagedObjectContext, completionHander: (() -> Void)? = nil) {
+        print("manifest...")
         let manifestClient = SyrinscapeManifestClient()
         manifestClient.download(fromURL: url!) { result in
             switch result {
@@ -134,10 +135,12 @@ extension Soundset {
                 if let chapterFile = manifestClient.soundsetFile(matching: "chapter.xml"),
                     let chapterURL = chapterFile.url
                 {
+                    print("chapter...")
                     let chapterClient = SyrinscapeChapterClient()
                     chapterClient.download(fromURL: chapterURL) { result in
                         switch result {
                         case .success(_):
+                            print("scheduling...")
                             managedObjectContext.perform {
                                 let soundset = managedObjectContext.object(with: self.objectID) as! Soundset
                                 print("Updating \(soundset.slug!)")
@@ -195,6 +198,7 @@ extension Soundset {
 
         do {
             if hasChanges {
+                print("saving...")
                 try managedObjectContext?.save()
             }
         } catch let error {
