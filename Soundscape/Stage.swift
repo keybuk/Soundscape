@@ -68,6 +68,7 @@ final class Stage: ObservableObject {
 
     func stop() {
         for player in players.compactMap({ $0.value }) {
+            if player.element == lockedElement { continue }
             if case .stopped = player.status.value { continue }
             player.stop()
         }
