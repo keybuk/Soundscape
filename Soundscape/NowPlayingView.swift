@@ -22,7 +22,28 @@ struct NowPlayingView: View {
             ForEach(groupedElements.keys.sorted { $0.title! < $1.title! }) { soundset in
                 Section(header: Text("\(soundset.title!)")) {
                     ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneshot })) { element in
-                        ElementRow(element: element)
+
+                        if element.kind == .music {
+                            HStack {
+                                ElementRow(element: element)
+
+                                if self.stage.lockedElement == element {
+                                    Image(systemName: "lock")
+                                        .padding()
+                                        .onTapGesture {
+                                            self.stage.lockedElement = nil
+                                        }
+                                } else {
+                                    Image(systemName: "lock.open")
+                                        .padding()
+                                        .onTapGesture {
+                                            self.stage.lockedElement = element
+                                        }
+                                }
+                            }
+                        } else {
+                            ElementRow(element: element)
+                        }
                     }
                 }
             }

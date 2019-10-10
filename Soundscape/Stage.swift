@@ -22,12 +22,15 @@ final class Stage: ObservableObject {
             .map { $0.element }
     }
 
+    @Published var lockedElement: Element? = nil
+
     func playerForElement(_ element: Element, audio: AudioManager) -> Player {
         players.removeAll(where: { $0.value == nil })
 
         if let player = players.first(where: { $0.value?.element == element }) {
             return player.value!
         } else {
+            defer { objectWillChange.send() }
             let player = Player(element: element, audio: audio)
             players.append(WeakBox(value: player))
             return player
@@ -41,7 +44,7 @@ final class Stage: ObservableObject {
 
         // Stop any player not in the current mood.
         for player in players.compactMap({ $0.value }) {
-            if !playingElements.contains(player.element) {
+            if !playingElements.contains(player.element) && lockedElement != player.element {
                 if case .stopped = player.status.value { continue }
                 player.stop()
             }
@@ -52,10 +55,15 @@ final class Stage: ObservableObject {
             let player = playerForElement(elementParameter.element!, audio: audio)
             player.volume = elementParameter.volume
 
-            if case .stopped = player.status.value {
+            if case .stopped = player.status.value,
+                player.element.kind != .music || lockedElement == nil
+
+            {
                 player.play(withStartDelay: true)
             }
         }
+
+        objectWillChange.send()
     }
 
     func stop() {
