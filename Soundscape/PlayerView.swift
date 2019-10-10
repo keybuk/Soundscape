@@ -32,9 +32,26 @@ struct PlayerView: View {
 
 struct PlayerStatusButton: View {
     @ObservedObject var player: Player
-    @State var isPlaying: Bool = false
-    @State var isDownloading: Bool = false
-    @State var progress: Double = 0
+
+    var isDownloading: Bool {
+        if case .downloading = player.status { return true }
+        return false
+    }
+
+    var isPlaying: Bool {
+        if case .playing(_) = player.status { return true }
+        if case .waiting(_) = player.status { return true }
+        return false
+    }
+
+    var progress: Double {
+        switch player.status {
+        case .stopped: return 0
+        case .downloading: return 0
+        case let .waiting(progress): return -progress
+        case let .playing(progress): return progress
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -47,25 +64,9 @@ struct PlayerStatusButton: View {
                     Image(systemName: "play.fill")
                 }
             }
-            ProgressCircle(progress: $progress)
+            ProgressCircle(progress: progress)
         }
         .frame(width: 30, height: 30)
-        .onReceive(player.status.receive(on: RunLoop.main)) { status in
-            self.isDownloading = false
-            switch status {
-            case .stopped:
-                self.isPlaying = false
-                self.progress = 0
-            case .downloading:
-                self.isDownloading = true
-            case let .waiting(progress):
-                self.isPlaying = true
-                self.progress = -progress
-            case let .playing(progress):
-                self.isPlaying = true
-                self.progress = progress
-            }
-        }
     }
 
     func togglePlaying() {

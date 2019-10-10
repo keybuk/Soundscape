@@ -18,7 +18,7 @@ final class Stage: ObservableObject {
     var elements: [Element] {
         players
             .compactMap { $0.value }
-            .filter { if case .stopped = $0.status.value { return false } else { return true } }
+            .filter { if case .stopped = $0.status { return false } else { return true } }
             .map { $0.element }
     }
 
@@ -45,7 +45,7 @@ final class Stage: ObservableObject {
         // Stop any player not in the current mood.
         for player in players.compactMap({ $0.value }) {
             if !playingElements.contains(player.element) && lockedElement != player.element {
-                if case .stopped = player.status.value { continue }
+                if case .stopped = player.status { continue }
                 player.stop()
             }
         }
@@ -55,7 +55,7 @@ final class Stage: ObservableObject {
             let player = playerForElement(elementParameter.element!, audio: audio)
             player.volume = elementParameter.volume
 
-            if case .stopped = player.status.value,
+            if case .stopped = player.status,
                 player.element.kind != .music || lockedElement == nil
 
             {
@@ -69,7 +69,7 @@ final class Stage: ObservableObject {
     func stop() {
         for player in players.compactMap({ $0.value }) {
             if player.element == lockedElement { continue }
-            if case .stopped = player.status.value { continue }
+            if case .stopped = player.status { continue }
             player.stop()
         }
     }

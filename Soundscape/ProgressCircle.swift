@@ -30,7 +30,7 @@ struct ProgressArc: Shape {
 }
 
 struct ProgressCircle: View {
-    @Binding var progress: Double
+    var progress: Double
 
     var body: some View {
         GeometryReader { g in
@@ -55,7 +55,7 @@ struct AnimationTest: View {
 
     var body: some View {
         VStack {
-            ProgressCircle(progress: $progress)
+            ProgressCircle(progress: progress)
             Slider(value: $newProgress, in: -1.0...1.0)
             Button(action: {
                 withAnimation(self.newProgress < 0 && self.progress > 0 ? nil : .linear) {
@@ -73,7 +73,7 @@ struct CircleTest: View {
     @State var progress: Double
 
     var body: some View {
-        ProgressCircle(progress: $progress)
+        ProgressCircle(progress: progress)
     }
 }
 

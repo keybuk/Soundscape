@@ -32,7 +32,7 @@ final class Player: ObservableObject {
         case playing(Double)
     }
 
-    var status = CurrentValueSubject<Status, Never>(.stopped)
+    @Published var status: Status = .stopped
 
     struct Playing {
         var player: AVAudioPlayerNode
@@ -213,11 +213,11 @@ final class Player: ObservableObject {
         if element.kind == .oneshot && !isFirst {
             // Don't queue additional files for oneshot elements, but keep the iterator for next time.
             progressUpdater.isPaused = true
-            publishStatus()
+            updateStatus()
         } else if let playlistEntry = playlistIterator?.next() {
             // Queue up the next file.
             print("Want next file in \(delay)s")
-            publishStatus()
+            updateStatus()
 
             let volume = Float.random(in: playlistEntry.volume)
             let downloadStart = Date()
@@ -240,7 +240,7 @@ final class Player: ObservableObject {
             // Reached the end of the playlist.
             playlistIterator = nil
             progressUpdater.isPaused = true
-            publishStatus()
+            updateStatus()
         }
     }
 
@@ -254,31 +254,31 @@ final class Player: ObservableObject {
     }
 
     lazy var progressUpdater: CADisplayLink = {
-        let progressUpdater = CADisplayLink(target: self, selector: #selector(publishStatus))
+        let progressUpdater = CADisplayLink(target: self, selector: #selector(updateStatus))
         progressUpdater.add(to: RunLoop.main, forMode: .default)
         progressUpdater.isPaused = true
         return progressUpdater
     }()
 
     @objc
-    func publishStatus() {
+    func updateStatus() {
         if let playingMember = playing.first,
             let lastRenderTime = playingMember.player.lastRenderTime,
             let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
         {
             // Current player means we're playing, or have a sample queued.
             if playerTime.sampleTime < 0 {
-                status.send(.waiting(Double(-playerTime.sampleTime) / Double(playingMember.delay)))
+                status = .waiting(Double(-playerTime.sampleTime) / Double(playingMember.delay))
             } else {
-                status.send(.playing(Double(playerTime.sampleTime) / Double(playingMember.length)))
+                status = .playing(Double(playerTime.sampleTime) / Double(playingMember.length))
             }
         // FIXME: one shots can be stopped even with an iterator.
         } else if playlistIterator != nil {
             // No current player, but an iterator, means we're still downloading the next file.
-            status.send(.downloading)
+            status = .downloading
         } else {
             // No iterator means we're stopped.
-            status.send(.stopped)
+            status = .stopped
         }
     }
 }
