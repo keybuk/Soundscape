@@ -126,8 +126,9 @@ extension Soundset {
     }
 
     func updateFromServer(context managedObjectContext: NSManagedObjectContext, completionHander: (() -> Void)? = nil) {
+        guard let url = url else { return }
         let manifestClient = SyrinscapeManifestClient()
-        manifestClient.download(fromURL: url!) { result in
+        manifestClient.download(fromURL: url) { result in
             switch result {
             case .success(_):
                 if let chapterFile = manifestClient.soundsetFile(matching: "chapter.xml"),

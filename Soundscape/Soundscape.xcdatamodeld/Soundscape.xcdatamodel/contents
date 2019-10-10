@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Element" representedClassName="Element" syncable="YES" codeGenerationType="class">
         <attribute name="initialVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="isOverlapping" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -47,17 +47,17 @@
         <attribute name="schemaVersion" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="slug" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
-        <attribute name="updatedDate" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="url" attributeType="URI"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
         <relationship name="elements" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Element" inverseName="soundset" inverseEntity="Element"/>
         <relationship name="moods" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Mood" inverseName="soundset" inverseEntity="Mood"/>
     </entity>
     <elements>
         <element name="Element" positionX="-27" positionY="72" width="128" height="253"/>
+        <element name="ElementParameter" positionX="-27" positionY="144" width="128" height="103"/>
+        <element name="Mood" positionX="-36" positionY="135" width="128" height="88"/>
         <element name="PlaylistEntry" positionX="-9" positionY="144" width="128" height="103"/>
         <element name="Sample" positionX="-45" positionY="63" width="128" height="103"/>
         <element name="Soundset" positionX="-63" positionY="-18" width="128" height="208"/>
-        <element name="Mood" positionX="-36" positionY="135" width="128" height="88"/>
-        <element name="ElementParameter" positionX="-27" positionY="144" width="128" height="103"/>
     </elements>
 </model>
