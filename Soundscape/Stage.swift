@@ -52,4 +52,11 @@ final class Stage: ObservableObject {
             }
         }
     }
+
+    func stop() {
+        for player in players.compactMap({ $0.value }) {
+            if case .stopped = player.status.value { continue }
+            player.stop()
+        }
+    }
 }

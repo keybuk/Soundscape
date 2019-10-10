@@ -30,6 +30,7 @@ struct NowPlayingView: View {
             AirPlayRoutePicker()
         }
         .navigationBarTitle("Now Playing")
+        .navigationBarItems(trailing: Button(action: stage.stop) { Text("Stop") })
     }
 }
 
