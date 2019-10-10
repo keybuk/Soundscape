@@ -72,5 +72,7 @@ final class Stage: ObservableObject {
             if case .stopped = player.status { continue }
             player.stop()
         }
+
+        objectWillChange.send()
     }
 }
