@@ -39,6 +39,7 @@ struct SoundsetView: View {
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle("\(soundset.title!)", displayMode: .automatic)
+        .navigationBarItems(trailing: NavigationLink(destination: NowPlayingView()) { Text("Now Playing") })
         .onAppear {
             if self.soundset.isUpdatePending {
                 self.soundset.updateFromServer(context: self.persistentContainer.newBackgroundContext())

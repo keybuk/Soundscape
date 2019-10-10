@@ -60,6 +60,7 @@
 		D2B25612232AD7A10065A48B /* Element+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B25611232AD7A10065A48B /* Element+Kind.swift */; };
 		D2B25614232AD7D50065A48B /* Element+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B25613232AD7D50065A48B /* Element+Order.swift */; };
 		D2B25616232AD8AF0065A48B /* Element+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B25615232AD8AF0065A48B /* Element+Range.swift */; };
+		D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		D2B25611232AD7A10065A48B /* Element+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Kind.swift"; sourceTree = "<group>"; };
 		D2B25613232AD7D50065A48B /* Element+Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Order.swift"; sourceTree = "<group>"; };
 		D2B25615232AD8AF0065A48B /* Element+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Range.swift"; sourceTree = "<group>"; };
+		D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 				D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
 				D252711923354EAC0091A823 /* SearchResultsView.swift */,
+				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
 				D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */,
 				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
+				D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
