@@ -15,7 +15,12 @@ struct WeakBox<T> where T: AnyObject {
 final class Stage: ObservableObject {
     private var players: [WeakBox<Player>] = []
 
-    var elements: [Element] { players.compactMap { $0.value?.element } }
+    var elements: [Element] {
+        players
+            .compactMap { $0.value }
+            .filter { if case .stopped = $0.status.value { return false } else { return true } }
+            .map { $0.element }
+    }
 
     func playerForElement(_ element: Element, audio: AudioManager) -> Player {
         players.removeAll(where: { $0.value == nil })
