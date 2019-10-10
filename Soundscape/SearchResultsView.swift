@@ -18,7 +18,9 @@ struct SearchResultsView: View {
                 .fontWeight(.bold))
             {
                 ForEach(search.soundsets) { soundset in
-                    SoundsetRow(soundset: soundset)
+                    NavigationLink(destination: SoundsetView(soundset: soundset)) {
+                        SoundsetRow(soundset: soundset)
+                    }
                 }
             }
 
