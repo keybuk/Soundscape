@@ -27,7 +27,12 @@ struct SearchResultsView: View {
                 .fontWeight(.bold))
             {
                 ForEach(search.moods) { mood in
-                    MoodRow(mood: mood)
+                    VStack(alignment: .leading) {
+                        Text(
+                            "\(mood.soundset!.title!)")
+                            .font(.caption)
+                        MoodRow(mood: mood)
+                    }
                 }
             }
 
