@@ -38,13 +38,19 @@ struct ProgressCircle: View {
                 .stroke(lineWidth: self.lineWidth(size: g.size))
                 .foregroundColor(Color(UIColor.secondarySystemFill))
             ProgressArc(progress: self.progress)
-                .stroke(style: StrokeStyle(lineWidth: self.lineWidth(size: g.size), lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0))
+                .stroke(style: self.strokeStyle(size: g.size))
         }
     }
 
     func lineWidth(size: CGSize) -> CGFloat {
         let length = min(size.width, size.height)
         return length / (2 * log2(length))
+    }
+
+    func strokeStyle(size: CGSize) -> StrokeStyle {
+        StrokeStyle(lineWidth: self.lineWidth(size: size),
+                    lineCap: .round, lineJoin: .round, miterLimit: 0,
+                    dash: [], dashPhase: 0)
     }
 }
 
