@@ -13,34 +13,9 @@ struct SoundsetRow: View {
 
     var body: some View {
         VStack {
-            SoundsetRowImage(image: soundset.image)
-                .overlay(SoundsetRowTitle(title: soundset.title!), alignment: .bottomLeading)
+            SoundsetImageView(soundset: soundset)
+                .frame(height: 88)
         }
-    }
-}
-
-struct SoundsetRowImage: View {
-    var image: Image
-
-    var body: some View {
-        image
-            .renderingMode(.original)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(height: 88)
-            .cornerRadius(8)
-    }
-}
-
-struct SoundsetRowTitle: View {
-    var title: String
-
-    var body: some View {
-        Text(title)
-            .font(.headline)
-            .foregroundColor(Color.white)
-            .shadow(color: Color.black, radius: 2)
-            .padding(8)
     }
 }
 
