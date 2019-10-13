@@ -69,35 +69,27 @@ struct AnimationTest: View {
     }
 }
 
-struct CircleTest: View {
-    @State var progress: Double
-
-    var body: some View {
-        ProgressCircle(progress: progress)
-    }
-}
-
 struct ProgressCircle_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
-                CircleTest(progress: 0.8)
-                CircleTest(progress: 0.4)
-                CircleTest(progress: -0.4)
+                ProgressCircle(progress: 0.8)
+                ProgressCircle(progress: 0.4)
+                ProgressCircle(progress: -0.4)
             }
             .frame(height: 30)
 
             HStack {
-                CircleTest(progress: 0.8)
-                CircleTest(progress: 0.4)
-                CircleTest(progress: -0.4)
+                ProgressCircle(progress: 0.8)
+                ProgressCircle(progress: 0.4)
+                ProgressCircle(progress: -0.4)
             }
             .frame(height: 44)
 
             HStack {
-                CircleTest(progress: 0.8)
-                CircleTest(progress: 0.4)
-                CircleTest(progress: -0.4)
+                ProgressCircle(progress: 0.8)
+                ProgressCircle(progress: 0.4)
+                ProgressCircle(progress: -0.4)
             }
             .frame(height: 88)
 
