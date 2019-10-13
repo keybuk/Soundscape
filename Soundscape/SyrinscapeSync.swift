@@ -93,13 +93,25 @@ final class SyrinscapeSync {
                         sample.title = sampleTitle
                         sample.url = URL(string: "https://netsplit.com/_hidden/\(sampleTitle).ogg")!
 
-                        let playlistEntry = PlaylistEntry(context: self.managedObjectContext)
-                        playlistEntry.sample = sample
-                        newPlaylistEntries.append(playlistEntry)
-                    }
 
-                    for case let playlistEntry as NSManagedObject in element.playlistEntries! {
-                        self.managedObjectContext.delete(playlistEntry)
+                        let playlistEntryFetchRequest: NSFetchRequest<PlaylistEntry> = PlaylistEntry.fetchRequest()
+                        playlistEntryFetchRequest.predicate = NSPredicate(format: "element == %@ AND sample.uuid == %@", element, sampleUUID)
+
+                        var playlistEntry: PlaylistEntry?
+                        do {
+                            let results = try playlistEntryFetchRequest.execute()
+                            playlistEntry = results.first
+                        } catch let error {
+                            print("Failed to fetch playlist entry: \(error.localizedDescription)")
+                            return
+                        }
+
+                        if playlistEntry == nil {
+                            playlistEntry = PlaylistEntry(context: self.managedObjectContext)
+                            playlistEntry!.sample = sample
+                        }
+
+                        newPlaylistEntries.append(playlistEntry!)
                     }
 
                     element.playlistEntries = NSOrderedSet(array: newPlaylistEntries)
