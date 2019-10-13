@@ -11,8 +11,16 @@ import CoreData
 
 let staticData = [
     "Arundor": [
-        ( "Alfriston Town", "MUS_80_Zuldazar_Dazaralor_Bazaar_01", "https://netsplit.com/_hidden/MUS_80_Zuldazar_Dazaralor_Bazaar_01.ogg" ),
-        ( "Alfriston Region", "MUS_80_Zuldazar_Dazaralor_Bazaar_02", "https://netsplit.com/_hidden/MUS_80_Zuldazar_Dazaralor_Bazaar_02.ogg" )
+        ( "Alfriston Town", -5, ["MUS_80_Zuldazar_Dazaralor_Bazaar_01"]),
+        ( "Alfriston Region", -5, ["MUS_80_Zuldazar_Dazaralor_Bazaar_02"]),
+        ( "Dungeon Delve", 0, ["BGM_EX3_Dan_D03"]),
+        ( "The Aron-Kai", 0, ["BGM_EX3_Field_Rak_Day"]),
+        ( "Alfriston Battle", -5, [
+            "MUS_80_StormsongValley_ShrineofStorms_01",
+            "MUS_80_StormsongValley_ShrineofStorms_02",
+            "MUS_80_StormsongValley_ShrineofStorms_03",
+            "MUS_80_StormsongValley_ShrineofStorms_04"
+        ])
     ]
 ]
 
@@ -44,7 +52,7 @@ final class SyrinscapeSync {
                 soundset.title = soundsetTitle
 
                 var newElements: [Element] = []
-                for (elementTitle, sampleTitle, sampleURL) in soundsetData {
+                for (elementTitle, sampleGap, sampleList) in soundsetData {
                     let elementSlug = "xx-\(elementTitle)"
                     let elementFetchRequest: NSFetchRequest<Element> = Element.fetchRequest()
                     elementFetchRequest.predicate = NSPredicate(format: "soundset == %@ AND slug == %@", soundset, elementSlug)
@@ -61,35 +69,40 @@ final class SyrinscapeSync {
                     element.kind = .music
                     element.slug = elementSlug
                     element.title = elementTitle
+                    element.order = .shuffled
                     element.isRepeating = true
                     element.initialVolume = 1 / 3
+                    element.sampleGap = Double(sampleGap)...Double(sampleGap)
 
-                    let sampleUUID = "xx-\(sampleTitle)"
-                    let sampleFetchRequest: NSFetchRequest<Sample> = Sample.fetchRequest()
-                    sampleFetchRequest.predicate = NSPredicate(format: "uuid == %@", sampleUUID)
+                    var newPlaylistEntries: [PlaylistEntry] = []
+                    for sampleTitle in sampleList {
+                        let sampleUUID = "xx-\(sampleTitle)"
+                        let sampleFetchRequest: NSFetchRequest<Sample> = Sample.fetchRequest()
+                        sampleFetchRequest.predicate = NSPredicate(format: "uuid == %@", sampleUUID)
 
-                    let sample: Sample
-                    do {
-                        let results = try sampleFetchRequest.execute()
-                        sample = results.first ?? Sample(context: self.managedObjectContext)
-                    } catch let error {
-                        print("Failed to fetch sample for \(sampleUUID): \(error.localizedDescription)")
-                        return
+                        let sample: Sample
+                        do {
+                            let results = try sampleFetchRequest.execute()
+                            sample = results.first ?? Sample(context: self.managedObjectContext)
+                        } catch let error {
+                            print("Failed to fetch sample for \(sampleUUID): \(error.localizedDescription)")
+                            return
+                        }
+
+                        sample.uuid = sampleUUID
+                        sample.title = sampleTitle
+                        sample.url = URL(string: "https://netsplit.com/_hidden/\(sampleTitle).ogg")!
+
+                        let playlistEntry = PlaylistEntry(context: self.managedObjectContext)
+                        playlistEntry.sample = sample
+                        newPlaylistEntries.append(playlistEntry)
                     }
-
-                    sample.uuid = sampleUUID
-                    sample.title = sampleTitle
-                    sample.url = URL(string: sampleURL)!
 
                     for case let playlistEntry as NSManagedObject in element.playlistEntries! {
                         self.managedObjectContext.delete(playlistEntry)
                     }
 
-
-                    let playlistEntry = PlaylistEntry(context: self.managedObjectContext)
-                    playlistEntry.sample = sample
-
-                    element.playlistEntries = NSOrderedSet(array: [playlistEntry])
+                    element.playlistEntries = NSOrderedSet(array: newPlaylistEntries)
                     newElements.append(element)
                 }
 
