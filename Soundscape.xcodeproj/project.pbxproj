@@ -149,6 +149,12 @@
 				D241A1EC23281BC60009CFF3 /* SyrinscapeChapterClient.swift */,
 				D241A1EE232824200009CFF3 /* SyrinscapeDownloadError.swift */,
 				D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */,
+				D2B255FA2329914C0065A48B /* Soundset+Sync.swift */,
+				D2B2560D2329C2870065A48B /* Sample+Sync.swift */,
+				D2B2560F232AD7540065A48B /* Element+Sync.swift */,
+				D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */,
+				D250FFF8233024AC00EA515B /* Mood+Sync.swift */,
+				D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */,
 			);
 			name = Syrinscape;
 			sourceTree = "<group>";
@@ -246,21 +252,15 @@
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
 				D2B255FC232994090065A48B /* Soundset+Category.swift */,
 				D2B2560623299C9A0065A48B /* Soundset+UI.swift */,
-				D2B255FA2329914C0065A48B /* Soundset+Sync.swift */,
-				D2B2560D2329C2870065A48B /* Sample+Sync.swift */,
 				D241A1F0232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift */,
 				D250FFF0232C876F00EA515B /* Element+UI.swift */,
 				D2B25611232AD7A10065A48B /* Element+Kind.swift */,
 				D2B25613232AD7D50065A48B /* Element+Order.swift */,
 				D2B25615232AD8AF0065A48B /* Element+Range.swift */,
-				D2B2560F232AD7540065A48B /* Element+Sync.swift */,
 				D250FFEC232C6DB000EA515B /* Element+PlaylistIterator.swift */,
 				D250FFEA232ADCC000EA515B /* PlaylistEntry+Range.swift */,
-				D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */,
 				D250FFEE232C840200EA515B /* PlaylistEntry+Open.swift */,
 				D23D8BFE23302963007E2A58 /* Mood+UI.swift */,
-				D250FFF8233024AC00EA515B /* Mood+Sync.swift */,
-				D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */,
 				D252711B2336A6FC0091A823 /* SearchController.swift */,
 			);
 			name = "Data Model";
