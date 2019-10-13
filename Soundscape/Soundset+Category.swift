@@ -25,7 +25,7 @@ enum SoundsetCategory: Int16, CaseIterable, CustomStringConvertible {
         switch self {
         case .fantasy: return "Fantasy"
         case .sciFi: return "Sci-Fi"
-        case .boardgame: return "Boardgame"
+        case .boardgame: return "Board Game"
         }
     }
 }
