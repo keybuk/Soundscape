@@ -14,14 +14,16 @@ struct MoodButton: View {
 
     @ObservedObject var mood: Mood
 
+    var isActive: Bool { stage.mood == mood }
+
     var body: some View {
         Button(action: self.play) {
             Text("\(mood.title!)")
                 .lineLimit(1)
                 .padding()
-                .foregroundColor(Color(UIColor.label))
+                .foregroundColor(isActive ? Color("ActiveMoodLabelColor") : Color(UIColor.label))
                 .frame(maxWidth: .infinity)
-                .background(Color(UIColor.secondarySystemGroupedBackground))
+                .background(isActive ? Color("ActiveMoodBackgroundColor") : Color(UIColor.secondarySystemGroupedBackground))
                 .cornerRadius(8)
         }
     }

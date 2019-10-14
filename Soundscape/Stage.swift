@@ -15,6 +15,8 @@ struct WeakBox<T> where T: AnyObject {
 final class Stage: ObservableObject {
     private var players: [WeakBox<Player>] = []
 
+    @Published var mood: Mood? = nil
+
     var elements: [Element] {
         players
             .compactMap { $0.value }
@@ -63,7 +65,7 @@ final class Stage: ObservableObject {
             }
         }
 
-        objectWillChange.send()
+        self.mood = mood
     }
 
     func stop() {
@@ -73,6 +75,6 @@ final class Stage: ObservableObject {
             player.stop()
         }
 
-        objectWillChange.send()
+        mood = nil
     }
 }
