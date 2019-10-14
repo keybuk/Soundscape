@@ -33,6 +33,7 @@ final class Player: ObservableObject {
     }
 
     @Published var status: Status = .stopped
+    private var isDownloading: Bool = false
 
     struct Playing {
         var player: AVAudioPlayerNode
@@ -222,7 +223,10 @@ final class Player: ObservableObject {
             let volume = Float.random(in: playlistEntry.volume)
             let downloadStart = Date()
 
-            playlistEntry.openFile { result in
+            playlistEntry.openFile(downloadingHandler: {
+                isDownloading = true
+                updateStatus()
+            }) { result in
                 // Subtract the amount of time the potential download took from the delay.
                 let downloadDuration = downloadStart.distance(to: Date())
                 let adjustedDelay = max(0, delay - downloadDuration)
@@ -230,6 +234,7 @@ final class Player: ObservableObject {
                 switch result {
                 case let .success(file):
                     print("Playing \(playlistEntry.sample!.title!) in \(adjustedDelay)s")
+                    self.isDownloading = false
                     self.scheduleFile(file, volume: volume, delay: adjustedDelay)
                 case let .failure(error):
                     print("Failed to open sample file: \(error.localizedDescription)")
@@ -272,9 +277,8 @@ final class Player: ObservableObject {
             } else {
                 status = .playing(Double(playerTime.sampleTime) / Double(playingMember.length))
             }
-        // FIXME: one shots can be stopped even with an iterator.
-        } else if playlistIterator != nil {
-            // No current player, but an iterator, means we're still downloading the next file.
+        } else if isDownloading {
+            // Still downloading the next file.
             status = .downloading
         } else {
             // No iterator means we're stopped.

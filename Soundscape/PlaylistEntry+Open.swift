@@ -9,13 +9,14 @@
 import Foundation
 
 extension PlaylistEntry {
-    func openFile(completionHandler: @escaping (Result<OggVorbisFile, Error>) -> Void) {
+    func openFile(downloadingHandler: () -> Void, completionHandler: @escaping (Result<OggVorbisFile, Error>) -> Void) {
         if sample!.isCached,
             let file = try? OggVorbisFile(forReading: sample!.cacheURL)
         {
             completionHandler(.success(file))
             return
         } else {
+            downloadingHandler()
             sample!.downloadFromSyrinscape { result in
                 DispatchQueue.main.async {
                     switch result {
