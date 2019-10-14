@@ -10,65 +10,56 @@ import SwiftUI
 import CoreData
 
 struct SoundsetView: View {
+    @EnvironmentObject var audio: AudioManager
+    @EnvironmentObject var stage: Stage
+
     @ObservedObject var soundset: Soundset
-    @EnvironmentObject var persistentContainer: NSPersistentContainer
+
+    var moods: [Mood] { soundset.moods!.array as! [Mood] }
+    var elements: [Element] { soundset.elements!.array as! [Element] }
+    var musicElements: [Element] { elements.filter { $0.kind == .music } }
+    var effectElements: [Element] { elements.filter { $0.kind == .effect } }
+    var oneshotElements: [Element] { elements.filter { $0.kind == .oneshot } }
 
     var body: some View {
-        List {
-            Section(header: SoundsetViewHeaderImage(image: soundset.image)) {
-                EmptyView()
-            }
+        ScrollView {
+            VStack(spacing: 24) {
+                SoundsetImageView(soundset: soundset)
+                    .frame(height: 240)
+                    .padding([.leading, .trailing])
 
-            Section(header: Text("Moods").font(.headline)) {
-                ForEach(soundset.moods!.array as! [Mood]) { mood in
-                    MoodRow(mood: mood)
+                if !moods.isEmpty {
+                    MoodsList(moods: moods)
+                        .padding([.leading, .trailing])
                 }
-            }
-            
-            Section(header: Text("Elements").font(.headline)) {
-                ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind != .oneshot })) { element in
-                    ElementRow(element: element)
-                }
-            }
 
-            Section(header: Text("Sounds").font(.headline)) {
-                ForEach((soundset.elements!.array as! [Element]).filter({ $0.kind == .oneshot })) { element in
-                    ElementRow(element: element)
+                if !musicElements.isEmpty {
+                    ElementsList(elements: musicElements)
+                        .padding([.leading, .trailing])
+                }
+
+                if !effectElements.isEmpty {
+                    ElementsList(elements: effectElements)
+                        .padding([.leading, .trailing])
+                }
+
+                if !oneshotElements.isEmpty {
+                    ElementsList(elements: oneshotElements)
+                        .padding([.leading, .trailing])
                 }
             }
         }
-        .listStyle(GroupedListStyle())
-        .navigationBarTitle("\(soundset.title!)", displayMode: .automatic)
+        .background(Color(UIColor.systemGroupedBackground))
         .navigationBarItems(trailing: NavigationLink(destination: NowPlayingView()) { Text("Now Playing") })
-        .onAppear {
-            if self.soundset.isUpdatePending {
-                self.soundset.updateFromServer(context: self.persistentContainer.newBackgroundContext())
-            }
-        }
-    }
-}
-
-struct SoundsetViewHeaderImage: View {
-    var image: Image
-
-    var body: some View {
-        image
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(maxHeight: 240)
-            .cornerRadius(8)
     }
 }
 
 #if DEBUG
 struct SoundsetView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            SoundsetView(soundset: previewContent.soundsets[0])
-        }
-        .environmentObject(previewContent.persistentContainer)
-        .environmentObject(AudioManager())
-        .environmentObject(Stage())
+        SoundsetView(soundset: previewContent.soundsets[0])
+            .environmentObject(AudioManager())
+            .environmentObject(Stage())
     }
 }
 #endif

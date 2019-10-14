@@ -12,26 +12,38 @@ struct PlayerView: View {
     @ObservedObject var player: Player
 
     var body: some View {
-        HStack {
-            PlayerStatusButton(player: player)
-
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text("\(player.element.title!)")
-                    if player.element.kind == .music {
-                        Image(systemName: "music.note")
-                    } else if player.element.kind == .effect {
-                        Image(systemName: "bolt")
-                    }
-                }
-                Slider(value: $player.volume, in: 0...1)
+        ZStack {
+            Button(action: self.togglePlaying) {
+                Color(UIColor.secondarySystemGroupedBackground)
             }
+            .layoutPriority(-1)
+
+            HStack {
+                PlayerStatusButton(player: player, action: self.togglePlaying)
+
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("\(player.element.title!)")
+                    Slider(value: $player.volume, in: 0...1)
+                        .onTapGesture {}
+                }
+            }
+            .padding()
+        }
+        .cornerRadius(8)
+    }
+
+    func togglePlaying() {
+        if case .stopped = player.status {
+            player.play()
+        } else {
+            player.stop()
         }
     }
 }
 
 struct PlayerStatusButton: View {
     @ObservedObject var player: Player
+    var action: () -> Void
 
     var isDownloading: Bool {
         if case .downloading = player.status { return true }
@@ -39,9 +51,8 @@ struct PlayerStatusButton: View {
     }
 
     var isPlaying: Bool {
-        if case .playing(_) = player.status { return true }
-        if case .waiting(_) = player.status { return true }
-        return false
+        if case .stopped = player.status { return false }
+        return true
     }
 
     var progress: Double {
@@ -55,7 +66,7 @@ struct PlayerStatusButton: View {
 
     var body: some View {
         ZStack {
-            Button(action: self.togglePlaying) {
+            Button(action: action) {
                 if isDownloading {
                     Image(systemName: "icloud.and.arrow.down")
                 } else if isPlaying {
@@ -67,14 +78,6 @@ struct PlayerStatusButton: View {
             ProgressCircle(progress: progress)
         }
         .frame(width: 30, height: 30)
-    }
-
-    func togglePlaying() {
-        if isPlaying {
-            player.stop()
-        } else {
-            player.play()
-        }
     }
 }
 
