@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreGraphics
 
 final class Soundset: Identifiable, Hashable, ObservableObject {
     @Published var id: String
@@ -16,15 +18,10 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
     @Published var updatedDate: Date?
     @Published var downloadedDate: Date?
 
-    @Published var activeImageData: Data?
-    @Published var inactiveImageData: Data?
+    @Published private var activeImageData: Data?
+    @Published private var inactiveImageData: Data?
 
-    @Published var allElements: [Element]
-    @Published var musicElements: [Element]
-    @Published var effectElements: [Element]
-    @Published var oneshotElements: [Element]
-
-    @Published var moods: [Mood]
+    private var managedObject: SoundsetManagedObject
 
     enum Category: Int16, CaseIterable, CustomStringConvertible {
         case fantasy
@@ -48,6 +45,109 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
         }
     }
 
+    var image: Image { updatedDate == nil || downloadedDate != nil ? activeImage : inactiveImage }
+
+    private var _activeImage: Image?
+    var activeImage: Image {
+        if let activeImage = _activeImage { return activeImage }
+
+        if let imageData = activeImageData,
+            let dataProvider = CGDataProvider(data: imageData as CFData),
+            let cgImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
+        {
+            _activeImage = Image(decorative: cgImage, scale: 1.0)
+            return _activeImage!
+        } else {
+            _activeImage = Image("SoundsetImagePlaceholder")
+            return _activeImage!
+        }
+    }
+
+    private var _inactiveImage: Image?
+    var inactiveImage: Image {
+        if let inactiveImage = _inactiveImage { return inactiveImage }
+
+        if let imageData = inactiveImageData,
+            let dataProvider = CGDataProvider(data: imageData as CFData),
+            let cgImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
+        {
+            _inactiveImage = Image(decorative: cgImage, scale: 1.0)
+            return _inactiveImage!
+        } else {
+            _inactiveImage = Image("SoundsetInactiveImagePlaceholder")
+            return _inactiveImage!
+        }
+    }
+
+    private var _allElements: [Element]?
+    var allElements: [Element] {
+        if let allElements = _allElements { return allElements }
+
+        updateElements()
+        return _allElements!
+    }
+
+    private var _musicElements: [Element]?
+    var musicElements: [Element] {
+        if let musicElements = _musicElements { return musicElements }
+
+        updateElements()
+        return _musicElements!
+    }
+
+    private var _effectElements: [Element]?
+    var effectElements: [Element] {
+        if let effectElements = _effectElements { return effectElements }
+
+        updateElements()
+        return _effectElements!
+    }
+
+    private var _oneshotElements: [Element]?
+    var oneshotElements: [Element] {
+        if let oneshotElements = _oneshotElements { return oneshotElements }
+
+        updateElements()
+        return _oneshotElements!
+    }
+
+    private func updateElements() {
+        _allElements = []
+        _musicElements = []
+        _effectElements = []
+        _oneshotElements = []
+
+        guard let elementObjects = managedObject.elements else { return }
+
+        for case let elementObject as ElementManagedObject in elementObjects {
+            let element = Element(managedObject: elementObject)
+            _allElements!.append(element)
+
+            switch element.kind {
+            case .music: _musicElements!.append(element)
+            case .effect: _effectElements!.append(element)
+            case .oneshot: _oneshotElements!.append(element)
+            }
+        }
+    }
+
+    private var _moods: [Mood]?
+    var moods: [Mood] {
+        if let moods = _moods { return moods }
+
+        _moods = []
+
+        guard let moodObjects = managedObject.moods else { return _moods! }
+
+        for case let moodObject as MoodManagedObject in moodObjects {
+            let mood = Mood(managedObject: moodObject, soundset: self)
+            _moods!.append(mood)
+        }
+
+        return _moods!
+    }
+
+
     init(managedObject: SoundsetManagedObject) {
         id = managedObject.slug!
         category = Category(rawValue: managedObject.categoryRawValue)!
@@ -56,32 +156,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
         updatedDate = managedObject.updatedDate
         downloadedDate = managedObject.downloadedDate
 
-        allElements = []
-        musicElements = []
-        effectElements = []
-        oneshotElements = []
-
-        moods = []
-
-        if let elementObjects = managedObject.elements {
-            for case let elementObject as ElementManagedObject in elementObjects {
-                let element = Element(managedObject: elementObject)
-                allElements.append(element)
-
-                switch element.kind {
-                case .music: musicElements.append(element)
-                case .effect: effectElements.append(element)
-                case .oneshot: oneshotElements.append(element)
-                }
-            }
-        }
-
-        if let moodObjects = managedObject.moods {
-            for case let moodObject as MoodManagedObject in moodObjects {
-                let mood = Mood(managedObject: moodObject, soundset: self)
-                moods.append(mood)
-            }
-        }
+        self.managedObject = managedObject
     }
 
     static func == (lhs: Soundset, rhs: Soundset) -> Bool {

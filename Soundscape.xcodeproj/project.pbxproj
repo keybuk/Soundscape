@@ -28,7 +28,6 @@
 		D252711C2336A6FC0091A823 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252711B2336A6FC0091A823 /* SearchController.swift */; };
 		D28442E52356EAF0008BBD5E /* Soundset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442E42356EAF0008BBD5E /* Soundset.swift */; };
 		D28442EB2356EC9B008BBD5E /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442EA2356EC9B008BBD5E /* Element.swift */; };
-		D28442F12356EEE9008BBD5E /* Soundset+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442F02356EEE9008BBD5E /* Soundset+Image.swift */; };
 		D28442F32356EF3F008BBD5E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442F22356EF3F008BBD5E /* Sample.swift */; };
 		D28442F52356EFC0008BBD5E /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442F42356EFC0008BBD5E /* Mood.swift */; };
 		D299938B2352B3AF0060859D /* SoundsetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299938A2352B3AF0060859D /* SoundsetImageView.swift */; };
@@ -85,7 +84,6 @@
 		D252711B2336A6FC0091A823 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D28442E42356EAF0008BBD5E /* Soundset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soundset.swift; sourceTree = "<group>"; };
 		D28442EA2356EC9B008BBD5E /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
-		D28442F02356EEE9008BBD5E /* Soundset+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Image.swift"; sourceTree = "<group>"; };
 		D28442F22356EF3F008BBD5E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		D28442F42356EFC0008BBD5E /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		D299938A2352B3AF0060859D /* SoundsetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetImageView.swift; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 			children = (
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
 				D28442E42356EAF0008BBD5E /* Soundset.swift */,
-				D28442F02356EEE9008BBD5E /* Soundset+Image.swift */,
 				D28442EA2356EC9B008BBD5E /* Element.swift */,
 				D28442F22356EF3F008BBD5E /* Sample.swift */,
 				D241A1F0232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift */,
@@ -352,7 +349,6 @@
 				D241A1F1232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift in Sources */,
 				D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */,
 				D252711C2336A6FC0091A823 /* SearchController.swift in Sources */,
-				D28442F12356EEE9008BBD5E /* Soundset+Image.swift in Sources */,
 				D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */,
 				D23D8C03233054AB007E2A58 /* MoodRow.swift in Sources */,
 				D299938B2352B3AF0060859D /* SoundsetImageView.swift in Sources */,
