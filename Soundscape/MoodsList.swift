@@ -32,8 +32,7 @@ struct MoodsList: View {
                     }
 
                     if moodRow.count != self.numberOfColumns {
-                        Rectangle()
-                            .fill(Color.clear)
+                        Spacer()
                             .frame(maxWidth: .infinity)
                     }
                 }
