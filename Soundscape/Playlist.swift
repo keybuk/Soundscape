@@ -1,5 +1,5 @@
 //
-//  Element.swift
+//  Playlist.swift
 //  Soundscape
 //
 //  Created by Scott James Remnant on 10/15/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Element: Identifiable, Hashable {
+struct Playlist: Identifiable, Hashable {
     var id: String
     var title: String
     var kind: Kind
@@ -19,14 +19,14 @@ struct Element: Identifiable, Hashable {
     var startDelay: ClosedRange<Double>
     var sampleGap: ClosedRange<Double>
 
-    var playlist: [PlaylistEntry]
+    var entries: [PlaylistEntry]
 
     enum Kind: Int16, Comparable {
         case music
         case effect
         case oneshot
 
-        static func < (lhs: Element.Kind, rhs: Element.Kind) -> Bool {
+        static func < (lhs: Playlist.Kind, rhs: Playlist.Kind) -> Bool {
             lhs.rawValue < rhs.rawValue
         }
     }
@@ -53,55 +53,55 @@ struct Element: Identifiable, Hashable {
         startDelay = managedObject.minStartDelay...managedObject.maxStartDelay
         sampleGap = managedObject.minSampleGap...managedObject.maxSampleGap
 
-        playlist = []
+        entries = []
         if let playlistEntryObjects = managedObject.playlistEntries {
             for case let playlistEntryObject as PlaylistEntryManagedObject in playlistEntryObjects {
                 let sample = Sample(managedObject: playlistEntryObject.sample!)
                 let playlistEntry = PlaylistEntry(sample: sample, volume: playlistEntryObject.minVolume...playlistEntryObject.maxVolume)
-                playlist.append(playlistEntry)
+                entries.append(playlistEntry)
             }
         }
     }
 
     struct PlaylistIterator: Sequence, IteratorProtocol {
-        private let element: Element
-        private var playlist: [PlaylistEntry]
+        private let playlist: Playlist
+        private var entries: [PlaylistEntry]
 
-        init(element: Element) {
-            self.element = element
-            self.playlist = []
+        init(playlist: Playlist) {
+            self.playlist = playlist
+            self.entries = []
 
-//            fillPlaylist()
+            fillPlaylist()
         }
 
         mutating func fillPlaylist() {
-            switch element.order {
+            switch playlist.order {
             case .ordered:
-                playlist = element.playlist
+                entries = playlist.entries
             case .shuffled:
-                playlist = element.playlist.shuffled()
+                entries = playlist.entries.shuffled()
             case .random:
-                playlist = [element.playlist.randomElement()].compactMap { $0 }
+                entries = [playlist.entries.randomElement()].compactMap { $0 }
             }
         }
 
         mutating func next() -> PlaylistEntry? {
-            if playlist.isEmpty {
+            if entries.isEmpty {
                 // Oneshot playlists always repeat since they only ever play one at a time,
-                guard element.isRepeating || element.kind == .oneshot else { return nil }
+                guard playlist.isRepeating || playlist.kind == .oneshot else { return nil }
                 fillPlaylist()
             }
 
-            guard !playlist.isEmpty else { return nil }
-            return playlist.removeFirst()
+            guard !entries.isEmpty else { return nil }
+            return entries.removeFirst()
         }
     }
 
     func makePlaylistIterator() -> PlaylistIterator {
-        return PlaylistIterator(element: self)
+        return PlaylistIterator(playlist: self)
     }
 
-    static func == (lhs: Element, rhs: Element) -> Bool {
+    static func == (lhs: Playlist, rhs: Playlist) -> Bool {
         lhs.id == rhs.id
     }
 

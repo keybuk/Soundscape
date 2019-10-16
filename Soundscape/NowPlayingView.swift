@@ -23,28 +23,28 @@ struct NowPlayingView: View {
 //                Section(header: Text("\(soundset.title!)")) {
 //                    ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneshot })) { element in
 
-            ForEach(stage.elements.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneshot })) { element in
+            ForEach(stage.playlists.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneshot })) { playlist in
 
-                        if element.kind == .music {
+                        if playlist.kind == .music {
                             HStack {
-                                ElementRow(element: element)
+                                ElementRow(playlist: playlist)
 
-                                if self.stage.lockedElement == element {
+                                if self.stage.lockedPlaylist == playlist {
                                     Image(systemName: "lock")
                                         .padding()
                                         .onTapGesture {
-                                            self.stage.lockedElement = nil
+                                            self.stage.lockedPlaylist = nil
                                         }
                                 } else {
                                     Image(systemName: "lock.open")
                                         .padding()
                                         .onTapGesture {
-                                            self.stage.lockedElement = element
+                                            self.stage.lockedPlaylist = playlist
                                         }
                                 }
                             }
                         } else {
-                            ElementRow(element: element)
+                            ElementRow(playlist: playlist)
                         }
                     }
 //                }

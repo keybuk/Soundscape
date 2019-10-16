@@ -12,10 +12,10 @@ struct Mood: Identifiable, Hashable {
     var id: URL
     var title: String
 
-    var elements: [ElementParameter]
+    var playlists: [Parameters]
 
-    struct ElementParameter {
-        var element: Element
+    struct Parameters {
+        var playlist: Playlist
         var isPlaying: Bool
         var volume: Float
     }
@@ -24,16 +24,16 @@ struct Mood: Identifiable, Hashable {
         id = managedObject.objectID.uriRepresentation()
         title = managedObject.title!
 
-        var elements: [ElementParameter] = []
+        var playlists: [Parameters] = []
         if let elementParameters = managedObject.elementParameters {
             for case let elementParameterObject as ElementParameterManagedObject in elementParameters {
-                guard let element = soundset.allElements.first(where: { $0.id == elementParameterObject.element!.slug! }) else { continue }
+                guard let playlist = soundset.allPlaylists.first(where: { $0.id == elementParameterObject.element!.slug! }) else { continue }
 
-                let elementParameter = ElementParameter(element: element, isPlaying: elementParameterObject.isPlaying, volume: elementParameterObject.volume)
-                elements.append(elementParameter)
+                let parameters = Parameters(playlist: playlist, isPlaying: elementParameterObject.isPlaying, volume: elementParameterObject.volume)
+                playlists.append(parameters)
             }
         }
-        self.elements = elements
+        self.playlists = playlists
     }
 
     static func == (lhs: Mood, rhs: Mood) -> Bool {

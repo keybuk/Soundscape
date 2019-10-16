@@ -49,14 +49,14 @@ struct PreviewContent {
 
         // Tavern Music
         var element = ElementManagedObject(context: managedObjectContext)
-        element.kindRawValue = Element.Kind.music.rawValue
+        element.kindRawValue = Playlist.Kind.music.rawValue
         element.slug = "tavern-music"
         element.title = "Tavern Music"
         element.minStartDelay = 3
         element.maxStartDelay = 6
         element.minSampleGap = 3
         element.maxSampleGap = 6
-        element.orderRawValue = Element.Order.shuffled.rawValue
+        element.orderRawValue = Playlist.Order.shuffled.rawValue
         soundset.addToElements(element)
 
         var elementParameter = ElementParameterManagedObject(context: managedObjectContext)
@@ -118,14 +118,14 @@ struct PreviewContent {
 
         // Tavern Brawl Music
         element = ElementManagedObject(context: managedObjectContext)
-        element.kindRawValue = Element.Kind.music.rawValue
+        element.kindRawValue = Playlist.Kind.music.rawValue
         element.slug = "tavern-brawl-music"
         element.title = "Tavern Brawl Music"
         element.minStartDelay = 1
         element.maxStartDelay = 1
         element.minSampleGap = 5
         element.maxSampleGap = 10
-        element.orderRawValue = Element.Order.shuffled.rawValue
+        element.orderRawValue = Playlist.Order.shuffled.rawValue
         soundset.addToElements(element)
 
         elementParameter = ElementParameterManagedObject(context: managedObjectContext)
@@ -186,14 +186,14 @@ struct PreviewContent {
 
         // Barghest Roar
         element = ElementManagedObject(context: managedObjectContext)
-        element.kindRawValue = Element.Kind.effect.rawValue
+        element.kindRawValue = Playlist.Kind.effect.rawValue
         element.slug = "barghest-roar"
         element.title = "Barghest Roar"
         element.minStartDelay = 3
         element.maxStartDelay = 3
         element.minSampleGap = 3
         element.maxSampleGap = 6
-        element.orderRawValue = Element.Order.shuffled.rawValue
+        element.orderRawValue = Playlist.Order.shuffled.rawValue
         soundset.addToElements(element)
 
         elementParameter = ElementParameterManagedObject(context: managedObjectContext)
@@ -281,7 +281,7 @@ struct PreviewContent {
 
         // Weapon Impacts
         element = ElementManagedObject(context: managedObjectContext)
-        element.kindRawValue = Element.Kind.effect.rawValue
+        element.kindRawValue = Playlist.Kind.effect.rawValue
         element.slug = "weapon-impacts"
         element.title = "Weapon Impacts"
         element.minStartDelay = 2.5
@@ -289,7 +289,7 @@ struct PreviewContent {
         element.minSampleGap = -1
         element.maxSampleGap = 2
         element.initialVolume = 0.5
-        element.orderRawValue = Element.Order.shuffled.rawValue
+        element.orderRawValue = Playlist.Order.shuffled.rawValue
         soundset.addToElements(element)
 
         elementParameter = ElementParameterManagedObject(context: managedObjectContext)
@@ -404,10 +404,10 @@ struct PreviewContent {
 
         // Waterdhavians
         element = ElementManagedObject(context: managedObjectContext)
-        element.kindRawValue = Element.Kind.oneshot.rawValue
+        element.kindRawValue = Playlist.Kind.oneshot.rawValue
         element.slug = "waterdhavians"
         element.title = "Waterdhavians"
-        element.orderRawValue = Element.Order.random.rawValue
+        element.orderRawValue = Playlist.Order.random.rawValue
         element.isRepeating = false
         soundset.addToElements(element)
 

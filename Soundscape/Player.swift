@@ -11,7 +11,7 @@ import AVFoundation
 import Combine
 
 final class Player: ObservableObject {
-    var element: Element
+    var playlist: Playlist
     var audio: AudioManager
     var mixer: AVAudioMixerNode?
     private var dummyPlayer: AVAudioPlayerNode?
@@ -43,14 +43,14 @@ final class Player: ObservableObject {
 
     var playing: [Playing] = []
 
-    private var playlistIterator: Element.PlaylistIterator?
+    private var playlistIterator: Playlist.PlaylistIterator?
 
     private var resumeAction: (() -> Void)?
 
-    init(element: Element, audio: AudioManager) {
-        self.element = element
+    init(playlist: Playlist, audio: AudioManager) {
+        self.playlist = playlist
         self.audio = audio
-        _setVolume = element.initialVolume
+        _setVolume = playlist.initialVolume
     }
 
     func createMixerAndAttach() {
@@ -136,10 +136,10 @@ final class Player: ObservableObject {
         startEngine()
 
         if playlistIterator == nil {
-            playlistIterator = element.makePlaylistIterator()
+            playlistIterator = playlist.makePlaylistIterator()
         }
 
-        let delay = withStartDelay ? .random(in: element.startDelay) : 0
+        let delay = withStartDelay ? .random(in: playlist.startDelay) : 0
         wantFile(in: delay, isFirst: true)
     }
 
@@ -177,7 +177,7 @@ final class Player: ObservableObject {
         let startTime = AVAudioTime(sampleTime: lastRenderSampleTime + delaySamples, atRate: sampleRate)
 
         // Calculate the delay for the next sample.
-        let delayBeforeNext: Double = .random(in: element.sampleGap)
+        let delayBeforeNext: Double = .random(in: playlist.sampleGap)
 
         player.scheduleFile(file, startHandler: {
             DispatchQueue.main.async {
@@ -188,7 +188,7 @@ final class Player: ObservableObject {
                 if delayBeforeNext < 0 {
                     let adjustedDelay = delayBeforeNext + Double(file.length) / file.processingFormat.sampleRate
                     self.wantFile(in: adjustedDelay)
-                } else if self.element.isOverlapping {
+                } else if self.playlist.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
             }
@@ -198,7 +198,7 @@ final class Player: ObservableObject {
                 self.playing = self.playing.filter({ $0.player != player })
 
                 // If the next sample doesn't overlap, schedule it.
-                if delayBeforeNext >= 0 && !self.element.isOverlapping {
+                if delayBeforeNext >= 0 && !self.playlist.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
             }
@@ -211,8 +211,8 @@ final class Player: ObservableObject {
     }
 
     func wantFile(in delay: Double, isFirst: Bool = false) {
-        if element.kind == .oneshot && !isFirst {
-            // Don't queue additional files for oneshot elements, but keep the iterator for next time.
+        if playlist.kind == .oneshot && !isFirst {
+            // Don't queue additional files for oneshots, but keep the iterator for next time.
             progressUpdater.isPaused = true
             updateStatus()
         } else if let playlistEntry = playlistIterator?.next() {

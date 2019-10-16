@@ -23,18 +23,18 @@ struct SoundsetView: View {
                         .padding([.leading, .trailing])
                 }
 
-                if !soundset.musicElements.isEmpty {
-                    ElementsList(elements: soundset.musicElements)
+                if !soundset.musicPlaylists.isEmpty {
+                    PlaylistsView(playlists: soundset.musicPlaylists)
                         .padding([.leading, .trailing])
                 }
 
-                if !soundset.effectElements.isEmpty {
-                    ElementsList(elements: soundset.effectElements)
+                if !soundset.effectPlaylists.isEmpty {
+                    PlaylistsView(playlists: soundset.effectPlaylists)
                         .padding([.leading, .trailing])
                 }
 
-                if !soundset.oneshotElements.isEmpty {
-                    ElementsList(elements: soundset.oneshotElements)
+                if !soundset.oneshotPlaylists.isEmpty {
+                    PlaylistsView(playlists: soundset.oneshotPlaylists)
                         .padding([.leading, .trailing])
                 }
             }

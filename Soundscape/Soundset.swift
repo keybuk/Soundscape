@@ -79,54 +79,54 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
         }
     }
 
-    private var _allElements: [Element]?
-    var allElements: [Element] {
-        if let allElements = _allElements { return allElements }
+    private var _allPlaylists: [Playlist]?
+    var allPlaylists: [Playlist] {
+        if let allPlaylists = _allPlaylists { return allPlaylists }
 
-        updateElements()
-        return _allElements!
+        updatePlaylists()
+        return _allPlaylists!
     }
 
-    private var _musicElements: [Element]?
-    var musicElements: [Element] {
-        if let musicElements = _musicElements { return musicElements }
+    private var _musicPlaylists: [Playlist]?
+    var musicPlaylists: [Playlist] {
+        if let musicPlaylists = _musicPlaylists { return musicPlaylists }
 
-        updateElements()
-        return _musicElements!
+        updatePlaylists()
+        return _musicPlaylists!
     }
 
-    private var _effectElements: [Element]?
-    var effectElements: [Element] {
-        if let effectElements = _effectElements { return effectElements }
+    private var _effectPlaylists: [Playlist]?
+    var effectPlaylists: [Playlist] {
+        if let effectPlaylists = _effectPlaylists { return effectPlaylists }
 
-        updateElements()
-        return _effectElements!
+        updatePlaylists()
+        return _effectPlaylists!
     }
 
-    private var _oneshotElements: [Element]?
-    var oneshotElements: [Element] {
-        if let oneshotElements = _oneshotElements { return oneshotElements }
+    private var _oneshotPlaylists: [Playlist]?
+    var oneshotPlaylists: [Playlist] {
+        if let oneshotPlaylists = _oneshotPlaylists { return oneshotPlaylists }
 
-        updateElements()
-        return _oneshotElements!
+        updatePlaylists()
+        return _oneshotPlaylists!
     }
 
-    private func updateElements() {
-        _allElements = []
-        _musicElements = []
-        _effectElements = []
-        _oneshotElements = []
+    private func updatePlaylists() {
+        _allPlaylists = []
+        _musicPlaylists = []
+        _effectPlaylists = []
+        _oneshotPlaylists = []
 
         guard let elementObjects = managedObject.elements else { return }
 
         for case let elementObject as ElementManagedObject in elementObjects {
-            let element = Element(managedObject: elementObject)
-            _allElements!.append(element)
+            let playlist = Playlist(managedObject: elementObject)
+            _allPlaylists!.append(playlist)
 
-            switch element.kind {
-            case .music: _musicElements!.append(element)
-            case .effect: _effectElements!.append(element)
-            case .oneshot: _oneshotElements!.append(element)
+            switch playlist.kind {
+            case .music: _musicPlaylists!.append(playlist)
+            case .effect: _effectPlaylists!.append(playlist)
+            case .oneshot: _oneshotPlaylists!.append(playlist)
             }
         }
     }

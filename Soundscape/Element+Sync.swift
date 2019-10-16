@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension ElementManagedObject {
-    static func createFrom(_ clientElement: SyrinscapeChapterClient.Element, kind: Element.Kind, soundset: SoundsetManagedObject, context managedObjectContext: NSManagedObjectContext) -> ElementManagedObject? {
+    static func createFrom(_ clientElement: SyrinscapeChapterClient.Element, kind: Playlist.Kind, soundset: SoundsetManagedObject, context managedObjectContext: NSManagedObjectContext) -> ElementManagedObject? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
@@ -65,10 +65,10 @@ extension ElementManagedObject {
         element.isOverlapping = clientElement.allowPlaylistOverlap
 
         switch clientElement.randomisePlaylist {
-        case "shuffle": element.orderRawValue = Element.Order.shuffled.rawValue
-        case "inorder": element.orderRawValue = Element.Order.ordered.rawValue
-        case "random": element.orderRawValue = Element.Order.random.rawValue
-        default: element.orderRawValue = Element.Order.ordered.rawValue
+        case "shuffle": element.orderRawValue = Playlist.Order.shuffled.rawValue
+        case "inorder": element.orderRawValue = Playlist.Order.ordered.rawValue
+        case "random": element.orderRawValue = Playlist.Order.random.rawValue
+        default: element.orderRawValue = Playlist.Order.ordered.rawValue
         }
 
         let newEntries: [PlaylistEntryManagedObject] = clientElement.playlist.compactMap {

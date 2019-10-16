@@ -66,10 +66,10 @@ final class SyrinscapeSync {
                         return
                     }
 
-                    element.kindRawValue = Element.Kind.music.rawValue
+                    element.kindRawValue = Playlist.Kind.music.rawValue
                     element.slug = elementSlug
                     element.title = elementTitle
-                    element.orderRawValue = Element.Order.shuffled.rawValue
+                    element.orderRawValue = Playlist.Order.shuffled.rawValue
                     element.isRepeating = true
                     element.initialVolume = 1 / 3
                     element.minSampleGap = Double(sampleGap)
