@@ -15,6 +15,7 @@ struct SoundsetRow: View {
         VStack {
             SoundsetImageView(soundset: soundset)
                 .frame(height: 88)
+                .cornerRadius(8)
         }
     }
 }

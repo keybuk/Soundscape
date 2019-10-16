@@ -26,7 +26,6 @@ struct SoundsetView: View {
             VStack(spacing: 24) {
                 SoundsetImageView(soundset: soundset)
                     .frame(height: 240)
-                    .padding([.leading, .trailing])
 
                 if !moods.isEmpty {
                     MoodsList(moods: moods)

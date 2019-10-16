@@ -12,49 +12,35 @@ struct SoundsetImageView: View {
     @ObservedObject var soundset: Soundset
 
     var body: some View {
-        Rectangle()
-            .fill(Color.clear)
-            .background(SoundsetImageViewBackground(soundset: soundset))
-            .overlay(SoundsetImageViewOverlay(soundset: soundset), alignment: .bottomLeading)
-            .cornerRadius(8)
-    }
-}
-
-struct SoundsetImageViewBackground: View {
-    @ObservedObject var soundset: Soundset
-
-    var body: some View {
-        soundset.image
-            .renderingMode(.original)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-    }
-}
-
-struct SoundsetImageViewOverlay: View {
-    @ObservedObject var soundset: Soundset
-
-    var body: some View {
         Text(soundset.title!)
             .font(.headline)
             .foregroundColor(Color.white)
             .shadow(color: Color.black, radius: 2)
             .padding(8)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomLeading)
+            .background(
+                soundset.image
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill))
+            .clipped()
     }
 }
 
 #if DEBUG
 struct SoundsetImageView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        VStack(spacing: 8) {
             SoundsetImageView(soundset: previewContent.soundsets[0])
                 .frame(maxHeight: 88)
+                .cornerRadius(8)
 
             SoundsetImageView(soundset: previewContent.soundsets[0])
                 .frame(maxHeight: 240)
 
             SoundsetImageView(soundset: previewContent.soundsets[0])
                 .aspectRatio(1, contentMode: .fit)
+                .cornerRadius(8)
         }
         .padding()
     }
