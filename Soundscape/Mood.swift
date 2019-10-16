@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class Mood: Identifiable, Hashable, ObservableObject {
-    @Published var id: URL
-    @Published var title: String
+struct Mood: Identifiable, Hashable {
+    var id: URL
+    var title: String
 
-    @Published var elements: [ElementParameter]
+    var elements: [ElementParameter]
 
     struct ElementParameter {
         var element: Element

@@ -8,18 +8,18 @@
 
 import Foundation
 
-final class Element: Identifiable, Hashable, ObservableObject {
-    @Published var id: String
-    @Published var title: String
-    @Published var kind: Kind
-    @Published var order: Order
-    @Published var isRepeating: Bool
-    @Published var isOverlapping: Bool
-    @Published var initialVolume: Float
-    @Published var startDelay: ClosedRange<Double>
-    @Published var sampleGap: ClosedRange<Double>
+struct Element: Identifiable, Hashable {
+    var id: String
+    var title: String
+    var kind: Kind
+    var order: Order
+    var isRepeating: Bool
+    var isOverlapping: Bool
+    var initialVolume: Float
+    var startDelay: ClosedRange<Double>
+    var sampleGap: ClosedRange<Double>
 
-    @Published var playlist: [PlaylistEntry]
+    var playlist: [PlaylistEntry]
 
     enum Kind: Int16 {
         case music

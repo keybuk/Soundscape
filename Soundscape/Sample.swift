@@ -8,10 +8,10 @@
 
 import Foundation
 
-final class Sample: Identifiable, Hashable, ObservableObject {
-    @Published var id: String
-    @Published var title: String
-    @Published var url: URL
+struct Sample: Identifiable, Hashable {
+    var id: String
+    var title: String
+    var url: URL
 
     init(managedObject: SampleManagedObject) {
         id = managedObject.uuid!

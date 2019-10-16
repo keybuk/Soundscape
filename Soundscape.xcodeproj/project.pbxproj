@@ -179,7 +179,7 @@
 		D2AC67022321809900548388 /* Soundscape */ = {
 			isa = PBXGroup;
 			children = (
-				D2B255F6232983890065A48B /* Core Data Model */,
+				D2B255F6232983890065A48B /* Data Model */,
 				D241A1BF2321D6860009CFF3 /* Syrinscape */,
 				D2AC67202321944100548388 /* Audio */,
 				D2AC673D2321A49A00548388 /* UI */,
@@ -250,7 +250,7 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		D2B255F6232983890065A48B /* Core Data Model */ = {
+		D2B255F6232983890065A48B /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
@@ -263,7 +263,7 @@
 				D28442F42356EFC0008BBD5E /* Mood.swift */,
 				D252711B2336A6FC0091A823 /* SearchController.swift */,
 			);
-			name = "Core Data Model";
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
