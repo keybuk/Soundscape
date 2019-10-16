@@ -9,21 +9,21 @@
 import Foundation
 import CoreData
 
-extension Mood {
-    static func createFrom(_ clientMood: SyrinscapeChapterClient.Mood, soundset: Soundset, context managedObjectContext: NSManagedObjectContext) -> Mood? {
+extension MoodManagedObject {
+    static func createFrom(_ clientMood: SyrinscapeChapterClient.Mood, soundset: SoundsetManagedObject, context managedObjectContext: NSManagedObjectContext) -> MoodManagedObject? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
         guard let title = clientMood.title
             else { return nil }
 
-        let fetchRequest: NSFetchRequest<Mood> = Mood.fetchRequest()
+        let fetchRequest: NSFetchRequest<MoodManagedObject> = MoodManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "soundset == %@ AND title == %@", soundset, title)
 
-        let mood: Mood
+        let mood: MoodManagedObject
         do {
             let results = try fetchRequest.execute()
-            mood = results.first ?? Mood(context: managedObjectContext)
+            mood = results.first ?? MoodManagedObject(context: managedObjectContext)
         } catch let error {
             print("Failed to fetch mood for \(title): \(error.localizedDescription)")
             return nil
@@ -31,8 +31,8 @@ extension Mood {
 
         mood.title = title
 
-        let newElementParameters: [ElementParameter] = clientMood.elementParameters.compactMap {
-            ElementParameter.createFrom($0, mood: mood, context: managedObjectContext)
+        let newElementParameters: [ElementParameterManagedObject] = clientMood.elementParameters.compactMap {
+            ElementParameterManagedObject.createFrom($0, mood: mood, context: managedObjectContext)
         }
         mood.elementParameters = NSSet(array: newElementParameters)
 

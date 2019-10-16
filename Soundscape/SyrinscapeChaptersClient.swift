@@ -53,7 +53,7 @@ final class SyrinscapeChaptersClient: NSObject, XMLParserDelegate {
     private var chapterOptions: ChapterOptions?
     private var campaign: Campaign?
 
-    func download(category: SoundsetCategory, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+    func download(category: Soundset.Category, completionHandler: @escaping (Result<Void, Error>) -> Void) {
         let url = URL(string:"https://www.syrinscape.com/account/chapters/\(category.urlComponent)/1.2.1/")!
         download(fromURL: url, completionHandler: completionHandler)
     }

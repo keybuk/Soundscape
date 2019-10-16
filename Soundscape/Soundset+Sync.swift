@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-extension Soundset {
+extension SoundsetManagedObject {
     static let currentSchemaVersion: Int16 = 1
 
-    static func createFrom(_ chapterClient: SyrinscapeChaptersClient.ChapterOptions, category: SoundsetCategory, context managedObjectContext: NSManagedObjectContext) {
+    static func createFrom(_ chapterClient: SyrinscapeChaptersClient.ChapterOptions, category: Soundset.Category, context managedObjectContext: NSManagedObjectContext) {
         guard chapterClient.isBundled || chapterClient.isPurchased,
             let slug = chapterClient.slug,
             let title = chapterClient.title,
@@ -35,20 +35,20 @@ extension Soundset {
             return
         }
 
-        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
+        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "slug == %@", slug)
 
         managedObjectContext.perform {
-            let soundset: Soundset
+            let soundset: SoundsetManagedObject
             do {
                 let results = try fetchRequest.execute()
-                soundset = results.first ?? Soundset(context: managedObjectContext)
+                soundset = results.first ?? SoundsetManagedObject(context: managedObjectContext)
             } catch let error {
                 print("Failed to fetch soundset \(slug): \(error.localizedDescription)")
                 return
             }
 
-            soundset.category = category
+            soundset.categoryRawValue = category.rawValue
             soundset.slug = slug
             soundset.title = title
             soundset.url = manifestURL
@@ -74,7 +74,7 @@ extension Soundset {
         }
     }
 
-    func downloadImage(url: URL, property: ReferenceWritableKeyPath<Soundset, Data?>) {
+    func downloadImage(url: URL, property: ReferenceWritableKeyPath<SoundsetManagedObject, Data?>) {
         downloadImage(url: url) { result in
             switch result {
             case let .success(imageData):
@@ -139,7 +139,7 @@ extension Soundset {
                         switch result {
                         case .success(_):
                             managedObjectContext.perform {
-                                let soundset = managedObjectContext.object(with: self.objectID) as! Soundset
+                                let soundset = managedObjectContext.object(with: self.objectID) as! SoundsetManagedObject
                                 print("Updating \(soundset.slug!)")
                                 soundset.updateFrom(chapterClient, manifestClient: manifestClient)
                                 print("Done!")
@@ -169,24 +169,24 @@ extension Soundset {
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
         for sample in chapterClient.samples {
-            Sample.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
+            SampleManagedObject.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
         }
 
-        var newElements: [Element] = []
+        var newElements: [ElementManagedObject] = []
         newElements.append(contentsOf: chapterClient.musicElements.compactMap {
-            Element.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
+            ElementManagedObject.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
         })
         newElements.append(contentsOf: chapterClient.sfxElements.compactMap {
-            Element.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
+            ElementManagedObject.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
         })
         newElements.append(contentsOf: chapterClient.oneshotElements.compactMap {
-            Element.createFrom($0, kind: .oneshot, soundset: self, context: managedObjectContext!)
+            ElementManagedObject.createFrom($0, kind: .oneshot, soundset: self, context: managedObjectContext!)
         })
         elements = NSOrderedSet(array: newElements)
 
-        var newMoods: [Mood] = []
+        var newMoods: [MoodManagedObject] = []
         newMoods.append(contentsOf: chapterClient.moods.compactMap {
-            Mood.createFrom($0, soundset: self, context: managedObjectContext!)
+            MoodManagedObject.createFrom($0, soundset: self, context: managedObjectContext!)
         })
         moods = NSOrderedSet(array: newMoods)
 

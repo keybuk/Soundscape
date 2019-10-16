@@ -35,55 +35,56 @@ final class SyrinscapeSync {
         managedObjectContext.perform {
             for (soundsetTitle, soundsetData) in staticData {
                 let soundsetSlug = "xx-\(soundsetTitle)"
-                let soundsetFetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
+                let soundsetFetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
                 soundsetFetchRequest.predicate = NSPredicate(format: "slug == %@", soundsetSlug)
 
-                let soundset: Soundset
+                let soundset: SoundsetManagedObject
                 do {
                     let results = try soundsetFetchRequest.execute()
-                    soundset = results.first ?? Soundset(context: self.managedObjectContext)
+                    soundset = results.first ?? SoundsetManagedObject(context: self.managedObjectContext)
                 } catch let error {
                     print("Failed to fetch soundset \(soundsetSlug): \(error.localizedDescription)")
                     return
                 }
 
-                soundset.category = .fantasy
+                soundset.categoryRawValue = Soundset.Category.fantasy.rawValue
                 soundset.slug = soundsetSlug
                 soundset.title = soundsetTitle
 
-                var newElements: [Element] = []
+                var newElements: [ElementManagedObject] = []
                 for (elementTitle, sampleGap, sampleList) in soundsetData {
                     let elementSlug = "xx-\(elementTitle)"
-                    let elementFetchRequest: NSFetchRequest<Element> = Element.fetchRequest()
+                    let elementFetchRequest: NSFetchRequest<ElementManagedObject> = ElementManagedObject.fetchRequest()
                     elementFetchRequest.predicate = NSPredicate(format: "soundset == %@ AND slug == %@", soundset, elementSlug)
 
-                    let element: Element
+                    let element: ElementManagedObject
                     do {
                         let results = try elementFetchRequest.execute()
-                        element = results.first ?? Element(context: self.managedObjectContext)
+                        element = results.first ?? ElementManagedObject(context: self.managedObjectContext)
                     } catch let error {
                         print("Failed to fetch element for \(elementSlug): \(error.localizedDescription)")
                         return
                     }
 
-                    element.kind = .music
+                    element.kindRawValue = Element.Kind.music.rawValue
                     element.slug = elementSlug
                     element.title = elementTitle
-                    element.order = .shuffled
+                    element.orderRawValue = Element.Order.shuffled.rawValue
                     element.isRepeating = true
                     element.initialVolume = 1 / 3
-                    element.sampleGap = Double(sampleGap)...Double(sampleGap)
+                    element.minSampleGap = Double(sampleGap)
+                    element.maxSampleGap = Double(sampleGap)
 
-                    var newPlaylistEntries: [PlaylistEntry] = []
+                    var newPlaylistEntries: [PlaylistEntryManagedObject] = []
                     for sampleTitle in sampleList {
                         let sampleUUID = "xx-\(sampleTitle)"
-                        let sampleFetchRequest: NSFetchRequest<Sample> = Sample.fetchRequest()
+                        let sampleFetchRequest: NSFetchRequest<SampleManagedObject> = SampleManagedObject.fetchRequest()
                         sampleFetchRequest.predicate = NSPredicate(format: "uuid == %@", sampleUUID)
 
-                        let sample: Sample
+                        let sample: SampleManagedObject
                         do {
                             let results = try sampleFetchRequest.execute()
-                            sample = results.first ?? Sample(context: self.managedObjectContext)
+                            sample = results.first ?? SampleManagedObject(context: self.managedObjectContext)
                         } catch let error {
                             print("Failed to fetch sample for \(sampleUUID): \(error.localizedDescription)")
                             return
@@ -94,10 +95,10 @@ final class SyrinscapeSync {
                         sample.url = URL(string: "https://netsplit.com/_hidden/\(sampleTitle).ogg")!
 
 
-                        let playlistEntryFetchRequest: NSFetchRequest<PlaylistEntry> = PlaylistEntry.fetchRequest()
+                        let playlistEntryFetchRequest: NSFetchRequest<PlaylistEntryManagedObject> = PlaylistEntryManagedObject.fetchRequest()
                         playlistEntryFetchRequest.predicate = NSPredicate(format: "element == %@ AND sample.uuid == %@", element, sampleUUID)
 
-                        var playlistEntry: PlaylistEntry?
+                        var playlistEntry: PlaylistEntryManagedObject?
                         do {
                             let results = try playlistEntryFetchRequest.execute()
                             playlistEntry = results.first
@@ -107,7 +108,7 @@ final class SyrinscapeSync {
                         }
 
                         if playlistEntry == nil {
-                            playlistEntry = PlaylistEntry(context: self.managedObjectContext)
+                            playlistEntry = PlaylistEntryManagedObject(context: self.managedObjectContext)
                             playlistEntry!.sample = sample
                         }
 
@@ -131,11 +132,11 @@ final class SyrinscapeSync {
     }
 
     func syncChapters() {
-        let categoryIterator = SoundsetCategory.allCases.makeIterator()
+        let categoryIterator = Soundset.Category.allCases.makeIterator()
         syncNextCategory(iterator: categoryIterator)
     }
 
-    func syncNextCategory(iterator categoryIterator: SoundsetCategory.AllCases.Iterator) {
+    func syncNextCategory(iterator categoryIterator: Soundset.Category.AllCases.Iterator) {
         var categoryIterator = categoryIterator
         guard let category = categoryIterator.next() else {
             syncSoundsets()
@@ -147,7 +148,7 @@ final class SyrinscapeSync {
             switch result {
             case .success(_):
                 for clientChapter in chaptersClient.chapters {
-                    Soundset.createFrom(clientChapter, category: category, context: self.managedObjectContext)
+                    SoundsetManagedObject.createFrom(clientChapter, category: category, context: self.managedObjectContext)
                 }
             case .failure(let error):
                 print("Failed to download \(category): \(error.localizedDescription)")
@@ -158,7 +159,7 @@ final class SyrinscapeSync {
     }
 
     func syncSoundsets() {
-        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
+        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "downloadedDate == nil OR downloadedDate < updatedDate")
 
         managedObjectContext.perform {
@@ -172,7 +173,7 @@ final class SyrinscapeSync {
         }
     }
 
-    func syncNextSoundset(iterator soundsetIterator: Array<Soundset>.Iterator) {
+    func syncNextSoundset(iterator soundsetIterator: Array<SoundsetManagedObject>.Iterator) {
         var soundsetIterator = soundsetIterator
         guard let soundset = soundsetIterator.next() else { return }
 

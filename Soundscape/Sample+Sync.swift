@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-extension Sample {
+extension SampleManagedObject {
     @discardableResult
-    static func createFrom(_ clientSample: SyrinscapeChapterClient.SoundSample, manifestClient: SyrinscapeManifestClient, context managedObjectContext: NSManagedObjectContext) -> Sample? {
+    static func createFrom(_ clientSample: SyrinscapeChapterClient.SoundSample, manifestClient: SyrinscapeManifestClient, context managedObjectContext: NSManagedObjectContext) -> SampleManagedObject? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
@@ -28,13 +28,13 @@ extension Sample {
                 return nil
         }
 
-        let fetchRequest: NSFetchRequest<Sample> = Sample.fetchRequest()
+        let fetchRequest: NSFetchRequest<SampleManagedObject> = SampleManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", uuid)
 
-        let sample: Sample
+        let sample: SampleManagedObject
         do {
             let results = try fetchRequest.execute()
-            sample = results.first ?? Sample(context: managedObjectContext)
+            sample = results.first ?? SampleManagedObject(context: managedObjectContext)
         } catch let error {
             print("Failed to fetch sample for \(uuid): \(error.localizedDescription)")
             return nil

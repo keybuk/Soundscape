@@ -9,18 +9,18 @@
 import Foundation
 import CoreData
 
-extension PlaylistEntry {
-    static func createFrom(_ clientEntry: SyrinscapeChapterClient.PlaylistEntry, element: Element, context managedObjectContext: NSManagedObjectContext) -> PlaylistEntry? {
+extension PlaylistEntryManagedObject {
+    static func createFrom(_ clientEntry: SyrinscapeChapterClient.PlaylistEntry, element: ElementManagedObject, context managedObjectContext: NSManagedObjectContext) -> PlaylistEntryManagedObject? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
         guard let sampleUUID = clientEntry.sampleFile
             else { return nil }
 
-        let fetchRequest: NSFetchRequest<PlaylistEntry> = PlaylistEntry.fetchRequest()
+        let fetchRequest: NSFetchRequest<PlaylistEntryManagedObject> = PlaylistEntryManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "element == %@ AND sample.uuid == %@", element, sampleUUID)
 
-        var playlistEntry: PlaylistEntry?
+        var playlistEntry: PlaylistEntryManagedObject?
         do {
             let results = try fetchRequest.execute()
             playlistEntry = results.first
@@ -30,10 +30,10 @@ extension PlaylistEntry {
         }
 
         if playlistEntry == nil {
-            let sampleFetchRequest: NSFetchRequest<Sample> = Sample.fetchRequest()
+            let sampleFetchRequest: NSFetchRequest<SampleManagedObject> = SampleManagedObject.fetchRequest()
             sampleFetchRequest.predicate = NSPredicate(format: "uuid == %@", sampleUUID)
 
-            let sample: Sample?
+            let sample: SampleManagedObject?
             do {
                 let sampleResults = try sampleFetchRequest.execute()
                 sample = sampleResults.first
@@ -47,12 +47,23 @@ extension PlaylistEntry {
                 return nil
             }
 
-            playlistEntry = PlaylistEntry(context: managedObjectContext)
+            playlistEntry = PlaylistEntryManagedObject(context: managedObjectContext)
             playlistEntry!.sample = sample
         }
 
-        playlistEntry!.minVolume = clientEntry.minGain ?? 1
-        playlistEntry!.maxVolume = clientEntry.maxGain ?? 1
+        if let minVolume = clientEntry.minGain, let maxVolume = clientEntry.maxGain {
+            if minVolume <= maxVolume {
+                playlistEntry!.minVolume = minVolume
+                playlistEntry!.maxVolume = maxVolume
+            } else {
+                // Invert
+                playlistEntry!.minVolume = maxVolume
+                playlistEntry!.maxVolume = minVolume
+            }
+        } else {
+            playlistEntry!.minVolume = 1
+            playlistEntry!.maxVolume = 1
+        }
 
         return playlistEntry
     }

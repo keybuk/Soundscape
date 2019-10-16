@@ -9,18 +9,18 @@
 import Foundation
 import CoreData
 
-extension ElementParameter {
-    static func createFrom(_ clientElementParameter: SyrinscapeChapterClient.ElementParameter, mood: Mood, context managedObjectContext: NSManagedObjectContext) -> ElementParameter? {
+extension ElementParameterManagedObject {
+    static func createFrom(_ clientElementParameter: SyrinscapeChapterClient.ElementParameter, mood: MoodManagedObject, context managedObjectContext: NSManagedObjectContext) -> ElementParameterManagedObject? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
         guard let elementSlug = clientElementParameter.elementSlug
             else { return nil }
 
-        let fetchRequest: NSFetchRequest<ElementParameter> = ElementParameter.fetchRequest()
+        let fetchRequest: NSFetchRequest<ElementParameterManagedObject> = ElementParameterManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "mood == %@ AND element.slug == %@", mood, elementSlug)
 
-        var elementParameter: ElementParameter?
+        var elementParameter: ElementParameterManagedObject?
         do {
             let results = try fetchRequest.execute()
             elementParameter = results.first
@@ -30,10 +30,10 @@ extension ElementParameter {
         }
 
         if elementParameter == nil {
-            let elementFetchRequest: NSFetchRequest<Element> = Element.fetchRequest()
+            let elementFetchRequest: NSFetchRequest<ElementManagedObject> = ElementManagedObject.fetchRequest()
             elementFetchRequest.predicate = NSPredicate(format: "slug == %@", elementSlug)
 
-            let element: Element?
+            let element: ElementManagedObject?
             do {
                 let elementResults = try elementFetchRequest.execute()
                 element = elementResults.first
@@ -47,7 +47,7 @@ extension ElementParameter {
                 return nil
             }
 
-            elementParameter = ElementParameter(context: managedObjectContext)
+            elementParameter = ElementParameterManagedObject(context: managedObjectContext)
             elementParameter!.element = element
         }
 
