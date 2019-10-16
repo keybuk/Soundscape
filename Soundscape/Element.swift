@@ -21,10 +21,14 @@ struct Element: Identifiable, Hashable {
 
     var playlist: [PlaylistEntry]
 
-    enum Kind: Int16 {
+    enum Kind: Int16, Comparable {
         case music
         case effect
         case oneshot
+
+        static func < (lhs: Element.Kind, rhs: Element.Kind) -> Bool {
+            lhs.rawValue < rhs.rawValue
+        }
     }
 
     enum Order: Int16 {

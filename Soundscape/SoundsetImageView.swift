@@ -12,7 +12,7 @@ struct SoundsetImageView: View {
     @ObservedObject var soundset: Soundset
 
     var body: some View {
-        Text(soundset.title!)
+        Text(soundset.title)
             .font(.headline)
             .foregroundColor(Color.white)
             .shadow(color: Color.black, radius: 2)

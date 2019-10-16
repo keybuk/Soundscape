@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct ElementRow: View {
-    @ObservedObject var element: Element
     @EnvironmentObject var audio: AudioManager
     @EnvironmentObject var stage: Stage
+
+    var element: Element
 
     var body: some View {
         PlayerView(player: self.stage.playerForElement(element, audio: self.audio))
@@ -21,7 +22,7 @@ struct ElementRow: View {
 #if DEBUG
 struct ElementRow_Previews: PreviewProvider {
     static var previews: some View {
-        List(previewContent.soundsets[0].elements!.array as! [Element]) { element in
+        List(previewContent.soundsets[0].allElements) { element in
             ElementRow(element: element)
         }
         .environmentObject(AudioManager())

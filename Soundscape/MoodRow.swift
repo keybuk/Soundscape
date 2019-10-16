@@ -27,7 +27,7 @@ struct MoodRow: View {
 #if DEBUG
 struct MoodRow_Previews: PreviewProvider {
     static var previews: some View {
-        List(previewContent.soundsets[0].moods!.array as! [Mood]) { mood in
+        List(previewContent.soundsets[0].moods) { mood in
             MoodRow(mood: mood)
         }
         .environmentObject(AudioManager())

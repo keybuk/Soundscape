@@ -22,7 +22,7 @@ struct PlayerView: View {
                 PlayerStatusButton(player: player, action: self.togglePlaying)
 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(player.element.title!)")
+                    Text("\(player.element.title)")
                     Slider(value: $player.volume, in: 0...1)
                         .onTapGesture {}
                 }
@@ -84,7 +84,7 @@ struct PlayerStatusButton: View {
 #if DEBUG
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(player: Player(element: previewContent.soundsets[0].elements![0] as! Element, audio: AudioManager()) )
+        PlayerView(player: Player(element: previewContent.soundsets[0].allElements[0], audio: AudioManager()) )
 
     }
 }

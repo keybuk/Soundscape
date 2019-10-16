@@ -11,17 +11,19 @@ import SwiftUI
 struct NowPlayingView: View {
     @EnvironmentObject var stage: Stage
 
-    var groupedElements: [Soundset: [Element]] {
-        .init(grouping: stage.elements) {
-            $0.soundset!
-        }
-    }
+//    var groupedElements: [Soundset: [Element]] {
+//        .init(grouping: stage.elements) {
+//            $0.soundset!
+//        }
+//    }
 
     var body: some View {
         List {
-            ForEach(groupedElements.keys.sorted { $0.title! < $1.title! }) { soundset in
-                Section(header: Text("\(soundset.title!)")) {
-                    ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneshot })) { element in
+//            ForEach(groupedElements.keys.sorted { $0.title! < $1.title! }) { soundset in
+//                Section(header: Text("\(soundset.title!)")) {
+//                    ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneshot })) { element in
+
+            ForEach(stage.elements.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneshot })) { element in
 
                         if element.kind == .music {
                             HStack {
@@ -45,8 +47,8 @@ struct NowPlayingView: View {
                             ElementRow(element: element)
                         }
                     }
-                }
-            }
+//                }
+//            }
 
             AirPlayRoutePicker()
         }

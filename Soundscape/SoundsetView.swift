@@ -10,16 +10,7 @@ import SwiftUI
 import CoreData
 
 struct SoundsetView: View {
-    @EnvironmentObject var audio: AudioManager
-    @EnvironmentObject var stage: Stage
-
     @ObservedObject var soundset: Soundset
-
-    var moods: [Mood] { soundset.moods!.array as! [Mood] }
-    var elements: [Element] { soundset.elements!.array as! [Element] }
-    var musicElements: [Element] { elements.filter { $0.kind == .music } }
-    var effectElements: [Element] { elements.filter { $0.kind == .effect } }
-    var oneshotElements: [Element] { elements.filter { $0.kind == .oneshot } }
 
     var body: some View {
         ScrollView {
@@ -27,23 +18,23 @@ struct SoundsetView: View {
                 SoundsetImageView(soundset: soundset)
                     .frame(height: 240)
 
-                if !moods.isEmpty {
-                    MoodsList(moods: moods)
+                if !soundset.moods.isEmpty {
+                    MoodsList(moods: soundset.moods)
                         .padding([.leading, .trailing])
                 }
 
-                if !musicElements.isEmpty {
-                    ElementsList(elements: musicElements)
+                if !soundset.musicElements.isEmpty {
+                    ElementsList(elements: soundset.musicElements)
                         .padding([.leading, .trailing])
                 }
 
-                if !effectElements.isEmpty {
-                    ElementsList(elements: effectElements)
+                if !soundset.effectElements.isEmpty {
+                    ElementsList(elements: soundset.effectElements)
                         .padding([.leading, .trailing])
                 }
 
-                if !oneshotElements.isEmpty {
-                    ElementsList(elements: oneshotElements)
+                if !soundset.oneshotElements.isEmpty {
+                    ElementsList(elements: soundset.oneshotElements)
                         .padding([.leading, .trailing])
                 }
             }

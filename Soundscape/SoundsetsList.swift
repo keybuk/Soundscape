@@ -7,29 +7,22 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct SoundsetsList: View {
-    var category: SoundsetCategory
-
-    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
-    @State var search: String = ""
-    @State var isSearching: Bool = false
-
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Soundset.title, ascending: true)], predicate: NSPredicate(format: "categoryRawValue == %d", SoundsetCategory.fantasy.rawValue))
-    var soundsets: FetchedResults<Soundset>
+    @ObservedObject var soundsets: SoundsetListController
 
     var body: some View {
         List {
-            NavigationLink(destination: SearchResultsView(search: SearchController(search: search, context: managedObjectContext)), isActive: $isSearching) {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search", text: $search, onCommit: {
-                        self.isSearching = true
-                    })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-            }
+//            NavigationLink(destination: SearchResultsView(search: SearchController(search: search, context: managedObjectContext)), isActive: $isSearching) {
+//                HStack {
+//                    Image(systemName: "magnifyingglass")
+//                    TextField("Search", text: $search, onCommit: {
+//                        self.isSearching = true
+//                    })
+//                .textFieldStyle(RoundedBorderTextFieldStyle())
+//                }
+//            }
+
             ForEach(soundsets) { soundset in
                 NavigationLink(destination: SoundsetView(soundset: soundset)) {
                     SoundsetRow(soundset: soundset)
@@ -44,9 +37,8 @@ struct SoundsetsList: View {
 struct SoundsetsList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SoundsetsList(category: .fantasy)
+            SoundsetsList(soundsets: SoundsetListController(managedObjectContext: previewContent.managedObjectContext))
         }
-        .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
 #endif

@@ -27,7 +27,7 @@ struct ElementsList: View {
 struct ElementsList_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            ElementsList(elements: previewContent.soundsets[0].elements!.array as! [Element])
+            ElementsList(elements: previewContent.soundsets[0].allElements)
         }
         .background(Color(UIColor.systemGroupedBackground))
         .environmentObject(AudioManager())

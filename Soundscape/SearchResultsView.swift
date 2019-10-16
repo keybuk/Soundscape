@@ -30,9 +30,9 @@ struct SearchResultsView: View {
             {
                 ForEach(search.moods) { mood in
                     VStack(alignment: .leading) {
-                        Text(
-                            "\(mood.soundset!.title!)")
-                            .font(.caption)
+//                        Text(
+//                            "\(mood.soundset!.title!)")
+//                            .font(.caption)
                         MoodRow(mood: mood)
                     }
                 }
@@ -44,9 +44,9 @@ struct SearchResultsView: View {
             {
                 ForEach(search.elements) { element in
                     VStack(alignment: .leading) {
-                        Text(
-                            "\(element.soundset!.title!)")
-                            .font(.caption)
+//                        Text(
+//                            "\(element.soundset!.title!)")
+//                            .font(.caption)
                         ElementRow(element: element)
                     }
                 }
