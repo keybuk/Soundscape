@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ProgressArc: Shape {
-    var progress: Double
+    @Binding var progress: Double
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -30,14 +30,14 @@ struct ProgressArc: Shape {
 }
 
 struct ProgressCircle: View {
-    var progress: Double
+    @Binding var progress: Double
 
     var body: some View {
         GeometryReader { g in
             Circle()
                 .stroke(lineWidth: self.lineWidth(size: g.size))
                 .foregroundColor(Color(UIColor.secondarySystemFill))
-            ProgressArc(progress: self.progress)
+            ProgressArc(progress: self.$progress)
                 .stroke(style: self.strokeStyle(size: g.size))
         }
     }
@@ -61,7 +61,7 @@ struct AnimationTest: View {
 
     var body: some View {
         VStack {
-            ProgressCircle(progress: progress)
+            ProgressCircle(progress: $progress)
             Slider(value: $newProgress, in: -1.0...1.0)
             Button(action: {
                 withAnimation(self.newProgress < 0 && self.progress > 0 ? nil : .linear) {
@@ -75,27 +75,35 @@ struct AnimationTest: View {
     }
 }
 
+struct TestCircle: View {
+    @State var progress: Double
+
+    var body: some View {
+        ProgressCircle(progress: $progress)
+    }
+}
+
 struct ProgressCircle_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
-                ProgressCircle(progress: 0.8)
-                ProgressCircle(progress: 0.4)
-                ProgressCircle(progress: -0.4)
+                TestCircle(progress: 0.8)
+                TestCircle(progress: 0.4)
+                TestCircle(progress: -0.4)
             }
             .frame(height: 30)
 
             HStack {
-                ProgressCircle(progress: 0.8)
-                ProgressCircle(progress: 0.4)
-                ProgressCircle(progress: -0.4)
+                TestCircle(progress: 0.8)
+                TestCircle(progress: 0.4)
+                TestCircle(progress: -0.4)
             }
             .frame(height: 44)
 
             HStack {
-                ProgressCircle(progress: 0.8)
-                ProgressCircle(progress: 0.4)
-                ProgressCircle(progress: -0.4)
+                TestCircle(progress: 0.8)
+                TestCircle(progress: 0.4)
+                TestCircle(progress: -0.4)
             }
             .frame(height: 88)
 

@@ -25,15 +25,9 @@ final class Player: ObservableObject {
         }
     }
 
-    enum Status {
-        case stopped
-        case downloading
-        case waiting(Double)
-        case playing(Double)
-    }
-
-    @Published var status: Status = .stopped
-    private var isDownloading: Bool = false
+    @Published var isPlaying: Bool = false
+    @Published var isDownloading: Bool = false
+    @Published var progress: Double = 0
 
     struct Playing {
         var player: AVAudioPlayerNode
@@ -273,17 +267,19 @@ final class Player: ObservableObject {
             let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
         {
             // Current player means we're playing, or have a sample queued.
+            isPlaying = true
             if playerTime.sampleTime < 0 {
-                status = .waiting(Double(-playerTime.sampleTime) / Double(playingMember.delay))
+                progress = -Double(-playerTime.sampleTime) / Double(playingMember.delay)
             } else {
-                status = .playing(Double(playerTime.sampleTime) / Double(playingMember.length))
+                progress = Double(playerTime.sampleTime) / Double(playingMember.length)
             }
         } else if isDownloading {
             // Still downloading the next file.
-            status = .downloading
+            progress = 0
         } else {
             // No iterator means we're stopped.
-            status = .stopped
+            isPlaying = false
+            progress = 0
         }
     }
 }

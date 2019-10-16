@@ -33,10 +33,10 @@ struct PlayerView: View {
     }
 
     func togglePlaying() {
-        if case .stopped = player.status {
-            player.play()
-        } else {
+        if player.isPlaying {
             player.stop()
+        } else {
+            player.play()
         }
     }
 }
@@ -45,37 +45,18 @@ struct PlayerStatusButton: View {
     @ObservedObject var player: Player
     var action: () -> Void
 
-    var isDownloading: Bool {
-        if case .downloading = player.status { return true }
-        return false
-    }
-
-    var isPlaying: Bool {
-        if case .stopped = player.status { return false }
-        return true
-    }
-
-    var progress: Double {
-        switch player.status {
-        case .stopped: return 0
-        case .downloading: return 0
-        case let .waiting(progress): return -progress
-        case let .playing(progress): return progress
-        }
-    }
-
     var body: some View {
         ZStack {
             Button(action: action) {
-                if isDownloading {
+                if player.isDownloading {
                     Image(systemName: "icloud.and.arrow.down")
-                } else if isPlaying {
+                } else if player.isPlaying {
                     Image(systemName: "stop.fill")
                 } else {
                     Image(systemName: "play.fill")
                 }
             }
-            ProgressCircle(progress: progress)
+            ProgressCircle(progress: $player.progress)
         }
         .frame(width: 30, height: 30)
     }
