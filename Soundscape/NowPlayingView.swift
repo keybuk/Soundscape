@@ -63,7 +63,7 @@ struct NowPlayingView_Previews: PreviewProvider {
         NavigationView {
             NowPlayingView()
         }
-        .environmentObject(Stage())
+        .environmentObject(Stage(audio: AudioManager()))
     }
 }
 #endif

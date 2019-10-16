@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-final class AudioManager: ObservableObject {
+final class AudioManager {
 
     /// Notifies observers that the audio configuration has changed.
     ///

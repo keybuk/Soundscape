@@ -64,8 +64,7 @@ struct MoodsList_Previews: PreviewProvider {
             .background(Color(UIColor.systemGroupedBackground))
             .previewDevice("iPad Air (3rd generation)")
         }
-        .environmentObject(AudioManager())
-        .environmentObject(Stage())
+        .environmentObject(Stage(audio: AudioManager()))
     }
 }
 #endif

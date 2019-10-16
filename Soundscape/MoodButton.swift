@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct MoodButton: View {
-    @EnvironmentObject var audio: AudioManager
     @EnvironmentObject var stage: Stage
 
     var mood: Mood
@@ -29,7 +28,7 @@ struct MoodButton: View {
     }
 
     func play() {
-        stage.playMood(mood, audio: audio)
+        stage.playMood(mood)
     }
 }
 
@@ -37,8 +36,7 @@ struct MoodButton: View {
 struct MoodButton_Previews: PreviewProvider {
     static var previews: some View {
         MoodButton(mood: previewContent.soundsets[0].moods[0])
-            .environmentObject(AudioManager())
-            .environmentObject(Stage())
+            .environmentObject(Stage(audio: AudioManager()))
     }
 }
 #endif

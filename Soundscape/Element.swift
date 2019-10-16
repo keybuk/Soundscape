@@ -71,7 +71,7 @@ struct Element: Identifiable, Hashable {
             self.element = element
             self.playlist = []
 
-            fillPlaylist()
+//            fillPlaylist()
         }
 
         mutating func fillPlaylist() {

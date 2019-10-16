@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         audio = AudioManager()
 
         // Shared stage for all UI.
-        stage = Stage()
+        stage = Stage(audio: audio)
 
         // Sync soundsets from Syrinscape.
         let syncContext = persistentContainer.newBackgroundContext()

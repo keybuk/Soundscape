@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let hostView = HostView()
-            .environmentObject(appDelegate.audio)
             .environmentObject(appDelegate.stage)
             .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
             .environmentObject(appDelegate.persistentContainer)

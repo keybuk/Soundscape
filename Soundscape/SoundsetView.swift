@@ -48,8 +48,7 @@ struct SoundsetView: View {
 struct SoundsetView_Previews: PreviewProvider {
     static var previews: some View {
         SoundsetView(soundset: previewContent.soundsets[0])
-            .environmentObject(AudioManager())
-            .environmentObject(Stage())
+            .environmentObject(Stage(audio: AudioManager()))
     }
 }
 #endif

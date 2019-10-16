@@ -15,6 +15,7 @@ struct WeakBox<T> where T: AnyObject {
 final class Stage: ObservableObject {
     private var players: [WeakBox<Player>] = []
 
+    var audio: AudioManager
     @Published var mood: Mood? = nil
 
     var elements: [Element] {
@@ -26,7 +27,11 @@ final class Stage: ObservableObject {
 
     @Published var lockedElement: Element? = nil
 
-    func playerForElement(_ element: Element, audio: AudioManager) -> Player {
+    init(audio: AudioManager) {
+        self.audio = audio
+    }
+
+    func playerForElement(_ element: Element) -> Player {
         players.removeAll(where: { $0.value == nil })
 
         if let player = players.first(where: { $0.value?.element == element }) {
@@ -39,7 +44,7 @@ final class Stage: ObservableObject {
         }
     }
 
-    func playMood(_ mood: Mood, audio: AudioManager) {
+    func playMood(_ mood: Mood) {
         // Stop any player not in the current mood.
         let playingElements = Set(mood.elements.filter { $0.isPlaying }.map { $0.element })
         for player in players.compactMap({ $0.value }) {
@@ -53,7 +58,7 @@ final class Stage: ObservableObject {
         for elementParameter in mood.elements {
             guard elementParameter.isPlaying else { continue }
 
-            let player = playerForElement(elementParameter.element, audio: audio)
+            let player = playerForElement(elementParameter.element)
             player.volume = elementParameter.volume
 
             if case .stopped = player.status,

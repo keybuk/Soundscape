@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ElementsList: View {
-    @EnvironmentObject var audio: AudioManager
     @EnvironmentObject var stage: Stage
 
     var elements: [Element]
@@ -17,7 +16,7 @@ struct ElementsList: View {
     var body: some View {
         VStack(spacing: 8) {
             ForEach(elements) { element in
-                PlayerView(player: self.stage.playerForElement(element, audio: self.audio))
+                PlayerView(player: self.stage.playerForElement(element))
             }
         }
     }
@@ -30,8 +29,7 @@ struct ElementsList_Previews: PreviewProvider {
             ElementsList(elements: previewContent.soundsets[0].allElements)
         }
         .background(Color(UIColor.systemGroupedBackground))
-        .environmentObject(AudioManager())
-        .environmentObject(Stage())
+        .environmentObject(Stage(audio: AudioManager()))
     }
 }
 #endif
