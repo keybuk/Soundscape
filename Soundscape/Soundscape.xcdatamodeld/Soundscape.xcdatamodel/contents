@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Element" representedClassName="Element" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Element" representedClassName="ElementManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="initialVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="isOverlapping" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isRepeating" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -16,30 +16,30 @@
         <relationship name="playlistEntries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PlaylistEntry" inverseName="element" inverseEntity="PlaylistEntry"/>
         <relationship name="soundset" maxCount="1" deletionRule="Nullify" destinationEntity="Soundset" inverseName="elements" inverseEntity="Soundset"/>
     </entity>
-    <entity name="ElementParameter" representedClassName="ElementParameter" syncable="YES" codeGenerationType="class">
+    <entity name="ElementParameter" representedClassName="ElementParameterManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="isPlaying" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="volume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
         <relationship name="element" maxCount="1" deletionRule="Nullify" destinationEntity="Element" inverseName="elementParameters" inverseEntity="Element"/>
         <relationship name="mood" maxCount="1" deletionRule="Nullify" destinationEntity="Mood" inverseName="elementParameters" inverseEntity="Mood"/>
     </entity>
-    <entity name="Mood" representedClassName="Mood" syncable="YES" codeGenerationType="class">
+    <entity name="Mood" representedClassName="MoodManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="elementParameters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ElementParameter" inverseName="mood" inverseEntity="ElementParameter"/>
         <relationship name="soundset" maxCount="1" deletionRule="Nullify" destinationEntity="Soundset" inverseName="moods" inverseEntity="Soundset"/>
     </entity>
-    <entity name="PlaylistEntry" representedClassName="PlaylistEntry" syncable="YES" codeGenerationType="class">
+    <entity name="PlaylistEntry" representedClassName="PlaylistEntryManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="maxVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="minVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
         <relationship name="element" maxCount="1" deletionRule="Nullify" destinationEntity="Element" inverseName="playlistEntries" inverseEntity="Element"/>
         <relationship name="sample" maxCount="1" deletionRule="Nullify" destinationEntity="Sample" inverseName="playlistEntries" inverseEntity="Sample"/>
     </entity>
-    <entity name="Sample" representedClassName="Sample" syncable="YES" codeGenerationType="class">
+    <entity name="Sample" representedClassName="SampleManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <attribute name="url" attributeType="URI"/>
         <attribute name="uuid" attributeType="String"/>
         <relationship name="playlistEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaylistEntry" inverseName="sample" inverseEntity="PlaylistEntry"/>
     </entity>
-    <entity name="Soundset" representedClassName="Soundset" syncable="YES" codeGenerationType="class">
+    <entity name="Soundset" representedClassName="SoundsetManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="categoryRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="downloadedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>

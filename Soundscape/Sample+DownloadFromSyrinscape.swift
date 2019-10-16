@@ -11,7 +11,7 @@ import Foundation
 extension Sample {
     var cacheURL: URL {
         let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        return cachesDirectory.appendingPathComponent("\(uuid!).ogg", isDirectory: false)
+        return cachesDirectory.appendingPathComponent("\(id).ogg", isDirectory: false)
     }
 
     var isCached: Bool {
@@ -19,8 +19,8 @@ extension Sample {
     }
 
     func downloadFromSyrinscape(completionHandler: @escaping (Result<Void, Error>) -> Void) {
-        print("Downloading \(url!)")
-        let task = URLSession.shared.dataTask(with: url!.authenticatedForSyrinscape() ?? url!) { data, response, error in
+        print("Downloading \(url)")
+        let task = URLSession.shared.dataTask(with: url.authenticatedForSyrinscape() ?? url) { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
                 return
