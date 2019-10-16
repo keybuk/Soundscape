@@ -220,10 +220,11 @@ final class Player: ObservableObject {
             print("Want next file in \(delay)s")
             updateStatus()
 
+            let sample = playlistEntry.sample
             let volume = Float.random(in: playlistEntry.volume)
             let downloadStart = Date()
 
-            playlistEntry.openFile(downloadingHandler: {
+            sample.openFile(downloadingHandler: {
                 isDownloading = true
                 updateStatus()
             }) { result in
@@ -233,7 +234,7 @@ final class Player: ObservableObject {
 
                 switch result {
                 case let .success(file):
-                    print("Playing \(playlistEntry.sample!.title!) in \(adjustedDelay)s")
+                    print("Playing \(sample.title) in \(adjustedDelay)s")
                     self.isDownloading = false
                     self.scheduleFile(file, volume: volume, delay: adjustedDelay)
                 case let .failure(error):

@@ -40,11 +40,8 @@ final class Stage: ObservableObject {
     }
 
     func playMood(_ mood: Mood, audio: AudioManager) {
-        let elementParameters = mood.elementParameters! as! Set<ElementParameter>
-        let playingElementParameters = elementParameters.filter({ $0.isPlaying })
-        let playingElements = playingElementParameters.map({ $0.element! })
-
         // Stop any player not in the current mood.
+        let playingElements = Set(mood.elements.filter { $0.isPlaying }.map { $0.element })
         for player in players.compactMap({ $0.value }) {
             if !playingElements.contains(player.element) && lockedElement != player.element {
                 if case .stopped = player.status { continue }
@@ -53,8 +50,10 @@ final class Stage: ObservableObject {
         }
 
         // Start the rest of the players.
-        for elementParameter in playingElementParameters {
-            let player = playerForElement(elementParameter.element!, audio: audio)
+        for elementParameter in mood.elements {
+            guard elementParameter.isPlaying else { continue }
+
+            let player = playerForElement(elementParameter.element, audio: audio)
             player.volume = elementParameter.volume
 
             if case .stopped = player.status,
