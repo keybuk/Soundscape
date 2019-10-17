@@ -14,7 +14,7 @@ struct HostView: View {
 
     var body: some View {
         NavigationView {
-            SoundsetsList(soundsets: SoundsetListController(managedObjectContext: managedObjectContext))
+            SoundsetsList(controller: SoundsetListController(managedObjectContext: managedObjectContext))
         }
     }
 }

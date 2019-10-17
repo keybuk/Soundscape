@@ -9,21 +9,28 @@
 import SwiftUI
 
 struct SoundsetsList: View {
-    @ObservedObject var soundsets: SoundsetListController
+    @ObservedObject var controller: SoundsetListController
 
     var body: some View {
         List {
-//            NavigationLink(destination: SearchResultsView(search: SearchController(search: search, context: managedObjectContext)), isActive: $isSearching) {
-//                HStack {
-//                    Image(systemName: "magnifyingglass")
-//                    TextField("Search", text: $search, onCommit: {
-//                        self.isSearching = true
-//                    })
-//                .textFieldStyle(RoundedBorderTextFieldStyle())
-//                }
-//            }
+            Picker(selection: $controller.category, label: Text("Category")) {
+                ForEach(Soundset.Category.allCases, id: \.self) { category in
+                    Text("\(category.description)").tag(category)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
 
-            ForEach(soundsets) { soundset in
+            HStack {
+                Image(systemName: "magnifyingglass")
+                TextField("Search", text: $controller.search)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Image(systemName: "clear.fill")
+                    .onTapGesture {
+                        self.controller.search = ""
+                }
+            }
+
+            ForEach(controller.soundsets) { soundset in
                 NavigationLink(destination: SoundsetView(soundset: soundset)) {
                     SoundsetRow(soundset: soundset)
                 }
@@ -37,7 +44,7 @@ struct SoundsetsList: View {
 struct SoundsetsList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SoundsetsList(soundsets: SoundsetListController(managedObjectContext: previewContent.managedObjectContext))
+            SoundsetsList(controller: SoundsetListController(managedObjectContext: previewContent.managedObjectContext))
         }
     }
 }
