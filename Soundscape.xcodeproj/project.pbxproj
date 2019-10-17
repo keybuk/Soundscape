@@ -57,6 +57,7 @@
 		D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560F232AD7540065A48B /* Element+Sync.swift */; };
 		D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */; };
 		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
+		D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		D2B2560F232AD7540065A48B /* Element+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Sync.swift"; sourceTree = "<group>"; };
 		D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetListController.swift; sourceTree = "<group>"; };
+		D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBottomBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,11 +239,12 @@
 				D29993B4235431BE0060859D /* PlaylistsList.swift */,
 				D250FFF4232C962900EA515B /* PlayerView.swift */,
 				D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */,
+				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
+				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
 				D252711923354EAC0091A823 /* SearchResultsView.swift */,
 				D23D8C02233054AB007E2A58 /* MoodRow.swift */,
 				D23D8C0423306F34007E2A58 /* ElementRow.swift */,
-				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
 				D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */,
+				D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */,
 				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
 				D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
