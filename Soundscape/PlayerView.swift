@@ -19,7 +19,7 @@ struct PlayerView: View {
             .layoutPriority(-1)
 
             HStack {
-                PlayerStatusButton(player: player, action: self.togglePlaying)
+                PlayerStatusView(player: player)
 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(player.playlist.title)")
@@ -41,21 +41,17 @@ struct PlayerView: View {
     }
 }
 
-struct PlayerStatusButton: View {
+struct PlayerStatusView: View {
     @ObservedObject var player: Player
-
-    var action: () -> Void
 
     var body: some View {
         ZStack {
-            Button(action: action) {
-                if player.isDownloading {
-                    Image(systemName: "icloud.and.arrow.down")
-                } else if player.isPlaying {
-                    Image(systemName: "stop.fill")
-                } else {
-                    Image(systemName: "play.fill")
-                }
+            if player.isDownloading {
+                Image(systemName: "icloud.and.arrow.down")
+            } else if player.isPlaying {
+                Image(systemName: "stop.fill")
+            } else {
+                Image(systemName: "play.fill")
             }
             PlayerProgress(player: player)
         }
