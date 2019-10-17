@@ -40,6 +40,7 @@ struct SoundsetView: View {
             }
         }
         .background(Color(UIColor.systemGroupedBackground))
+        .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing: NavigationLink(destination: NowPlayingView()) { Text("Now Playing") })
     }
 }
@@ -47,8 +48,10 @@ struct SoundsetView: View {
 #if DEBUG
 struct SoundsetView_Previews: PreviewProvider {
     static var previews: some View {
-        SoundsetView(soundset: previewContent.soundsets[0])
-            .environmentObject(Stage(audio: AudioManager()))
+        NavigationView {
+            SoundsetView(soundset: previewContent.soundsets[0])
+        }
+        .environmentObject(Stage(audio: AudioManager()))
     }
 }
 #endif
