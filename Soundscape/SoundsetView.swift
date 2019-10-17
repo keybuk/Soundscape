@@ -10,7 +10,9 @@ import SwiftUI
 import CoreData
 
 struct SoundsetView: View {
+    @EnvironmentObject var stage: Stage
     @ObservedObject var soundset: Soundset
+    @State var isNowPlayingPresented: Bool = false
 
     var body: some View {
         ScrollView {
@@ -41,7 +43,14 @@ struct SoundsetView: View {
         }
         .background(Color(UIColor.systemGroupedBackground))
         .navigationBarTitle("", displayMode: .inline)
-        .navigationBarItems(trailing: NavigationLink(destination: NowPlayingView()) { Text("Now Playing") })
+        .navigationBarItems(trailing: Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") })
+        .sheet(isPresented: $isNowPlayingPresented) {
+            NavigationView {
+                NowPlayingView()
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .environmentObject(self.stage)
+        }
     }
 }
 
