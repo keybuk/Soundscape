@@ -10,9 +10,11 @@ import SwiftUI
 import CoreData
 
 struct SoundsetView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
     @EnvironmentObject var stage: Stage
     @ObservedObject var soundset: Soundset
     @State var isNowPlayingPresented: Bool = false
+    @State var isOneshotsPresented: Bool = false
 
     var body: some View {
         ScrollView {
@@ -34,23 +36,29 @@ struct SoundsetView: View {
                     PlaylistsList(playlists: soundset.effectPlaylists)
                         .padding([.leading, .trailing])
                 }
-
-                if !soundset.oneshotPlaylists.isEmpty {
-                    PlaylistsList(playlists: soundset.oneshotPlaylists)
-                        .padding([.leading, .trailing])
-                }
             }
         }
         .background(Color(UIColor.systemGroupedBackground))
         .navigationBarTitle("", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") })
-        .sheet(isPresented: $isNowPlayingPresented) {
-            NavigationView {
-                NowPlayingView()
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .environmentObject(self.stage)
-        }
+        .navigationBarItems(trailing: HStack {
+            Button(action: { self.isOneshotsPresented = true }) { Text("One Shots") }
+                .sheet(isPresented: $isNowPlayingPresented) {
+                    NavigationView {
+                        NowPlayingView()
+                    }
+                    .navigationViewStyle(StackNavigationViewStyle())
+                    .environmentObject(self.stage)
+                }
+
+            Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") }
+                .sheet(isPresented: $isOneshotsPresented) {
+                    NavigationView {
+                        OneshotsList(controller: PlaylistListController(managedObjectContext: self.managedObjectContext, kind: .oneshot, soundset: self.soundset))
+                    }
+                    .navigationViewStyle(StackNavigationViewStyle())
+                    .environmentObject(self.stage)
+                }
+        })
     }
 }
 

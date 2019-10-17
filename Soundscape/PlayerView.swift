@@ -41,40 +41,10 @@ struct PlayerView: View {
     }
 }
 
-struct PlayerStatusView: View {
-    @ObservedObject var player: Player
-
-    var body: some View {
-        ZStack {
-            if player.isDownloading {
-                Image(systemName: "icloud.and.arrow.down")
-            } else if player.isPlaying {
-                Image(systemName: "stop.fill")
-            } else {
-                Image(systemName: "play.fill")
-            }
-            PlayerProgress(player: player)
-        }
-        .frame(width: 30, height: 30)
-    }
-}
-
-struct PlayerProgress: View {
-    @ObservedObject var player: Player
-    @State var progress: Double = 0
-
-    var body: some View {
-        ProgressCircle(progress: $progress)
-            .onReceive(player.progressSubject.receive(on: RunLoop.main)) {
-                self.progress = $0
-            }
-    }
-}
-
 #if DEBUG
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(player: Player(playlist: previewContent.soundsets[0].allPlaylists[0], audio: AudioManager()) )
+        PlayerView(player: Player(playlist: previewContent.soundsets[0].allPlaylists[0], audio: AudioManager()))
 
     }
 }
