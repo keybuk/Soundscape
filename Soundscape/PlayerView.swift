@@ -43,6 +43,7 @@ struct PlayerView: View {
 
 struct PlayerStatusButton: View {
     @ObservedObject var player: Player
+
     var action: () -> Void
 
     var body: some View {
@@ -56,9 +57,21 @@ struct PlayerStatusButton: View {
                     Image(systemName: "play.fill")
                 }
             }
-            ProgressCircle(progress: $player.progress)
+            PlayerProgress(player: player)
         }
         .frame(width: 30, height: 30)
+    }
+}
+
+struct PlayerProgress: View {
+    @ObservedObject var player: Player
+    @State var progress: Double = 0
+
+    var body: some View {
+        ProgressCircle(progress: $progress)
+            .onReceive(player.progressSubject.receive(on: RunLoop.main)) {
+                self.progress = $0
+            }
     }
 }
 

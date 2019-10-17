@@ -27,7 +27,8 @@ final class Player: ObservableObject {
 
     @Published var isPlaying: Bool = false
     @Published var isDownloading: Bool = false
-    @Published var progress: Double = 0
+
+    var progressSubject = CurrentValueSubject<Double, Never>(0)
 
     struct Playing {
         var player: AVAudioPlayerNode
@@ -266,20 +267,21 @@ final class Player: ObservableObject {
             let lastRenderTime = playingMember.player.lastRenderTime,
             let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
         {
-            // Current player means we're playing, or have a sample queued.
-            isPlaying = true
+            // Current player means we're playing, or have a sample queued. Be careful not to push an update.
+            if !isPlaying { isPlaying = true }
+
             if playerTime.sampleTime < 0 {
-                progress = -Double(-playerTime.sampleTime) / Double(playingMember.delay)
+                progressSubject.send(-Double(-playerTime.sampleTime) / Double(playingMember.delay))
             } else {
-                progress = Double(playerTime.sampleTime) / Double(playingMember.length)
+                progressSubject.send(Double(playerTime.sampleTime) / Double(playingMember.length))
             }
         } else if isDownloading {
             // Still downloading the next file.
-            progress = 0
+            progressSubject.send(0)
         } else {
             // No iterator means we're stopped.
             isPlaying = false
-            progress = 0
+            progressSubject.send(0)
         }
     }
 }
