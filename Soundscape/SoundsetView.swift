@@ -24,17 +24,17 @@ struct SoundsetView: View {
                 }
 
                 if !soundset.musicPlaylists.isEmpty {
-                    PlaylistsView(playlists: soundset.musicPlaylists)
+                    PlaylistsList(playlists: soundset.musicPlaylists)
                         .padding([.leading, .trailing])
                 }
 
                 if !soundset.effectPlaylists.isEmpty {
-                    PlaylistsView(playlists: soundset.effectPlaylists)
+                    PlaylistsList(playlists: soundset.effectPlaylists)
                         .padding([.leading, .trailing])
                 }
 
                 if !soundset.oneshotPlaylists.isEmpty {
-                    PlaylistsView(playlists: soundset.oneshotPlaylists)
+                    PlaylistsList(playlists: soundset.oneshotPlaylists)
                         .padding([.leading, .trailing])
                 }
             }

@@ -27,7 +27,7 @@ struct NowPlayingView: View {
 
                         if playlist.kind == .music {
                             HStack {
-                                ElementRow(playlist: playlist)
+                                PlayerView(player: self.stage.playerForPlaylist(playlist))
 
                                 if self.stage.lockedPlaylist == playlist {
                                     Image(systemName: "lock")
@@ -44,7 +44,7 @@ struct NowPlayingView: View {
                                 }
                             }
                         } else {
-                            ElementRow(playlist: playlist)
+                            PlayerView(player: self.stage.playerForPlaylist(playlist))
                         }
                     }
 //                }

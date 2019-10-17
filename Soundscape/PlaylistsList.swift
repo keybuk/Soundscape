@@ -1,5 +1,5 @@
 //
-//  PlaylistsView.swift
+//  PlaylistsList.swift
 //  Soundscape
 //
 //  Created by Scott James Remnant on 10/13/19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PlaylistsView: View {
+struct PlaylistsList: View {
     @EnvironmentObject var stage: Stage
 
     var playlists: [Playlist]
@@ -26,7 +26,7 @@ struct PlaylistsView: View {
 struct PlaylistsView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            PlaylistsView(playlists: previewContent.soundsets[0].allPlaylists)
+            PlaylistsList(playlists: previewContent.soundsets[0].allPlaylists)
         }
         .background(Color(UIColor.systemGroupedBackground))
         .environmentObject(Stage(audio: AudioManager()))

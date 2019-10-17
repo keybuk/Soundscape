@@ -29,7 +29,7 @@
 		D299938B2352B3AF0060859D /* SoundsetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299938A2352B3AF0060859D /* SoundsetImageView.swift */; };
 		D299938D2352E0F30060859D /* MoodsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299938C2352E0F30060859D /* MoodsList.swift */; };
 		D29993B3235430A20060859D /* MoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29993B2235430A20060859D /* MoodButton.swift */; };
-		D29993B5235431BE0060859D /* PlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29993B4235431BE0060859D /* PlaylistsView.swift */; };
+		D29993B5235431BE0060859D /* PlaylistsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29993B4235431BE0060859D /* PlaylistsList.swift */; };
 		D2AC67042321809900548388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67032321809900548388 /* AppDelegate.swift */; };
 		D2AC67062321809900548388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67052321809900548388 /* SceneDelegate.swift */; };
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
@@ -57,7 +57,6 @@
 		D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560F232AD7540065A48B /* Element+Sync.swift */; };
 		D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */; };
 		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
-		D2DFD0EC2357D459001CA9DC /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0423306F34007E2A58 /* ElementRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +86,7 @@
 		D299938A2352B3AF0060859D /* SoundsetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetImageView.swift; sourceTree = "<group>"; };
 		D299938C2352E0F30060859D /* MoodsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodsList.swift; sourceTree = "<group>"; };
 		D29993B2235430A20060859D /* MoodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodButton.swift; sourceTree = "<group>"; };
-		D29993B4235431BE0060859D /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
+		D29993B4235431BE0060859D /* PlaylistsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsList.swift; sourceTree = "<group>"; };
 		D2AC67002321809900548388 /* Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AC67032321809900548388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AC67052321809900548388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,7 +234,7 @@
 				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
 				D299938C2352E0F30060859D /* MoodsList.swift */,
 				D29993B2235430A20060859D /* MoodButton.swift */,
-				D29993B4235431BE0060859D /* PlaylistsView.swift */,
+				D29993B4235431BE0060859D /* PlaylistsList.swift */,
 				D250FFF4232C962900EA515B /* PlayerView.swift */,
 				D250FFF2232C8D8D00EA515B /* ProgressCircle.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
@@ -354,12 +353,11 @@
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
 				D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */,
 				D28442F52356EFC0008BBD5E /* Mood.swift in Sources */,
-				D2DFD0EC2357D459001CA9DC /* ElementRow.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
 				D2AC67302321A46300548388 /* Player.swift in Sources */,
-				D29993B5235431BE0060859D /* PlaylistsView.swift in Sources */,
+				D29993B5235431BE0060859D /* PlaylistsList.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressCircle.swift in Sources */,
