@@ -126,7 +126,11 @@ extension SoundsetManagedObject {
     }
 
     func updateFromServer(context managedObjectContext: NSManagedObjectContext, completionHander: (() -> Void)? = nil) {
-        guard let url = url else { return }
+        guard let url = url else {
+            completionHander?()
+            return
+        }
+
         let manifestClient = SyrinscapeManifestClient()
         manifestClient.download(fromURL: url) { result in
             switch result {
