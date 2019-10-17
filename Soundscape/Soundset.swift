@@ -18,9 +18,6 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
     @Published var updatedDate: Date?
     @Published var downloadedDate: Date?
 
-    @Published private var activeImageData: Data?
-    @Published private var inactiveImageData: Data?
-
     private var managedObject: SoundsetManagedObject
 
     enum Category: Int16, CaseIterable, CustomStringConvertible {
@@ -51,7 +48,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
     var activeImage: Image {
         if let activeImage = _activeImage { return activeImage }
 
-        if let imageData = activeImageData,
+        if let imageData = managedObject.imageData,
             let dataProvider = CGDataProvider(data: imageData as CFData),
             let cgImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
         {
@@ -67,7 +64,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
     var inactiveImage: Image {
         if let inactiveImage = _inactiveImage { return inactiveImage }
 
-        if let imageData = inactiveImageData,
+        if let imageData = managedObject.inactiveImageData,
             let dataProvider = CGDataProvider(data: imageData as CFData),
             let cgImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
         {
