@@ -18,6 +18,8 @@ struct AirPlayRoutePicker: UIViewRepresentable {
 
     func updateUIView(_ uiView: AVRoutePickerView, context: UIViewRepresentableContext<AirPlayRoutePicker>) {
         routeDetector.isRouteDetectionEnabled = true
+        uiView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
 }
 
@@ -25,6 +27,7 @@ struct AirPlayRoutePicker: UIViewRepresentable {
 struct AirPlayRoutePicker_Previews: PreviewProvider {
     static var previews: some View {
         AirPlayRoutePicker()
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif

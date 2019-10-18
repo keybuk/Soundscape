@@ -11,7 +11,6 @@ import SwiftUI
 struct NowPlayingBottomBar: View {
     var body: some View {
         AirPlayRoutePicker()
-            .fixedSize()
             .padding(4)
             .frame(maxWidth: .infinity)
             .background(Color(UIColor.systemBackground))
