@@ -30,6 +30,7 @@ struct PlayerStatusView: View {
 struct PlayerStatusView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerStatusView(player: Player(playlist: previewContent.soundsets[0].allPlaylists[0], audio: AudioManager()))
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif

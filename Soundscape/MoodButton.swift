@@ -37,6 +37,7 @@ struct MoodButton_Previews: PreviewProvider {
     static var previews: some View {
         MoodButton(mood: previewContent.soundsets[0].moods[0])
             .environmentObject(Stage(audio: AudioManager()))
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif

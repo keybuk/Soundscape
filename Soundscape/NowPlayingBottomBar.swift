@@ -21,6 +21,7 @@ struct NowPlayingBottomBar: View {
 struct NowPlayingBottomBar_Previews: PreviewProvider {
     static var previews: some View {
         NowPlayingBottomBar()
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif
