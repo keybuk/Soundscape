@@ -1,5 +1,5 @@
 //
-//  ProgressCircle.swift
+//  ProgressArc.swift
 //  Soundscape
 //
 //  Created by Scott James Remnant on 9/13/19.
@@ -29,8 +29,9 @@ struct ProgressArc: Shape {
     }
 }
 
-struct ProgressCircle: View {
-    @Binding var progress: Double
+#if DEBUG
+struct TestCircle: View {
+    @State var progress: Double
 
     var body: some View {
         GeometryReader { g in
@@ -54,14 +55,14 @@ struct ProgressCircle: View {
     }
 }
 
-#if DEBUG
+
 struct AnimationTest: View {
     @State var progress: Double = 0.8
     @State var newProgress: Double = 0.8
 
     var body: some View {
         VStack {
-            ProgressCircle(progress: $progress)
+            TestCircle(progress: progress)
             Slider(value: $newProgress, in: -1.0...1.0)
             Button(action: {
                 withAnimation(self.newProgress < 0 && self.progress > 0 ? nil : .linear) {
@@ -72,14 +73,6 @@ struct AnimationTest: View {
             }
         }
         .padding()
-    }
-}
-
-struct TestCircle: View {
-    @State var progress: Double
-
-    var body: some View {
-        ProgressCircle(progress: $progress)
     }
 }
 
