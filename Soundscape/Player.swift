@@ -13,15 +13,15 @@ import Combine
 final class Player: ObservableObject {
     var playlist: Playlist
     var audio: AudioManager
-    var mixer: AVAudioMixerNode?
+    var environment: AVAudioEnvironmentNode?
     private var dummyPlayer: AVAudioPlayerNode?
 
     @Published private var _setVolume: Float
     var volume: Float {
-        get { mixer?.volume ?? _setVolume }
+        get { environment?.volume ?? _setVolume }
         set {
             _setVolume = newValue
-            mixer?.volume = _setVolume
+            environment?.volume = _setVolume
         }
     }
 
@@ -31,6 +31,7 @@ final class Player: ObservableObject {
     var progressSubject = CurrentValueSubject<Double, Never>(0)
 
     struct Playing {
+        var downMixer: AVAudioMixerNode?
         var player: AVAudioPlayerNode
         var length: AVAudioFramePosition
         var delay: AVAudioFramePosition
@@ -63,45 +64,47 @@ final class Player: ObservableObject {
         _setVolume = playlist.initialVolume
     }
 
-    func createMixerAndAttach() {
-        guard mixer == nil else { return }
+    func createEnvironmentAndAttach() {
+        guard environment == nil else { return }
 
         NotificationCenter.default.addObserver(forName: AudioManager.configurationChangeNotification,
                                                object: audio, queue: nil, using: configurationChange)
         NotificationCenter.default.addObserver(forName: AudioManager.engineResetNotification,
                                                object: audio, queue: nil, using: engineReset)
 
-        mixer = AVAudioMixerNode()
-        mixer!.volume = _setVolume
+        environment = AVAudioEnvironmentNode()
+        environment!.volume = _setVolume
+        environment!.listenerPosition = AVAudio3DPoint(x: 0, y: 0, z: 0)
+        environment!.listenerAngularOrientation = AVAudio3DAngularOrientation(yaw: 0, pitch: 0, roll: 0)
         // TODO: reverb
 
-        audio.engine.attach(mixer!)
+        audio.engine.attach(environment!)
 
         dummyPlayer = AVAudioPlayerNode()
         audio.engine.attach(dummyPlayer!)
 
-        connectMixer()
+        connectEnvironment()
     }
 
-    func connectMixer() {
-        guard let mixer = mixer else { return }
+    func connectEnvironment() {
+        guard let environment = environment else { return }
 
         let mainMixer = audio.engine.mainMixerNode
-        audio.engine.connect(mixer, to: mainMixer,
+        audio.engine.connect(environment, to: mainMixer,
                              fromBus: 0, toBus: mainMixer.nextAvailableInputBus,
                              format: mainMixer.outputFormat(forBus: 0))
 
         // nextAvailableInputBus ignores connected mixers without players attached
-        audio.engine.connect(dummyPlayer!, to: mixer,
-                             fromBus: 0, toBus: mixer.nextAvailableInputBus,
+        audio.engine.connect(dummyPlayer!, to: environment,
+                             fromBus: 0, toBus: environment.nextAvailableInputBus,
                              format: mainMixer.outputFormat(forBus: 0))
     }
 
     func configurationChange(_ notification: Notification) {
         // This is not called on the main thread.
-        guard let _ = mixer else { return }
+        guard let _ = environment else { return }
 
-        connectMixer()
+        connectEnvironment()
 
         if let resumeAction = resumeAction {
             self.resumeAction = nil
@@ -115,11 +118,11 @@ final class Player: ObservableObject {
 
     func engineReset(_ notification: Notification) {
         // This is not called on the main thread.
-        guard let _ = mixer else { return }
+        guard let _ = environment else { return }
 
-        mixer = nil
+        environment = nil
         dummyPlayer = nil
-        createMixerAndAttach()
+        createEnvironmentAndAttach()
 
         if let resumeAction = resumeAction {
             self.resumeAction = nil
@@ -142,7 +145,7 @@ final class Player: ObservableObject {
     }
 
     func play(withStartDelay: Bool = false) {
-        createMixerAndAttach()
+        createEnvironmentAndAttach()
         startEngine()
 
         if playlistIterator == nil {
@@ -154,13 +157,48 @@ final class Player: ObservableObject {
     }
 
     func scheduleFile(_ file: OggVorbisFile, volume: Float, delay: Double) {
-        guard let mixer = mixer else { preconditionFailure("Scheduled sample without mixer") }
+        guard let environment = environment else { preconditionFailure("Scheduled sample without environment") }
 
         let player = AVAudioPlayerNode()
-        let bus = mixer.nextAvailableInputBus
-        player.volume = volume
         audio.engine.attach(player)
-        audio.engine.connect(player, to: mixer, fromBus: 0, toBus: bus, format: file.processingFormat)
+
+        // If we're doing 3D Positioning we use a mixer after the player to down-mix the file
+        // to mono so it can be positioned. A separate mixer per file is required since the position
+        // applies to the input of the environment, ie. the mixer.
+        let downMixer: AVAudioMixerNode?
+        if playlist.is3D && file.processingFormat.channelCount > 1 {
+            let outputFormat = AVAudioFormat(commonFormat: file.processingFormat.commonFormat,
+                                             sampleRate: file.processingFormat.sampleRate,
+                                             channels: 1, interleaved: false)
+
+            downMixer = AVAudioMixerNode()
+            audio.engine.attach(downMixer!)
+
+            audio.engine.connect(player, to: downMixer!,
+                                 fromBus: 0, toBus: downMixer!.nextAvailableInputBus,
+                                 format: file.processingFormat)
+            audio.engine.connect(downMixer!, to: environment,
+                                 fromBus: 0, toBus: environment.nextAvailableInputBus,
+                                 format: outputFormat)
+        } else {
+            downMixer = nil
+
+            audio.engine.connect(player, to: environment,
+                                 fromBus: 0, toBus: environment.nextAvailableInputBus,
+                                 format: file.processingFormat)
+        }
+
+        player.volume = volume
+
+        if playlist.is3D {
+            let angle = Float.random(in: playlist.angle)
+            let distance = Float.random(in: playlist.distance)
+
+            let mixing: AVAudio3DMixing = downMixer ?? player
+            mixing.position = AVAudio3DPoint(x: sin(angle * .pi / 180) * distance,
+                                             y: cos(angle * .pi / 180) * distance,
+                                             z: 0)
+        }
 
         guard let lastRenderSampleTime = player.lastRenderTime?.sampleTime else {
             // Engine is unexpectedly not available, likely due to an in-progress configuration
@@ -178,11 +216,12 @@ final class Player: ObservableObject {
 
             print("Engine not available!")
             audio.engine.detach(player)
+            if let downMixer = downMixer { audio.engine.detach(downMixer) }
             return
         }
 
         // Calculate the play time of this sample based on the delay given.
-        let sampleRate = player.outputFormat(forBus: 0).sampleRate
+        let sampleRate = file.processingFormat.sampleRate
         let delaySamples = AVAudioFramePosition(delay * sampleRate)
         let startTime = AVAudioTime(sampleTime: lastRenderSampleTime + delaySamples, atRate: sampleRate)
 
@@ -205,6 +244,7 @@ final class Player: ObservableObject {
         }) {
             DispatchQueue.main.async {
                 self.audio.engine.detach(player)
+                if let downMixer = downMixer { self.audio.engine.detach(downMixer) }
                 self.playing = self.playing.filter({ $0.player != player })
 
                 // If the next sample doesn't overlap, schedule it.
@@ -216,7 +256,7 @@ final class Player: ObservableObject {
         player.play(at: startTime)
 
         // Save key values for progress calculation.
-        playing.append(Playing(player: player, length: file.length, delay: delaySamples))
+        playing.append(Playing(downMixer: downMixer, player: player, length: file.length, delay: delaySamples))
         progressUpdater.isPaused = false
     }
 
