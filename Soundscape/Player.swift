@@ -264,29 +264,48 @@ final class Player: ObservableObject {
             updateStatus()
         } else if let playlistEntry = playlistIterator?.next() {
             // Queue up the next file.
-            print("Want next file in \(delay)s")
             updateStatus()
 
             let sample = playlistEntry.sample
             let volume = Float.random(in: playlistEntry.volume)
-            let downloadStart = Date()
 
-            sample.openFile(downloadingHandler: {
+            if sample.isCached,
+                let file = try? OggVorbisFile(forReading: sample.cacheURL)
+            {
+                print("Playing \(sample.title) in \(delay)s")
+                self.scheduleFile(file, volume: volume, delay: delay)
+            } else {
+                let downloadStart = Date()
                 isDownloading = true
                 updateStatus()
-            }) { result in
-                // Subtract the amount of time the potential download took from the delay.
-                let downloadDuration = downloadStart.distance(to: Date())
-                let adjustedDelay = max(0, delay - downloadDuration)
 
-                switch result {
-                case let .success(file):
-                    print("Playing \(sample.title) in \(adjustedDelay)s")
-                    self.isDownloading = false
-                    self.scheduleFile(file, volume: volume, delay: adjustedDelay)
-                case let .failure(error):
-                    print("Failed to open sample file: \(error.localizedDescription)")
-                    self.wantFile(in: adjustedDelay, isFirst: isFirst)
+                sample.downloadFromSyrinscape { result in
+                    DispatchQueue.main.async {
+                        // Subtract the amount of time the download took from the delay.
+                        let downloadDuration = downloadStart.distance(to: Date())
+                        let adjustedDelay = max(0, delay - downloadDuration)
+
+                        self.isDownloading = false
+                        self.updateStatus()
+
+                        switch result {
+                        case .success:
+                            let file: OggVorbisFile
+                            do {
+                                file = try OggVorbisFile(forReading: sample.cacheURL)
+                            } catch let error {
+                                print("Failed to open sample file: \(error.localizedDescription)")
+                                self.wantFile(in: adjustedDelay, isFirst: isFirst)
+                                return
+                            }
+
+                            print("Playing \(sample.title) in \(adjustedDelay)s")
+                            self.scheduleFile(file, volume: volume, delay: adjustedDelay)
+                        case let .failure(error):
+                            print("Failed to download sample file: \(error.localizedDescription)")
+                            self.wantFile(in: adjustedDelay, isFirst: isFirst)
+                        }
+                    }
                 }
             }
         } else {
