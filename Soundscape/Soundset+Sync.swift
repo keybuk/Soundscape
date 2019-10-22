@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension SoundsetManagedObject {
-    static let currentSchemaVersion: Int16 = 1
+    static let currentSchemaVersion: Int16 = 2
 
     static func createFrom(_ chapterClient: SyrinscapeChaptersClient.ChapterOptions, category: Soundset.Category, context managedObjectContext: NSManagedObjectContext) {
         guard chapterClient.isBundled || chapterClient.isPurchased,

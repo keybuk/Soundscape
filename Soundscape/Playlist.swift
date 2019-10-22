@@ -18,6 +18,10 @@ struct Playlist: Identifiable, Hashable {
     var initialVolume: Float
     var startDelay: ClosedRange<Double>
     var sampleGap: ClosedRange<Double>
+    var is3D: Bool
+    var angle: ClosedRange<Float>
+    var distance: ClosedRange<Float>
+    var speed: Double
 
     var entries: [PlaylistEntry]
 
@@ -52,6 +56,10 @@ struct Playlist: Identifiable, Hashable {
         initialVolume = managedObject.initialVolume
         startDelay = managedObject.minStartDelay...managedObject.maxStartDelay
         sampleGap = managedObject.minSampleGap...managedObject.maxSampleGap
+        is3D = managedObject.is3D
+        angle = managedObject.minAngle...managedObject.maxAngle
+        distance = managedObject.minDistance...managedObject.maxDistance
+        speed = managedObject.speed
 
         entries = []
         if let playlistEntryObjects = managedObject.playlistEntries {

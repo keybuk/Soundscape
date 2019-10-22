@@ -61,8 +61,35 @@ extension ElementManagedObject {
             element.minSampleGap = 0
             element.maxSampleGap = 0
         }
+        if let minAngle = clientElement.minAngle, let maxAngle = clientElement.maxAngle {
+            if minAngle <= maxAngle {
+                element.minAngle = minAngle
+                element.maxAngle = maxAngle
+            } else {
+                // Invert
+                element.minAngle = maxAngle
+                element.maxAngle = minAngle
+            }
+        } else {
+            element.minAngle = 0
+            element.maxAngle = 0
+        }
+        if let minDistance = clientElement.minDistance, let maxDistance = clientElement.maxDistance {
+            if minDistance <= maxDistance {
+                element.minDistance = minDistance
+                element.maxDistance = maxDistance
+            } else {
+                // Invert
+                element.minDistance = maxDistance
+                element.maxDistance = minDistance
+            }
+        } else {
+            element.minDistance = 0
+            element.maxDistance = 0
+        }
         element.isRepeating = clientElement.repeatPlaylist
         element.isOverlapping = clientElement.allowPlaylistOverlap
+        element.is3D = !clientElement.bypassPosition
 
         switch clientElement.randomisePlaylist {
         case "shuffle": element.orderRawValue = Playlist.Order.shuffled.rawValue

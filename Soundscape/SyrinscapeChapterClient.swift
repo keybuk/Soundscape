@@ -86,7 +86,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         var maxAngle: Float?
         var minDistance: Float?
         var maxDistance: Float?
-        var speed: Float?
+        var speed: Double?
         var isGlobalOneshot: Bool = false
     }
 
@@ -457,7 +457,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
             case "MaxDistance" where _element != nil:
                 _element!.maxDistance = Float(text!)
             case "Speed" where _element != nil:
-                _element!.speed = Float(text!)
+                _element!.speed = Double(text!)
             case "IsGlobalOneshot" where _element != nil:
                 _element!.isGlobalOneshot = text! == "true"
 

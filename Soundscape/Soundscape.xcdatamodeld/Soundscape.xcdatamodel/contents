@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B77a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Element" representedClassName="ElementManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="initialVolume" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="is3D" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isOverlapping" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isRepeating" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="kindRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="maxAngle" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maxDistance" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="maxSampleGap" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="maxStartDelay" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="minAngle" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="minDistance" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="minSampleGap" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="minStartDelay" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="orderRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="slug" attributeType="String"/>
+        <attribute name="speed" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="elementParameters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ElementParameter" inverseName="element" inverseEntity="ElementParameter"/>
         <relationship name="playlistEntries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PlaylistEntry" inverseName="element" inverseEntity="PlaylistEntry"/>
@@ -53,7 +59,7 @@
         <relationship name="moods" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Mood" inverseName="soundset" inverseEntity="Mood"/>
     </entity>
     <elements>
-        <element name="Element" positionX="-27" positionY="72" width="128" height="253"/>
+        <element name="Element" positionX="-27" positionY="72" width="128" height="343"/>
         <element name="ElementParameter" positionX="-27" positionY="144" width="128" height="103"/>
         <element name="Mood" positionX="-36" positionY="135" width="128" height="88"/>
         <element name="PlaylistEntry" positionX="-9" positionY="144" width="128" height="103"/>
