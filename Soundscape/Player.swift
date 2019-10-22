@@ -34,6 +34,21 @@ final class Player: ObservableObject {
         var player: AVAudioPlayerNode
         var length: AVAudioFramePosition
         var delay: AVAudioFramePosition
+
+        var changes: [LinearChange] = []
+    }
+
+    enum Property {
+        case volume
+        case pan
+    }
+
+    struct LinearChange {
+        // FIXME: ReferenceWritableKeyPath<Player.Playing, Float>
+        var property: Property
+        var over: Range<AVAudioFramePosition>
+        var startValue: Float
+        var endValue: Float
     }
 
     var playing: [Playing] = []
@@ -255,13 +270,34 @@ final class Player: ObservableObject {
     }
 
     lazy var progressUpdater: CADisplayLink = {
-        let progressUpdater = CADisplayLink(target: self, selector: #selector(updateStatus))
+        let progressUpdater = CADisplayLink(target: self, selector: #selector(progressUpdate))
         progressUpdater.add(to: RunLoop.main, forMode: .default)
         progressUpdater.isPaused = true
         return progressUpdater
     }()
 
     @objc
+    func progressUpdate() {
+        for playingMember in playing {
+            guard let lastRenderTime = playingMember.player.lastRenderTime,
+                let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime) else { continue }
+
+            for change in playingMember.changes {
+                guard change.over.contains(playerTime.sampleTime) else { continue }
+
+                let progress = Float(playerTime.sampleTime - change.over.lowerBound) / Float(change.over.upperBound - change.over.lowerBound)
+                let value = change.startValue + (change.endValue - change.startValue) * progress
+
+                switch change.property {
+                case .volume: playingMember.player.volume = value
+                case .pan: playingMember.player.pan = value
+                }
+            }
+        }
+
+        updateStatus()
+    }
+
     func updateStatus() {
         if let playingMember = playing.first,
             let lastRenderTime = playingMember.player.lastRenderTime,
