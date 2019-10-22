@@ -71,10 +71,17 @@ extension ElementManagedObject {
         default: element.orderRawValue = Playlist.Order.ordered.rawValue
         }
 
+        let oldEntries = element.playlistEntries!
         let newEntries: [PlaylistEntryManagedObject] = clientElement.playlist.compactMap {
             PlaylistEntryManagedObject.createFrom($0, element: element, context: managedObjectContext)
         }
         element.playlistEntries = NSOrderedSet(array: newEntries)
+
+        for case let .remove(offset: _, element: removed, associatedWith: _) in element.playlistEntries!.difference(from: oldEntries) {
+            let removedEntry = removed as! PlaylistEntryManagedObject
+            print("Removed element \(removedEntry.sample!.uuid!) from element \(element.title!)")
+            managedObjectContext.delete(removedEntry)
+        }
 
         return element
     }

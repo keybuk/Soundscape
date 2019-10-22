@@ -175,6 +175,7 @@ extension SoundsetManagedObject {
             SampleManagedObject.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
         }
 
+        let oldElements = elements!
         var newElements: [ElementManagedObject] = []
         newElements.append(contentsOf: chapterClient.musicElements.compactMap {
             ElementManagedObject.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
@@ -187,11 +188,24 @@ extension SoundsetManagedObject {
         })
         elements = NSOrderedSet(array: newElements)
 
+        let oldMoods = moods!
         var newMoods: [MoodManagedObject] = []
         newMoods.append(contentsOf: chapterClient.moods.compactMap {
             MoodManagedObject.createFrom($0, soundset: self, context: managedObjectContext!)
         })
         moods = NSOrderedSet(array: newMoods)
+
+        for case let .remove(offset: _, element: removed, associatedWith: _) in elements!.difference(from: oldElements) {
+            let removedElement = removed as! ElementManagedObject
+            print("Removed element \(removedElement.slug!) from soundset \(slug!)")
+            managedObjectContext!.delete(removedElement)
+        }
+
+        for case let .remove(offset: _, element: removed, associatedWith: _) in moods!.difference(from: oldMoods) {
+            let removedMood = removed as! MoodManagedObject
+            print("Removed mood \(removedMood.title!) from soundset \(slug!)")
+            managedObjectContext!.delete(removedMood)
+        }
 
         downloadedDate = updatedDate
         schemaVersion = Self.currentSchemaVersion
