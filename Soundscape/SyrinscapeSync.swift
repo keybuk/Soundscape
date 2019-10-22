@@ -50,6 +50,7 @@ final class SyrinscapeSync {
                 soundset.categoryRawValue = Soundset.Category.fantasy.rawValue
                 soundset.slug = soundsetSlug
                 soundset.title = soundsetTitle
+                soundset.schemaVersion = SoundsetManagedObject.currentSchemaVersion
 
                 var newElements: [ElementManagedObject] = []
                 for (elementTitle, sampleGap, sampleList) in soundsetData {
@@ -160,7 +161,7 @@ final class SyrinscapeSync {
 
     func syncSoundsets() {
         let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "downloadedDate == nil OR downloadedDate < updatedDate")
+        fetchRequest.predicate = NSPredicate(format: "downloadedDate == nil OR downloadedDate < updatedDate OR schemaVersion != %d", SoundsetManagedObject.currentSchemaVersion)
 
         managedObjectContext.perform {
             do {

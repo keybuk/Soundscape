@@ -53,7 +53,6 @@ extension SoundsetManagedObject {
             soundset.title = title
             soundset.url = manifestURL
             soundset.updatedDate = downloadUpdatedDate
-            soundset.schemaVersion = Self.currentSchemaVersion
 
             do {
                 if soundset.hasChanges {
@@ -122,7 +121,7 @@ extension SoundsetManagedObject {
     }
 
     var isUpdatePending: Bool {
-        downloadedDate == nil || downloadedDate! < updatedDate! || schemaVersion < Self.currentSchemaVersion
+        downloadedDate == nil || downloadedDate! < updatedDate! || schemaVersion != Self.currentSchemaVersion
     }
 
     func updateFromServer(context managedObjectContext: NSManagedObjectContext, completionHander: (() -> Void)? = nil) {
