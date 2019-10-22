@@ -133,8 +133,10 @@ final class SyrinscapeChaptersClient: NSObject, XMLParserDelegate {
             chapterOptions!.description = text!
         case "Response.Chapters.ChapterOptions.Moods.Mood":
             chapterOptions!.moodNames.append(text!)
-        case "Response.Chapters.ChapterOptions.Elements.Element" :
+        case "Response.Chapters.ChapterOptions.Moods": break
+        case "Response.Chapters.ChapterOptions.Elements.Element":
             chapterOptions!.elementNames.append(text!)
+        case "Response.Chapters.ChapterOptions.Elements": break
         case "Response.Chapters.ChapterOptions.IsPurchased":
             chapterOptions!.isPurchased = text == "true"
         case "Response.Chapters.ChapterOptions.IsBundled":
@@ -174,6 +176,7 @@ final class SyrinscapeChaptersClient: NSObject, XMLParserDelegate {
         case "Response.Chapters.ChapterOptions":
             chapters.append(chapterOptions!)
             chapterOptions = nil
+        case "Response.Chapters": break
 
         case "Response.Campaigns.Campaign.Name":
             campaign!.name = text!
@@ -191,8 +194,10 @@ final class SyrinscapeChaptersClient: NSObject, XMLParserDelegate {
             minimumVersion = text!
         case "Response.Token":
             token = text!
+        case "Response": break
 
-        default: break
+        default:
+            print("Unhandled Chapters Client field: \(elementPath)")
         }
 
         text = nil

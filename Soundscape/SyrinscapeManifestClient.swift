@@ -104,8 +104,11 @@ final class SyrinscapeManifestClient: NSObject, XMLParserDelegate {
         case "SoundsetManifest.Files.SoundsetFile":
             soundsetFiles.append(_soundsetFile!)
             _soundsetFile = nil
-            
-        default: break
+        case "SoundsetManifest.Files": break
+        case "SoundsetManifest": break
+
+        default:
+            print("Unhandled Manifest Client field: \(elementPath)")
         }
         
         text = nil

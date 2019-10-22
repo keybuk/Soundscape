@@ -279,6 +279,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.Tags.Tag":
             tags.append(_tag!)
             _tag = nil
+        case "Chapter.Tags": break
         case "Chapter.InitialGain":
             initialGain = Float(text!)
 
@@ -296,6 +297,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.Samples.SoundSample.Tags.Tag":
             _soundSample!.tags.append(_tag!)
             _tag = nil
+        case "Chapter.Samples.SoundSample.Tags": break
         case "Chapter.Samples.SoundSample.Attribution":
             _soundSample!.attribution = text!
         case "Chapter.Samples.SoundSample.Is3d":
@@ -313,19 +315,31 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.Samples.SoundSample":
             samples.append(_soundSample!)
             _soundSample = nil
+        case "Chapter.Samples": break
 
+        case "Chapter.MusicElements.MusicElement.Playlist": break
         case "Chapter.MusicElements.MusicElement":
             musicElements.append(_element!)
             _element = nil
+        case "Chapter.MusicElements": break
+
+        case "Chapter.SfxElements.SFXElement.Playlist": break
         case "Chapter.SfxElements.SFXElement":
             sfxElements.append(_element!)
             _element = nil
+        case "Chapter.SfxElements": break
+
+        case "Chapter.LoopElements.LoopElement.Playlist": break
         case "Chapter.LoopElements.LoopElement":
             loopElements.append(_element!)
             _element = nil
+        case "Chapter.LoopElements": break
+
+        case "Chapter.OneshotElements.OneshotElement.Playlist": break
         case "Chapter.OneshotElements.OneshotElement":
             oneshotElements.append(_element!)
             _element = nil
+        case "Chapter.OneshotElements": break
 
         case "Chapter.Moods.Mood.Title":
             _mood!.title = text!
@@ -340,9 +354,11 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.Moods.Mood.ElementParameters.ElementParameter":
             _mood!.elementParameters.append(_elementParameter!)
             _elementParameter = nil
+        case "Chapter.Moods.Mood.ElementParameters": break
         case "Chapter.Moods.Mood":
             moods.append(_mood!)
             _mood = nil
+        case "Chapter.Moods": break
 
         case "Chapter.ReverbPreset":
             reverbPreset = _reverbPreset
@@ -350,9 +366,12 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.ReverbPresets.ReverbPreset":
             reverbPresets.append(_reverbPreset!)
             _reverbPreset = nil
+        case "Chapter.ReverbPresets": break
 
         case "Chapter.FormatVersion":
             formatVersion = text!
+
+        case "Chapter": break
 
         default:
             switch elementName {
@@ -475,7 +494,8 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
             case "FarReverbDistance" where _reverbPreset != nil:
                 _reverbPreset!.farReverbDistance = Float(text!)
 
-            default: break
+            default:
+                print("Unhandled Chapter Client field: \(elementPath)")
             }
         }
 
