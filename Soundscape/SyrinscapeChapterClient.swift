@@ -54,6 +54,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         var is3D: Bool = false
         var createdDate: Date?
         var updatedDate: Date?
+        var ownedBy: String?
         var uploadedBy: String?
     }
 
@@ -282,6 +283,8 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
         case "Chapter.Tags": break
         case "Chapter.InitialGain":
             initialGain = Float(text!)
+        case "Chapter.Reverb":
+            reverb = text!
 
         case "Chapter.Samples.SoundSample.Uuid":
             _soundSample!.uuid = text!
@@ -310,6 +313,8 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
             let formatter = ISO8601DateFormatter()
             formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
             _soundSample!.updatedDate = formatter.date(from: text!)
+        case "Chapter.Samples.SoundSample.OwnedBy":
+            _soundSample!.ownedBy = text!
         case "Chapter.Samples.SoundSample.UploadedBy":
             _soundSample!.uploadedBy = text!
         case "Chapter.Samples.SoundSample":
