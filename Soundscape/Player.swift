@@ -39,17 +39,14 @@ final class Player: ObservableObject {
         var changes: [LinearChange] = []
     }
 
-    enum Property {
-        case volume
-        case pan
-    }
-
     struct LinearChange {
-        // FIXME: ReferenceWritableKeyPath<Player.Playing, Float>
-        var property: Property
+        enum Change {
+            case volume(start: Float, end: Float)
+            case position(startAngle: Float, startDistance: Float, endAngle: Float, endDistance: Float)
+        }
+
+        var change: Change
         var over: Range<AVAudioFramePosition>
-        var startValue: Float
-        var endValue: Float
     }
 
     var playing: [Playing] = []
@@ -318,24 +315,31 @@ final class Player: ObservableObject {
 
     @objc
     func progressUpdate() {
+        updateStatus()
+
         for playingMember in playing {
             guard let lastRenderTime = playingMember.player.lastRenderTime,
                 let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime) else { continue }
 
-            for change in playingMember.changes {
-                guard change.over.contains(playerTime.sampleTime) else { continue }
+            for linearChange in playingMember.changes {
+                guard linearChange.over.contains(playerTime.sampleTime) else { continue }
 
-                let progress = Float(playerTime.sampleTime - change.over.lowerBound) / Float(change.over.upperBound - change.over.lowerBound)
-                let value = change.startValue + (change.endValue - change.startValue) * progress
+                let progress = Float(playerTime.sampleTime - linearChange.over.lowerBound) / Float(linearChange.over.upperBound - linearChange.over.lowerBound)
 
-                switch change.property {
-                case .volume: playingMember.player.volume = value
-                case .pan: playingMember.player.pan = value
+                switch linearChange.change {
+                case let .volume(start, end):
+                    playingMember.player.volume = start + (end - start) * progress
+                case let .position(startAngle, startDistance, endAngle, endDistance):
+                    let angle = startAngle + (endAngle - startAngle) * progress
+                    let distance = startDistance + (endDistance - startDistance) * progress
+
+                    let mixing: AVAudio3DMixing = playingMember.downMixer ?? playingMember.player
+                    mixing.position = AVAudio3DPoint(x: sin(angle * .pi / 180) * distance,
+                                                     y: cos(angle * .pi / 180) * distance,
+                                                     z: 0)
                 }
             }
         }
-
-        updateStatus()
     }
 
     func updateStatus() {
