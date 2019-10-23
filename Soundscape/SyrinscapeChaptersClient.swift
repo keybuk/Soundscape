@@ -185,6 +185,7 @@ final class SyrinscapeChaptersClient: NSObject, XMLParserDelegate {
         case "Response.Campaigns.Campaign":
             campaigns.append(campaign!)
             campaign = nil
+        case "Response.Campaigns": break
 
         case "Response.DeviceIsBlessed":
             isDeviceBlessed = text! == "true"
