@@ -188,18 +188,18 @@ extension SoundsetManagedObject {
         })
         elements = NSOrderedSet(array: newElements)
 
+        for case let .remove(offset: _, element: removed, associatedWith: _) in elements!.difference(from: oldElements) {
+            let removedElement = removed as! ElementManagedObject
+            print("Removed element \(removedElement.slug!) from soundset \(slug!)")
+            managedObjectContext!.delete(removedElement)
+        }
+
         let oldMoods = moods!
         var newMoods: [MoodManagedObject] = []
         newMoods.append(contentsOf: chapterClient.moods.compactMap {
             MoodManagedObject.createFrom($0, soundset: self, context: managedObjectContext!)
         })
         moods = NSOrderedSet(array: newMoods)
-
-        for case let .remove(offset: _, element: removed, associatedWith: _) in elements!.difference(from: oldElements) {
-            let removedElement = removed as! ElementManagedObject
-            print("Removed element \(removedElement.slug!) from soundset \(slug!)")
-            managedObjectContext!.delete(removedElement)
-        }
 
         for case let .remove(offset: _, element: removed, associatedWith: _) in moods!.difference(from: oldMoods) {
             let removedMood = removed as! MoodManagedObject

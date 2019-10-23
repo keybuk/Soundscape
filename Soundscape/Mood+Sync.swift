@@ -31,10 +31,16 @@ extension MoodManagedObject {
 
         mood.title = title
 
+        let oldElementParameters: Set<ElementParameterManagedObject>  = mood.elementParameters! as! Set<ElementParameterManagedObject>
         let newElementParameters: [ElementParameterManagedObject] = clientMood.elementParameters.compactMap {
             ElementParameterManagedObject.createFrom($0, mood: mood, context: managedObjectContext)
         }
         mood.elementParameters = NSSet(array: newElementParameters)
+
+        for removedParameter in oldElementParameters.subtracting(newElementParameters) {
+            print("Removed element parameter from mood \(mood.title!)")
+            managedObjectContext.delete(removedParameter)
+        }
 
         return mood
     }
