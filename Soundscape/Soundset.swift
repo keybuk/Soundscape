@@ -117,7 +117,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
         guard let elementObjects = managedObject.elements else { return }
 
         for case let elementObject as ElementManagedObject in elementObjects {
-            let playlist = Playlist(managedObject: elementObject)
+            let playlist = Playlist(managedObject: elementObject, soundset: self)
             _allPlaylists!.append(playlist)
 
             switch playlist.kind {

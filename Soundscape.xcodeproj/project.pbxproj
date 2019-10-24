@@ -43,6 +43,7 @@
 		D2AC67302321A46300548388 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC672F2321A46300548388 /* Player.swift */; };
 		D2AC67502321A5DC00548388 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC674F2321A5DC00548388 /* AVKit.framework */; };
 		D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */; };
+		D2ACA4492362415300EECC2A /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACA4482362415300EECC2A /* Collection+SplitBetween.swift */; };
 		D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */; };
 		D2B255F5232983760065A48B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B255F4232983760065A48B /* CoreData.framework */; };
 		D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */; };
@@ -108,6 +109,7 @@
 		D2AC672F2321A46300548388 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		D2AC674F2321A5DC00548388 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		D2AC67512321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode+OggVorbis.swift"; sourceTree = "<group>"; };
+		D2ACA4482362415300EECC2A /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
 		D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeSync.swift; sourceTree = "<group>"; };
 		D2B255F4232983760065A48B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D2B255F8232983970065A48B /* Soundscape.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Soundscape.xcdatamodel; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				D2AC67202321944100548388 /* Audio */,
 				D2AC673D2321A49A00548388 /* UI */,
 				D2AC67032321809900548388 /* AppDelegate.swift */,
+				D2ACA4482362415300EECC2A /* Collection+SplitBetween.swift */,
 				D2AC67052321809900548388 /* SceneDelegate.swift */,
 				D2AC67092321809A00548388 /* Assets.xcassets */,
 				D2AC671C23218F4200548388 /* Soundscape-Bridging-Header.h */,
@@ -353,6 +356,7 @@
 				D2DFD11623590992001CA9DC /* PlayerButton.swift in Sources */,
 				D2DFD118235909A7001CA9DC /* PlayerStatusView.swift in Sources */,
 				D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */,
+				D2ACA4492362415300EECC2A /* Collection+SplitBetween.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
 				D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */,
 				D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */,

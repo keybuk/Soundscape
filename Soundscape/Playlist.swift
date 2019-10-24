@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct Playlist: Identifiable, Hashable {
     var id: String
@@ -46,7 +47,11 @@ struct Playlist: Identifiable, Hashable {
         var volume: ClosedRange<Float>
     }
 
-    init(managedObject: ElementManagedObject) {
+    var soundset: Soundset
+
+    init(managedObject: ElementManagedObject, soundset: Soundset? = nil) {
+        self.soundset = soundset ?? Soundset(managedObject: managedObject.soundset!)
+
         id = managedObject.slug!
         title = managedObject.title!
         kind = Kind(rawValue: managedObject.kindRawValue)!

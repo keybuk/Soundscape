@@ -29,6 +29,7 @@ struct OneShotsList: View {
 
     var numberOfColumns: Int { horizontalSizeClass == .compact ? 2 : 3 }
     var playlists: [Playlist] { isSearching ? searchController.playlists : soundset.oneShotPlaylists }
+    var playlistsBySoundset: [ArraySlice<Playlist>] { isSearching ? searchController.playlistsBySoundset : [soundset.oneShotPlaylists.dropFirst(0)] }
 
     var body: some View {
         ScrollView {
@@ -67,16 +68,27 @@ struct OneShotsList: View {
             .padding(.horizontal)
             .padding(isSearching ? .top : [])
 
-            VStack(spacing: 8) {
-                ForEach(playlists.chunked(into: numberOfColumns), id: \.self) { playlistRow in
-                    HStack(spacing: 8) {
-                        ForEach(playlistRow) { playlist in
-                            PlayerButton(player: self.stage.playerForPlaylist(playlist))
+            VStack(spacing: 12) {
+                ForEach(playlistsBySoundset, id: \.self) { soundsetPlaylists in
+                    VStack(alignment: .leading, spacing: 8) {
+                        if self.isSearching {
+                            Text("\(soundsetPlaylists.first!.soundset.title)")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .padding(.leading, 8)
                         }
 
-                        ForEach(playlistRow.count..<self.numberOfColumns, id: \.self) { _ in
-                            Spacer()
-                                .frame(maxWidth: .infinity)
+                        ForEach(Array(soundsetPlaylists).chunked(into: self.numberOfColumns), id: \.self) { playlistRow in
+                            HStack(spacing: 8) {
+                                ForEach(playlistRow) { playlist in
+                                    PlayerButton(player: self.stage.playerForPlaylist(playlist))
+                                }
+
+                                ForEach(playlistRow.count..<self.numberOfColumns, id: \.self) { _ in
+                                    Spacer()
+                                        .frame(maxWidth: .infinity)
+                                }
+                            }
                         }
                     }
                 }

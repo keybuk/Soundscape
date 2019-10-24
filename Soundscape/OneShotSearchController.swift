@@ -16,6 +16,7 @@ final class OneShotSearchController: ObservableObject {
     @Published var search: String = "" {
         didSet {
             _playlists = nil
+            _playlistsBySoundset = nil
         }
     }
 
@@ -42,6 +43,14 @@ final class OneShotSearchController: ObservableObject {
 
         _playlists = results?.map { Playlist(managedObject: $0) } ?? []
         return _playlists!
+    }
+
+    @Published private var _playlistsBySoundset: [ArraySlice<Playlist>]?
+    var playlistsBySoundset: [ArraySlice<Playlist>] {
+        if let playlistsBySoundset = _playlistsBySoundset { return playlistsBySoundset }
+
+        _playlistsBySoundset = playlists.split(between: { $0.soundset != $1.soundset })
+        return _playlistsBySoundset!
     }
 
     func clear() {
