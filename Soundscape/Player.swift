@@ -192,6 +192,7 @@ final class Player: ObservableObject {
             let distance = Float.random(in: playlist.distance)
 
             let mixing: AVAudio3DMixing = downMixer ?? player
+            mixing.renderingAlgorithm = .auto
             mixing.position = AVAudio3DPoint(x: sin(angle * .pi / 180) * distance,
                                              y: cos(angle * .pi / 180) * distance,
                                              z: 0)
