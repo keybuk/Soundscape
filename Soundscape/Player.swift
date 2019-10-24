@@ -149,7 +149,7 @@ final class Player: ObservableObject {
             playlistIterator = playlist.makePlaylistIterator()
         }
 
-        let delay = withStartDelay ? .random(in: playlist.startDelay) : 0
+        let delay: Double = withStartDelay ? .random(in: playlist.startDelay) : 0
         wantFile(in: delay, isFirst: true)
     }
 
@@ -188,8 +188,8 @@ final class Player: ObservableObject {
         player.volume = volume
 
         if playlist.is3D {
-            let angle = Float.random(in: playlist.angle)
-            let distance = Float.random(in: playlist.distance)
+            let angle: Float = .random(in: playlist.angle)
+            let distance: Float = .random(in: playlist.distance)
 
             let mixing: AVAudio3DMixing = downMixer ?? player
             mixing.renderingAlgorithm = .auto
@@ -268,7 +268,7 @@ final class Player: ObservableObject {
             updateStatus()
 
             let sample = playlistEntry.sample
-            let volume = Float.random(in: playlistEntry.volume)
+            let volume: Float = .random(in: playlistEntry.volume)
 
             if sample.isCached,
                 let file = try? OggVorbisFile(forReading: sample.cacheURL)
