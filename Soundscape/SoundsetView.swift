@@ -14,7 +14,7 @@ struct SoundsetView: View {
     @EnvironmentObject var stage: Stage
     @ObservedObject var soundset: Soundset
     @State var isNowPlayingPresented: Bool = false
-    @State var isOneshotsPresented: Bool = false
+    @State var isOneShotsPresented: Bool = false
 
     var body: some View {
         ScrollView {
@@ -41,19 +41,19 @@ struct SoundsetView: View {
         .background(Color(UIColor.systemGroupedBackground))
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing: HStack {
-            Button(action: { self.isOneshotsPresented = true }) { Text("One Shots") }
-                .sheet(isPresented: $isNowPlayingPresented) {
+            Button(action: { self.isOneShotsPresented = true }) { Text("One Shots") }
+                .sheet(isPresented: $isOneShotsPresented) {
                     NavigationView {
-                        NowPlayingView()
+                        OneShotsList(controller: PlaylistListController(managedObjectContext: self.managedObjectContext, kind: .oneShot, soundset: self.soundset))
                     }
                     .navigationViewStyle(StackNavigationViewStyle())
                     .environmentObject(self.stage)
                 }
 
             Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") }
-                .sheet(isPresented: $isOneshotsPresented) {
+                .sheet(isPresented: $isNowPlayingPresented) {
                     NavigationView {
-                        OneShotsList(controller: PlaylistListController(managedObjectContext: self.managedObjectContext, kind: .oneShot, soundset: self.soundset))
+                        NowPlayingView()
                     }
                     .navigationViewStyle(StackNavigationViewStyle())
                     .environmentObject(self.stage)
