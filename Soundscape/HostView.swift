@@ -10,11 +10,9 @@ import SwiftUI
 import CoreData
 
 struct HostView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
-
     var body: some View {
         NavigationView {
-            SoundsetsList(controller: SoundsetListController(managedObjectContext: managedObjectContext))
+            SoundsetsList()
         }
     }
 }

@@ -9,25 +9,39 @@
 import SwiftUI
 
 struct SoundsetsList: View {
-    @ObservedObject var controller: SoundsetListController
+    @EnvironmentObject var controller: SoundsetListController
+
+    @State var search: String = ""
 
     var body: some View {
         List {
-            Picker(selection: $controller.category, label: Text("Category")) {
-                ForEach(Soundset.Category.allCases, id: \.self) { category in
-                    Text("\(category.description)").tag(category)
+            VStack {
+                Picker(selection: $controller.category, label: Text("Category")) {
+                    ForEach(Soundset.Category.allCases, id: \.self) { category in
+                        Text("\(category.description)").tag(category)
+                    }
                 }
-            }
-            .pickerStyle(SegmentedPickerStyle())
+                .pickerStyle(SegmentedPickerStyle())
 
-            HStack {
-                Image(systemName: "magnifyingglass")
-                TextField("Search", text: $controller.search)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Image(systemName: "clear.fill")
-                    .onTapGesture {
-                        self.controller.search = ""
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("Search", text: $search, onCommit: {
+                        self.controller.search = self.search
+                    })
+                    .foregroundColor(.primary)
+                    if !search.isEmpty {
+                        // Not a button because we're in a List.
+                        Image(systemName: "xmark.circle.fill")
+                            .onTapGesture {
+                                self.search = ""
+                                self.controller.search = self.search
+                            }
+                    }
                 }
+                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+                .foregroundColor(.secondary)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(10.0)
             }
 
             ForEach(controller.soundsets) { soundset in
@@ -44,7 +58,8 @@ struct SoundsetsList: View {
 struct SoundsetsList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SoundsetsList(controller: SoundsetListController(managedObjectContext: previewContent.managedObjectContext))
+            SoundsetsList()
+                .environmentObject(SoundsetListController(managedObjectContext: previewContent.managedObjectContext))
         }
     }
 }
