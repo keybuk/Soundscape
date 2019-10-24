@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(appDelegate.stage)
             .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
             .environmentObject(appDelegate.persistentContainer)
+            .environmentObject(OneShotSearchController(managedObjectContext: appDelegate.persistentContainer.viewContext))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

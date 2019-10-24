@@ -12,6 +12,7 @@ import CoreData
 struct SoundsetView: View {
     @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
     @EnvironmentObject var stage: Stage
+    @EnvironmentObject var oneShotSearchController: OneShotSearchController
     @ObservedObject var soundset: Soundset
     @State var isNowPlayingPresented: Bool = false
     @State var isOneShotsPresented: Bool = false
@@ -44,10 +45,11 @@ struct SoundsetView: View {
             Button(action: { self.isOneShotsPresented = true }) { Text("One Shots") }
                 .sheet(isPresented: $isOneShotsPresented) {
                     NavigationView {
-                        OneShotsList(controller: PlaylistListController(managedObjectContext: self.managedObjectContext, kind: .oneShot, soundset: self.soundset))
+                        OneShotsList(soundset: self.soundset)
                     }
                     .navigationViewStyle(StackNavigationViewStyle())
                     .environmentObject(self.stage)
+                    .environmentObject(self.oneShotSearchController)
                 }
 
             Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") }
@@ -69,6 +71,7 @@ struct SoundsetView_Previews: PreviewProvider {
             SoundsetView(soundset: previewContent.soundsets[0])
         }
         .environmentObject(Stage(audio: AudioManager()))
+        .environmentObject(OneShotSearchController(managedObjectContext: previewContent.managedObjectContext))
     }
 }
 #endif
