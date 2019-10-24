@@ -57,7 +57,7 @@
 		D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */; };
 		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
 		D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */; };
-		D2DFD11223590700001CA9DC /* OneshotsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11123590700001CA9DC /* OneshotsList.swift */; };
+		D2DFD11223590700001CA9DC /* OneShotsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11123590700001CA9DC /* OneShotsList.swift */; };
 		D2DFD11423590728001CA9DC /* PlaylistListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11323590728001CA9DC /* PlaylistListController.swift */; };
 		D2DFD11623590992001CA9DC /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11523590992001CA9DC /* PlayerButton.swift */; };
 		D2DFD118235909A7001CA9DC /* PlayerStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */; };
@@ -122,7 +122,7 @@
 		D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetListController.swift; sourceTree = "<group>"; };
 		D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBottomBar.swift; sourceTree = "<group>"; };
-		D2DFD11123590700001CA9DC /* OneshotsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneshotsList.swift; sourceTree = "<group>"; };
+		D2DFD11123590700001CA9DC /* OneShotsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsList.swift; sourceTree = "<group>"; };
 		D2DFD11323590728001CA9DC /* PlaylistListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListController.swift; sourceTree = "<group>"; };
 		D2DFD11523590992001CA9DC /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatusView.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 				D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */,
 				D2DFD119235909D8001CA9DC /* PlayerProgress.swift */,
 				D250FFF2232C8D8D00EA515B /* ProgressArc.swift */,
-				D2DFD11123590700001CA9DC /* OneshotsList.swift */,
+				D2DFD11123590700001CA9DC /* OneShotsList.swift */,
 				D2DFD11523590992001CA9DC /* PlayerButton.swift */,
 				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
@@ -379,7 +379,7 @@
 				D29993B5235431BE0060859D /* PlaylistsList.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
-				D2DFD11223590700001CA9DC /* OneshotsList.swift in Sources */,
+				D2DFD11223590700001CA9DC /* OneShotsList.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressArc.swift in Sources */,
 				D2DFD11A235909D8001CA9DC /* PlayerProgress.swift in Sources */,
 				D250FFF5232C962900EA515B /* PlayerView.swift in Sources */,

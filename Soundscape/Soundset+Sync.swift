@@ -183,8 +183,8 @@ extension SoundsetManagedObject {
         newElements.append(contentsOf: chapterClient.sfxElements.compactMap {
             ElementManagedObject.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: chapterClient.oneshotElements.compactMap {
-            ElementManagedObject.createFrom($0, kind: .oneshot, soundset: self, context: managedObjectContext!)
+        newElements.append(contentsOf: chapterClient.oneShotElements.compactMap {
+            ElementManagedObject.createFrom($0, kind: .oneShot, soundset: self, context: managedObjectContext!)
         })
         elements = NSOrderedSet(array: newElements)
 

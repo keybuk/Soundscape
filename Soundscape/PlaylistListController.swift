@@ -44,7 +44,7 @@ final class PlaylistListController: ObservableObject {
             switch kind {
             case .music: return soundset.musicPlaylists
             case .effect: return soundset.effectPlaylists
-            case .oneshot: return soundset.oneshotPlaylists
+            case .oneShot: return soundset.oneShotPlaylists
             }
         }
 

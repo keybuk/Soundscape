@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct OneshotsList: View {
+struct OneShotsList: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @EnvironmentObject var stage: Stage
 
@@ -52,7 +52,7 @@ struct OneshotsList: View {
 struct OneshotsList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            OneshotsList(controller: PlaylistListController(managedObjectContext: previewContent.managedObjectContext, kind: .oneshot, soundset: previewContent.soundsets[0]))
+            OneShotsList(controller: PlaylistListController(managedObjectContext: previewContent.managedObjectContext, kind: .oneShot, soundset: previewContent.soundsets[0]))
         }
         .environmentObject(Stage(audio: AudioManager()))
     }

@@ -53,7 +53,7 @@ struct SoundsetView: View {
             Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") }
                 .sheet(isPresented: $isOneshotsPresented) {
                     NavigationView {
-                        OneshotsList(controller: PlaylistListController(managedObjectContext: self.managedObjectContext, kind: .oneshot, soundset: self.soundset))
+                        OneShotsList(controller: PlaylistListController(managedObjectContext: self.managedObjectContext, kind: .oneShot, soundset: self.soundset))
                     }
                     .navigationViewStyle(StackNavigationViewStyle())
                     .environmentObject(self.stage)

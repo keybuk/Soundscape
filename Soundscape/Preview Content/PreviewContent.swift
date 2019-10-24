@@ -404,7 +404,7 @@ struct PreviewContent {
 
         // Waterdhavians
         element = ElementManagedObject(context: managedObjectContext)
-        element.kindRawValue = Playlist.Kind.oneshot.rawValue
+        element.kindRawValue = Playlist.Kind.oneShot.rawValue
         element.slug = "waterdhavians"
         element.title = "Waterdhavians"
         element.orderRawValue = Playlist.Order.random.rawValue

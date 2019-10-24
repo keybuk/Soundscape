@@ -28,7 +28,7 @@ struct Playlist: Identifiable, Hashable {
     enum Kind: Int16, Comparable {
         case music
         case effect
-        case oneshot
+        case oneShot
 
         static func < (lhs: Playlist.Kind, rhs: Playlist.Kind) -> Bool {
             lhs.rawValue < rhs.rawValue
@@ -96,7 +96,7 @@ struct Playlist: Identifiable, Hashable {
         mutating func next() -> PlaylistEntry? {
             if entries.isEmpty {
                 // Oneshot playlists always repeat since they only ever play one at a time,
-                guard playlist.isRepeating || playlist.kind == .oneshot else { return nil }
+                guard playlist.isRepeating || playlist.kind == .oneShot else { return nil }
                 fillPlaylist()
             }
 

@@ -259,8 +259,8 @@ final class Player: ObservableObject {
     }
 
     func wantFile(in delay: Double, isFirst: Bool = false) {
-        if playlist.kind == .oneshot && !isFirst {
-            // Don't queue additional files for oneshots, but keep the iterator for next time.
+        if playlist.kind == .oneShot && !isFirst {
+            // Don't queue additional files for one shots, but keep the iterator for next time.
             progressUpdater.isPaused = true
             updateStatus()
         } else if let playlistEntry = playlistIterator?.next() {

@@ -24,10 +24,10 @@ struct NowPlayingView: View {
             ScrollView {
 //                ForEach(groupedElements.keys.sorted { $0.title! < $1.title! }) { soundset in
 //                Section(header: Text("\(soundset.title!)")) {
-//                ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneshot })) { element in
+//                ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneShot })) { element in
 
                 VStack(spacing: 8) {
-                    ForEach(stage.playlists.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneshot })) { playlist in
+                    ForEach(stage.playlists.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneShot })) { playlist in
                         if playlist.kind == .music {
                             HStack {
                                 PlayerView(player: self.stage.playerForPlaylist(playlist))

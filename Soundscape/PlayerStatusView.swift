@@ -15,7 +15,7 @@ struct PlayerStatusView: View {
         ZStack {
             if player.isDownloading {
                 Image(systemName: "icloud.and.arrow.down")
-            } else if player.isPlaying && player.playlist.kind != .oneshot {
+            } else if player.isPlaying && player.playlist.kind != .oneShot {
                 Image(systemName: "stop.fill")
             } else {
                 Image(systemName: "play.fill")

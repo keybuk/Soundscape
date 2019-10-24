@@ -100,19 +100,19 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
         return _effectPlaylists!
     }
 
-    private var _oneshotPlaylists: [Playlist]?
-    var oneshotPlaylists: [Playlist] {
-        if let oneshotPlaylists = _oneshotPlaylists { return oneshotPlaylists }
+    private var _oneShotPlaylists: [Playlist]?
+    var oneShotPlaylists: [Playlist] {
+        if let oneShotPlaylists = _oneShotPlaylists { return oneShotPlaylists }
 
         updatePlaylists()
-        return _oneshotPlaylists!
+        return _oneShotPlaylists!
     }
 
     private func updatePlaylists() {
         _allPlaylists = []
         _musicPlaylists = []
         _effectPlaylists = []
-        _oneshotPlaylists = []
+        _oneShotPlaylists = []
 
         guard let elementObjects = managedObject.elements else { return }
 
@@ -123,7 +123,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
             switch playlist.kind {
             case .music: _musicPlaylists!.append(playlist)
             case .effect: _effectPlaylists!.append(playlist)
-            case .oneshot: _oneshotPlaylists!.append(playlist)
+            case .oneShot: _oneShotPlaylists!.append(playlist)
             }
         }
     }

@@ -31,7 +31,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
     var musicElements: [Element] = []
     var sfxElements: [Element] = []
     var loopElements: [Element] = []
-    var oneshotElements: [Element] = []
+    var oneShotElements: [Element] = []
     var moods: [Mood] = []
     var reverb: String?
     var reverbPreset: ReverbPreset?
@@ -342,7 +342,7 @@ final class SyrinscapeChapterClient: NSObject, XMLParserDelegate {
 
         case "Chapter.OneshotElements.OneshotElement.Playlist": break
         case "Chapter.OneshotElements.OneshotElement":
-            oneshotElements.append(_element!)
+            oneShotElements.append(_element!)
             _element = nil
         case "Chapter.OneshotElements": break
 
