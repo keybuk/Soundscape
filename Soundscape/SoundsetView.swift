@@ -25,17 +25,17 @@ struct SoundsetView: View {
 
                 if !soundset.moods.isEmpty {
                     MoodsList(moods: soundset.moods)
-                        .padding([.leading, .trailing])
+                        .padding(.horizontal)
                 }
 
                 if !soundset.musicPlaylists.isEmpty {
                     PlaylistsList(playlists: soundset.musicPlaylists)
-                        .padding([.leading, .trailing])
+                        .padding(.horizontal)
                 }
 
                 if !soundset.effectPlaylists.isEmpty {
                     PlaylistsList(playlists: soundset.effectPlaylists)
-                        .padding([.leading, .trailing])
+                        .padding(.horizontal)
                 }
             }
         }
