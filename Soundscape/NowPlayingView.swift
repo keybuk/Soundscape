@@ -11,53 +11,27 @@ import SwiftUI
 struct NowPlayingView: View {
     @EnvironmentObject var stage: Stage
 
-//    var groupedElements: [Soundset: [Element]] {
-//        .init(grouping: stage.elements) {
-//            $0.soundset!
-//        }
-//    }
-
     var body: some View {
         VStack {
             Spacer(minLength: 8)
 
             ScrollView {
-//                ForEach(groupedElements.keys.sorted { $0.title! < $1.title! }) { soundset in
-//                Section(header: Text("\(soundset.title!)")) {
-//                ForEach(self.groupedElements[soundset]!.sorted(by: { $0.kind.rawValue < $1.kind.rawValue }).filter({ $0.kind != .oneShot })) { element in
+                VStack(spacing: 12) {
+                    ForEach(stage.playlistsBySoundset, id: \.self) { soundsetPlaylists in
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("\(soundsetPlaylists.first!.soundset.title)")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal)
+                                .padding(.leading, 8)
 
-                VStack(spacing: 8) {
-                    ForEach(stage.playlists.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneShot })) { playlist in
-                        if playlist.kind == .music {
-                            HStack {
-                                PlayerView(player: self.stage.playerForPlaylist(playlist))
-
-                                if self.stage.lockedPlaylist == playlist {
-                                    Image(systemName: "lock")
-                                        .padding()
-                                        .onTapGesture {
-                                            self.stage.lockedPlaylist = nil
-                                        }
-                                } else {
-                                    Image(systemName: "lock.open")
-                                        .padding()
-                                        .onTapGesture {
-                                            self.stage.lockedPlaylist = playlist
-                                        }
-                                }
+                            ForEach(soundsetPlaylists.sorted(by: { $0.kind < $1.kind }).filter({ $0.kind != .oneShot })) { playlist in
+                                NowPlayingRow(playlist: playlist)
                             }
-                            .padding([.leading, .trailing])
-                        } else {
-                            PlayerView(player: self.stage.playerForPlaylist(playlist))
-                            .padding([.leading, .trailing])
                         }
                     }
                 }
-                .padding([.top, .bottom])
-//                }
-//                }
-                //                }
-
+                .padding(.vertical)
             }
             .background(Color(UIColor.systemGroupedBackground))
 
@@ -67,6 +41,35 @@ struct NowPlayingView: View {
         }
         .navigationBarTitle("Now Playing")
         .navigationBarItems(trailing: Button(action: stage.stop) { Text("Stop") })
+    }
+}
+
+struct NowPlayingRow: View {
+    @EnvironmentObject var stage: Stage
+
+    var playlist: Playlist
+
+    var body: some View {
+        HStack {
+            PlayerView(player: self.stage.playerForPlaylist(playlist))
+
+            if playlist.kind == .music {
+                if self.stage.lockedPlaylist == playlist {
+                    Image(systemName: "lock")
+                        .padding()
+                        .onTapGesture {
+                            self.stage.lockedPlaylist = nil
+                        }
+                } else {
+                    Image(systemName: "lock.open")
+                        .padding()
+                        .onTapGesture {
+                            self.stage.lockedPlaylist = self.playlist
+                        }
+                }
+            }
+        }
+        .padding(.horizontal)
     }
 }
 

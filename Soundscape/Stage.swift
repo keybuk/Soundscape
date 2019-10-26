@@ -25,6 +25,10 @@ final class Stage: ObservableObject {
             .map { $0.playlist }
     }
 
+    var playlistsBySoundset: [ArraySlice<Playlist>] {
+        playlists.split(between: { $0.soundset != $1.soundset })
+    }
+
     @Published var lockedPlaylist: Playlist? = nil
 
     init(audio: AudioManager) {
