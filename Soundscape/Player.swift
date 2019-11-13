@@ -34,6 +34,7 @@ final class Player: ObservableObject {
         var downMixer: AVAudioMixerNode?
         var player: AVAudioPlayerNode
         var length: AVAudioFramePosition
+        var loop: ClosedRange<AVAudioFramePosition>?
         var delay: AVAudioFramePosition
 
         var changes: [LinearChange] = []
@@ -226,7 +227,7 @@ final class Player: ObservableObject {
         // Calculate the delay for the next sample.
         let delayBeforeNext: Double = .random(in: playlist.sampleGap)
 
-        player.scheduleFile(file, startHandler: {
+        player.scheduleFile(file, looping: playlist.kind == .musicLoop, startHandler: {
             DispatchQueue.main.async {
                 // If the next sample overlaps, we have to schedule it as soon we're playing the
                 // current sample. We add the sample length to the delay to obtain the play time
@@ -254,7 +255,7 @@ final class Player: ObservableObject {
         player.play(at: startTime)
 
         // Save key values for progress calculation.
-        playing.append(Playing(downMixer: downMixer, player: player, length: file.length, delay: delaySamples))
+        playing.append(Playing(downMixer: downMixer, player: player, length: file.length, loop: file.loop, delay: delaySamples))
         progressUpdater.isPaused = false
     }
 
@@ -372,6 +373,16 @@ final class Player: ObservableObject {
 
             if playerTime.sampleTime < 0 {
                 progressSubject.send(-Double(-playerTime.sampleTime) / Double(playingMember.delay))
+            } else if playlist.kind == .musicLoop, let loop = playingMember.loop {
+                if playerTime.sampleTime <= loop.upperBound {
+                    progressSubject.send(Double(playerTime.sampleTime) / Double(loop.upperBound))
+                } else {
+                    let loopTime = (playerTime.sampleTime - loop.upperBound) % AVAudioFramePosition(loop.count)
+                    progressSubject.send(Double(loopTime) / Double(loop.count))
+                }
+            } else if playlist.kind == .musicLoop {
+                let loopTime = playerTime.sampleTime % playingMember.length
+                progressSubject.send(Double(loopTime) / Double(playingMember.length))
             } else {
                 progressSubject.send(Double(playerTime.sampleTime) / Double(playingMember.length))
             }
