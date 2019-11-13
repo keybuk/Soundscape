@@ -11,11 +11,11 @@ import CoreData
 
 let staticData = [
     "Arundor": [
-        ( "Alfriston Town", -5, ["MUS_80_Zuldazar_Dazaralor_Bazaar_01"]),
-        ( "Alfriston Region", -5, ["MUS_80_Zuldazar_Dazaralor_Bazaar_02"]),
-        ( "Dungeon Delve", 0, ["BGM_EX3_Dan_D03"]),
-        ( "The Aron-Kai", 0, ["BGM_EX3_Field_Rak_Day"]),
-        ( "Alfriston Battle", -5, [
+        ( "Alfriston Town", Playlist.Kind.music, -5, ["MUS_80_Zuldazar_Dazaralor_Bazaar_01"]),
+        ( "Alfriston Region", Playlist.Kind.music, -5, ["MUS_80_Zuldazar_Dazaralor_Bazaar_02"]),
+        ( "Dungeon Delve", Playlist.Kind.musicLoop, 0, ["BGM_EX3_Dan_D03"]),
+        ( "The Aron-Kai", Playlist.Kind.music, 0, ["BGM_EX3_Field_Rak_Day"]),
+        ( "Alfriston Battle", Playlist.Kind.music, -5, [
             "MUS_80_StormsongValley_ShrineofStorms_01",
             "MUS_80_StormsongValley_ShrineofStorms_02",
             "MUS_80_StormsongValley_ShrineofStorms_03",
@@ -53,7 +53,7 @@ final class SyrinscapeSync {
                 soundset.schemaVersion = SoundsetManagedObject.currentSchemaVersion
 
                 var newElements: [ElementManagedObject] = []
-                for (elementTitle, sampleGap, sampleList) in soundsetData {
+                for (elementTitle, elementKind, sampleGap, sampleList) in soundsetData {
                     let elementSlug = "xx-\(elementTitle)"
                     let elementFetchRequest: NSFetchRequest<ElementManagedObject> = ElementManagedObject.fetchRequest()
                     elementFetchRequest.predicate = NSPredicate(format: "soundset == %@ AND slug == %@", soundset, elementSlug)
@@ -67,7 +67,7 @@ final class SyrinscapeSync {
                         return
                     }
 
-                    element.kindRawValue = Playlist.Kind.music.rawValue
+                    element.kindRawValue = elementKind.rawValue
                     element.slug = elementSlug
                     element.title = elementTitle
                     element.orderRawValue = Playlist.Order.shuffled.rawValue
