@@ -122,6 +122,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
 
             switch playlist.kind {
             case .music: _musicPlaylists!.append(playlist)
+            case .musicLoop: _musicPlaylists!.append(playlist)
             case .effect: _effectPlaylists!.append(playlist)
             case .oneShot: _oneShotPlaylists!.append(playlist)
             }
