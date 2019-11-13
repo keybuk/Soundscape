@@ -28,6 +28,7 @@ struct Playlist: Identifiable, Hashable {
 
     enum Kind: Int16, Comparable {
         case music
+        case musicLoop
         case effect
         case oneShot
 

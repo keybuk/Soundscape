@@ -53,7 +53,7 @@ struct NowPlayingRow: View {
         HStack {
             PlayerView(player: self.stage.playerForPlaylist(playlist))
 
-            if playlist.kind == .music {
+            if playlist.isLockable {
                 if self.stage.lockedPlaylist == playlist {
                     Image(systemName: "lock")
                         .padding()

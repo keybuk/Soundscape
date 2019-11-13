@@ -12,6 +12,10 @@ struct WeakBox<T> where T: AnyObject {
     weak var value: T? = nil
 }
 
+extension Playlist {
+    var isLockable: Bool { kind == .music || kind == .musicLoop }
+}
+
 final class Stage: ObservableObject {
     private var players: [WeakBox<Player>] = []
 
@@ -65,7 +69,7 @@ final class Stage: ObservableObject {
             let player = playerForPlaylist(parameters.playlist)
             player.volume = parameters.volume
 
-            if !player.isPlaying && (player.playlist.kind != .music || lockedPlaylist == nil)
+            if !player.isPlaying && (player.playlist.isLockable || lockedPlaylist == nil)
 
             {
                 player.play(withStartDelay: true)
