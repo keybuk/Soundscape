@@ -18,6 +18,9 @@ final class OggVorbisFile {
     var processingFormat: AVAudioFormat { fileFormat }
     var length: AVAudioFramePosition
 
+    /// Looping portion of the file.
+    var loop: ClosedRange<AVAudioFramePosition>?
+
     private var _framePosition: AVAudioFramePosition = 0
     var framePosition: AVAudioFramePosition {
         get { _framePosition }
@@ -39,6 +42,10 @@ final class OggVorbisFile {
             throw OggVorbisError(fromResult: openResult)
         }
 
+        guard let comments = ov_comment(&vorbisFile, -1) else {
+            throw OggVorbisError.invalidBitsream
+        }
+
         guard let info = ov_info(&vorbisFile, -1) else {
             throw OggVorbisError.invalidBitsream
         }
@@ -53,6 +60,37 @@ final class OggVorbisFile {
         let pcmTotal = ov_pcm_total(&vorbisFile, -1)
         guard pcmTotal >= 0 else { throw OggVorbisError(fromResult: Int32(pcmTotal)) }
         self.length = pcmTotal
+
+        // Parse the comments for the looping portion.
+        var loopStart: AVAudioFramePosition?
+        var loopEnd: AVAudioFramePosition?
+        var loopLength: AVAudioFramePosition?
+        for c in 0..<Int(comments.pointee.comments) {
+            guard let valueData = comments.pointee.user_comments?[c],
+                let length = comments.pointee.comment_lengths?[c],
+                let value = String(bytesNoCopy: valueData, length: Int(length), encoding: .utf8, freeWhenDone: false)
+                else { continue }
+
+            let parts = value.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+            switch (parts[0].uppercased(), parts[1]) {
+            case ("LOOP_START", let loopStartStr): fallthrough
+            case ("LOOPSTART", let loopStartStr):
+                loopStart = Int64(loopStartStr)
+            case ("LOOP_END", let loopEndStr): fallthrough
+            case ("LOOPEND", let loopEndStr):
+                loopEnd = Int64(loopEndStr)
+            case ("LOOP_LENGTH", let loopLengthStr): fallthrough
+            case ("LOOPLENGTH", let loopLengthStr):
+                loopLength = Int64(loopLengthStr)
+            default: break
+            }
+        }
+
+        if let loopStart = loopStart, let loopEnd = loopEnd {
+            loop = loopStart...loopEnd
+        } else if let loopStart = loopStart, let loopLength = loopLength {
+            loop = loopStart...(loopStart + loopLength)
+        }
     }
 
     deinit {
