@@ -69,9 +69,7 @@ final class Stage: ObservableObject {
             let player = playerForPlaylist(parameters.playlist)
             player.volume = parameters.volume
 
-            if !player.isPlaying && (player.playlist.isLockable || lockedPlaylist == nil)
-
-            {
+            if !player.isPlaying && (!player.playlist.isLockable || lockedPlaylist == nil) {
                 player.play(withStartDelay: true)
             }
         }
