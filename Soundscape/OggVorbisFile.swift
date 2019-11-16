@@ -72,6 +72,8 @@ final class OggVorbisFile {
                 else { continue }
 
             let parts = value.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+            guard parts.count == 2 else { continue }
+            
             switch (parts[0].uppercased(), parts[1]) {
             case ("LOOP_START", let loopStartStr): fallthrough
             case ("LOOPSTART", let loopStartStr):
