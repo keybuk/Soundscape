@@ -148,14 +148,40 @@ final class SyrinscapeSync {
         chaptersClient.download(category: category) { result in
             switch result {
             case .success(_):
+                var currentSlugs: [String] = []
                 for clientChapter in chaptersClient.chapters {
+                    guard let slug = clientChapter.slug else { continue }
                     SoundsetManagedObject.createFrom(clientChapter, category: category, context: self.managedObjectContext)
+                    currentSlugs.append(slug)
                 }
+
+                self.cleanupCategory(category, keep: currentSlugs)
             case .failure(let error):
                 print("Failed to download \(category): \(error.localizedDescription)")
             }
 
             self.syncNextCategory(iterator: categoryIterator)
+        }
+    }
+
+    func cleanupCategory(_ category: Soundset.Category, keep currentSlugs: [String]) {
+        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "categoryRawValue == %d AND url != NULL AND NOT (slug IN %@)", category.rawValue, currentSlugs)
+
+        managedObjectContext.perform {
+            do {
+                let results = try fetchRequest.execute()
+                if !results.isEmpty {
+                    for soundset in results {
+                        print("Deleting \(soundset.slug!)")
+                        self.managedObjectContext.delete(soundset)
+                    }
+
+                    try self.managedObjectContext.save()
+                }
+            } catch let error {
+                print("Cleanup failed: \(error.localizedDescription)")
+            }
         }
     }
 
