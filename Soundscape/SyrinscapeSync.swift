@@ -176,7 +176,10 @@ final class SyrinscapeSync {
 
     func syncNextSoundset(iterator soundsetIterator: Array<SoundsetManagedObject>.Iterator) {
         var soundsetIterator = soundsetIterator
-        guard let soundset = soundsetIterator.next() else { return }
+        guard let soundset = soundsetIterator.next() else {
+            print("Sync complete")
+            return
+        }
 
         soundset.updateFromServer(context: managedObjectContext) {
             self.syncNextSoundset(iterator: soundsetIterator)

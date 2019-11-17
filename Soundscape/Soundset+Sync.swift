@@ -143,9 +143,7 @@ extension SoundsetManagedObject {
                         case .success(_):
                             managedObjectContext.perform {
                                 let soundset = managedObjectContext.object(with: self.objectID) as! SoundsetManagedObject
-                                print("Updating \(soundset.slug!)")
                                 soundset.updateFrom(chapterClient, manifestClient: manifestClient)
-                                print("Done!")
                             }
                             completionHander?()
                         case let .failure(error):
@@ -171,6 +169,7 @@ extension SoundsetManagedObject {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
+        print("Updating \(slug!)")
         for sample in chapterClient.samples {
             SampleManagedObject.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
         }
