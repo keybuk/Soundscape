@@ -13,7 +13,7 @@ struct WeakBox<T> where T: AnyObject {
 }
 
 extension Playlist {
-    var isLockable: Bool { kind == .music || kind == .musicLoop }
+    var isLockable: Bool { kind == .music }
 }
 
 final class Stage: ObservableObject {

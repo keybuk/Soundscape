@@ -30,7 +30,6 @@ struct Playlist: Identifiable, Hashable {
         case music
         case effect
         case oneShot
-        case musicLoop
         
         static func < (lhs: Playlist.Kind, rhs: Playlist.Kind) -> Bool {
             lhs.rawValue < rhs.rawValue
@@ -49,6 +48,10 @@ struct Playlist: Identifiable, Hashable {
     }
 
     var soundset: Soundset
+
+    var isLooping: Bool {
+        kind == .music && ((entries.count == 1) || (order == .random))
+    }
 
     init(managedObject: ElementManagedObject, soundset: Soundset? = nil) {
         self.soundset = soundset ?? Soundset(managedObject: managedObject.soundset!)
