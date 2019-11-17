@@ -17,8 +17,10 @@ extension ClosedRange where Bound == AVAudioFramePosition {
 
 extension AVAudioPlayerNode {
     func scheduleFile(_ file: OggVorbisFile, looping: Bool = false, at when: AVAudioTime? = nil, startHandler: AVAudioNodeCompletionHandler? = nil, completionHandler: AVAudioNodeCompletionHandler? = nil) {
+        let loop = looping ? file.loop : nil
+
         // FIXME: this limits our play time to around 13 hours... oh no.
-        let frames = AVAudioFrameCount(truncatingIfNeeded: looping ? (file.loop?.lowerBound ?? 0) : file.length)
+        let frames = AVAudioFrameCount(truncatingIfNeeded: loop?.lowerBound ?? file.length)
         guard let buffer = AVAudioPCMBuffer(pcmFormat: file.fileFormat, frameCapacity: frames) else {
             print("Failed to allocate buffer")
             completionHandler?()
@@ -34,12 +36,9 @@ extension AVAudioPlayerNode {
         }
 
         // Load the looping portion.
-        // When looping, if the file has no loop section, the initial buffer is zero-length and this
-        // is the buffer we actually end up playing. When the file has a loop section, we play both
-        // and loop this one.
         let loopBuffer: AVAudioPCMBuffer?
-        if looping {
-            let loopFrames = AVAudioFrameCount(truncatingIfNeeded: file.loop?.length ?? file.length)
+        if let loop = loop {
+            let loopFrames = AVAudioFrameCount(truncatingIfNeeded: loop.length)
             loopBuffer = AVAudioPCMBuffer(pcmFormat: file.fileFormat, frameCapacity: loopFrames)
             guard loopBuffer != nil else {
                 print("Failed to allocate loop buffer")
@@ -67,9 +66,9 @@ extension AVAudioPlayerNode {
             }
         }
 
-        if let loopBuffer = loopBuffer {
+        if let loop = loop, let loopBuffer = loopBuffer {
             let loopWhen = when.map {
-                AVAudioTime(sampleTime: $0.sampleTime + (file.loop?.lowerBound ?? 0), atRate: file.processingFormat.sampleRate)
+                AVAudioTime(sampleTime: $0.sampleTime + loop.lowerBound, atRate: file.processingFormat.sampleRate)
             }
 
             scheduleBuffer(buffer, at: when)
