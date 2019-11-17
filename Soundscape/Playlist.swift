@@ -28,10 +28,10 @@ struct Playlist: Identifiable, Hashable {
 
     enum Kind: Int16, Comparable {
         case music
-        case musicLoop
         case effect
         case oneShot
-
+        case musicLoop
+        
         static func < (lhs: Playlist.Kind, rhs: Playlist.Kind) -> Bool {
             lhs.rawValue < rhs.rawValue
         }
