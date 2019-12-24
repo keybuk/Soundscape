@@ -6,7 +6,26 @@ OGG_VERSION=1.3.4
 VORBIS_DIR=$PWD/Vorbis.framework
 VORBIS_VERSION=1.3.6
 
-SDK_VERSION=`xcrun --sdk iphoneos --show-sdk-version`
+IOS_ARCH=arm64
+IOS_TARGET=aarch64-apple-ios
+IOS_HOST=arm-apple-darwin
+IOS_SDK=iphoneos
+IOS_SDK_VERSION=`xcrun --sdk ${IOS_SDK} --show-sdk-version`
+IOS_SDK_PATH=`xcrun --sdk ${IOS_SDK} --show-sdk-path`
+
+SIMULATOR_ARCH=x86_64
+SIMULATOR_TARGET=x86_64-apple-ios
+SIMULATOR_HOST=x86_64-apple-darwin
+SIMULATOR_SDK=iphonesimulator
+SIMULATOR_SDK_VERSION=`xcrun --sdk ${SIMULATOR_SDK} --show-sdk-version`
+SIMULATOR_SDK_PATH=`xcrun --sdk ${SIMULATOR_SDK} --show-sdk-path`
+
+CATALYST_ARCH=x86_64
+CATALYST_TARGET=x86_64-apple-ios13.0-macabi
+CATALYST_HOST=x86_64-apple-darwin
+CATALYST_SDK=macosx
+CATALYST_SDK_VERSION=`xcrun --sdk ${CATALYST_SDK} --show-sdk-version`
+CATALYST_SDK_PATH=`xcrun --sdk ${CATALYST_SDK} --show-sdk-path`
 
 mkdir -p build_frameworks
 cd build_frameworks
@@ -63,23 +82,34 @@ popd
 
 echo Building libogg for iOS ${SDK_VERSION}
 pushd libogg-${OGG_VERSION}
-CC=$(xcrun -sdk iphoneos${SDK_VERSION} -find clang) \
-CFLAGS="-isysroot $(xcode-select -print-path)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS${SDK_VERSION}.sdk -arch arm64 -miphoneos-version-min=7.0 -fembed-bitcode" \
-./configure --host=arm-apple-darwin10 --disable-shared
+CC=$(xcrun -sdk ${IOS_SDK}${IOS_SDK_VERSION} -find clang) \
+CFLAGS="-isysroot ${IOS_SDK_PATH} -arch ${IOS_ARCH} -miphoneos-version-min=7.0 -fembed-bitcode -target ${IOS_TARGET}" \
+./configure --host=${IOS_HOST} --disable-shared
 make
 make DESTDIR=${BUILD_ROOT}/ogg-arm64 install
 make distclean
 popd
 
-echo Building libogg for Simulator
+# echo Building libogg for Simulator
+# pushd libogg-${OGG_VERSION}
+# CC=$(xcrun -sdk ${SIMULATOR_SDK}${SIMULATOR_SDK_VERSION} -find clang) \
+# CFLAGS="-isysroot ${SIMULATOR_SDK_PATH} -arch ${SIMULATOR_ARCH} -mios-simulator-version-min=7.0 -fembed-bitcode -target ${SIMULATOR_TARGET}" \
+# ./configure --host=${SIMULATOR_HOST} --disable-shared
+# make
+# make DESTDIR=${BUILD_ROOT}/ogg-x86_64 install
+# make distclean
+# popd
+
+echo Building libogg for Catalyst
 pushd libogg-${OGG_VERSION}
-CC=$(xcrun -sdk iphonesimulator${SDK_VERISON} -find clang) \
-CFLAGS="-isysroot $(xcode-select -print-path)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator${SDK_VERSION}.sdk -arch x86_64 -mios-simulator-version-min=7.0 -fembed-bitcode" \
-./configure --host=x86_64-apple-darwin10 --disable-shared
+CC=$(xcrun -sdk ${CATALYST_SDK}${CATALYST_SDK_VERSION} -find clang) \
+CFLAGS="-isysroot ${CATALYST_SDK_PATH} -arch ${CATALYST_ARCH} -mios-simulator-version-min=7.0 -fembed-bitcode -target ${CATALYST_TARGET}" \
+./configure --host=${CATALYST_HOST} --disable-shared
 make
 make DESTDIR=${BUILD_ROOT}/ogg-x86_64 install
 make distclean
 popd
+
 
 echo Building Ogg.framework
 OGG_VERSION_DIR=${OGG_DIR}/Versions/${OGG_VERSION}
@@ -98,10 +128,10 @@ ln -sfh Versions/Current/Ogg ${OGG_DIR}/Ogg
 
 echo Building libvorbis for iOS ${SDK_VERSION}
 pushd libvorbis-${VORBIS_VERSION}
-CC=$(xcrun -sdk iphoneos${SDK_VERSION} -find clang) \
-CFLAGS="-isysroot $(xcode-select -print-path)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS${SDK_VERSION}.sdk -arch arm64 -miphoneos-version-min=7.0 -fembed-bitcode -I${BUILD_ROOT}/ogg-arm64/usr/local/include" \
+CC=$(xcrun -sdk ${IOS_SDK}${IOS_SDK_VERSION} -find clang) \
+CFLAGS="-isysroot ${IOS_SDK_PATH} -arch ${IOS_ARCH} -miphoneos-version-min=7.0 -fembed-bitcode -I${BUILD_ROOT}/ogg-arm64/usr/local/include -target ${IOS_TARGET}" \
 OGG_LIBS="-L${BUILD_ROOT}/ogg-arm64/usr/local/lib" \
-./configure --host=arm-apple-darwin10 --disable-shared
+./configure --host=${IOS_HOST} --disable-shared --disable-oggtest
 make
 make DESTDIR=${BUILD_ROOT}/vorbis-arm64 install
 make distclean
@@ -116,18 +146,38 @@ for lib in ../*.a; do ar -x $lib; done
 ar -rs ../libvorbisall.a *.o
 popd
 
-echo Building libvorbis for Simulator
+# echo Building libvorbis for Simulator
+# pushd libvorbis-${VORBIS_VERSION}
+# CC=$(xcrun -sdk ${SIMULATOR_SDK}${SIMULATOR_SDK_VERSION} -find clang) \
+# CFLAGS="-isysroot ${SIMULATOR_SDK_PATH} -arch ${SIMULATOR_ARCH} -mios-simulator-version-min=7.0 -fembed-bitcode -I${BUILD_ROOT}/ogg-x86_64/usr/local/include -target ${SIMULATOR_TARGET}" \
+# OGG_LIBS="-L${BUILD_ROOT}/ogg-x86_64/usr/local/lib" \
+# ./configure --host=${SIMULATOR_HOST} --disable-shared --disable-oggtest
+# make
+# make DESTDIR=${BUILD_ROOT}/vorbis-x86_64 install
+# make distclean
+# popd
+
+# echo Creating libvorbisall.a for Simulator
+# OBJECTS_DIR=${BUILD_ROOT}/vorbis-x86_64/usr/local/lib/objects
+# rm -rf ${OBJECTS_DIR}
+# mkdir ${OBJECTS_DIR}
+# pushd ${BUILD_ROOT}/vorbis-x86_64/usr/local/lib/objects
+# for lib in ../*.a; do ar -x $lib; done
+# ar -rs ../libvorbisall.a *.o
+# popd
+
+echo Building libvorbis for Catalyst
 pushd libvorbis-${VORBIS_VERSION}
-CC=$(xcrun -sdk iphonesimulator${SDK_VERISON} -find clang) \
-CFLAGS="-isysroot $(xcode-select -print-path)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator${SDK_VERSION}.sdk -arch x86_64 -mios-simulator-version-min=7.0 -fembed-bitcode -I${BUILD_ROOT}/ogg-x86_64/usr/local/include" \
+CC=$(xcrun -sdk ${CATALYST_SDK}${CATALYST_SDK_VERSION} -find clang) \
+CFLAGS="-isysroot ${CATALYST_SDK_PATH} -arch ${CATALYST_ARCH} -mios-simulator-version-min=7.0 -fembed-bitcode -I${BUILD_ROOT}/ogg-x86_64/usr/local/include -target ${CATALYST_TARGET}" \
 OGG_LIBS="-L${BUILD_ROOT}/ogg-x86_64/usr/local/lib" \
-./configure --host=x86_64-apple-darwin10 --disable-shared
+./configure --host=${CATALYST_HOST} --disable-shared --disable-oggtest
 make
 make DESTDIR=${BUILD_ROOT}/vorbis-x86_64 install
 make distclean
 popd
 
-echo Creating libvorbisall.a for Simulator
+echo Creating libvorbisall.a for Catalyst
 OBJECTS_DIR=${BUILD_ROOT}/vorbis-x86_64/usr/local/lib/objects
 rm -rf ${OBJECTS_DIR}
 mkdir ${OBJECTS_DIR}
