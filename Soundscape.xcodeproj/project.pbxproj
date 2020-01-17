@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,8 +34,6 @@
 		D2AC670A2321809A00548388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC67092321809A00548388 /* Assets.xcassets */; };
 		D2AC670D2321809A00548388 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670C2321809A00548388 /* Preview Assets.xcassets */; };
 		D2AC67102321809A00548388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AC670E2321809A00548388 /* LaunchScreen.storyboard */; };
-		D2AC671923218EA700548388 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC671723218EA700548388 /* Ogg.framework */; };
-		D2AC671A23218EA700548388 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC671823218EA700548388 /* Vorbis.framework */; };
 		D2AC671E2321934500548388 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC671D2321934500548388 /* AudioManager.swift */; };
 		D2AC67242321948700548388 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC67232321948700548388 /* AVFoundation.framework */; };
 		D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC67252321964500548388 /* OggVorbisFile.swift */; };
@@ -56,6 +54,8 @@
 		D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560D2329C2870065A48B /* Sample+Sync.swift */; };
 		D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560F232AD7540065A48B /* Element+Sync.swift */; };
 		D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */; };
+		D2DD5BF423D1504600E4EED9 /* Ogg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */; };
+		D2DD5BF623D1505300E4EED9 /* Vorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */; };
 		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
 		D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */; };
 		D2DFD11223590700001CA9DC /* OneShotsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11123590700001CA9DC /* OneShotsList.swift */; };
@@ -100,8 +100,6 @@
 		D2AC670C2321809A00548388 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2AC670F2321809A00548388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2AC67112321809A00548388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2AC671723218EA700548388 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogg.framework; sourceTree = "<group>"; };
-		D2AC671823218EA700548388 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Vorbis.framework; sourceTree = "<group>"; };
 		D2AC671C23218F4200548388 /* Soundscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soundscape-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2AC671D2321934500548388 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		D2AC67232321948700548388 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +121,8 @@
 		D2B2560D2329C2870065A48B /* Sample+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sample+Sync.swift"; sourceTree = "<group>"; };
 		D2B2560F232AD7540065A48B /* Element+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Sync.swift"; sourceTree = "<group>"; };
 		D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Ogg.xcframework; sourceTree = "<group>"; };
+		D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Vorbis.xcframework; sourceTree = "<group>"; };
 		D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetListController.swift; sourceTree = "<group>"; };
 		D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBottomBar.swift; sourceTree = "<group>"; };
 		D2DFD11123590700001CA9DC /* OneShotsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsList.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2AC671923218EA700548388 /* Ogg.framework in Frameworks */,
-				D2AC671A23218EA700548388 /* Vorbis.framework in Frameworks */,
+				D2DD5BF423D1504600E4EED9 /* Ogg.xcframework in Frameworks */,
+				D2DD5BF623D1505300E4EED9 /* Vorbis.xcframework in Frameworks */,
 				D2B255F5232983760065A48B /* CoreData.framework in Frameworks */,
 				D2AC67502321A5DC00548388 /* AVKit.framework in Frameworks */,
 				D2AC67242321948700548388 /* AVFoundation.framework in Frameworks */,
@@ -220,8 +220,8 @@
 				D2B255F4232983760065A48B /* CoreData.framework */,
 				D2AC674F2321A5DC00548388 /* AVKit.framework */,
 				D2AC67232321948700548388 /* AVFoundation.framework */,
-				D2AC671723218EA700548388 /* Ogg.framework */,
-				D2AC671823218EA700548388 /* Vorbis.framework */,
+				D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */,
+				D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
