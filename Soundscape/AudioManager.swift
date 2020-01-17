@@ -33,9 +33,20 @@ final class AudioManager {
     var isSessionInterrupted = false
     var isConfigChangePending = false
 
-    init() {
-        setupAudioSession()
-        createEngine()
+    func start() {
+        if engine == nil {
+            // Set observers; the documentation is clear that we never need to
+            // re-register these, so it should be safe to
+            NotificationCenter.default.addObserver(forName: AVAudioSession.interruptionNotification,
+                                                   object: session, queue: nil, using: audioSessionInterruption)
+            NotificationCenter.default.addObserver(forName: AVAudioSession.routeChangeNotification,
+                                                   object: session, queue: nil, using: audioSessionRouteChange)
+            NotificationCenter.default.addObserver(forName: AVAudioSession.mediaServicesWereResetNotification,
+                                                   object: session, queue: nil, using: mediaServicesWereReset)
+
+            setupAudioSession()
+            createEngine()
+        }
     }
 
     func setupAudioSession() {
@@ -44,13 +55,6 @@ final class AudioManager {
         } catch let error as NSError {
             fatalError("Failed to set audio session category: \(error.localizedDescription)")
         }
-
-        NotificationCenter.default.addObserver(forName: AVAudioSession.interruptionNotification,
-                                               object: session, queue: nil, using: audioSessionInterruption)
-        NotificationCenter.default.addObserver(forName: AVAudioSession.routeChangeNotification,
-                                               object: session, queue: nil, using: audioSessionRouteChange)
-        NotificationCenter.default.addObserver(forName: AVAudioSession.mediaServicesWereResetNotification,
-                                               object: session, queue: nil, using: mediaServicesWereReset)
 
         do {
             try session.setActive(true)

@@ -65,6 +65,8 @@ final class Player: ObservableObject {
     func createEnvironmentAndAttach() {
         guard environment == nil else { return }
 
+        audio.start()
+
         NotificationCenter.default.addObserver(forName: AudioManager.configurationChangeNotification,
                                                object: audio, queue: nil, using: configurationChange)
         NotificationCenter.default.addObserver(forName: AudioManager.engineResetNotification,
@@ -133,7 +135,7 @@ final class Player: ObservableObject {
     }
 
     func startEngine() {
-        guard !audio.engine.isRunning else { return }
+        guard let engine = audio.engine, !engine.isRunning else { return }
 
         do {
             try audio.engine.start()
