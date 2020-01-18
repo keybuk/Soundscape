@@ -25,10 +25,8 @@ final class Player: ObservableObject {
         }
     }
 
-    @Published var isPlaying: Bool = false
-
+    var isPlaying: Bool { !playing.isEmpty || !downloading.isEmpty }
     var isDownloading: Bool { !downloading.isEmpty }
-    @Published private var downloading: [URLSessionDataTask] = []
 
     var progressSubject = CurrentValueSubject<Double, Never>(0)
 
@@ -52,7 +50,8 @@ final class Player: ObservableObject {
         var over: Range<AVAudioFramePosition>
     }
 
-    var playing: [Playing] = []
+    @Published var playing: [Playing] = []
+    @Published private var downloading: [URLSessionDataTask] = []
 
     private var playlistIterator: Playlist.PlaylistIterator?
 
@@ -246,20 +245,19 @@ final class Player: ObservableObject {
             }
         }) {
             DispatchQueue.main.async {
-                // Pause the progress updater before removing playing; send
-                // a status update to capture the 100% mark in case we didn't
-                // already.
+                // Pause the progress updater and send one last progress update
+                // before removing the last playing sample; this ensures we
+                // send a 100% progress update.
                 if self.playing.count == 1 {
                     self.progressUpdater.isPaused = true
-                    self.updateStatus()
+                    self.sendProgressUpdate()
                 }
 
-                // Remove the playing member, then detach the player and down
-                // mixer from the audio engine. Combined with the above, this
-                // avoids updateStatus trying to get the lastRenderTime of a
-                // detached node.
+                // Remove the playing member before detaching the player and
+                // down mixer from the audio engine, this avoids the progress
+                // updater (unpaused in the case of overlapping samples) trying
+                // to get the lastRenderTime of a detached node.
                 self.playing.removeAll { $0.player == player }
-
                 self.audio.engine.detach(player)
                 if let downMixer = downMixer { self.audio.engine.detach(downMixer) }
 
@@ -267,11 +265,6 @@ final class Player: ObservableObject {
                 if delayBeforeNext >= 0 && !self.playlist.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
-
-                // If we're not playing anything, we haven't resumed the
-                // progress updater, so send a status update now to capture
-                // the stopped or downloading state.
-                if self.playing.isEmpty { self.updateStatus() }
             }
         }
         player.play(at: startTime)
@@ -320,10 +313,8 @@ final class Player: ObservableObject {
                             self.scheduleFile(file, volume: volume, delay: adjustedDelay)
                         case let .failure(error as NSError)
                             where error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled:
-                            // Cancelled! This is the one other place we allow
-                            // ourselves to call updateStatus() since we're no
-                            // longer in the downloading state.
-                            self.updateStatus()
+                            // Cancelled; do nothing.
+                            break
                         case let .failure(error):
                             print("Failed to download sample file: \(error.localizedDescription)")
                             self.wantFile(in: adjustedDelay, isFirst: isFirst)
@@ -355,7 +346,7 @@ final class Player: ObservableObject {
 
     @objc
     func progressUpdate() {
-        updateStatus()
+        sendProgressUpdate()
 
         for playingMember in playing {
             guard let lastRenderTime = playingMember.player.lastRenderTime,
@@ -382,13 +373,11 @@ final class Player: ObservableObject {
         }
     }
 
-    func updateStatus() {
+    func sendProgressUpdate() {
         if let playingMember = playing.first,
             let lastRenderTime = playingMember.player.lastRenderTime,
             let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
         {
-            if !isPlaying { isPlaying = true }
-
             if playerTime.sampleTime < 0 {
                 progressSubject.send(-Double(-playerTime.sampleTime) / Double(playingMember.delay))
             } else if playlist.isLooping, let loop = playingMember.loop {
@@ -401,13 +390,8 @@ final class Player: ObservableObject {
             } else {
                 progressSubject.send(Double(playerTime.sampleTime) / Double(playingMember.length))
             }
-        } else if isDownloading {
-            // Still downloading the next file.
-            progressSubject.send(0)
         } else {
-            // No iterator means we're stopped.
             progressSubject.send(0)
-            isPlaying = false
         }
     }
 }
