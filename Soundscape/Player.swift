@@ -244,14 +244,32 @@ final class Player: ObservableObject {
             }
         }) {
             DispatchQueue.main.async {
+                // Pause the progress updater before removing playing; send
+                // a status update to capture the 100% mark in case we didn't
+                // already.
+                if self.playing.count == 1 {
+                    self.progressUpdater.isPaused = true
+                    self.updateStatus()
+                }
+
+                // Remove the playing member, then detach the player and down
+                // mixer from the audio engine. Combined with the above, this
+                // avoids updateStatus trying to get the lastRenderTime of a
+                // detached node.
+                self.playing.removeAll { $0.player == player }
+
                 self.audio.engine.detach(player)
                 if let downMixer = downMixer { self.audio.engine.detach(downMixer) }
-                self.playing = self.playing.filter({ $0.player != player })
 
                 // If the next sample doesn't overlap, schedule it.
                 if delayBeforeNext >= 0 && !self.playlist.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
+
+                // If we're not playing anything, we haven't resumed the
+                // progress updater, so send a status update now to capture
+                // the stopped or downloading state.
+                if self.playing.isEmpty { self.updateStatus() }
             }
         }
         player.play(at: startTime)
@@ -264,12 +282,8 @@ final class Player: ObservableObject {
     func wantFile(in delay: Double, isFirst: Bool = false) {
         if playlist.kind == .oneShot && !isFirst {
             // Don't queue additional files for one shots, but keep the iterator for next time.
-            progressUpdater.isPaused = true
-            updateStatus()
         } else if let playlistEntry = playlistIterator?.next() {
             // Queue up the next file.
-            updateStatus()
-
             let sample = playlistEntry.sample
             let volume: Float = .random(in: playlistEntry.volume)
 
@@ -281,7 +295,6 @@ final class Player: ObservableObject {
             } else {
                 let downloadStart = Date()
                 isDownloading = true
-                updateStatus()
 
                 sample.downloadFromSyrinscape { result in
                     DispatchQueue.main.async {
@@ -290,7 +303,6 @@ final class Player: ObservableObject {
                         let adjustedDelay = max(0, delay - downloadDuration)
 
                         self.isDownloading = false
-                        self.updateStatus()
 
                         switch result {
                         case .success:
@@ -315,8 +327,6 @@ final class Player: ObservableObject {
         } else {
             // Reached the end of the playlist.
             playlistIterator = nil
-            progressUpdater.isPaused = true
-            updateStatus()
         }
     }
 
@@ -326,13 +336,12 @@ final class Player: ObservableObject {
         for playingMember in self.playing {
             playingMember.player.stop()
         }
-        self.playing.removeAll()
     }
 
     lazy var progressUpdater: CADisplayLink = {
         let progressUpdater = CADisplayLink(target: self, selector: #selector(progressUpdate))
-        progressUpdater.add(to: RunLoop.main, forMode: .default)
         progressUpdater.isPaused = true
+        progressUpdater.add(to: RunLoop.main, forMode: .default)
         return progressUpdater
     }()
 
@@ -370,7 +379,6 @@ final class Player: ObservableObject {
             let lastRenderTime = playingMember.player.lastRenderTime,
             let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
         {
-            // Current player means we're playing, or have a sample queued. Be careful not to push an update.
             if !isPlaying { isPlaying = true }
 
             if playerTime.sampleTime < 0 {
@@ -390,8 +398,8 @@ final class Player: ObservableObject {
             progressSubject.send(0)
         } else {
             // No iterator means we're stopped.
-            isPlaying = false
             progressSubject.send(0)
+            isPlaying = false
         }
     }
 }
