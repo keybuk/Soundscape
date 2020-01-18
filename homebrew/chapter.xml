@@ -1,0 +1,520 @@
+<Chapter>
+	<!-- All elements must appear in MusicElements -->
+	<Moods>
+		<Mood>
+			<Title>Alfriston Town</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Bazaar_01</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Alfriston Region</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Bazaar_02</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Alfriston Battle</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_StormsongValley_ShrineOfStorms_Intro</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+				<ElementParameter>
+					<ElementSlug>MUS_80_StormsongValley_ShrineofStorms</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Alfriston Night</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Field_Rak_Day</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Alfriston Sorrow</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Field_Rak_Night</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+		
+		<Mood>
+			<Title>Alfriston Dungeon</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Dan_D03</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Aron-Kai Ruin</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Intro</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Day</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Aron-Kai Night</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Night</ElementSlug>
+					<Plays>true</Plays>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+	</Moods>
+
+	<!-- All SampleFile must appear in Samples -->
+	<MusicElements>
+		<MusicElement>
+			<Slug>BGM_EX3_Field_Rak_Day</Slug>
+			<Title>FFXIV: Civilizations</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Field_Rak_Day</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Field_Rak_Night</Slug>
+			<Title>FFXIV: Civilizations Night</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Field_Rak_Night</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Dan_D03</Slug>
+			<Title>FFXIV: Unwound</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Dan_D03</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_StormsongValley_ShrineOfStorms_Intro</Slug>
+			<Title>WoW: Shrine of Storms Intro</Title>
+
+			<RepeatPlaylist>false</RepeatPlaylist>
+			<RandomisePlaylist>ordered</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_StormsongValley_ShrineOfStorms_Intro</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_StormsongValley_ShrineofStorms</Slug>
+			<Title>WoW: Shrine of Storms</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>45.0</MinStartDelay>
+			<MaxStartDelay>45.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_StormsongValley_ShrineofStorms_01</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_StormsongValley_ShrineofStorms_02</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_StormsongValley_ShrineofStorms_03</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_StormsongValley_ShrineofStorms_04</SampleFile>
+				</PlaylistEntry>				
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_AtalDazar</Slug>
+			<Title>WoW: Atal Dazar</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_AtalDazar_01</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_AtalDazar_02</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_AtalDazar_03</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_AtalDazar_04</SampleFile>
+				</PlaylistEntry>				
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Bazaar_01</Slug>
+			<Title>WoW: Dazaralor Bazaar #1</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Bazaar_01</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Bazaar_02</Slug>
+			<Title>WoW: Dazaralor Bazaar #2</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Bazaar_02</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Intro</Slug>
+			<Title>WoW: Dazaralor Intro</Title>
+
+			<RepeatPlaylist>false</RepeatPlaylist>
+			<RandomisePlaylist>ordered</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Intro</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Day</Slug>
+			<Title>WoW: Dazaralor Day</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>67.0</MinStartDelay>
+			<MaxStartDelay>67.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_01</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_02</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_04</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_05</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_06</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Night</Slug>
+			<Title>WoW: Dazaralor Night</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_02</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_03</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_05</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_06</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>mus_80_zandalarilament</Slug>
+			<Title>WoW: Zandalari Lament</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>mus_80_zandalarilament_A</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_80_zandalarilament_B</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_80_zandalarilament_H</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+	</MusicElements>
+
+	<Samples>
+		<!-- BEGIN: Samples -->
+		<SoundSample>
+			<Title>BGM_EX3_Field_Rak_Day</Title>
+			<Uuid>BGM_EX3_Field_Rak_Day</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Field_Rak_Night</Title>
+			<Uuid>BGM_EX3_Field_Rak_Night</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Dan_D03</Title>
+			<Uuid>BGM_EX3_Dan_D03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_StormsongValley_ShrineOfStorms_Intro</Title>
+			<Uuid>MUS_80_StormsongValley_ShrineOfStorms_Intro</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_StormsongValley_ShrineofStorms_01</Title>
+			<Uuid>MUS_80_StormsongValley_ShrineofStorms_01</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_StormsongValley_ShrineofStorms_02</Title>
+			<Uuid>MUS_80_StormsongValley_ShrineofStorms_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_StormsongValley_ShrineofStorms_03</Title>
+			<Uuid>MUS_80_StormsongValley_ShrineofStorms_03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_StormsongValley_ShrineofStorms_04</Title>
+			<Uuid>MUS_80_StormsongValley_ShrineofStorms_04</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_AtalDazar_01</Title>
+			<Uuid>MUS_80_Zuldazar_AtalDazar_01</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_AtalDazar_02</Title>
+			<Uuid>MUS_80_Zuldazar_AtalDazar_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_AtalDazar_03</Title>
+			<Uuid>MUS_80_Zuldazar_AtalDazar_03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_AtalDazar_04</Title>
+			<Uuid>MUS_80_Zuldazar_AtalDazar_04</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Bazaar_01</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Bazaar_01</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Bazaar_02</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Bazaar_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Intro</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Intro</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_01</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_01</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_02</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_04</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_04</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_05</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_05</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_06</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_06</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_02</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_03</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_05</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_05</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_06</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_06</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_zandalarilament_A</Title>
+			<Uuid>mus_80_zandalarilament_A</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_zandalarilament_B</Title>
+			<Uuid>mus_80_zandalarilament_B</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_zandalarilament_H</Title>
+			<Uuid>mus_80_zandalarilament_H</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<!-- END: Samples -->
+	</Samples>
+</Chapter>
