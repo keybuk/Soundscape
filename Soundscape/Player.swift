@@ -26,7 +26,9 @@ final class Player: ObservableObject {
     }
 
     @Published var isPlaying: Bool = false
-    @Published var isDownloading: Bool = false
+
+    var isDownloading: Bool { !downloading.isEmpty }
+    @Published private var downloading: [URLSessionDataTask] = []
 
     var progressSubject = CurrentValueSubject<Double, Never>(0)
 
@@ -294,15 +296,14 @@ final class Player: ObservableObject {
                 self.scheduleFile(file, volume: volume, delay: delay)
             } else {
                 let downloadStart = Date()
-                isDownloading = true
-
-                sample.downloadFromSyrinscape { result in
+                var downloadTask: URLSessionDataTask? = nil
+                downloadTask = sample.downloadFromSyrinscape { result in
                     DispatchQueue.main.async {
+                        self.downloading.removeAll { $0 == downloadTask }
+
                         // Subtract the amount of time the download took from the delay.
                         let downloadDuration = downloadStart.distance(to: Date())
                         let adjustedDelay = max(0, delay - downloadDuration)
-
-                        self.isDownloading = false
 
                         switch result {
                         case .success:
@@ -317,14 +318,22 @@ final class Player: ObservableObject {
 
                             print("Playing \(sample.title) in \(adjustedDelay)s")
                             self.scheduleFile(file, volume: volume, delay: adjustedDelay)
+                        case let .failure(error as NSError)
+                            where error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled:
+                            // Cancelled! This is the one other place we allow
+                            // ourselves to call updateStatus() since we're no
+                            // longer in the downloading state.
+                            self.updateStatus()
                         case let .failure(error):
                             print("Failed to download sample file: \(error.localizedDescription)")
                             self.wantFile(in: adjustedDelay, isFirst: isFirst)
                         }
                     }
                 }
+
+                downloading.append(downloadTask!)
             }
-        } else {
+        } else if playlistIterator != nil {
             // Reached the end of the playlist.
             playlistIterator = nil
         }
@@ -333,9 +342,8 @@ final class Player: ObservableObject {
     func stop() {
         playlistIterator = nil
 
-        for playingMember in self.playing {
-            playingMember.player.stop()
-        }
+        downloading.forEach { $0.cancel() }
+        playing.forEach { $0.player.stop() }
     }
 
     lazy var progressUpdater: CADisplayLink = {

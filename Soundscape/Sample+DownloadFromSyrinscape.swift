@@ -18,7 +18,7 @@ extension Sample {
         FileManager.default.fileExists(atPath: cacheURL.path)
     }
 
-    func downloadFromSyrinscape(completionHandler: @escaping (Result<Void, Error>) -> Void) {
+    func downloadFromSyrinscape(completionHandler: @escaping (Result<Void, Error>) -> Void) -> URLSessionDataTask {
         print("Downloading \(url)")
         let task = URLSession.shared.dataTask(with: url.authenticatedForSyrinscape() ?? url) { data, response, error in
             if let error = error {
@@ -50,5 +50,6 @@ extension Sample {
             completionHandler(.success(()))
         }
         task.resume()
+        return task
     }
 }
