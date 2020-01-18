@@ -24,12 +24,21 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
         case fantasy
         case sciFi
         case boardgame
+        case homebrew
 
-        var urlComponent: String {
+        var urlComponent: String? {
             switch self {
             case .fantasy: return "fantasy"
             case .sciFi: return "sci-fi"
             case .boardgame: return "boardgame"
+            case .homebrew: return nil
+            }
+        }
+
+        var url: URL? {
+            switch self {
+            case .homebrew: return URL(string: "https://bard.local/soundscape/chapters.xml")
+            default: return nil
             }
         }
 
@@ -38,6 +47,7 @@ final class Soundset: Identifiable, Hashable, ObservableObject {
             case .fantasy: return "Fantasy"
             case .sciFi: return "Sci-Fi"
             case .boardgame: return "Board Game"
+            case .homebrew: return "Homebrew"
             }
         }
     }

@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sync soundsets from Syrinscape.
         let syncContext = persistentContainer.newBackgroundContext()
         let syrinscapeSync = SyrinscapeSync(context: syncContext)
-        syrinscapeSync.syncStaticData()
         syrinscapeSync.syncChapters()
 
         return true
