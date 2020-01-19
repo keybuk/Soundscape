@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D21D137723D4914B0097F2EB /* Soundset+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137623D4914B0097F2EB /* Soundset+FetchRequests.swift */; };
 		D21D137923D4921E0097F2EB /* SoundsetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137823D4921E0097F2EB /* SoundsetImage.swift */; };
+		D21D137C23D50E400097F2EB /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137B23D50E400097F2EB /* ProgressCircle.swift */; };
 		D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0023303EAC007E2A58 /* Stage.swift */; };
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		D21D137623D4914B0097F2EB /* Soundset+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+FetchRequests.swift"; sourceTree = "<group>"; };
 		D21D137823D4921E0097F2EB /* SoundsetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetImage.swift; sourceTree = "<group>"; };
+		D21D137B23D50E400097F2EB /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		D23D8C02233054AB007E2A58 /* MoodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRow.swift; sourceTree = "<group>"; };
 		D23D8C0423306F34007E2A58 /* ElementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
@@ -172,6 +174,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21D137D23D514920097F2EB /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				D250FFF4232C962900EA515B /* PlayerView.swift */,
+				D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */,
+				D2DFD119235909D8001CA9DC /* PlayerProgress.swift */,
+				D21D137B23D50E400097F2EB /* ProgressCircle.swift */,
+				D250FFF2232C8D8D00EA515B /* ProgressArc.swift */,
+				D2DFD11523590992001CA9DC /* PlayerButton.swift */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
 		D241A1BF2321D6860009CFF3 /* Syrinscape */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,12 +293,8 @@
 				D299938C2352E0F30060859D /* MoodsList.swift */,
 				D29993B2235430A20060859D /* MoodButton.swift */,
 				D29993B4235431BE0060859D /* PlaylistsList.swift */,
-				D250FFF4232C962900EA515B /* PlayerView.swift */,
-				D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */,
-				D2DFD119235909D8001CA9DC /* PlayerProgress.swift */,
-				D250FFF2232C8D8D00EA515B /* ProgressArc.swift */,
+				D21D137D23D514920097F2EB /* Player */,
 				D2DFD11123590700001CA9DC /* OneShotsList.swift */,
-				D2DFD11523590992001CA9DC /* PlayerButton.swift */,
 				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
@@ -411,6 +422,7 @@
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
 				D2DFD11423590728001CA9DC /* OneShotSearchController.swift in Sources */,
 				D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */,
+				D21D137C23D50E400097F2EB /* ProgressCircle.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
 				D241A1F1232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift in Sources */,
 				D2DCA96E23D48BD800E53507 /* SoundsetList.swift in Sources */,

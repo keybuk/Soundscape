@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ProgressArc: Shape {
-    @Binding var progress: Double
-    
+    var progress: Double
+
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.addArc(
@@ -30,78 +30,36 @@ struct ProgressArc: Shape {
 }
 
 #if DEBUG
-struct TestCircle: View {
-    @State var progress: Double
-
-    var body: some View {
-        GeometryReader { g in
-            Circle()
-                .stroke(lineWidth: self.lineWidth(size: g.size))
-                .foregroundColor(Color(UIColor.secondarySystemFill))
-            ProgressArc(progress: self.$progress)
-                .stroke(style: self.strokeStyle(size: g.size))
-        }
-    }
-
-    func lineWidth(size: CGSize) -> CGFloat {
-        let length = min(size.width, size.height)
-        return length / (2 * log2(length))
-    }
-
-    func strokeStyle(size: CGSize) -> StrokeStyle {
-        StrokeStyle(lineWidth: self.lineWidth(size: size),
-                    lineCap: .round, lineJoin: .round, miterLimit: 0,
-                    dash: [], dashPhase: 0)
-    }
-}
-
-
-struct AnimationTest: View {
-    @State var progress: Double = 0.8
-    @State var newProgress: Double = 0.8
-
-    var body: some View {
-        VStack {
-            TestCircle(progress: progress)
-            Slider(value: $newProgress, in: -1.0...1.0)
-            Button(action: {
-                withAnimation(self.newProgress < 0 && self.progress > 0 ? nil : .linear) {
-                    self.progress = self.newProgress
-                }
-            }) {
-                Text("Change")
-            }
-        }
-        .padding()
-    }
-}
-
-struct ProgressCircle_Previews: PreviewProvider {
+struct ProgressArc_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            HStack {
-                TestCircle(progress: 0.8)
-                TestCircle(progress: 0.4)
-                TestCircle(progress: -0.4)
-            }
-            .frame(height: 30)
+            HStack(spacing: 20.0) {
+                ProgressArc(progress: 0.8)
+                    .stroke(style: Self.strokeStyle)
 
-            HStack {
-                TestCircle(progress: 0.8)
-                TestCircle(progress: 0.4)
-                TestCircle(progress: -0.4)
+                ProgressArc(progress: -0.8)
+                    .stroke(style: Self.strokeStyle)
             }
-            .frame(height: 44)
 
-            HStack {
-                TestCircle(progress: 0.8)
-                TestCircle(progress: 0.4)
-                TestCircle(progress: -0.4)
+            HStack(spacing: 20.0) {
+                ProgressArc(progress: 0.4)
+                    .stroke(style: Self.strokeStyle)
+
+                ProgressArc(progress: -0.4)
+                    .stroke(style: Self.strokeStyle)
             }
-            .frame(height: 88)
 
-            AnimationTest()
+            HStack(spacing: 20.0) {
+                ProgressArc(progress: 1.0)
+                    .stroke(style: Self.strokeStyle)
+
+                ProgressArc(progress: -1.0)
+                    .stroke(style: Self.strokeStyle)
+            }
         }
+        .padding(20.0)
     }
+
+    static var strokeStyle = StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round, miterLimit: 0, dash: [], dashPhase: 0)
 }
 #endif

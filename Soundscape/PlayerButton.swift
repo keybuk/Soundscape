@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct PlayerButton: View {
-    @EnvironmentObject var stage: Stage
-
     @ObservedObject var player: Player
 
     var body: some View {
@@ -42,4 +40,3 @@ struct PlayerButton_Previews: PreviewProvider {
     }
 }
 #endif
-
