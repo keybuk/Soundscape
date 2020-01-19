@@ -290,6 +290,8 @@ final class Player: ObservableObject {
             } else {
                 let downloadStart = Date()
                 var downloadTask: URLSessionDataTask? = nil
+
+                print("Downloading \(sample.url!)")
                 downloadTask = sample.downloadFromSyrinscape { result in
                     DispatchQueue.main.async {
                         self.downloading.removeAll { $0 == downloadTask }

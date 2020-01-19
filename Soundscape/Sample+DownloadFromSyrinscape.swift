@@ -19,11 +19,7 @@ extension Sample {
     }
 
     func downloadFromSyrinscape(completionHandler: @escaping (Result<Void, Error>) -> Void) -> URLSessionDataTask {
-        guard let url = url else { preconditionFailure("Cannot download sample without URL") }
-
-        // FIXME: This debug output doesn't belong here
-        print("Downloading \(url)")
-        let task = URLSession.shared.dataTask(with: url.authenticatedForSyrinscape() ?? url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url!.authenticatedForSyrinscape() ?? url!) { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
                 return
