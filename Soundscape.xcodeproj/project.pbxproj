@@ -20,11 +20,14 @@
 		D250FFF5232C962900EA515B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF4232C962900EA515B /* PlayerView.swift */; };
 		D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */; };
 		D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF8233024AC00EA515B /* Mood+Sync.swift */; };
-		D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */; };
-		D28442E52356EAF0008BBD5E /* Soundset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442E42356EAF0008BBD5E /* Soundset.swift */; };
-		D28442EB2356EC9B008BBD5E /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442EA2356EC9B008BBD5E /* Playlist.swift */; };
-		D28442F32356EF3F008BBD5E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442F22356EF3F008BBD5E /* Sample.swift */; };
-		D28442F52356EFC0008BBD5E /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28442F42356EFC0008BBD5E /* Mood.swift */; };
+		D250FFFB2330253100EA515B /* PlaylistParameter+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFFA2330253100EA515B /* PlaylistParameter+Sync.swift */; };
+		D28D97A623D2FD5C0089EACD /* Soundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */; };
+		D28D97A823D2FDA50089EACD /* Soundset+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A723D2FDA50089EACD /* Soundset+Image.swift */; };
+		D28D97AA23D2FECC0089EACD /* Playlist+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */; };
+		D28D97AC23D2FF0F0089EACD /* Playlist+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97AB23D2FF0F0089EACD /* Playlist+Order.swift */; };
+		D28D97AE23D2FF810089EACD /* Playlist+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97AD23D2FF800089EACD /* Playlist+Properties.swift */; };
+		D28D97B223D2FFBC0089EACD /* Playlist+Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97B123D2FFBC0089EACD /* Playlist+Iterator.swift */; };
+		D28D97B423D305060089EACD /* PlaylistEntry+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97B323D305060089EACD /* PlaylistEntry+Properties.swift */; };
 		D299938B2352B3AF0060859D /* SoundsetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299938A2352B3AF0060859D /* SoundsetImageView.swift */; };
 		D299938D2352E0F30060859D /* MoodsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299938C2352E0F30060859D /* MoodsList.swift */; };
 		D29993B3235430A20060859D /* MoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29993B2235430A20060859D /* MoodButton.swift */; };
@@ -52,8 +55,12 @@
 		D2B2560A2329A3CB0065A48B /* SoundsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B256092329A3CB0065A48B /* SoundsetView.swift */; };
 		D2B2560C2329A5B20065A48B /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560B2329A5B20065A48B /* HostView.swift */; };
 		D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560D2329C2870065A48B /* Sample+Sync.swift */; };
-		D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560F232AD7540065A48B /* Element+Sync.swift */; };
+		D2B25610232AD7540065A48B /* Playlist+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2560F232AD7540065A48B /* Playlist+Sync.swift */; };
 		D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */; };
+		D2DCA96223D4264B00E53507 /* Soundset+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA96123D4264B00E53507 /* Soundset+Identifiable.swift */; };
+		D2DCA96423D42A9800E53507 /* Soundset+Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA96323D42A9800E53507 /* Soundset+Playlists.swift */; };
+		D2DCA96623D42BB600E53507 /* Mood+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA96523D42BB600E53507 /* Mood+Identifiable.swift */; };
+		D2DCA96823D42C5F00E53507 /* Playlist+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA96723D42C5F00E53507 /* Playlist+Identifiable.swift */; };
 		D2DD5BF423D1504600E4EED9 /* Ogg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */; };
 		D2DD5BF623D1505300E4EED9 /* Vorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */; };
 		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
@@ -81,13 +88,16 @@
 		D250FFF4232C962900EA515B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayRoutePicker.swift; sourceTree = "<group>"; };
 		D250FFF8233024AC00EA515B /* Mood+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+Sync.swift"; sourceTree = "<group>"; };
-		D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementParameter+Sync.swift"; sourceTree = "<group>"; };
+		D250FFFA2330253100EA515B /* PlaylistParameter+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistParameter+Sync.swift"; sourceTree = "<group>"; };
 		D252711923354EAC0091A823 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		D252711B2336A6FC0091A823 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
-		D28442E42356EAF0008BBD5E /* Soundset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soundset.swift; sourceTree = "<group>"; };
-		D28442EA2356EC9B008BBD5E /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
-		D28442F22356EF3F008BBD5E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
-		D28442F42356EFC0008BBD5E /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
+		D28D97A723D2FDA50089EACD /* Soundset+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Image.swift"; sourceTree = "<group>"; };
+		D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Kind.swift"; sourceTree = "<group>"; };
+		D28D97AB23D2FF0F0089EACD /* Playlist+Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Order.swift"; sourceTree = "<group>"; };
+		D28D97AD23D2FF800089EACD /* Playlist+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Properties.swift"; sourceTree = "<group>"; };
+		D28D97B123D2FFBC0089EACD /* Playlist+Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Iterator.swift"; sourceTree = "<group>"; };
+		D28D97B323D305060089EACD /* PlaylistEntry+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistEntry+Properties.swift"; sourceTree = "<group>"; };
 		D299938A2352B3AF0060859D /* SoundsetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetImageView.swift; sourceTree = "<group>"; };
 		D299938C2352E0F30060859D /* MoodsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodsList.swift; sourceTree = "<group>"; };
 		D29993B2235430A20060859D /* MoodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodButton.swift; sourceTree = "<group>"; };
@@ -119,8 +129,12 @@
 		D2B256092329A3CB0065A48B /* SoundsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetView.swift; sourceTree = "<group>"; };
 		D2B2560B2329A5B20065A48B /* HostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostView.swift; sourceTree = "<group>"; };
 		D2B2560D2329C2870065A48B /* Sample+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sample+Sync.swift"; sourceTree = "<group>"; };
-		D2B2560F232AD7540065A48B /* Element+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+Sync.swift"; sourceTree = "<group>"; };
+		D2B2560F232AD7540065A48B /* Playlist+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Sync.swift"; sourceTree = "<group>"; };
 		D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		D2DCA96123D4264B00E53507 /* Soundset+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Identifiable.swift"; sourceTree = "<group>"; };
+		D2DCA96323D42A9800E53507 /* Soundset+Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Playlists.swift"; sourceTree = "<group>"; };
+		D2DCA96523D42BB600E53507 /* Mood+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+Identifiable.swift"; sourceTree = "<group>"; };
+		D2DCA96723D42C5F00E53507 /* Playlist+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Identifiable.swift"; sourceTree = "<group>"; };
 		D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Ogg.xcframework; sourceTree = "<group>"; };
 		D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Vorbis.xcframework; sourceTree = "<group>"; };
 		D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetListController.swift; sourceTree = "<group>"; };
@@ -160,10 +174,10 @@
 				D2B255F22328A04D0065A48B /* SyrinscapeSync.swift */,
 				D2B255FA2329914C0065A48B /* Soundset+Sync.swift */,
 				D2B2560D2329C2870065A48B /* Sample+Sync.swift */,
-				D2B2560F232AD7540065A48B /* Element+Sync.swift */,
+				D2B2560F232AD7540065A48B /* Playlist+Sync.swift */,
 				D250FFE8232ADB3600EA515B /* PlaylistEntry+Sync.swift */,
 				D250FFF8233024AC00EA515B /* Mood+Sync.swift */,
-				D250FFFA2330253100EA515B /* ElementParameter+Sync.swift */,
+				D250FFFA2330253100EA515B /* PlaylistParameter+Sync.swift */,
 			);
 			name = Syrinscape;
 			sourceTree = "<group>";
@@ -270,11 +284,18 @@
 			isa = PBXGroup;
 			children = (
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
-				D28442E42356EAF0008BBD5E /* Soundset.swift */,
-				D28442EA2356EC9B008BBD5E /* Playlist.swift */,
-				D28442F22356EF3F008BBD5E /* Sample.swift */,
+				D2DCA96123D4264B00E53507 /* Soundset+Identifiable.swift */,
+				D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */,
+				D28D97A723D2FDA50089EACD /* Soundset+Image.swift */,
+				D2DCA96323D42A9800E53507 /* Soundset+Playlists.swift */,
+				D2DCA96723D42C5F00E53507 /* Playlist+Identifiable.swift */,
+				D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */,
+				D28D97AB23D2FF0F0089EACD /* Playlist+Order.swift */,
+				D28D97AD23D2FF800089EACD /* Playlist+Properties.swift */,
+				D28D97B123D2FFBC0089EACD /* Playlist+Iterator.swift */,
+				D28D97B323D305060089EACD /* PlaylistEntry+Properties.swift */,
+				D2DCA96523D42BB600E53507 /* Mood+Identifiable.swift */,
 				D241A1F0232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift */,
-				D28442F42356EFC0008BBD5E /* Mood.swift */,
 				D252711B2336A6FC0091A823 /* SearchController.swift */,
 				D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */,
 				D2DFD11323590728001CA9DC /* OneShotSearchController.swift */,
@@ -357,27 +378,34 @@
 				D29993B3235430A20060859D /* MoodButton.swift in Sources */,
 				D2DFD11623590992001CA9DC /* PlayerButton.swift in Sources */,
 				D2DFD118235909A7001CA9DC /* PlayerStatusView.swift in Sources */,
+				D28D97AC23D2FF0F0089EACD /* Playlist+Order.swift in Sources */,
+				D28D97B423D305060089EACD /* PlaylistEntry+Properties.swift in Sources */,
 				D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */,
 				D2ACA4492362415300EECC2A /* Collection+SplitBetween.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
-				D250FFFB2330253100EA515B /* ElementParameter+Sync.swift in Sources */,
+				D250FFFB2330253100EA515B /* PlaylistParameter+Sync.swift in Sources */,
+				D2DCA96223D4264B00E53507 /* Soundset+Identifiable.swift in Sources */,
 				D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */,
 				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
 				D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */,
+				D2DCA96623D42BB600E53507 /* Mood+Identifiable.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
-				D2B25610232AD7540065A48B /* Element+Sync.swift in Sources */,
+				D2B25610232AD7540065A48B /* Playlist+Sync.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
 				D2DFD11423590728001CA9DC /* OneShotSearchController.swift in Sources */,
 				D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
 				D241A1F1232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift in Sources */,
 				D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */,
+				D28D97AA23D2FECC0089EACD /* Playlist+Kind.swift in Sources */,
 				D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */,
+				D2DCA96823D42C5F00E53507 /* Playlist+Identifiable.swift in Sources */,
 				D299938B2352B3AF0060859D /* SoundsetImageView.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
+				D28D97AE23D2FF810089EACD /* Playlist+Properties.swift in Sources */,
 				D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */,
-				D28442F52356EFC0008BBD5E /* Mood.swift in Sources */,
+				D28D97B223D2FFBC0089EACD /* Playlist+Iterator.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
 				D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */,
 				D2AC67062321809900548388 /* SceneDelegate.swift in Sources */,
@@ -385,22 +413,22 @@
 				D29993B5235431BE0060859D /* PlaylistsList.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsList.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
+				D28D97A823D2FDA50089EACD /* Soundset+Image.swift in Sources */,
 				D2DFD11223590700001CA9DC /* OneShotsList.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressArc.swift in Sources */,
 				D2DFD11A235909D8001CA9DC /* PlayerProgress.swift in Sources */,
+				D2DCA96423D42A9800E53507 /* Soundset+Playlists.swift in Sources */,
 				D250FFF5232C962900EA515B /* PlayerView.swift in Sources */,
 				D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */,
-				D28442EB2356EC9B008BBD5E /* Playlist.swift in Sources */,
 				D299938D2352E0F30060859D /* MoodsList.swift in Sources */,
 				D2B2560E2329C2870065A48B /* Sample+Sync.swift in Sources */,
 				D2B255FB2329914C0065A48B /* Soundset+Sync.swift in Sources */,
 				D2B255F9232983970065A48B /* Soundscape.xcdatamodeld in Sources */,
+				D28D97A623D2FD5C0089EACD /* Soundset+Category.swift in Sources */,
 				D241A1E923280FA30009CFF3 /* SyrinscapeChaptersClient.swift in Sources */,
 				D2B2560523299C570065A48B /* SoundsetRow.swift in Sources */,
-				D28442F32356EF3F008BBD5E /* Sample.swift in Sources */,
 				D2B2560A2329A3CB0065A48B /* SoundsetView.swift in Sources */,
 				D250FFE9232ADB3600EA515B /* PlaylistEntry+Sync.swift in Sources */,
-				D28442E52356EAF0008BBD5E /* Soundset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

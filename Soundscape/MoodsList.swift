@@ -46,20 +46,20 @@ struct MoodsList_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ScrollView {
-                MoodsList(moods: previewContent.soundsets[0].moods)
+                MoodsList(moods: previewContent.soundsets[0].moods!.array as! [Mood])
             }
             .background(Color(UIColor.systemGroupedBackground))
             .previewDevice("iPhone 11 Pro")
 
             ScrollView {
-                MoodsList(moods: previewContent.soundsets[0].moods)
+                MoodsList(moods: previewContent.soundsets[0].moods!.array as! [Mood])
             }
             .background(Color(UIColor.systemGroupedBackground))
             .colorScheme(.dark)
             .previewDevice("iPhone 11 Pro")
 
             ScrollView {
-                MoodsList(moods: previewContent.soundsets[0].moods)
+                MoodsList(moods: previewContent.soundsets[0].moods!.array as! [Mood])
             }
             .background(Color(UIColor.systemGroupedBackground))
             .previewDevice("iPad Air (3rd generation)")

@@ -18,7 +18,7 @@ struct PlayerButton: View {
             HStack {
                 PlayerStatusView(player: player)
 
-                Text("\(player.playlist.title)")
+                Text("\(player.playlist.title!)")
                     .lineLimit(1)
             }
             .padding()

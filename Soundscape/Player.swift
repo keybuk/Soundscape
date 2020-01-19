@@ -279,13 +279,13 @@ final class Player: ObservableObject {
             // Don't queue additional files for one shots, but keep the iterator for next time.
         } else if let playlistEntry = playlistIterator?.next() {
             // Queue up the next file.
-            let sample = playlistEntry.sample
+            let sample = playlistEntry.sample!
             let volume: Float = .random(in: playlistEntry.volume)
 
             if sample.isCached,
                 let file = try? OggVorbisFile(forReading: sample.cacheURL)
             {
-                print("Playing \(sample.title) in \(delay)s")
+                print("Playing \(sample.title!) in \(delay)s")
                 self.scheduleFile(file, volume: volume, delay: delay)
             } else {
                 let downloadStart = Date()
@@ -309,7 +309,7 @@ final class Player: ObservableObject {
                                 return
                             }
 
-                            print("Playing \(sample.title) in \(adjustedDelay)s")
+                            print("Playing \(sample.title!) in \(adjustedDelay)s")
                             self.scheduleFile(file, volume: volume, delay: adjustedDelay)
                         case let .failure(error as NSError)
                             where error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled:

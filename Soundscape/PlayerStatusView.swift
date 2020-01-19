@@ -29,9 +29,8 @@ struct PlayerStatusView: View {
 #if DEBUG
 struct PlayerStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerStatusView(player: Player(playlist: previewContent.soundsets[0].allPlaylists[0], audio: AudioManager()))
+        PlayerStatusView(player: Player(playlist: previewContent.soundsets[0].playlists![0] as! Playlist, audio: AudioManager()))
             .previewLayout(.sizeThatFits)
     }
 }
 #endif
-

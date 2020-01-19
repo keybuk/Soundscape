@@ -19,7 +19,7 @@ struct NowPlayingView: View {
                 VStack(spacing: 12) {
                     ForEach(stage.playlistsBySoundset, id: \.self) { soundsetPlaylists in
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("\(soundsetPlaylists.first!.soundset.title)")
+                            Text("\(soundsetPlaylists.first!.soundset!.title!)")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                                 .padding(.horizontal)

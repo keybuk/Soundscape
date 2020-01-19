@@ -41,8 +41,7 @@ struct PlayerProgress: View {
 #if DEBUG
 struct PlayerProgress_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerProgress(player: Player(playlist: previewContent.soundsets[0].allPlaylists[0], audio: AudioManager()))
+        PlayerProgress(player: Player(playlist: previewContent.soundsets[0].playlists![0] as! Playlist, audio: AudioManager()))
     }
 }
 #endif
-

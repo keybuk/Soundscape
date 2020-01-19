@@ -26,7 +26,7 @@ struct PlaylistsList: View {
 struct PlaylistsView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            PlaylistsList(playlists: previewContent.soundsets[0].allPlaylists)
+            PlaylistsList(playlists: previewContent.soundsets[0].playlists!.array as! [Playlist])
         }
         .background(Color(UIColor.systemGroupedBackground))
         .environmentObject(Stage(audio: AudioManager()))

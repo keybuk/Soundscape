@@ -9,21 +9,21 @@
 import Foundation
 import CoreData
 
-extension MoodManagedObject {
-    static func createFrom(_ clientMood: SyrinscapeChapterClient.Mood, soundset: SoundsetManagedObject, context managedObjectContext: NSManagedObjectContext) -> MoodManagedObject? {
+extension Mood {
+    static func createFrom(_ client: SyrinscapeChapterClient.Mood, soundset: Soundset, context managedObjectContext: NSManagedObjectContext) -> Mood? {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
-        guard let title = clientMood.title
+        guard let title = client.title
             else { return nil }
 
-        let fetchRequest: NSFetchRequest<MoodManagedObject> = MoodManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Mood> = Mood.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "soundset == %@ AND title == %@", soundset, title)
 
-        let mood: MoodManagedObject
+        let mood: Mood
         do {
             let results = try fetchRequest.execute()
-            mood = results.first ?? MoodManagedObject(context: managedObjectContext)
+            mood = results.first ?? Mood(context: managedObjectContext)
         } catch let error {
             print("Failed to fetch mood for \(title): \(error.localizedDescription)")
             return nil
@@ -31,15 +31,15 @@ extension MoodManagedObject {
 
         mood.title = title
 
-        let oldElementParameters: Set<ElementParameterManagedObject>  = mood.elementParameters! as! Set<ElementParameterManagedObject>
-        let newElementParameters: [ElementParameterManagedObject] = clientMood.elementParameters.compactMap {
-            ElementParameterManagedObject.createFrom($0, mood: mood, context: managedObjectContext)
+        let oldPlaylists: Set<PlaylistParameter>  = mood.playlists! as! Set<PlaylistParameter>
+        let newPlaylists: [PlaylistParameter] = client.elementParameters.compactMap {
+            PlaylistParameter.createFrom($0, mood: mood, context: managedObjectContext)
         }
-        mood.elementParameters = NSSet(array: newElementParameters)
+        mood.playlists = NSSet(array: newPlaylists)
 
-        for removedParameter in oldElementParameters.subtracting(newElementParameters) {
+        for removed in oldPlaylists.subtracting(newPlaylists) {
             print("Removed element parameter from mood \(mood.title!)")
-            managedObjectContext.delete(removedParameter)
+            managedObjectContext.delete(removed)
         }
 
         return mood

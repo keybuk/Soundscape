@@ -54,7 +54,7 @@ final class Stage: ObservableObject {
 
     func playMood(_ mood: Mood) {
         // Stop any player not in the current mood.
-        let playing = Set(mood.playlists.filter { $0.isPlaying }.map { $0.playlist })
+        let playing = (mood.playlists! as! Set<PlaylistParameter>).filter { $0.isPlaying }.map { $0.playlist }
         for player in players.compactMap({ $0.value }) {
             if !playing.contains(player.playlist) && lockedPlaylist != player.playlist {
                 if !player.isPlaying { continue }
@@ -63,10 +63,10 @@ final class Stage: ObservableObject {
         }
 
         // Start the rest of the players.
-        for parameters in mood.playlists {
+        for case let parameters as PlaylistParameter in mood.playlists! {
             guard parameters.isPlaying else { continue }
 
-            let player = playerForPlaylist(parameters.playlist)
+            let player = playerForPlaylist(parameters.playlist!)
             player.volume = parameters.volume
 
             if !player.isPlaying && (!player.playlist.isLockable || lockedPlaylist == nil) {

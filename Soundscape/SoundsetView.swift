@@ -23,8 +23,8 @@ struct SoundsetView: View {
                 SoundsetImageView(soundset: soundset)
                     .frame(height: 240)
 
-                if !soundset.moods.isEmpty {
-                    MoodsList(moods: soundset.moods)
+                if soundset.moods!.count > 0 {
+                    MoodsList(moods: soundset.moods!.array as! [Mood])
                         .padding(.horizontal)
                 }
 

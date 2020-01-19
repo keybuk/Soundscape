@@ -72,7 +72,7 @@ struct OneShotsList: View {
                 ForEach(playlistsBySoundset, id: \.self) { soundsetPlaylists in
                     VStack(alignment: .leading, spacing: 8) {
                         if self.isSearching {
-                            Text("\(soundsetPlaylists.first!.soundset.title)")
+                            Text("\(soundsetPlaylists.first!.soundset!.title!)")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                                 .padding(.leading, 8)

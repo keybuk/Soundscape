@@ -9,15 +9,15 @@
 import Foundation
 import CoreData
 
-extension SoundsetManagedObject {
+extension Soundset {
     static let currentSchemaVersion: Int16 = 3
 
-    static func createFrom(_ chapterClient: SyrinscapeChaptersClient.ChapterOptions, category: Soundset.Category, context managedObjectContext: NSManagedObjectContext) {
-        guard chapterClient.isBundled || chapterClient.isPurchased,
-            let slug = chapterClient.slug,
-            let title = chapterClient.title,
-            let manifestURL = chapterClient.manifestURL,
-            let downloadUpdatedDate = chapterClient.downloadUpdatedDate
+    static func createFrom(_ client: SyrinscapeChaptersClient.ChapterOptions, category: Soundset.Category, context managedObjectContext: NSManagedObjectContext) {
+        guard client.isBundled || client.isPurchased,
+            let slug = client.slug,
+            let title = client.title,
+            let manifestURL = client.manifestURL,
+            let downloadUpdatedDate = client.downloadUpdatedDate
             else { return }
 
         // Ignore the "Custom Moods" soundsets.
@@ -31,18 +31,18 @@ extension SoundsetManagedObject {
             "395c553a943b11e69f2cf23c9170c08b",
             "46506e2a943b11e6ad9ff23c9170c08b"
         ]
-        if let sku = chapterClient.sku, customMoodsSKUs.contains(sku) {
+        if let sku = client.sku, customMoodsSKUs.contains(sku) {
             return
         }
 
-        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "slug == %@", slug)
 
         managedObjectContext.perform {
-            let soundset: SoundsetManagedObject
+            let soundset: Soundset
             do {
                 let results = try fetchRequest.execute()
-                soundset = results.first ?? SoundsetManagedObject(context: managedObjectContext)
+                soundset = results.first ?? Soundset(context: managedObjectContext)
             } catch let error {
                 print("Failed to fetch soundset \(slug): \(error.localizedDescription)")
                 return
@@ -63,17 +63,17 @@ extension SoundsetManagedObject {
                 return
             }
 
-            if soundset.imageData == nil, let url = chapterClient.backgroundImageURL {
-                soundset.downloadImage(url: url, property: \.imageData)
+            if soundset.activeImageData == nil, let url = client.backgroundImageURL {
+                soundset.downloadImage(url: url, property: \.activeImageData)
             }
 
-            if soundset.inactiveImageData == nil, let url = chapterClient.inactiveBackgroundImageURL {
+            if soundset.inactiveImageData == nil, let url = client.inactiveBackgroundImageURL {
                 soundset.downloadImage(url: url, property: \.inactiveImageData)
             }
         }
     }
 
-    func downloadImage(url: URL, property: ReferenceWritableKeyPath<SoundsetManagedObject, Data?>) {
+    func downloadImage(url: URL, property: ReferenceWritableKeyPath<Soundset, Data?>) {
         downloadImage(url: url) { result in
             switch result {
             case let .success(imageData):
@@ -130,20 +130,20 @@ extension SoundsetManagedObject {
             return
         }
 
-        let manifestClient = SyrinscapeManifestClient()
-        manifestClient.download(fromURL: url) { result in
+        let manifest = SyrinscapeManifestClient()
+        manifest.download(fromURL: url) { result in
             switch result {
             case .success(_):
-                if let chapterFile = manifestClient.soundsetFile(matching: "chapter.xml"),
+                if let chapterFile = manifest.soundsetFile(matching: "chapter.xml"),
                     let chapterURL = chapterFile.url
                 {
-                    let chapterClient = SyrinscapeChapterClient()
-                    chapterClient.download(fromURL: chapterURL) { result in
+                    let client = SyrinscapeChapterClient()
+                    client.download(fromURL: chapterURL) { result in
                         switch result {
                         case .success(_):
                             managedObjectContext.perform {
-                                let soundset = managedObjectContext.object(with: self.objectID) as! SoundsetManagedObject
-                                soundset.updateFrom(chapterClient, manifestClient: manifestClient)
+                                let soundset = managedObjectContext.object(with: self.objectID) as! Soundset
+                                soundset.updateFrom(client, manifest: manifest)
                             }
                             completionHander?()
                         case let .failure(error):
@@ -165,45 +165,43 @@ extension SoundsetManagedObject {
         }
     }
 
-    func updateFrom(_ chapterClient: SyrinscapeChapterClient, manifestClient: SyrinscapeManifestClient) {
+    func updateFrom(_ client: SyrinscapeChapterClient, manifest: SyrinscapeManifestClient) {
         // Must be called from managedObjectContext.perform
         dispatchPrecondition(condition: .notOnQueue(DispatchQueue.main))
 
         print("Updating \(slug!)")
-        for sample in chapterClient.samples {
-            SampleManagedObject.createFrom(sample, manifestClient: manifestClient, context: managedObjectContext!)
+        for sample in client.samples {
+            Sample.createFrom(sample, manifest: manifest, context: managedObjectContext!)
         }
 
-        let oldElements = elements!
-        var newElements: [ElementManagedObject] = []
-        newElements.append(contentsOf: chapterClient.musicElements.compactMap {
-            ElementManagedObject.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
+        let oldPlaylists = playlists!
+        var newPlaylists: [Playlist] = []
+        newPlaylists.append(contentsOf: client.musicElements.compactMap {
+            Playlist.createFrom($0, kind: .music, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: chapterClient.sfxElements.compactMap {
-            ElementManagedObject.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
+        newPlaylists.append(contentsOf: client.sfxElements.compactMap {
+            Playlist.createFrom($0, kind: .effect, soundset: self, context: managedObjectContext!)
         })
-        newElements.append(contentsOf: chapterClient.oneShotElements.compactMap {
-            ElementManagedObject.createFrom($0, kind: .oneShot, soundset: self, context: managedObjectContext!)
+        newPlaylists.append(contentsOf: client.oneShotElements.compactMap {
+            Playlist.createFrom($0, kind: .oneShot, soundset: self, context: managedObjectContext!)
         })
-        elements = NSOrderedSet(array: newElements)
+        playlists = NSOrderedSet(array: newPlaylists)
 
-        for case let .remove(offset: _, element: removed, associatedWith: _) in elements!.difference(from: oldElements) {
-            let removedElement = removed as! ElementManagedObject
-            print("Removed element \(removedElement.slug!) from soundset \(slug!)")
-            managedObjectContext!.delete(removedElement)
+        for case let .remove(offset: _, element: removed as Playlist, associatedWith: _) in playlists!.difference(from: oldPlaylists) {
+            print("Removed element \(removed.slug!) from soundset \(slug!)")
+            managedObjectContext!.delete(removed)
         }
 
         let oldMoods = moods!
-        var newMoods: [MoodManagedObject] = []
-        newMoods.append(contentsOf: chapterClient.moods.compactMap {
-            MoodManagedObject.createFrom($0, soundset: self, context: managedObjectContext!)
+        var newMoods: [Mood] = []
+        newMoods.append(contentsOf: client.moods.compactMap {
+            Mood.createFrom($0, soundset: self, context: managedObjectContext!)
         })
         moods = NSOrderedSet(array: newMoods)
 
-        for case let .remove(offset: _, element: removed, associatedWith: _) in moods!.difference(from: oldMoods) {
-            let removedMood = removed as! MoodManagedObject
-            print("Removed mood \(removedMood.title!) from soundset \(slug!)")
-            managedObjectContext!.delete(removedMood)
+        for case let .remove(offset: _, element: removed as Mood, associatedWith: _) in moods!.difference(from: oldMoods) {
+            print("Removed mood \(removed.title!) from soundset \(slug!)")
+            managedObjectContext!.delete(removed)
         }
 
         downloadedDate = updatedDate

@@ -29,11 +29,12 @@ final class SoundsetListController: ObservableObject {
         self.managedObjectContext = managedObjectContext
     }
 
+    // FIXME: do we really need a cache here? how often is this re-fetched incorrectly?
     @Published private var _soundsets: [Soundset]?
     var soundsets: [Soundset] {
         if let soundsets = _soundsets { return soundsets }
 
-        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
 
         let categoryPredicate = NSPredicate(format: "categoryRawValue == %d", category.rawValue)
         if !search.isEmpty {
@@ -47,12 +48,12 @@ final class SoundsetListController: ObservableObject {
             NSSortDescriptor(key: "title", ascending: true)
         ]
 
-        var results: [SoundsetManagedObject]?
+        var results: [Soundset]?
         managedObjectContext.performAndWait {
             results = try? fetchRequest.execute()
         }
 
-        _soundsets = results?.map { Soundset(managedObject: $0) } ?? []
+        _soundsets = results ?? []
         return _soundsets!
     }
 }

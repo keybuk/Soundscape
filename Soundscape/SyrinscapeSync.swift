@@ -35,7 +35,7 @@ final class SyrinscapeSync {
                 var currentSlugs: [String] = []
                 for clientChapter in chaptersClient.chapters {
                     guard let slug = clientChapter.slug else { continue }
-                    SoundsetManagedObject.createFrom(clientChapter, category: category, context: self.managedObjectContext)
+                    Soundset.createFrom(clientChapter, category: category, context: self.managedObjectContext)
                     currentSlugs.append(slug)
                 }
 
@@ -49,7 +49,7 @@ final class SyrinscapeSync {
     }
 
     func cleanupCategory(_ category: Soundset.Category, keep currentSlugs: [String]) {
-        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "categoryRawValue == %d AND NOT (slug IN %@)", category.rawValue, currentSlugs)
 
         managedObjectContext.perform {
@@ -70,8 +70,8 @@ final class SyrinscapeSync {
     }
 
     func syncSoundsets() {
-        let fetchRequest: NSFetchRequest<SoundsetManagedObject> = SoundsetManagedObject.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "downloadedDate == nil OR downloadedDate < updatedDate OR schemaVersion != %d", SoundsetManagedObject.currentSchemaVersion)
+        let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "downloadedDate == nil OR downloadedDate < updatedDate OR schemaVersion != %d", Soundset.currentSchemaVersion)
 
         managedObjectContext.perform {
             do {
@@ -84,7 +84,7 @@ final class SyrinscapeSync {
         }
     }
 
-    func syncNextSoundset(iterator soundsetIterator: Array<SoundsetManagedObject>.Iterator) {
+    func syncNextSoundset(iterator soundsetIterator: Array<Soundset>.Iterator) {
         var soundsetIterator = soundsetIterator
         guard let soundset = soundsetIterator.next() else {
             print("Sync complete")
