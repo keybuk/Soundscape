@@ -12,13 +12,13 @@ struct SearchField: View {
     @Binding var search: String
     @Binding var isSearching: Bool
 
-    @State var searchText: String = ""
+    @State var searchText: String
 
     init(search: Binding<String>, isSearching: Binding<Bool>? = nil) {
         _search = search
         _isSearching = isSearching ?? .constant(false)
-        
-        searchText = self.search
+
+        _searchText = State(initialValue: search.wrappedValue)
     }
 
     var body: some View {
@@ -45,17 +45,12 @@ struct SearchField: View {
 }
 
 #if DEBUG
-struct SearchFieldTest: View {
-    @State var search: String = ""
-
-    var body: some View {
-        SearchField(search: $search)
-    }
-}
-
 struct SearchField_Previews: PreviewProvider {
     static var previews: some View {
-        SearchFieldTest()
+        VStack {
+            SearchField(search: .constant(""))
+            SearchField(search: .constant("Foo"))
+        }
     }
 }
 #endif
