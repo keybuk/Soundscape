@@ -22,7 +22,6 @@ struct OneShotsList: View {
     @EnvironmentObject var stage: Stage
     @EnvironmentObject var searchController: OneShotSearchController
 
-    @State var search: String = ""
     @State var isSearching: Bool = false
 
     @ObservedObject var soundset: Soundset
@@ -32,33 +31,13 @@ struct OneShotsList: View {
     var playlistsBySoundset: [ArraySlice<Playlist>] { isSearching ? searchController.playlistsBySoundset : [soundset.oneShotPlaylists.dropFirst(0)] }
 
     var body: some View {
-        ScrollView {
+        return ScrollView {
             HStack {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search", text: $search, onEditingChanged: { _ in
-                        self.isSearching = true
-                    }, onCommit: {
-                        self.searchController.search = self.search
-                    })
-                    .foregroundColor(.primary)
-                    if !search.isEmpty {
-                        Button(action: {
-                            self.search = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                        }
-                    }
-                }
-                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                .foregroundColor(.secondary)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(10.0)
+                SearchField(search: $searchController.search, isSearching: $isSearching)
 
                 if isSearching  {
                     Button("Cancel") {
                         UIApplication.shared.endEditing(force: true)
-                        self.search = ""
                         self.isSearching = false
                         self.searchController.clear()
                     }
