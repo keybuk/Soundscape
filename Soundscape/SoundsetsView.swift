@@ -1,5 +1,5 @@
 //
-//  SoundsetsList.swift
+//  SoundsetsView.swift
 //  Soundscape
 //
 //  Created by Scott James Remnant on 9/11/19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SoundsetsList: View {
+struct SoundsetsView: View {
     @EnvironmentObject var controller: SoundsetListController
 
     var body: some View {
@@ -18,22 +18,19 @@ struct SoundsetsList: View {
                 SearchField(search: $controller.search)
             }
 
-            ForEach(controller.soundsets) { soundset in
-                NavigationLink(destination: SoundsetView(soundset: soundset)) {
-                    SoundsetRow(soundset: soundset)
-                }
-            }
+            SoundsetList(fetchRequest: controller.fetchRequest)
         }
         .navigationBarTitle("Soundsets")
     }
 }
 
 #if DEBUG
-struct SoundsetsList_Previews: PreviewProvider {
+struct SoundsetsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SoundsetsList()
-                .environmentObject(SoundsetListController(managedObjectContext: previewContent.managedObjectContext))
+            SoundsetsView()
+                .environmentObject(SoundsetListController())
+                .environment(\.managedObjectContext, previewContent.managedObjectContext)
         }
     }
 }

@@ -8,32 +8,22 @@
 
 import Foundation
 import CoreData
-import SwiftUI
 
+/// Controller for lists of `Soundset`.
+///
+/// An `ObservableObject` with two published properties `category` and `search` that can be used to filter the collection of
+/// soundsets. Both can vend bindings with `$controller.category` and `$controller.search`, and both when changed
+/// emit the controller's `objectWillChange` publisher.
+///
+/// An `NSFetchRequest` matching the current filter can be obtained from the `fetchRequest` property.
 final class SoundsetListController: ObservableObject {
-    var managedObjectContext: NSManagedObjectContext
+    /// Category of soundsets to fetch.
+    @Published var category: Soundset.Category = .fantasy
 
-    @Published var category: Soundset.Category = .fantasy {
-        didSet {
-            _soundsets = nil
-        }
-    }
+    /// Fetch soundsets containing this text in the title.
+    @Published var search: String = ""
 
-    @Published var search: String = "" {
-        didSet {
-            _soundsets = nil
-        }
-    }
-
-    init(managedObjectContext: NSManagedObjectContext) {
-        self.managedObjectContext = managedObjectContext
-    }
-
-    // FIXME: do we really need a cache here? how often is this re-fetched incorrectly?
-    @Published private var _soundsets: [Soundset]?
-    var soundsets: [Soundset] {
-        if let soundsets = _soundsets { return soundsets }
-
+    var fetchRequest: NSFetchRequest<Soundset> {
         let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
 
         let categoryPredicate = NSPredicate(format: "categoryRawValue == %d", category.rawValue)
@@ -48,14 +38,6 @@ final class SoundsetListController: ObservableObject {
             NSSortDescriptor(key: "title", ascending: true)
         ]
 
-        var results: [Soundset]?
-        managedObjectContext.performAndWait {
-            results = try? fetchRequest.execute()
-        }
-
-        _soundsets = results ?? []
-        return _soundsets!
+        return fetchRequest
     }
 }
-
-
