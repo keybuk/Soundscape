@@ -23,10 +23,8 @@ struct SoundsetCategoryPicker: View {
 
 #if DEBUG
 struct SoundsetCategoryPicker_Previews: PreviewProvider {
-    @State static var category: Soundset.Category = .fantasy
-
     static var previews: some View {
-        SoundsetCategoryPicker(category: $category)
+        SoundsetCategoryPicker(category: .constant(.fantasy))
     }
 }
 #endif
