@@ -15,7 +15,7 @@ extension Soundset {
         set { categoryRawValue = newValue.rawValue }
     }
 
-    enum Category: Int16, CaseIterable, CustomStringConvertible {
+    enum Category: Int16, CaseIterable, Identifiable, CustomStringConvertible {
         case fantasy
         case sciFi
         case boardgame
@@ -38,6 +38,8 @@ extension Soundset {
             default: return URL(string: "https://www.syrinscape.com/account/chapters/\(urlComponent)/1.2.1/")!
             }
         }
+
+        var id: Category { self }
 
         var description: String {
             switch self {

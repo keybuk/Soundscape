@@ -13,8 +13,9 @@ struct SoundsetCategoryPicker: View {
 
     var body: some View {
         Picker(selection: $category, label: Text("Category")) {
-            ForEach(Soundset.Category.allCases, id: \.self) { category in
-                Text("\(category.description)").tag(category)
+            ForEach(Soundset.Category.allCases) { categoryCase in
+                Text("\(categoryCase.description)")
+                    .tag(categoryCase)
             }
         }
         .pickerStyle(SegmentedPickerStyle())
