@@ -14,13 +14,7 @@ struct SoundsetsList: View {
     var body: some View {
         List {
             VStack {
-                Picker(selection: $controller.category, label: Text("Category")) {
-                    ForEach(Soundset.Category.allCases, id: \.self) { category in
-                        Text("\(category.description)").tag(category)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-
+                SoundsetCategoryPicker(category: $controller.category)
                 SearchField(search: $controller.search)
             }
 
