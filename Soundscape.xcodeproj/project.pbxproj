@@ -187,6 +187,19 @@
 			name = Player;
 			sourceTree = "<group>";
 		};
+		D21D137E23D516230097F2EB /* Soundsets View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B2560223299C020065A48B /* SoundsetsView.swift */,
+				D2DCA96B23D43AD900E53507 /* SoundsetCategoryPicker.swift */,
+				D2DCA96D23D48BD800E53507 /* SoundsetList.swift */,
+				D2B2560423299C570065A48B /* SoundsetRow.swift */,
+				D21D137823D4921E0097F2EB /* SoundsetImage.swift */,
+				D299938A2352B3AF0060859D /* SoundsetImageView.swift */,
+			);
+			name = "Soundsets View";
+			sourceTree = "<group>";
+		};
 		D241A1BF2321D6860009CFF3 /* Syrinscape */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,13 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				D2B2560B2329A5B20065A48B /* HostView.swift */,
-				D2B2560223299C020065A48B /* SoundsetsView.swift */,
-				D2DCA96B23D43AD900E53507 /* SoundsetCategoryPicker.swift */,
 				D2DCA96923D434A100E53507 /* SearchField.swift */,
-				D2DCA96D23D48BD800E53507 /* SoundsetList.swift */,
-				D2B2560423299C570065A48B /* SoundsetRow.swift */,
-				D21D137823D4921E0097F2EB /* SoundsetImage.swift */,
-				D299938A2352B3AF0060859D /* SoundsetImageView.swift */,
+				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
 				D299938C2352E0F30060859D /* MoodsList.swift */,
 				D29993B2235430A20060859D /* MoodButton.swift */,
