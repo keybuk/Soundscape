@@ -12,11 +12,9 @@ struct SoundsetRow: View {
     @ObservedObject var soundset: Soundset
 
     var body: some View {
-        VStack {
-            SoundsetImageView(soundset: soundset)
-                .frame(height: 88)
-                .cornerRadius(8)
-        }
+        SoundsetImageView(soundset: soundset)
+            .frame(height: 88)
+            .cornerRadius(8)
     }
 }
 
