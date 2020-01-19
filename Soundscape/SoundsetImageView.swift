@@ -18,11 +18,7 @@ struct SoundsetImageView: View {
             .shadow(color: Color.black, radius: 2)
             .padding(8)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomLeading)
-            .background(
-                soundset.image
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill))
+            .background(SoundsetImage(soundset: soundset))
             .clipped()
     }
 }
