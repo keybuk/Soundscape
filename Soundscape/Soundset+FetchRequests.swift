@@ -33,4 +33,18 @@ extension Soundset {
 
         return fetchRequest
     }
+
+    /// Returns an `NSFetchRequest` for this soundset's moods.
+    func fetchRequestForMoods() -> NSFetchRequest<Mood> {
+        let fetchRequest: NSFetchRequest<Mood> = Mood.fetchRequest()
+
+        fetchRequest.predicate = NSPredicate(format: "soundset == %@", self)
+
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "soundset", ascending: true)
+        ]
+
+        return fetchRequest
+    }
+
 }

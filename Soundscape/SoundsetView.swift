@@ -23,8 +23,8 @@ struct SoundsetView: View {
                 SoundsetImageView(soundset: soundset)
                     .frame(height: 240)
 
-                if soundset.moods!.count > 0 {
-                    MoodsList(moods: soundset.moods!.array as! [Mood])
+                if soundset.hasMoods {
+                    MoodGrid(fetchRequest: soundset.fetchRequestForMoods())
                         .padding(.horizontal)
                 }
 

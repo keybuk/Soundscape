@@ -25,4 +25,7 @@ extension Soundset {
             return (obj as! Playlist).kind == .effect
         } != NSNotFound
     }
+
+    /// Returns `true` if the soundset has moods.
+    var hasMoods: Bool { moods!.count > 0 }
 }
