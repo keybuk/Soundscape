@@ -21,4 +21,16 @@ extension Soundset {
         return fetchRequest
     }
 
+    /// Returns an `NSFetchRequest` for this soundset's playlists, filtered by `kind`.
+    func fetchRequestForPlaylists(kind: Playlist.Kind) -> NSFetchRequest<Playlist> {
+        let fetchRequest: NSFetchRequest<Playlist> = Playlist.fetchRequest()
+
+        fetchRequest.predicate = NSPredicate(format: "soundset == %@ AND kindRawValue == %d", self, kind.rawValue)
+
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "soundset", ascending: true)
+        ]
+
+        return fetchRequest
+    }
 }

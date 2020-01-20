@@ -28,14 +28,18 @@ struct SoundsetView: View {
                         .padding(.horizontal)
                 }
 
-                if !soundset.musicPlaylists.isEmpty {
-                    PlaylistsList(playlists: soundset.musicPlaylists)
-                        .padding(.horizontal)
+                if soundset.hasMusicPlaylists {
+                    VStack(spacing: 8) {
+                        PlaylistList(fetchRequest: soundset.fetchRequestForPlaylists(kind: .music))
+                    }
+                    .padding(.horizontal)
                 }
 
-                if !soundset.effectPlaylists.isEmpty {
-                    PlaylistsList(playlists: soundset.effectPlaylists)
-                        .padding(.horizontal)
+                if soundset.hasEffectPlaylists {
+                    VStack(spacing: 8) {
+                        PlaylistList(fetchRequest: soundset.fetchRequestForPlaylists(kind: .effect))
+                    }
+                    .padding(.horizontal)
                 }
             }
         }
@@ -72,6 +76,7 @@ struct SoundsetView_Previews: PreviewProvider {
         }
         .environmentObject(Stage(audio: AudioManager()))
         .environmentObject(OneShotSearchController(managedObjectContext: previewContent.managedObjectContext))
+        .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
 #endif

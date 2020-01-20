@@ -11,5 +11,18 @@ import Foundation
 extension Soundset {
     /// Returns `true` if the soundset is available.
     var isActive: Bool { downloadedDate != nil }
-}
 
+    /// Returns `true` if the soundset has music playlists.
+    var hasMusicPlaylists: Bool {
+        playlists!.index { (obj, _, _) -> Bool in
+            return (obj as! Playlist).kind == .music
+        } != NSNotFound
+    }
+
+    /// Returns `true` if the soundset has effect playlists.
+    var hasEffectPlaylists: Bool {
+        playlists!.index { (obj, _, _) -> Bool in
+            return (obj as! Playlist).kind == .effect
+        } != NSNotFound
+    }
+}
