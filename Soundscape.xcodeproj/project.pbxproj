@@ -208,6 +208,20 @@
 			name = "Soundsets View";
 			sourceTree = "<group>";
 		};
+		D2261E6523D53F140080C7E6 /* Soundset View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
+				D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */,
+				D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */,
+				D299938C2352E0F30060859D /* MoodGrid.swift */,
+				D29993B2235430A20060859D /* MoodButton.swift */,
+				D29993B4235431BE0060859D /* PlaylistList.swift */,
+				D21D137F23D5242E0097F2EB /* PlaylistRow.swift */,
+			);
+			name = "Soundset View";
+			sourceTree = "<group>";
+		};
 		D241A1BF2321D6860009CFF3 /* Syrinscape */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,13 +320,7 @@
 				D2B2560B2329A5B20065A48B /* HostView.swift */,
 				D2DCA96923D434A100E53507 /* SearchField.swift */,
 				D21D137E23D516230097F2EB /* Soundsets View */,
-				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
-				D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */,
-				D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */,
-				D299938C2352E0F30060859D /* MoodGrid.swift */,
-				D29993B2235430A20060859D /* MoodButton.swift */,
-				D29993B4235431BE0060859D /* PlaylistList.swift */,
-				D21D137F23D5242E0097F2EB /* PlaylistRow.swift */,
+				D2261E6523D53F140080C7E6 /* Soundset View */,
 				D21D137D23D514920097F2EB /* Player */,
 				D2DFD11123590700001CA9DC /* OneShotsList.swift */,
 				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
