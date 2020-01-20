@@ -12,6 +12,8 @@
 		D21D137C23D50E400097F2EB /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137B23D50E400097F2EB /* ProgressCircle.swift */; };
 		D21D138023D5242E0097F2EB /* PlaylistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137F23D5242E0097F2EB /* PlaylistRow.swift */; };
 		D2261E6023D536140080C7E6 /* Collection+Chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E5F23D536140080C7E6 /* Collection+Chunked.swift */; };
+		D2261E6223D53BF70080C7E6 /* OneShotsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */; };
+		D2261E6423D53C580080C7E6 /* NowPlayingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */; };
 		D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0023303EAC007E2A58 /* Stage.swift */; };
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
@@ -86,6 +88,8 @@
 		D21D137B23D50E400097F2EB /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		D21D137F23D5242E0097F2EB /* PlaylistRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRow.swift; sourceTree = "<group>"; };
 		D2261E5F23D536140080C7E6 /* Collection+Chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Chunked.swift"; sourceTree = "<group>"; };
+		D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsButton.swift; sourceTree = "<group>"; };
+		D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingButton.swift; sourceTree = "<group>"; };
 		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		D23D8C02233054AB007E2A58 /* MoodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRow.swift; sourceTree = "<group>"; };
 		D23D8C0423306F34007E2A58 /* ElementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				D2DCA96923D434A100E53507 /* SearchField.swift */,
 				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
+				D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */,
+				D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */,
 				D299938C2352E0F30060859D /* MoodGrid.swift */,
 				D29993B2235430A20060859D /* MoodButton.swift */,
 				D29993B4235431BE0060859D /* PlaylistList.swift */,
@@ -444,6 +450,8 @@
 				D28D97AA23D2FECC0089EACD /* Playlist+Kind.swift in Sources */,
 				D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */,
 				D2DCA96823D42C5F00E53507 /* Playlist+Identifiable.swift in Sources */,
+				D2261E6223D53BF70080C7E6 /* OneShotsButton.swift in Sources */,
+				D2261E6423D53C580080C7E6 /* NowPlayingButton.swift in Sources */,
 				D299938B2352B3AF0060859D /* SoundsetImageView.swift in Sources */,
 				D2AC672E2321A20800548388 /* OggVorbisError.swift in Sources */,
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,

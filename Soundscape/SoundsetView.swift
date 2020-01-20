@@ -10,12 +10,7 @@ import SwiftUI
 import CoreData
 
 struct SoundsetView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
-    @EnvironmentObject var stage: Stage
-    @EnvironmentObject var oneShotSearchController: OneShotSearchController
     @ObservedObject var soundset: Soundset
-    @State var isNowPlayingPresented: Bool = false
-    @State var isOneShotsPresented: Bool = false
 
     var body: some View {
         ScrollView {
@@ -46,24 +41,8 @@ struct SoundsetView: View {
         .background(Color(UIColor.systemGroupedBackground))
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing: HStack {
-            Button(action: { self.isOneShotsPresented = true }) { Text("One Shots") }
-                .sheet(isPresented: $isOneShotsPresented) {
-                    NavigationView {
-                        OneShotsList(soundset: self.soundset)
-                    }
-                    .navigationViewStyle(StackNavigationViewStyle())
-                    .environmentObject(self.stage)
-                    .environmentObject(self.oneShotSearchController)
-                }
-
-            Button(action: { self.isNowPlayingPresented = true }) { Text("Now Playing") }
-                .sheet(isPresented: $isNowPlayingPresented) {
-                    NavigationView {
-                        NowPlayingView()
-                    }
-                    .navigationViewStyle(StackNavigationViewStyle())
-                    .environmentObject(self.stage)
-                }
+            OneShotsButton(soundset: self.soundset)
+            NowPlayingButton()
         })
     }
 }
@@ -75,7 +54,6 @@ struct SoundsetView_Previews: PreviewProvider {
             SoundsetView(soundset: previewContent.soundsets[0])
         }
         .environmentObject(Stage(audio: AudioManager()))
-        .environmentObject(OneShotSearchController(managedObjectContext: previewContent.managedObjectContext))
         .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
