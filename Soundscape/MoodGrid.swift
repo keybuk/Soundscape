@@ -27,7 +27,7 @@ struct MoodGrid: View {
                         MoodButton(mood: mood)
                     }
 
-                    if moodRow.count != self.numberOfColumns {
+                    ForEach(moodRow.count..<self.numberOfColumns, id: \.self) { _ in
                         Spacer()
                             .frame(maxWidth: .infinity)
                     }
