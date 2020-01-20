@@ -11,21 +11,21 @@ import SwiftUI
 struct MoodButton: View {
     @EnvironmentObject var stage: Stage
 
-    var mood: Mood
-
-    var isActive: Bool { stage.mood == mood }
+    @ObservedObject var mood: Mood
 
     var body: some View {
         Button(action: self.play) {
             Text("\(mood.title!)")
                 .lineLimit(1)
                 .padding()
-                .foregroundColor(isActive ? Color("ActiveMoodLabelColor") : Color(UIColor.label))
                 .frame(maxWidth: .infinity)
+                .foregroundColor(isActive ? Color("ActiveMoodLabelColor") : Color(UIColor.label))
                 .background(isActive ? Color("ActiveMoodBackgroundColor") : Color(UIColor.secondarySystemGroupedBackground))
                 .cornerRadius(8)
         }
     }
+
+    var isActive: Bool { stage.mood == mood }
 
     func play() {
         stage.playMood(mood)
