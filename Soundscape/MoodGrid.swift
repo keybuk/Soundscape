@@ -10,8 +10,6 @@ import SwiftUI
 import CoreData
 
 struct MoodGrid: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-
     @FetchRequest
     var moods: FetchedResults<Mood>
 
@@ -20,23 +18,10 @@ struct MoodGrid: View {
     }
 
     var body: some View {
-        VStack(spacing: 8) {
-            ForEach(moods.chunked(into: numberOfColumns), id: \.first) { moodRow in
-                HStack(spacing: 8) {
-                    ForEach(moodRow) { mood in
-                        MoodButton(mood: mood)
-                    }
-
-                    ForEach(moodRow.count..<self.numberOfColumns, id: \.self) { _ in
-                        Spacer()
-                            .frame(maxWidth: .infinity)
-                    }
-                }
-            }
+        Grid(moods, compactColumns: 1, regularColumns: 2) { mood in
+            MoodButton(mood: mood)
         }
     }
-
-    var numberOfColumns: Int { horizontalSizeClass == .compact ? 1 : 2 }
 }
 
 #if DEBUG
