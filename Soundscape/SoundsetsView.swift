@@ -27,11 +27,18 @@ struct SoundsetsView: View {
 #if DEBUG
 struct SoundsetsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            SoundsetsView()
-                .environmentObject(SoundsetListController())
-                .environment(\.managedObjectContext, previewContent.managedObjectContext)
+        Group {
+            NavigationView {
+                SoundsetsView()
+            }
+
+            NavigationView {
+                SoundsetsView()
+            }
+            .environment(\.colorScheme, .dark)
         }
+        .environmentObject(SoundsetListController())
+        .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
 #endif

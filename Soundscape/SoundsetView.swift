@@ -50,8 +50,15 @@ struct SoundsetView: View {
 #if DEBUG
 struct SoundsetView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            SoundsetView(soundset: previewContent.soundsets[0])
+        Group {
+            NavigationView {
+                SoundsetView(soundset: previewContent.soundsets[0])
+            }
+
+            NavigationView {
+                SoundsetView(soundset: previewContent.soundsets[0])
+            }
+            .environment(\.colorScheme, .dark)
         }
         .environmentObject(Stage(audio: AudioManager()))
         .environment(\.managedObjectContext, previewContent.managedObjectContext)
