@@ -186,6 +186,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D20E4B9223D589F600E63B7D /* One Shots View */ = {
+			isa = PBXGroup;
+			children = (
+				D2DFD11123590700001CA9DC /* OneShotsView.swift */,
+				D2261E6623D5425D0080C7E6 /* PlaylistGrid.swift */,
+				D2261E7023D57D0D0080C7E6 /* PlaylistsBySoundset.swift */,
+				D2261E6823D543380080C7E6 /* PlaylistCell.swift */,
+			);
+			name = "One Shots View";
+			sourceTree = "<group>";
+		};
 		D21D137D23D514920097F2EB /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,11 +338,8 @@
 				D2261E6C23D5768F0080C7E6 /* SectionedList.swift */,
 				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2261E6523D53F140080C7E6 /* Soundset View */,
+				D20E4B9223D589F600E63B7D /* One Shots View */,
 				D21D137D23D514920097F2EB /* Player */,
-				D2DFD11123590700001CA9DC /* OneShotsView.swift */,
-				D2261E6623D5425D0080C7E6 /* PlaylistGrid.swift */,
-				D2261E7023D57D0D0080C7E6 /* PlaylistsBySoundset.swift */,
-				D2261E6823D543380080C7E6 /* PlaylistCell.swift */,
 				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
