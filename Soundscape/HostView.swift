@@ -21,7 +21,6 @@ struct HostView: View {
 struct HostView_Previews: PreviewProvider {
     static var previews: some View {
         HostView()
-            .environmentObject(SoundsetListController())
             .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }

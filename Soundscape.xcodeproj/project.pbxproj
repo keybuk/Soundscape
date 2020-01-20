@@ -79,7 +79,6 @@
 		D2DCA96E23D48BD800E53507 /* SoundsetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA96D23D48BD800E53507 /* SoundsetList.swift */; };
 		D2DD5BF423D1504600E4EED9 /* Ogg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */; };
 		D2DD5BF623D1505300E4EED9 /* Vorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */; };
-		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
 		D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */; };
 		D2DFD11223590700001CA9DC /* OneShotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11123590700001CA9DC /* OneShotsView.swift */; };
 		D2DFD11623590992001CA9DC /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11523590992001CA9DC /* PlayerButton.swift */; };
@@ -164,7 +163,6 @@
 		D2DCA96D23D48BD800E53507 /* SoundsetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetList.swift; sourceTree = "<group>"; };
 		D2DD5BF323D1504600E4EED9 /* Ogg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Ogg.xcframework; sourceTree = "<group>"; };
 		D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Vorbis.xcframework; sourceTree = "<group>"; };
-		D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetListController.swift; sourceTree = "<group>"; };
 		D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBottomBar.swift; sourceTree = "<group>"; };
 		D2DFD11123590700001CA9DC /* OneShotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsView.swift; sourceTree = "<group>"; };
 		D2DFD11523590992001CA9DC /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
@@ -350,13 +348,12 @@
 				D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */,
 				D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */,
 				D2DCA96323D42A9800E53507 /* Soundset+Playlists.swift */,
-				D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */,
 				D2DCA96723D42C5F00E53507 /* Playlist+Identifiable.swift */,
+				D2261E7223D583B50080C7E6 /* Playlist+FetchRequests.swift */,
 				D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */,
 				D28D97AB23D2FF0F0089EACD /* Playlist+Order.swift */,
 				D28D97AD23D2FF800089EACD /* Playlist+Properties.swift */,
 				D28D97B123D2FFBC0089EACD /* Playlist+Iterator.swift */,
-				D2261E7223D583B50080C7E6 /* Playlist+FetchRequests.swift */,
 				D28D97B323D305060089EACD /* PlaylistEntry+Properties.swift */,
 				D2DCA96523D42BB600E53507 /* Mood+Identifiable.swift */,
 				D241A1F0232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift */,
@@ -442,7 +439,6 @@
 				D28D97AC23D2FF0F0089EACD /* Playlist+Order.swift in Sources */,
 				D28D97B423D305060089EACD /* PlaylistEntry+Properties.swift in Sources */,
 				D21D137923D4921E0097F2EB /* SoundsetImage.swift in Sources */,
-				D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */,
 				D21D137723D4914B0097F2EB /* Soundset+FetchRequests.swift in Sources */,
 				D2ACA4492362415300EECC2A /* Collection+SplitBetween.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,

@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct SoundsetsView: View {
-    @EnvironmentObject var controller: SoundsetListController
+    @State var category: Soundset.Category = .fantasy
+    @State var search: String = ""
 
     var body: some View {
         List {
             VStack {
-                SoundsetCategoryPicker(category: $controller.category)
-                SearchField(search: $controller.search)
+                SoundsetCategoryPicker(category: $category)
+                SearchField(search: $search)
             }
 
-            SoundsetList(fetchRequest: controller.fetchRequest)
+            SoundsetList(fetchRequest: Soundset.fetchRequestSorted(category: category, matching: search))
         }
         .navigationBarTitle("Soundsets")
     }
@@ -37,7 +38,6 @@ struct SoundsetsView_Previews: PreviewProvider {
             }
             .environment(\.colorScheme, .dark)
         }
-        .environmentObject(SoundsetListController())
         .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }

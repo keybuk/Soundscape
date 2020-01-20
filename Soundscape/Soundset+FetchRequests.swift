@@ -11,9 +11,18 @@ import CoreData
 
 extension Soundset {
     /// Returns an `NSFetchRequest` for soundsets sorted by title.
-    static func fetchRequestSorted() -> NSFetchRequest<Soundset> {
+    static func fetchRequestSorted(category: Category? = nil, matching search: String? = nil) -> NSFetchRequest<Soundset> {
         let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
 
+        var predicates: [NSPredicate] = []
+        if let category = category {
+            predicates.append(NSPredicate(format: "categoryRawValue == %d", category.rawValue))
+        }
+        if let search = search, !search.isEmpty {
+            predicates.append(NSPredicate(format: "title CONTAINS[cd] %@", search as NSString))
+        }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "title", ascending: true)
         ]

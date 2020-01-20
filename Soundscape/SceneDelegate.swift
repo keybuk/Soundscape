@@ -26,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(appDelegate.stage)
             .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
             .environmentObject(appDelegate.persistentContainer)
-            .environmentObject(SoundsetListController())
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
