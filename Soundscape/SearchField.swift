@@ -47,10 +47,12 @@ struct SearchField: View {
 #if DEBUG
 struct SearchField_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             SearchField(search: .constant(""))
             SearchField(search: .constant("Foo"))
         }
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
 #endif

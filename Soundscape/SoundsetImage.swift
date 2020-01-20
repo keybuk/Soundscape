@@ -33,6 +33,7 @@ struct SoundsetImage: View {
 struct SoundsetImage_Previews: PreviewProvider {
     static var previews: some View {
         SoundsetImage(soundset: previewContent.soundsets[0])
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif

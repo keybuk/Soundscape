@@ -26,6 +26,8 @@ struct SoundsetCategoryPicker: View {
 struct SoundsetCategoryPicker_Previews: PreviewProvider {
     static var previews: some View {
         SoundsetCategoryPicker(category: .constant(.fantasy))
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif

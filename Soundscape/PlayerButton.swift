@@ -36,6 +36,7 @@ struct PlayerButton: View {
 struct PlayerButton_Previews: PreviewProvider {
     static var previews: some View {
         PlayerButton(player: Player(playlist: previewContent.soundsets[0].oneShotPlaylists[0], audio: AudioManager()))
+            .padding()
             .previewLayout(.sizeThatFits)
     }
 }

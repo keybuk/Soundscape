@@ -45,6 +45,8 @@ struct PlayerView: View {
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerView(player: Player(playlist: previewContent.soundsets[0].playlists![0] as! Playlist, audio: AudioManager()))
+            .padding()
+            .background(Color(UIColor.systemGroupedBackground))
             .previewLayout(.sizeThatFits)
 
     }
