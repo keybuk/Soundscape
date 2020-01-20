@@ -91,8 +91,6 @@
 		D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsButton.swift; sourceTree = "<group>"; };
 		D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingButton.swift; sourceTree = "<group>"; };
 		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
-		D23D8C02233054AB007E2A58 /* MoodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRow.swift; sourceTree = "<group>"; };
-		D23D8C0423306F34007E2A58 /* ElementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
 		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
 		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
 		D241A1E823280FA30009CFF3 /* SyrinscapeChaptersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeChaptersClient.swift; sourceTree = "<group>"; };
@@ -106,8 +104,6 @@
 		D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayRoutePicker.swift; sourceTree = "<group>"; };
 		D250FFF8233024AC00EA515B /* Mood+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+Sync.swift"; sourceTree = "<group>"; };
 		D250FFFA2330253100EA515B /* PlaylistParameter+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistParameter+Sync.swift"; sourceTree = "<group>"; };
-		D252711923354EAC0091A823 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
-		D252711B2336A6FC0091A823 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
 		D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Properties.swift"; sourceTree = "<group>"; };
 		D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Kind.swift"; sourceTree = "<group>"; };
@@ -326,9 +322,6 @@
 				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
 				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
-				D252711923354EAC0091A823 /* SearchResultsView.swift */,
-				D23D8C02233054AB007E2A58 /* MoodRow.swift */,
-				D23D8C0423306F34007E2A58 /* ElementRow.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -351,7 +344,6 @@
 				D28D97B323D305060089EACD /* PlaylistEntry+Properties.swift */,
 				D2DCA96523D42BB600E53507 /* Mood+Identifiable.swift */,
 				D241A1F0232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift */,
-				D252711B2336A6FC0091A823 /* SearchController.swift */,
 				D2DFD11323590728001CA9DC /* OneShotSearchController.swift */,
 			);
 			name = "Data Model";
