@@ -17,6 +17,7 @@
 		D2261E6723D5425D0080C7E6 /* PlaylistGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6623D5425D0080C7E6 /* PlaylistGrid.swift */; };
 		D2261E6923D543380080C7E6 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6823D543380080C7E6 /* PlaylistCell.swift */; };
 		D2261E6B23D568170080C7E6 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6A23D568170080C7E6 /* Grid.swift */; };
+		D2261E6D23D5768F0080C7E6 /* SectionedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6C23D5768F0080C7E6 /* SectionedList.swift */; };
 		D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0023303EAC007E2A58 /* Stage.swift */; };
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
@@ -96,6 +97,7 @@
 		D2261E6623D5425D0080C7E6 /* PlaylistGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistGrid.swift; sourceTree = "<group>"; };
 		D2261E6823D543380080C7E6 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		D2261E6A23D568170080C7E6 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		D2261E6C23D5768F0080C7E6 /* SectionedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedList.swift; sourceTree = "<group>"; };
 		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
 		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				D2B2560B2329A5B20065A48B /* HostView.swift */,
 				D2DCA96923D434A100E53507 /* SearchField.swift */,
 				D2261E6A23D568170080C7E6 /* Grid.swift */,
+				D2261E6C23D5768F0080C7E6 /* SectionedList.swift */,
 				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2261E6523D53F140080C7E6 /* Soundset View */,
 				D21D137D23D514920097F2EB /* Player */,
@@ -448,6 +451,7 @@
 				D2DCA96623D42BB600E53507 /* Mood+Identifiable.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2B25610232AD7540065A48B /* Playlist+Sync.swift in Sources */,
+				D2261E6D23D5768F0080C7E6 /* SectionedList.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
 				D2DFD11423590728001CA9DC /* OneShotSearchController.swift in Sources */,
 				D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */,
