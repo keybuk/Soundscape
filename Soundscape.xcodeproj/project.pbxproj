@@ -18,6 +18,8 @@
 		D2261E6923D543380080C7E6 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6823D543380080C7E6 /* PlaylistCell.swift */; };
 		D2261E6B23D568170080C7E6 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6A23D568170080C7E6 /* Grid.swift */; };
 		D2261E6D23D5768F0080C7E6 /* SectionedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E6C23D5768F0080C7E6 /* SectionedList.swift */; };
+		D2261E7123D57D0D0080C7E6 /* PlaylistsBySoundset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E7023D57D0D0080C7E6 /* PlaylistsBySoundset.swift */; };
+		D2261E7323D583B50080C7E6 /* Playlist+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261E7223D583B50080C7E6 /* Playlist+FetchRequests.swift */; };
 		D23D8C0123303EAC007E2A58 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D8C0023303EAC007E2A58 /* Stage.swift */; };
 		D241A1C12321D6900009CFF3 /* URL+Syrinscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */; };
 		D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */; };
@@ -79,8 +81,7 @@
 		D2DD5BF623D1505300E4EED9 /* Vorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */; };
 		D2DFD0EB23579C0A001CA9DC /* SoundsetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */; };
 		D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */; };
-		D2DFD11223590700001CA9DC /* OneShotsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11123590700001CA9DC /* OneShotsList.swift */; };
-		D2DFD11423590728001CA9DC /* OneShotSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11323590728001CA9DC /* OneShotSearchController.swift */; };
+		D2DFD11223590700001CA9DC /* OneShotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11123590700001CA9DC /* OneShotsView.swift */; };
 		D2DFD11623590992001CA9DC /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD11523590992001CA9DC /* PlayerButton.swift */; };
 		D2DFD118235909A7001CA9DC /* PlayerStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */; };
 		D2DFD11A235909D8001CA9DC /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD119235909D8001CA9DC /* PlayerProgress.swift */; };
@@ -98,6 +99,8 @@
 		D2261E6823D543380080C7E6 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		D2261E6A23D568170080C7E6 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D2261E6C23D5768F0080C7E6 /* SectionedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedList.swift; sourceTree = "<group>"; };
+		D2261E7023D57D0D0080C7E6 /* PlaylistsBySoundset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsBySoundset.swift; sourceTree = "<group>"; };
+		D2261E7223D583B50080C7E6 /* Playlist+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+FetchRequests.swift"; sourceTree = "<group>"; };
 		D23D8C0023303EAC007E2A58 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		D241A1C02321D6900009CFF3 /* URL+Syrinscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Syrinscape.swift"; sourceTree = "<group>"; };
 		D241A1C22321D7E20009CFF3 /* SyrinscapeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrinscapeAuth.swift; sourceTree = "<group>"; };
@@ -163,8 +166,7 @@
 		D2DD5BF523D1505300E4EED9 /* Vorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Vorbis.xcframework; sourceTree = "<group>"; };
 		D2DFD0EA23579C0A001CA9DC /* SoundsetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetListController.swift; sourceTree = "<group>"; };
 		D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBottomBar.swift; sourceTree = "<group>"; };
-		D2DFD11123590700001CA9DC /* OneShotsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsList.swift; sourceTree = "<group>"; };
-		D2DFD11323590728001CA9DC /* OneShotSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotSearchController.swift; sourceTree = "<group>"; };
+		D2DFD11123590700001CA9DC /* OneShotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneShotsView.swift; sourceTree = "<group>"; };
 		D2DFD11523590992001CA9DC /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		D2DFD117235909A7001CA9DC /* PlayerStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatusView.swift; sourceTree = "<group>"; };
 		D2DFD119235909D8001CA9DC /* PlayerProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
@@ -328,8 +330,9 @@
 				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2261E6523D53F140080C7E6 /* Soundset View */,
 				D21D137D23D514920097F2EB /* Player */,
-				D2DFD11123590700001CA9DC /* OneShotsList.swift */,
+				D2DFD11123590700001CA9DC /* OneShotsView.swift */,
 				D2261E6623D5425D0080C7E6 /* PlaylistGrid.swift */,
+				D2261E7023D57D0D0080C7E6 /* PlaylistsBySoundset.swift */,
 				D2261E6823D543380080C7E6 /* PlaylistCell.swift */,
 				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
 				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
@@ -353,10 +356,10 @@
 				D28D97AB23D2FF0F0089EACD /* Playlist+Order.swift */,
 				D28D97AD23D2FF800089EACD /* Playlist+Properties.swift */,
 				D28D97B123D2FFBC0089EACD /* Playlist+Iterator.swift */,
+				D2261E7223D583B50080C7E6 /* Playlist+FetchRequests.swift */,
 				D28D97B323D305060089EACD /* PlaylistEntry+Properties.swift */,
 				D2DCA96523D42BB600E53507 /* Mood+Identifiable.swift */,
 				D241A1F0232825040009CFF3 /* Sample+DownloadFromSyrinscape.swift */,
-				D2DFD11323590728001CA9DC /* OneShotSearchController.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -450,10 +453,10 @@
 				D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */,
 				D2DCA96623D42BB600E53507 /* Mood+Identifiable.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
+				D2261E7323D583B50080C7E6 /* Playlist+FetchRequests.swift in Sources */,
 				D2B25610232AD7540065A48B /* Playlist+Sync.swift in Sources */,
 				D2261E6D23D5768F0080C7E6 /* SectionedList.swift in Sources */,
 				D2B2560123299B290065A48B /* PreviewContent.swift in Sources */,
-				D2DFD11423590728001CA9DC /* OneShotSearchController.swift in Sources */,
 				D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */,
 				D21D137C23D50E400097F2EB /* ProgressCircle.swift in Sources */,
 				D241A1C32321D7E20009CFF3 /* SyrinscapeAuth.swift in Sources */,
@@ -471,6 +474,7 @@
 				D241A1ED23281BC60009CFF3 /* SyrinscapeChapterClient.swift in Sources */,
 				D28D97AE23D2FF810089EACD /* Playlist+Properties.swift in Sources */,
 				D2B255F32328A04D0065A48B /* SyrinscapeSync.swift in Sources */,
+				D2261E7123D57D0D0080C7E6 /* PlaylistsBySoundset.swift in Sources */,
 				D2261E6923D543380080C7E6 /* PlaylistCell.swift in Sources */,
 				D28D97B223D2FFBC0089EACD /* Playlist+Iterator.swift in Sources */,
 				D2AC67042321809900548388 /* AppDelegate.swift in Sources */,
@@ -483,7 +487,7 @@
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D2261E6023D536140080C7E6 /* Collection+Chunked.swift in Sources */,
 				D28D97A823D2FDA50089EACD /* Soundset+Properties.swift in Sources */,
-				D2DFD11223590700001CA9DC /* OneShotsList.swift in Sources */,
+				D2DFD11223590700001CA9DC /* OneShotsView.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressArc.swift in Sources */,
 				D2DFD11A235909D8001CA9DC /* PlayerProgress.swift in Sources */,
 				D2261E6723D5425D0080C7E6 /* PlaylistGrid.swift in Sources */,

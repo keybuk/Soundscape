@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct OneShotsButton: View {
     @EnvironmentObject var stage: Stage
-    @EnvironmentObject var oneShotSearchController: OneShotSearchController
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
 
     @ObservedObject var soundset: Soundset
 
@@ -20,11 +21,11 @@ struct OneShotsButton: View {
         Button(action: { self.isOneShotsPresented = true }) { Text("One Shots") }
             .sheet(isPresented: $isOneShotsPresented) {
                 NavigationView {
-                    OneShotsList(soundset: self.soundset)
+                    OneShotsView(soundset: self.soundset)
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
                 .environmentObject(self.stage)
-                .environmentObject(self.oneShotSearchController)
+                .environment(\.managedObjectContext, self.managedObjectContext)
             }
     }
 }
@@ -34,7 +35,7 @@ struct OneShotsButton_Previews: PreviewProvider {
     static var previews: some View {
         OneShotsButton(soundset: previewContent.soundsets[0])
             .environmentObject(Stage(audio: AudioManager()))
-            .environmentObject(OneShotSearchController(managedObjectContext: previewContent.managedObjectContext))
+            .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
 #endif

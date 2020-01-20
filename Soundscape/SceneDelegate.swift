@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
             .environmentObject(appDelegate.persistentContainer)
             .environmentObject(SoundsetListController())
-            .environmentObject(OneShotSearchController(managedObjectContext: appDelegate.persistentContainer.viewContext))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
