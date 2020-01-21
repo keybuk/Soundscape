@@ -54,12 +54,21 @@ final class SyrinscapeChaptersClient: NSObject, XMLParserDelegate {
     private var campaign: Campaign?
 
     func download(category: Soundset.Category, completionHandler: @escaping (Result<Void, Error>) -> Void) {
-        download(fromURL: category.url, completionHandler: completionHandler)
+        switch category {
+        case .homebrew:
+            let configuration = URLSessionConfiguration.default
+            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+            let session = URLSession(configuration: configuration)
+
+            download(fromURL: category.url, session: session, completionHandler: completionHandler)
+        default:
+            download(fromURL: category.url, completionHandler: completionHandler)
+        }
     }
 
-    func download(fromURL url: URL, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+    func download(fromURL url: URL, session: URLSession = URLSession.shared, completionHandler: @escaping (Result<Void, Error>) -> Void) {
         let url = url.authenticatedForSyrinscape() ?? url
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
                 return
