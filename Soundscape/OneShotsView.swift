@@ -8,15 +8,6 @@
 
 import SwiftUI
 
-extension UIApplication {
-    func endEditing(force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
-            .first?
-            .endEditing(force)
-    }
-}
-
 struct OneShotsView: View {
     @State var search: String = ""
     @State var isSearching: Bool = false
@@ -25,20 +16,9 @@ struct OneShotsView: View {
 
     var body: some View {
         ScrollView {
-            HStack {
-                SearchField(search: $search, isSearching: $isSearching)
-
-                if isSearching  {
-                    Button("Cancel") {
-                        UIApplication.shared.endEditing(force: true)
-                        self.isSearching = false
-                        self.search = ""
-                    }
-                    .foregroundColor(Color(.systemBlue))
-                }
-            }
-            .padding(.horizontal)
-            .padding(isSearching ? .top : [])
+            SearchField(search: $search, isSearching: $isSearching)
+                .padding(.horizontal)
+                .padding(isSearching ? .top : [])
 
             if isSearching {
                 if !search.isEmpty {
