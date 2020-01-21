@@ -98,6 +98,39 @@
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
+
+		<Mood>
+			<Title>Tieflings</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX2_Field_A_Day</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Galgoraan</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX2_Dan_D03</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Tiefling Night</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX2_Field_A_Night</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
 	</Moods>
 
 	<!-- All SampleFile must appear in Samples -->
@@ -138,6 +171,66 @@
 			<Playlist>
 				<PlaylistEntry>
 					<SampleFile>BGM_EX3_Field_Rak_Night</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX2_Field_A_Day</Slug>
+			<Title>FFXIV: Drowning in the Horizon</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX2_Field_A_Day</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX2_Field_A_Night</Slug>
+			<Title>FFXIV: Drowning in the Horizon Night</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX2_Field_A_Night</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX2_Dan_D03</Slug>
+			<Title>FFXIV: Most Unworthy</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX2_Dan_D03_fixed</SampleFile>
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
@@ -398,6 +491,21 @@
 		<SoundSample>
 			<Title>BGM_EX3_Field_Rak_Night</Title>
 			<Uuid>BGM_EX3_Field_Rak_Night</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX2_Field_A_Day</Title>
+			<Uuid>BGM_EX2_Field_A_Day</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX2_Field_A_Night</Title>
+			<Uuid>BGM_EX2_Field_A_Night</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX2_Dan_D03_fixed</Title>
+			<Uuid>BGM_EX2_Dan_D03_fixed</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>

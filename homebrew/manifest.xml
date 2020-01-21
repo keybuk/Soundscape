@@ -16,6 +16,18 @@
 			<Url>https://bard.local/soundscape/BGM_EX3_Field_Rak_Night.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
+			<Filename>BGM_EX2_Field_A_Day.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX2_Field_A_Day.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX2_Field_A_Night.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX2_Field_A_Night.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX2_Dan_D03_fixed.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX2_Dan_D03_fixed.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
 			<Filename>BGM_EX3_Dan_D03.ogg</Filename>
 			<Url>https://bard.local/soundscape/BGM_EX3_Dan_D03.ogg</Url>
 		</SoundsetFile>
