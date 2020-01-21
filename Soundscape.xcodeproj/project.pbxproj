@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20E4B9423D6CB3900E63B7D /* NowPlayingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E4B9323D6CB3900E63B7D /* NowPlayingRow.swift */; };
 		D21D137723D4914B0097F2EB /* Soundset+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137623D4914B0097F2EB /* Soundset+FetchRequests.swift */; };
 		D21D137923D4921E0097F2EB /* SoundsetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137823D4921E0097F2EB /* SoundsetImage.swift */; };
 		D21D137C23D50E400097F2EB /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D137B23D50E400097F2EB /* ProgressCircle.swift */; };
@@ -87,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D20E4B9323D6CB3900E63B7D /* NowPlayingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingRow.swift; sourceTree = "<group>"; };
 		D21D137623D4914B0097F2EB /* Soundset+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+FetchRequests.swift"; sourceTree = "<group>"; };
 		D21D137823D4921E0097F2EB /* SoundsetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsetImage.swift; sourceTree = "<group>"; };
 		D21D137B23D50E400097F2EB /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
@@ -195,6 +197,17 @@
 				D2261E6823D543380080C7E6 /* PlaylistCell.swift */,
 			);
 			name = "One Shots View";
+			sourceTree = "<group>";
+		};
+		D20E4B9523D6CD4700E63B7D /* Now Playing View */ = {
+			isa = PBXGroup;
+			children = (
+				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
+				D20E4B9323D6CB3900E63B7D /* NowPlayingRow.swift */,
+				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
+				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
+			);
+			name = "Now Playing View";
 			sourceTree = "<group>";
 		};
 		D21D137D23D514920097F2EB /* Player */ = {
@@ -339,10 +352,8 @@
 				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2261E6523D53F140080C7E6 /* Soundset View */,
 				D20E4B9223D589F600E63B7D /* One Shots View */,
+				D20E4B9523D6CD4700E63B7D /* Now Playing View */,
 				D21D137D23D514920097F2EB /* Player */,
-				D2D8D124234ECA5800EF1F2B /* NowPlayingView.swift */,
-				D2DFD10F23590213001CA9DC /* NowPlayingBottomBar.swift */,
-				D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -492,6 +503,7 @@
 				D2261E6023D536140080C7E6 /* Collection+Chunked.swift in Sources */,
 				D28D97A823D2FDA50089EACD /* Soundset+Properties.swift in Sources */,
 				D2DFD11223590700001CA9DC /* OneShotsView.swift in Sources */,
+				D20E4B9423D6CB3900E63B7D /* NowPlayingRow.swift in Sources */,
 				D250FFF3232C8D8D00EA515B /* ProgressArc.swift in Sources */,
 				D2DFD11A235909D8001CA9DC /* PlayerProgress.swift in Sources */,
 				D2261E6723D5425D0080C7E6 /* PlaylistGrid.swift in Sources */,

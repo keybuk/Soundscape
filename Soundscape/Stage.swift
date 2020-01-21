@@ -27,10 +27,14 @@ final class Stage: ObservableObject {
             .compactMap { $0.value }
             .filter { $0.isPlaying }
             .map { $0.playlist }
-    }
-
-    var playlistsBySoundset: [ArraySlice<Playlist>] {
-        playlists.split(between: { $0.soundset != $1.soundset })
+            .filter { $0.kind != .oneShot }
+            .sorted {
+                if $0.soundset == $1.soundset {
+                    return $0.kind < $1.kind
+                } else {
+                    return $0.soundset!.title! < $1.soundset!.title!
+                }
+        }
     }
 
     @Published var lockedPlaylist: Playlist? = nil
