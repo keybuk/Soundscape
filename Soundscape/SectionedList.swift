@@ -20,7 +20,8 @@ where Data: RandomAccessCollection, ID: Hashable, Content: View {
         })
     }
 
-    private var sectionKeyPath: KeyPath<Data.SubSequence, ID> {
+    // FIXME: in theory this is only used for diffing the sections, so it doesn't really matter what we put here as long as it's consistent. Verify that's actually true.
+    private var sectionID: KeyPath<Data.SubSequence, ID> {
         (\Data.SubSequence.first.unsafelyUnwrapped).appending(path: id)
     }
 
@@ -39,7 +40,7 @@ where Data: RandomAccessCollection, ID: Hashable, Content: View {
 
     var body: some View {
         VStack(spacing: spacing) {
-            ForEach(sectionData, id: sectionKeyPath) { items in
+            ForEach(sectionData, id: sectionID) { items in
                 self.content(items)
             }
         }

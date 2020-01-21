@@ -16,7 +16,9 @@ where Data: RandomAccessCollection, ID: Hashable, Content: View {
     var id: KeyPath<Data.Element, ID>
     var content: (Data.Element) -> Content
 
-    private var chunkKeyPath: KeyPath<Data.SubSequence, ID> { (\Data.SubSequence.first.unsafelyUnwrapped).appending(path: id)
+    // FIXME: in theory this is only used for diffing the rows, so it doesn't really matter what we put here as long as it's consistent. Verify that's actually true.
+    private var chunkID: KeyPath<Data.SubSequence, ID> {
+        (\Data.SubSequence.first.unsafelyUnwrapped).appending(path: id)
     }
 
     var compactColumns: Int
@@ -43,7 +45,7 @@ where Data: RandomAccessCollection, ID: Hashable, Content: View {
 
     var body: some View {
         VStack(spacing: rowSpacing) {
-            ForEach(data.chunked(into: numberOfColumns), id: chunkKeyPath) { row in
+            ForEach(data.chunked(into: numberOfColumns), id: chunkID) { row in
                 HStack(spacing: self.columnSpacing) {
                     ForEach(row, id: self.id) { element in
                         self.content(element)
@@ -59,7 +61,9 @@ where Data: RandomAccessCollection, ID: Hashable, Content: View {
         }
     }
 
-    var numberOfColumns: Int { horizontalSizeClass == .compact ? compactColumns : regularColumns }
+    var numberOfColumns: Int {
+        horizontalSizeClass == .compact ? compactColumns : regularColumns
+    }
 }
 
 extension Grid
@@ -96,6 +100,14 @@ struct Grid_Previews: PreviewProvider {
                     Text("\($0)")
                 }
             }
+            .previewDevice("iPhone 11 Pro")
+
+            ScrollView {
+                Grid(testData, id: \.self) {
+                    Text("\($0)")
+                }
+            }
+            .previewDevice("iPad Air (3rd generation)")
 
             ScrollView {
                 Grid(testData.map { Grid_IdentifiableTest(id: $0) }) {
