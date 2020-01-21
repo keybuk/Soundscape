@@ -7,6 +7,7 @@
 				<ElementParameter>
 					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Bazaar_01</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -17,6 +18,7 @@
 				<ElementParameter>
 					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Bazaar_02</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -27,10 +29,12 @@
 				<ElementParameter>
 					<ElementSlug>MUS_80_StormsongValley_ShrineOfStorms_Intro</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 				<ElementParameter>
 					<ElementSlug>MUS_80_StormsongValley_ShrineofStorms</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -41,6 +45,7 @@
 				<ElementParameter>
 					<ElementSlug>BGM_EX3_Field_Rak_Day</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -51,6 +56,7 @@
 				<ElementParameter>
 					<ElementSlug>BGM_EX3_Field_Rak_Night</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -61,6 +67,7 @@
 				<ElementParameter>
 					<ElementSlug>BGM_EX3_Dan_D03</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -71,10 +78,12 @@
 				<ElementParameter>
 					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Intro</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 				<ElementParameter>
 					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Day</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
@@ -85,6 +94,7 @@
 				<ElementParameter>
 					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Night</ElementSlug>
 					<Plays>true</Plays>
+					<Volume>0.33</Volume>
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
