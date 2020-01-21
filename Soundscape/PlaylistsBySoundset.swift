@@ -18,14 +18,14 @@ struct PlaylistsBySoundset: View {
     }
 
     var body: some View {
-        SectionedList(playlists, id: \.soundset) { sectionPlaylists in
+        SectionedList(playlists, id: \.soundset) { soundsetPlaylists in
             VStack(alignment: .leading, spacing: 8) {
-                Text("\(sectionPlaylists.first!.soundset!.title!)")
+                Text("\(soundsetPlaylists.first!.soundset!.title!)")
                     .font(.headline)
                     .foregroundColor(.secondary)
                     .padding(.leading, 8)
 
-                Grid(sectionPlaylists) { playlist in
+                Grid(soundsetPlaylists) { playlist in
                     PlaylistCell(playlist: playlist)
                 }
             }
