@@ -37,16 +37,16 @@ final class Player: ObservableObject {
         var loop: ClosedRange<AVAudioFramePosition>?
         var delay: AVAudioFramePosition
 
-        var changes: [LinearChange] = []
+        var animations: [Animation] = []
     }
 
-    struct LinearChange {
-        enum Change {
+    struct Animation {
+        enum Property {
             case volume(start: Float, end: Float)
             case position(startAngle: Float, startDistance: Float, endAngle: Float, endDistance: Float)
         }
 
-        var change: Change
+        var property: Property
         var over: Range<AVAudioFramePosition>
     }
 
@@ -354,12 +354,12 @@ final class Player: ObservableObject {
             guard let lastRenderTime = playingMember.player.lastRenderTime,
                 let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime) else { continue }
 
-            for linearChange in playingMember.changes {
-                guard linearChange.over.contains(playerTime.sampleTime) else { continue }
+            for animation in playingMember.animations {
+                guard animation.over.contains(playerTime.sampleTime) else { continue }
 
-                let progress = Float(playerTime.sampleTime - linearChange.over.lowerBound) / Float(linearChange.over.upperBound - linearChange.over.lowerBound)
+                let progress = Float(playerTime.sampleTime - animation.over.lowerBound) / Float(animation.over.upperBound - animation.over.lowerBound)
 
-                switch linearChange.change {
+                switch animation.property {
                 case let .volume(start, end):
                     playingMember.player.volume = start + (end - start) * progress
                 case let .position(startAngle, startDistance, endAngle, endDistance):
