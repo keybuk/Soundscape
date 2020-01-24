@@ -28,7 +28,11 @@ struct MoodButton: View {
     var isActive: Bool { stage.mood == mood }
 
     func play() {
-        stage.playMood(mood)
+        if stage.mood == mood {
+            stage.stop()
+        } else {
+            stage.playMood(mood)
+        }
     }
 }
 
