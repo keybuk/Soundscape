@@ -166,7 +166,7 @@ final class Player: ObservableObject {
 
     func changeVolume(_ volume: Float) {
         let animatableVolumeThreshold: Float = 0.05
-        let animationLength = 3
+        let animationLength = 2
 
         // FIXME? This immediately changes the volume if there's nothing playing,
         // otherwise begins changing it immediately which means it's changed
@@ -360,7 +360,7 @@ final class Player: ObservableObject {
         }
     }
 
-    func stop(fadeOut: Bool = false) {
+    func stop(fadeOut: Bool = true) {
         playlistIterator = nil
 
         // Always cancel downloads.
@@ -368,12 +368,12 @@ final class Player: ObservableObject {
 
         // Iterate over the playing elements to figure out which to stop, and
         // which to fade out.
-        let fadeOutLength = 3
+        let fadeOutLength = 2
         let lastRenderTime = environment?.lastRenderTime
         playing = playing.map {
             if let lastRenderTime = lastRenderTime,
                 let playerTime = $0.player.playerTime(forNodeTime: lastRenderTime),
-                playerTime.sampleTime > 0
+                playerTime.sampleTime > 0 && fadeOut
             {
                 let format = $0.player.outputFormat(forBus: 0)
                 let startTime = playerTime.sampleTime
