@@ -293,6 +293,12 @@ final class Player: ObservableObject {
                 if delayBeforeNext >= 0 && !self.playlist.isOverlapping {
                     self.wantFile(in: delayBeforeNext)
                 }
+
+                // If we're not playing anything then we need to send a 0%
+                // progress update, as the updater is not currently running.
+                if self.nowPlaying == nil {
+                    self.sendProgressUpdate()
+                }
             }
         }
         player.play(at: startTime)
