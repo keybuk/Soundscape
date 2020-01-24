@@ -50,6 +50,8 @@ final class Player: ObservableObject {
         var over: Range<AVAudioFramePosition>
     }
 
+    var animations: [Animation] = []
+
     @Published var playing: [Playing] = []
     @Published private var downloading: [URLSessionDataTask] = []
 
@@ -155,6 +157,27 @@ final class Player: ObservableObject {
 
         let delay: Double = withStartDelay ? .random(in: playlist.startDelay) : 0
         wantFile(in: delay, isFirst: true)
+    }
+
+    func changeVolume(_ volume: Float) {
+        let animatableVolumeThreshold: Float = 0.05
+        let animationLength = 3
+
+        // FIXME? This immediately changes the volume if there's nothing playing,
+        // otherwise begins changing it immediately which means it's changed
+        // across a download or sample delay.
+        if abs(self.volume - volume) >= animatableVolumeThreshold,
+            let lastRenderTime = environment?.lastRenderTime,
+            let format = environment?.outputFormat(forBus: 0)
+        {
+            let startTime = lastRenderTime.sampleTime
+            let endTime = startTime + AVAudioFramePosition(animationLength) * AVAudioFramePosition(format.sampleRate)
+
+            animations.append(Animation(property: .volume(start: self.volume, end: volume),
+                                        over: startTime..<endTime))
+        } else {
+            self.volume = volume
+        }
     }
 
     func scheduleFile(_ file: OggVorbisFile, volume: Float, delay: Double) {
@@ -350,9 +373,24 @@ final class Player: ObservableObject {
     func progressUpdate() {
         sendProgressUpdate()
 
+        guard let lastRenderTime = environment?.lastRenderTime else { return }
+        for animation in animations {
+            guard animation.over.contains(lastRenderTime.sampleTime) else { continue }
+
+            let progress = Float(lastRenderTime.sampleTime - animation.over.lowerBound) / Float(animation.over.upperBound - animation.over.lowerBound)
+
+            switch animation.property {
+            case let .volume(start, end):
+                volume = start + (end - start) * progress
+            default:
+                assertionFailure("Invalid property for environment animation: \(animation.property)")
+            }
+        }
+
+        animations.removeAll { $0.over.upperBound <= lastRenderTime.sampleTime }
+
         for playingMember in playing {
-            guard let lastRenderTime = playingMember.player.lastRenderTime,
-                let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime) else { continue }
+            guard let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime) else { continue }
 
             for animation in playingMember.animations {
                 guard animation.over.contains(playerTime.sampleTime) else { continue }

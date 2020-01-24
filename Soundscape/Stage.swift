@@ -71,7 +71,7 @@ final class Stage: ObservableObject {
             guard parameters.isPlaying else { continue }
 
             let player = playerForPlaylist(parameters.playlist!)
-            player.volume = parameters.volume
+            player.changeVolume(parameters.volume)
 
             if !player.isPlaying && (!player.playlist.isLockable || lockedPlaylist == nil) {
                 player.play(withStartDelay: true)
