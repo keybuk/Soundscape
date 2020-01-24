@@ -25,7 +25,11 @@ final class Player: ObservableObject {
         }
     }
 
-    var isPlaying: Bool { !playing.isEmpty || !downloading.isEmpty }
+    var nowPlaying: Playing? { playing.first { $0.stopAt == nil } }
+
+    var isPlaying: Bool {
+        nowPlaying != nil || isDownloading
+    }
     var isDownloading: Bool { !downloading.isEmpty }
 
     var progressSubject = CurrentValueSubject<Double, Never>(0)
@@ -36,6 +40,7 @@ final class Player: ObservableObject {
         var length: AVAudioFramePosition
         var loop: ClosedRange<AVAudioFramePosition>?
         var delay: AVAudioFramePosition
+        var stopAt: AVAudioFramePosition?
 
         var animations: [Animation] = []
     }
@@ -355,11 +360,35 @@ final class Player: ObservableObject {
         }
     }
 
-    func stop() {
+    func stop(fadeOut: Bool = false) {
         playlistIterator = nil
 
+        // Always cancel downloads.
         downloading.forEach { $0.cancel() }
-        playing.forEach { $0.player.stop() }
+
+        // Iterate over the playing elements to figure out which to stop, and
+        // which to fade out.
+        let fadeOutLength = 3
+        let lastRenderTime = environment?.lastRenderTime
+        playing = playing.map {
+            if let lastRenderTime = lastRenderTime,
+                let playerTime = $0.player.playerTime(forNodeTime: lastRenderTime),
+                playerTime.sampleTime > 0
+            {
+                let format = $0.player.outputFormat(forBus: 0)
+                let startTime = playerTime.sampleTime
+                let endTime = startTime + AVAudioFramePosition(fadeOutLength) * AVAudioFramePosition(format.sampleRate)
+
+                var newPlaying = $0
+                newPlaying.stopAt = endTime
+                newPlaying.animations.append(Animation(property: .volume(start: $0.player.volume, end: 0),
+                                                       over: startTime..<endTime))
+                return newPlaying
+            } else {
+                $0.player.stop()
+                return $0
+            }
+        }
     }
 
     lazy var progressUpdater: CADisplayLink = {
@@ -392,6 +421,10 @@ final class Player: ObservableObject {
         for playingMember in playing {
             guard let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime) else { continue }
 
+            if let stopAt = playingMember.stopAt, stopAt <= playerTime.sampleTime {
+                playingMember.player.stop()
+            }
+
             for animation in playingMember.animations {
                 guard animation.over.contains(playerTime.sampleTime) else { continue }
 
@@ -414,7 +447,7 @@ final class Player: ObservableObject {
     }
 
     func sendProgressUpdate() {
-        if let playingMember = playing.first,
+        if let playingMember = nowPlaying,
             let lastRenderTime = playingMember.player.lastRenderTime,
             let playerTime = playingMember.player.playerTime(forNodeTime: lastRenderTime)
         {
