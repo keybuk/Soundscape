@@ -73,7 +73,8 @@ final class AudioManager {
     func audioSessionInterruption(_ notification: Notification) {
         guard let notificationAudioSession = notification.object as? AVAudioSession,
             notificationAudioSession == session,
-            let interruptionType = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? AVAudioSession.InterruptionType
+            let rawInterruptionType = notification.userInfo?[AVAudioSessionInterruptionTypeKey],
+            let interruptionType = rawInterruptionType as? AVAudioSession.InterruptionType ?? AVAudioSession.InterruptionType(rawValue: rawInterruptionType as! UInt)
             else { fatalError("Invalid audio session interruption notification") }
 
         switch interruptionType {
