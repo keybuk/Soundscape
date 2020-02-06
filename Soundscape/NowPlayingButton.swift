@@ -28,6 +28,7 @@ struct NowPlayingButton: View {
     }
 }
 
+#if DEBUG
 struct NowPlayingButton_Previews: PreviewProvider {
     static var previews: some View {
         NowPlayingButton()
@@ -35,3 +36,4 @@ struct NowPlayingButton_Previews: PreviewProvider {
             .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
+#endif
