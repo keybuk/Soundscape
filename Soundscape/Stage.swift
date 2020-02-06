@@ -100,8 +100,8 @@ final class Stage: ObservableObject {
         let playPlaylists = Set(moodPlaylists
             .filter { $0.isPlaying }
             .map { $0.playlist! }
-            .filter { $0.isRepeating || $0.kind != .oneShot })
-        if playPlaylists.isSubset(of: playingPlaylists) {
+            .filter { $0.isRepeating && $0.kind != .oneShot })
+        if !playPlaylists.isEmpty && playPlaylists.isSubset(of: playingPlaylists) {
             return true
         } else {
             return false
