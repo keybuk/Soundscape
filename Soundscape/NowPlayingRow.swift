@@ -14,29 +14,7 @@ struct NowPlayingRow: View {
     @ObservedObject var playlist: Playlist
 
     var body: some View {
-        HStack {
-            PlayerView(player: self.stage.playerForPlaylist(playlist))
-
-            if playlist.isLockable {
-                if self.stage.lockedPlaylist == playlist {
-                    Image(systemName: "lock")
-                        .padding()
-                        .onTapGesture(perform: unlockPlaylist)
-                } else {
-                    Image(systemName: "lock.open")
-                        .padding()
-                        .onTapGesture(perform: lockPlaylist)
-                }
-            }
-        }
-    }
-
-    func lockPlaylist() {
-        stage.lockedPlaylist = playlist
-    }
-
-    func unlockPlaylist() {
-        stage.lockedPlaylist = nil
+        PlayerView(player: self.stage.playerForPlaylist(playlist))
     }
 }
 

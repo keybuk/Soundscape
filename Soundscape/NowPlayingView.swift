@@ -23,6 +23,8 @@ struct NowPlayingView: View {
                             .foregroundColor(.secondary)
                             .padding(.leading, 8)
 
+                        NowPlayingMoodList(fetchRequest: soundsetPlaylists.first!.soundset!.fetchRequestForMoods())
+
                         ForEach(soundsetPlaylists) { playlist in
                             NowPlayingRow(playlist: playlist)
                         }
@@ -48,6 +50,7 @@ struct NowPlayingView_Previews: PreviewProvider {
             NowPlayingView()
         }
         .environmentObject(Stage(audio: AudioManager()))
+        .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
 #endif

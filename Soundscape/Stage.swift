@@ -7,89 +7,114 @@
 //
 
 import Foundation
-
-struct WeakBox<T> where T: AnyObject {
-    weak var value: T? = nil
-}
-
-extension Playlist {
-    var isLockable: Bool { kind == .music }
-}
+import Combine
 
 final class Stage: ObservableObject {
-    private var players: [WeakBox<Player>] = []
+    struct StagePlayer {
+        weak var player: Player? = nil
+        var subscriber: AnyCancellable? = nil
+    }
+
+    private var players: [StagePlayer] = []
 
     var audio: AudioManager
-    @Published var mood: Mood? = nil
 
     var playlists: [Playlist] {
         players
-            .compactMap { $0.value }
-            .filter { $0.isPlaying }
-            .map { $0.playlist }
-            .filter { $0.kind != .oneShot }
+            .filter { $0.player?.isPlaying ?? false }
+            .compactMap { $0.player?.playlist }
             .sorted {
-                if $0.soundset == $1.soundset {
-                    return $0.kind < $1.kind
-                } else {
+                if $0.soundset != $1.soundset {
                     return $0.soundset!.title! < $1.soundset!.title!
+                } else {
+                    return $0.kind < $1.kind
                 }
         }
     }
-
-    @Published var lockedPlaylist: Playlist? = nil
 
     init(audio: AudioManager) {
         self.audio = audio
     }
 
     func playerForPlaylist(_ playlist: Playlist) -> Player {
-        players.removeAll(where: { $0.value == nil })
+        playerForPlaylist(playlist, creating: true)!
+    }
 
-        if let player = players.first(where: { $0.value?.playlist == playlist }) {
-            return player.value!
-        } else {
-            defer { objectWillChange.send() }
+    func playerForPlaylist(_ playlist: Playlist, creating: Bool) -> Player? {
+        players.removeAll(where: { $0.player == nil })
+
+        if let stagePlayer = players.first(where: { $0.player?.playlist == playlist }) {
+            return stagePlayer.player!
+        } else if (creating) {
+            objectWillChange.send()
             let player = Player(playlist: playlist, audio: audio)
-            players.append(WeakBox(value: player))
+
+            var stagePlayer = StagePlayer()
+            stagePlayer.player = player
+            stagePlayer.subscriber = player.objectWillChange.sink {
+                self.objectWillChange.send()
+            }
+            players.append(stagePlayer)
             return player
+        } else {
+            return nil
         }
     }
 
-    func playMood(_ mood: Mood?) {
-        // Stop any player not in the current mood.
-        let playing = mood.map { ($0.playlists! as! Set<PlaylistParameter>).filter { $0.isPlaying }.map { $0.playlist! } } ?? []
-        for player in players.compactMap({ $0.value }) {
-            if !playing.contains(player.playlist) && lockedPlaylist != player.playlist {
-                if !player.isPlaying { continue }
-                player.stop(fadeOut: true)
-            }
-        }
-
-        // Start the rest of the players.
-        if let mood = mood {
-            for case let parameters as PlaylistParameter in mood.playlists! {
-                guard parameters.isPlaying else { continue }
-
-                let player = playerForPlaylist(parameters.playlist!)
-                player.changeVolume(parameters.volume)
-
-                if !player.isPlaying && (!player.playlist.isLockable || lockedPlaylist == nil) {
+    func playMood(_ mood: Mood) {
+        let moodParameters = mood.playlists! as! Set<PlaylistParameter>
+        for parameters in moodParameters {
+            if let player = playerForPlaylist(parameters.playlist!, creating: parameters.isPlaying) {
+                if parameters.isPlaying {
                     player.play(withStartDelay: true)
+                } else {
+                    player.stop(fadeOut: true)
                 }
             }
         }
+    }
 
-        self.mood = mood
+    func stopMood(_ mood: Mood) {
+        let moodParameters = mood.playlists! as! Set<PlaylistParameter>
+        for parameters in moodParameters {
+            if let player = playerForPlaylist(parameters.playlist!, creating: false) {
+                if parameters.isPlaying {
+                    player.stop(fadeOut: true)
+                }
+            }
+        }
+    }
+
+    func isPlayingMood(_ mood: Mood) -> Bool {
+        let playingPlaylists = Set(players.filter { $0.player?.isPlaying ?? false }.compactMap { $0.player?.playlist })
+        let moodPlaylists = Set(mood.playlists! as! Set<PlaylistParameter>)
+
+        // If any playlists the mood wants stopped are playing, the mood is not playing.
+        let stopPlaylists = Set(moodPlaylists.filter { !$0.isPlaying }.map { $0.playlist! })
+        if !stopPlaylists.isDisjoint(with: playingPlaylists) {
+            return false
+        }
+
+        // Otherwise filter the set of playing playlists by those that are always playing, and
+        // if those are all still playing the moood is playing.
+        let playPlaylists = Set(moodPlaylists
+            .filter { $0.isPlaying }
+            .map { $0.playlist! }
+            .filter { $0.isRepeating || $0.kind != .oneShot })
+        if playPlaylists.isSubset(of: playingPlaylists) {
+            return true
+        } else {
+            return false
+        }
     }
 
     func stop() {
-        for player in players.compactMap({ $0.value }) {
-            if player.playlist == lockedPlaylist { continue }
-            if !player.isPlaying { continue }
+        let nowPlaying = players
+            .compactMap({ $0.player })
+            .filter { $0.isPlaying }
+
+        for player in nowPlaying {
             player.stop(fadeOut: true)
         }
-
-        mood = nil
     }
 }

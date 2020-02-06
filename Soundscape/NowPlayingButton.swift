@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct NowPlayingButton: View {
     @EnvironmentObject var stage: Stage
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
 
     @State var isNowPlayingPresented: Bool = false
 
@@ -21,6 +23,7 @@ struct NowPlayingButton: View {
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
                 .environmentObject(self.stage)
+                .environment(\.managedObjectContext, self.managedObjectContext)
             }
     }
 }
@@ -29,5 +32,6 @@ struct NowPlayingButton_Previews: PreviewProvider {
     static var previews: some View {
         NowPlayingButton()
             .environmentObject(Stage(audio: AudioManager()))
+            .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
