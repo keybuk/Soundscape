@@ -1,0 +1,237 @@
+<Chapter>
+	<!-- All elements must appear in MusicElements -->
+	<Moods>
+		<Mood>
+			<Title>Tieflings</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX2_Field_A_Day</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Galgoraan</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX2_Dan_D03</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Tiefling Night</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX2_Field_A_Night</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Perflexenplex</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_82_Mechagon_JunkerGnomes_1</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+	</Moods>
+
+	<!-- All SampleFile must appear in Samples -->
+	<MusicElements>
+		<MusicElement>
+			<Slug>BGM_EX2_Field_A_Day</Slug>
+			<Title>FFXIV: Drowning in the Horizon</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX2_Field_A_Day</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX2_Field_A_Night</Slug>
+			<Title>FFXIV: Drowning in the Horizon Night</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX2_Field_A_Night</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX2_Dan_D03</Slug>
+			<Title>FFXIV: Most Unworthy</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX2_Dan_D03_fixed</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_82_Mechagon_JunkerGnomes_1</Slug>
+			<Title>WoW: Mechagon JunkerGnomes #1</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-3.0</MinTriggerWait>
+			<MaxTriggerWait>-3.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_a</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_b</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_c</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_d</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_e</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_f</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_g</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_82_mechagon_junkergnomes_1_h</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Kultiran_Highseas_A</Slug>
+			<Title>WoW: Pride of the Seas</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-3.0</MinTriggerWait>
+			<MaxTriggerWait>-3.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>mus_80_kultiran_highseas_a</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+	</MusicElements>
+
+	<Samples>
+		<!-- BEGIN: Samples -->
+		<SoundSample>
+			<Title>BGM_EX2_Field_A_Day</Title>
+			<Uuid>BGM_EX2_Field_A_Day</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX2_Field_A_Night</Title>
+			<Uuid>BGM_EX2_Field_A_Night</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX2_Dan_D03_fixed</Title>
+			<Uuid>BGM_EX2_Dan_D03_fixed</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_a</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_a</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_b</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_b</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_c</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_c</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_d</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_d</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_e</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_e</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_f</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_f</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_g</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_g</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_82_mechagon_junkergnomes_1_h</Title>
+			<Uuid>mus_82_mechagon_junkergnomes_1_h</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_kultiran_highseas_a</Title>
+			<Uuid>mus_80_kultiran_highseas_a</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<!-- END: Samples -->
+	</Samples>
+</Chapter>

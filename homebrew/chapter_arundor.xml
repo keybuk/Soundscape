@@ -73,59 +73,10 @@
 		</Mood>
 
 		<Mood>
-			<Title>Aron-Kai Ruin</Title>
+			<Title>Alford Town</Title>
 			<ElementParameters>
 				<ElementParameter>
-					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Intro</ElementSlug>
-					<Plays>true</Plays>
-					<Volume>0.33</Volume>
-				</ElementParameter>
-				<ElementParameter>
-					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Day</ElementSlug>
-					<Plays>true</Plays>
-					<Volume>0.33</Volume>
-				</ElementParameter>
-			</ElementParameters>
-		</Mood>
-
-		<Mood>
-			<Title>Aron-Kai Night</Title>
-			<ElementParameters>
-				<ElementParameter>
-					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Night</ElementSlug>
-					<Plays>true</Plays>
-					<Volume>0.33</Volume>
-				</ElementParameter>
-			</ElementParameters>
-		</Mood>
-
-		<Mood>
-			<Title>Tieflings</Title>
-			<ElementParameters>
-				<ElementParameter>
-					<ElementSlug>BGM_EX2_Field_A_Day</ElementSlug>
-					<Plays>true</Plays>
-					<Volume>0.33</Volume>
-				</ElementParameter>
-			</ElementParameters>
-		</Mood>
-
-		<Mood>
-			<Title>Galgoraan</Title>
-			<ElementParameters>
-				<ElementParameter>
-					<ElementSlug>BGM_EX2_Dan_D03</ElementSlug>
-					<Plays>true</Plays>
-					<Volume>0.33</Volume>
-				</ElementParameter>
-			</ElementParameters>
-		</Mood>
-
-		<Mood>
-			<Title>Tiefling Night</Title>
-			<ElementParameters>
-				<ElementParameter>
-					<ElementSlug>BGM_EX2_Field_A_Night</ElementSlug>
+					<ElementSlug>BGM_EX3_BanFort_kkrn_Good</ElementSlug>
 					<Plays>true</Plays>
 					<Volume>0.33</Volume>
 				</ElementParameter>
@@ -157,7 +108,7 @@
 
 		<MusicElement>
 			<Slug>BGM_EX3_Field_Rak_Night</Slug>
-			<Title>FFXIV: Civilizations Night</Title>
+			<Title>FFXIV: Civilizations (Night)</Title>
 
 			<RepeatPlaylist>true</RepeatPlaylist>
 			<RandomisePlaylist>shuffle</RandomisePlaylist>
@@ -171,66 +122,6 @@
 			<Playlist>
 				<PlaylistEntry>
 					<SampleFile>BGM_EX3_Field_Rak_Night</SampleFile>
-				</PlaylistEntry>
-			</Playlist>
-		</MusicElement>
-
-		<MusicElement>
-			<Slug>BGM_EX2_Field_A_Day</Slug>
-			<Title>FFXIV: Drowning in the Horizon</Title>
-
-			<RepeatPlaylist>true</RepeatPlaylist>
-			<RandomisePlaylist>shuffle</RandomisePlaylist>
-
-			<InitialGain>0.33</InitialGain>
-			<MinStartDelay>0.0</MinStartDelay>
-			<MaxStartDelay>0.0</MaxStartDelay>
-			<MinTriggerWait>0.0</MinTriggerWait>
-			<MaxTriggerWait>0.0</MaxTriggerWait>
-
-			<Playlist>
-				<PlaylistEntry>
-					<SampleFile>BGM_EX2_Field_A_Day</SampleFile>
-				</PlaylistEntry>
-			</Playlist>
-		</MusicElement>
-
-		<MusicElement>
-			<Slug>BGM_EX2_Field_A_Night</Slug>
-			<Title>FFXIV: Drowning in the Horizon Night</Title>
-
-			<RepeatPlaylist>true</RepeatPlaylist>
-			<RandomisePlaylist>shuffle</RandomisePlaylist>
-
-			<InitialGain>0.33</InitialGain>
-			<MinStartDelay>0.0</MinStartDelay>
-			<MaxStartDelay>0.0</MaxStartDelay>
-			<MinTriggerWait>0.0</MinTriggerWait>
-			<MaxTriggerWait>0.0</MaxTriggerWait>
-
-			<Playlist>
-				<PlaylistEntry>
-					<SampleFile>BGM_EX2_Field_A_Night</SampleFile>
-				</PlaylistEntry>
-			</Playlist>
-		</MusicElement>
-
-		<MusicElement>
-			<Slug>BGM_EX2_Dan_D03</Slug>
-			<Title>FFXIV: Most Unworthy</Title>
-
-			<RepeatPlaylist>true</RepeatPlaylist>
-			<RandomisePlaylist>shuffle</RandomisePlaylist>
-
-			<InitialGain>0.33</InitialGain>
-			<MinStartDelay>0.0</MinStartDelay>
-			<MaxStartDelay>0.0</MaxStartDelay>
-			<MinTriggerWait>0.0</MinTriggerWait>
-			<MaxTriggerWait>0.0</MaxTriggerWait>
-
-			<Playlist>
-				<PlaylistEntry>
-					<SampleFile>BGM_EX2_Dan_D03_fixed</SampleFile>
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
@@ -251,6 +142,26 @@
 			<Playlist>
 				<PlaylistEntry>
 					<SampleFile>BGM_EX3_Dan_D03</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_BanFort_kkrn_Good</Slug>
+			<Title>FFXIV: Hople’s Dropple</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_BanFort_kkrn_Good</SampleFile>
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
@@ -374,60 +285,8 @@
 		</MusicElement>
 
 		<MusicElement>
-			<Slug>MUS_80_Zuldazar_Dazaralor_Intro</Slug>
-			<Title>WoW: Dazaralor Intro</Title>
-
-			<RepeatPlaylist>false</RepeatPlaylist>
-			<RandomisePlaylist>ordered</RandomisePlaylist>
-
-			<InitialGain>0.33</InitialGain>
-			<MinStartDelay>0.0</MinStartDelay>
-			<MaxStartDelay>0.0</MaxStartDelay>
-			<MinTriggerWait>-5.0</MinTriggerWait>
-			<MaxTriggerWait>-5.0</MaxTriggerWait>
-
-			<Playlist>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Intro</SampleFile>
-				</PlaylistEntry>
-			</Playlist>
-		</MusicElement>
-
-		<MusicElement>
-			<Slug>MUS_80_Zuldazar_Dazaralor_Day</Slug>
-			<Title>WoW: Dazaralor Day</Title>
-
-			<RepeatPlaylist>true</RepeatPlaylist>
-			<RandomisePlaylist>shuffle</RandomisePlaylist>
-
-			<InitialGain>0.33</InitialGain>
-			<MinStartDelay>67.0</MinStartDelay>
-			<MaxStartDelay>67.0</MaxStartDelay>
-			<MinTriggerWait>-5.0</MinTriggerWait>
-			<MaxTriggerWait>-5.0</MaxTriggerWait>
-
-			<Playlist>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_01</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_02</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_04</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_05</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_06</SampleFile>
-				</PlaylistEntry>
-			</Playlist>
-		</MusicElement>
-
-		<MusicElement>
-			<Slug>MUS_80_Zuldazar_Dazaralor_Night</Slug>
-			<Title>WoW: Dazaralor Night</Title>
+			<Slug>BGM_Event_StartGri</Slug>
+			<Title>FFXIV: Whisper of the Land</Title>
 
 			<RepeatPlaylist>true</RepeatPlaylist>
 			<RandomisePlaylist>shuffle</RandomisePlaylist>
@@ -435,28 +294,19 @@
 			<InitialGain>0.33</InitialGain>
 			<MinStartDelay>0.0</MinStartDelay>
 			<MaxStartDelay>0.0</MaxStartDelay>
-			<MinTriggerWait>-5.0</MinTriggerWait>
-			<MaxTriggerWait>-5.0</MaxTriggerWait>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
 
 			<Playlist>
 				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_02</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_03</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_05</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_06</SampleFile>
+					<SampleFile>BGM_Event_StartGri</SampleFile>
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
 
 		<MusicElement>
-			<Slug>mus_80_zandalarilament</Slug>
-			<Title>WoW: Zandalari Lament</Title>
+			<Slug>BGM_EX3_Ban_08</Slug>
+			<Title>FFXIV: Moebius (Orchestral)</Title>
 
 			<RepeatPlaylist>true</RepeatPlaylist>
 			<RandomisePlaylist>shuffle</RandomisePlaylist>
@@ -464,18 +314,32 @@
 			<InitialGain>0.33</InitialGain>
 			<MinStartDelay>0.0</MinStartDelay>
 			<MaxStartDelay>0.0</MaxStartDelay>
-			<MinTriggerWait>-5.0</MinTriggerWait>
-			<MaxTriggerWait>-5.0</MaxTriggerWait>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
 
 			<Playlist>
 				<PlaylistEntry>
-					<SampleFile>mus_80_zandalarilament_A</SampleFile>
+					<SampleFile>BGM_EX3_Ban_08</SampleFile>
 				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Dan_D10</Slug>
+			<Title>FFXIV: Floundering in the Depths</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
 				<PlaylistEntry>
-					<SampleFile>mus_80_zandalarilament_B</SampleFile>
-				</PlaylistEntry>
-				<PlaylistEntry>
-					<SampleFile>mus_80_zandalarilament_H</SampleFile>
+					<SampleFile>BGM_EX3_Dan_D10</SampleFile>
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
@@ -494,23 +358,13 @@
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>
-			<Title>BGM_EX2_Field_A_Day</Title>
-			<Uuid>BGM_EX2_Field_A_Day</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>BGM_EX2_Field_A_Night</Title>
-			<Uuid>BGM_EX2_Field_A_Night</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>BGM_EX2_Dan_D03_fixed</Title>
-			<Uuid>BGM_EX2_Dan_D03_fixed</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
 			<Title>BGM_EX3_Dan_D03</Title>
 			<Uuid>BGM_EX3_Dan_D03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_BanFort_kkrn_Good</Title>
+			<Uuid>BGM_EX3_BanFort_kkrn_Good</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>
@@ -569,68 +423,18 @@
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Intro</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Intro</Uuid>
+			<Title>BGM_Event_StartGri</Title>
+			<Uuid>BGM_Event_StartGri</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Day_01</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_01</Uuid>
+			<Title>BGM_EX3_Ban_08</Title>
+			<Uuid>BGM_EX3_Ban_08</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Day_02</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_02</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Day_04</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_04</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Day_05</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_05</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Day_06</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_06</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Night_02</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_02</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Night_03</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_03</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Night_05</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_05</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>MUS_80_Zuldazar_Dazaralor_Night_06</Title>
-			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_06</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>mus_80_zandalarilament_A</Title>
-			<Uuid>mus_80_zandalarilament_A</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>mus_80_zandalarilament_B</Title>
-			<Uuid>mus_80_zandalarilament_B</Uuid>
-			<Extension>ogg</Extension>
-		</SoundSample>
-		<SoundSample>
-			<Title>mus_80_zandalarilament_H</Title>
-			<Uuid>mus_80_zandalarilament_H</Uuid>
+			<Title>BGM_EX3_Dan_D10</Title>
+			<Uuid>BGM_EX3_Dan_D10</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<!-- END: Samples -->

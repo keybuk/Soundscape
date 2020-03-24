@@ -1,0 +1,211 @@
+<Chapter>
+	<!-- All elements must appear in MusicElements -->
+	<Moods>
+		<Mood>
+			<Title>Aron-Kai Ruin</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Intro</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Day</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Aron-Kai Night</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>MUS_80_Zuldazar_Dazaralor_Night</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+	</Moods>
+
+	<!-- All SampleFile must appear in Samples -->
+	<MusicElements>
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Intro</Slug>
+			<Title>WoW: Dazaralor Intro</Title>
+
+			<RepeatPlaylist>false</RepeatPlaylist>
+			<RandomisePlaylist>ordered</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Intro</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Day</Slug>
+			<Title>WoW: Dazaralor Day</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>67.0</MinStartDelay>
+			<MaxStartDelay>67.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_01</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_02</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_04</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_05</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Day_06</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>MUS_80_Zuldazar_Dazaralor_Night</Slug>
+			<Title>WoW: Dazaralor Night</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_02</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_03</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_05</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>MUS_80_Zuldazar_Dazaralor_Night_06</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>mus_80_zandalarilament</Slug>
+			<Title>WoW: Zandalari Lament</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>mus_80_zandalarilament_A</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_80_zandalarilament_B</SampleFile>
+				</PlaylistEntry>
+				<PlaylistEntry>
+					<SampleFile>mus_80_zandalarilament_H</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+	</MusicElements>
+
+	<Samples>
+		<!-- BEGIN: Samples -->
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Intro</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Intro</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_01</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_01</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_02</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_04</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_04</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_05</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_05</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Day_06</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Day_06</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_02</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_03</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_05</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_05</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>MUS_80_Zuldazar_Dazaralor_Night_06</Title>
+			<Uuid>MUS_80_Zuldazar_Dazaralor_Night_06</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_zandalarilament_A</Title>
+			<Uuid>mus_80_zandalarilament_A</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_zandalarilament_B</Title>
+			<Uuid>mus_80_zandalarilament_B</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>mus_80_zandalarilament_H</Title>
+			<Uuid>mus_80_zandalarilament_H</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<!-- END: Samples -->
+	</Samples>
+</Chapter>

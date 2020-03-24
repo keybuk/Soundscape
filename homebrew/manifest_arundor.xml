@@ -3,7 +3,7 @@
 		<!-- chapter.xml is a mandatory file -->
 		<SoundsetFile>
 			<Filename>chapter.xml</Filename>
-			<Url>https://bard.local/soundscape/chapter.xml</Url>
+			<Url>https://bard.local/soundscape/chapter_arundor.xml</Url>
 		</SoundsetFile>
 
 		<!-- BEGIN: Samples -->
@@ -16,20 +16,12 @@
 			<Url>https://bard.local/soundscape/BGM_EX3_Field_Rak_Night.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
-			<Filename>BGM_EX2_Field_A_Day.ogg</Filename>
-			<Url>https://bard.local/soundscape/BGM_EX2_Field_A_Day.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>BGM_EX2_Field_A_Night.ogg</Filename>
-			<Url>https://bard.local/soundscape/BGM_EX2_Field_A_Night.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>BGM_EX2_Dan_D03_fixed.ogg</Filename>
-			<Url>https://bard.local/soundscape/BGM_EX2_Dan_D03_fixed.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
 			<Filename>BGM_EX3_Dan_D03.ogg</Filename>
 			<Url>https://bard.local/soundscape/BGM_EX3_Dan_D03.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_BanFort_kkrn_Good.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX3_BanFort_kkrn_Good.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_StormsongValley_ShrineOfStorms_Intro.ogg</Filename>
@@ -76,56 +68,16 @@
 			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Bazaar_02.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Intro.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Intro.ogg</Url>
+			<Filename>BGM_Event_StartGri.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_Event_StartGri.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Day_01.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_01.ogg</Url>
+			<Filename>BGM_EX3_Ban_08.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX3_Ban_08.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Day_02.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_02.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Day_04.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_04.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Day_05.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_05.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Day_06.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_06.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Night_02.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_02.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Night_03.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_03.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Night_05.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_05.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>MUS_80_Zuldazar_Dazaralor_Night_06.ogg</Filename>
-			<Url>https://bard.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_06.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>mus_80_zandalarilament_A.ogg</Filename>
-			<Url>https://bard.local/soundscape/mus_80_zandalarilament_A.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>mus_80_zandalarilament_B.ogg</Filename>
-			<Url>https://bard.local/soundscape/mus_80_zandalarilament_B.ogg</Url>
-		</SoundsetFile>
-		<SoundsetFile>
-			<Filename>mus_80_zandalarilament_H.ogg</Filename>
-			<Url>https://bard.local/soundscape/mus_80_zandalarilament_H.ogg</Url>
+			<Filename>BGM_EX3_Dan_D10.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX3_Dan_D10.ogg</Url>
 		</SoundsetFile>
 		<!-- END: Samples -->
 	</Files>

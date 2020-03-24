@@ -1,0 +1,60 @@
+<SoundsetManifest>
+	<Files>
+		<!-- chapter.xml is a mandatory file -->
+		<SoundsetFile>
+			<Filename>chapter.xml</Filename>
+			<Url>https://bard.local/soundscape/chapter_players.xml</Url>
+		</SoundsetFile>
+
+		<!-- BEGIN: Samples -->
+		<SoundsetFile>
+			<Filename>BGM_EX2_Field_A_Day.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX2_Field_A_Day.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX2_Field_A_Night.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX2_Field_A_Night.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX2_Dan_D03_fixed.ogg</Filename>
+			<Url>https://bard.local/soundscape/BGM_EX2_Dan_D03_fixed.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_a.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_a.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_b.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_b.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_c.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_c.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_d.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_d.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_e.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_e.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_f.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_f.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_g.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_g.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_82_mechagon_junkergnomes_1_h.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_82_mechagon_junkergnomes_1_h.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>mus_80_kultiran_highseas_a.ogg</Filename>
+			<Url>https://bard.local/soundscape/mus_80_kultiran_highseas_a.ogg</Url>
+		</SoundsetFile>
+		<!-- END: Samples -->
+	</Files>
+</SoundsetManifest>
