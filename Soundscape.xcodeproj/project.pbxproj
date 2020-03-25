@@ -663,7 +663,6 @@
 				CODE_SIGN_ENTITLEMENTS = Soundscape/Soundscape.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Soundscape/Preview Content\"";
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				ENABLE_PREVIEWS = YES;
@@ -692,7 +691,6 @@
 				CODE_SIGN_ENTITLEMENTS = Soundscape/Soundscape.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Soundscape/Preview Content\"";
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				ENABLE_PREVIEWS = YES;
