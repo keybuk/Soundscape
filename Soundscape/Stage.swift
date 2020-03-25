@@ -98,7 +98,7 @@ final class Stage: ObservableObject {
         // Otherwise filter the set of playing playlists by those that are always playing, and
         // if those are all still playing the moood is playing.
         let playPlaylists = Set(moodPlaylists
-            .filter { $0.isPlaying }
+            .filter(\.isPlaying)
             .map { $0.playlist! }
             .filter { $0.isRepeating && $0.kind != .oneShot })
         if !playPlaylists.isEmpty && playPlaylists.isSubset(of: playingPlaylists) {
@@ -110,8 +110,8 @@ final class Stage: ObservableObject {
 
     func stop() {
         let nowPlaying = players
-            .compactMap({ $0.player })
-            .filter { $0.isPlaying }
+            .compactMap(\.player)
+            .filter(\.isPlaying)
 
         for player in nowPlaying {
             player.stop(fadeOut: true)
