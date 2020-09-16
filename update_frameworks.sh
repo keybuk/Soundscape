@@ -50,7 +50,7 @@ build_libogg()
 
 	message Building libogg for ${BUILD_FOR} ${BUILD_SDK_VERSION}
 	pushd libogg-${OGG_VERSION}
-	CC=$(xcrun -sdk ${BUILD_SDK}${BUILD_SDK_VERSION} -find clang) \
+	CC=$(xcrun -sdk ${BUILD_SDK}${BUILD_SDK_VERSION} -find clang || xcrun -sdk ${BUILD_SDK} -find clang) \
 	CFLAGS="-isysroot ${BUILD_SDK_PATH} -arch ${BUILD_ARCH} ${BUILD_CFLAGS} -fembed-bitcode -target ${BUILD_TARGET}" \
 	./configure --host=${BUILD_HOST} --disable-shared
 	make
