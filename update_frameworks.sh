@@ -14,21 +14,37 @@ IOS_SDK_VERSION=`xcrun --sdk ${IOS_SDK} --show-sdk-version`
 IOS_SDK_PATH=`xcrun --sdk ${IOS_SDK} --show-sdk-path`
 IOS_CFLAGS="-miphoneos-version-min=7.0"
 
-SIMULATOR_ARCH=x86_64
-SIMULATOR_TARGET=x86_64-apple-ios
-SIMULATOR_HOST=x86_64-apple-darwin
-SIMULATOR_SDK=iphonesimulator
-SIMULATOR_SDK_VERSION=`xcrun --sdk ${SIMULATOR_SDK} --show-sdk-version`
-SIMULATOR_SDK_PATH=`xcrun --sdk ${SIMULATOR_SDK} --show-sdk-path`
-SIMULATOR_CFLAGS="-mios-simulator-version-min=7.0"
+X86_SIMULATOR_ARCH=x86_64
+X86_SIMULATOR_TARGET=x86_64-apple-ios
+X86_SIMULATOR_HOST=x86_64-apple-darwin
+X86_SIMULATOR_SDK=iphonesimulator
+X86_SIMULATOR_SDK_VERSION=`xcrun --sdk ${X86_SIMULATOR_SDK} --show-sdk-version`
+X86_SIMULATOR_SDK_PATH=`xcrun --sdk ${X86_SIMULATOR_SDK} --show-sdk-path`
+X86_SIMULATOR_CFLAGS="-mios-simulator-version-min=7.0"
 
-CATALYST_ARCH=x86_64
-CATALYST_TARGET=x86_64-apple-ios13.0-macabi
-CATALYST_HOST=x86_64-apple-darwin
-CATALYST_SDK=macosx
-CATALYST_SDK_VERSION=`xcrun --sdk ${CATALYST_SDK} --show-sdk-version`
-CATALYST_SDK_PATH=`xcrun --sdk ${CATALYST_SDK} --show-sdk-path`
-CATALYST_CFLAGS="-miphoneos-version-min=13.0"
+ARM_SIMULATOR_ARCH=arm64
+ARM_SIMULATOR_TARGET=aarch64-apple-ios
+ARM_SIMULATOR_HOST=arm-apple-darwin
+ARM_SIMULATOR_SDK=iphonesimulator
+ARM_SIMULATOR_SDK_VERSION=`xcrun --sdk ${ARM_SIMULATOR_SDK} --show-sdk-version`
+ARM_SIMULATOR_SDK_PATH=`xcrun --sdk ${ARM_SIMULATOR_SDK} --show-sdk-path`
+ARM_SIMULATOR_CFLAGS="-mios-simulator-version-min=7.0"
+
+X86_CATALYST_ARCH=x86_64
+X86_CATALYST_TARGET=x86_64-apple-ios13.0-macabi
+X86_CATALYST_HOST=x86_64-apple-darwin
+X86_CATALYST_SDK=macosx
+X86_CATALYST_SDK_VERSION=`xcrun --sdk ${X86_CATALYST_SDK} --show-sdk-version`
+X86_CATALYST_SDK_PATH=`xcrun --sdk ${X86_CATALYST_SDK} --show-sdk-path`
+X86_CATALYST_CFLAGS="-miphoneos-version-min=13.0"
+
+ARM_CATALYST_ARCH=arm64
+ARM_CATALYST_TARGET=arm64-apple-ios13.0-macabi
+ARM_CATALYST_HOST=arm64-apple-darwin
+ARM_CATALYST_SDK=macosx
+ARM_CATALYST_SDK_VERSION=`xcrun --sdk ${ARM_CATALYST_SDK} --show-sdk-version`
+ARM_CATALYST_SDK_PATH=`xcrun --sdk ${ARM_CATALYST_SDK} --show-sdk-path`
+ARM_CATALYST_CFLAGS="-miphoneos-version-min=13.0"
 
 message()
 {
@@ -145,14 +161,22 @@ EOF
 popd
 
 build_libogg iOS ${IOS_ARCH} ${IOS_TARGET} ${IOS_HOST} ${IOS_SDK} "${IOS_CFLAGS}"
-build_libogg Simulator ${SIMULATOR_ARCH} ${SIMULATOR_TARGET} ${SIMULATOR_HOST} ${SIMULATOR_SDK} "${SIMULATOR_CFLAGS}"
-build_libogg Catalyst ${CATALYST_ARCH} ${CATALYST_TARGET} ${CATALYST_HOST} ${CATALYST_SDK} "${CATALYST_CFLAGS}"
+build_libogg "Simulator (x86-64)" ${X86_SIMULATOR_ARCH} ${X86_SIMULATOR_TARGET} ${X86_SIMULATOR_HOST} ${X86_SIMULATOR_SDK} "${X86_SIMULATOR_CFLAGS}"
+build_libogg "Simulator (arm64)" ${ARM_SIMULATOR_ARCH} ${ARM_SIMULATOR_TARGET} ${ARM_SIMULATOR_HOST} ${ARM_SIMULATOR_SDK} "${ARM_SIMULATOR_CFLAGS}"
+build_libogg "Catalyst (x86-64)" ${X86_CATALYST_ARCH} ${X86_CATALYST_TARGET} ${X86_CATALYST_HOST} ${X86_CATALYST_SDK} "${X86_CATALYST_CFLAGS}"
+build_libogg "Catalyst (arm64)" ${ARM_CATALYST_ARCH} ${ARM_CATALYST_TARGET} ${ARM_CATALYST_HOST} ${ARM_CATALYST_SDK} "${ARM_CATALYST_CFLAGS}"
 
 message Building Ogg.xcframework
+if [ -d ${OGG_OUTPUT} ]; then
+	rm -rf ${OGG_OUTPUT}.bak
+	mv ${OGG_OUTPUT} ${OGG_OUTPUT}.bak
+fi
 xcodebuild -create-xcframework \
 	-framework out-${IOS_SDK}-${IOS_ARCH}/Ogg.framework \
-	-framework out-${SIMULATOR_SDK}-${SIMULATOR_ARCH}/Ogg.framework \
-	-framework out-${CATALYST_SDK}-${CATALYST_ARCH}/Ogg.framework \
+	-framework out-${X86_SIMULATOR_SDK}-${X86_SIMULATOR_ARCH}/Ogg.framework \
+	-framework out-${ARM_SIMULATOR_SDK}-${ARM_SIMULATOR_ARCH}/Ogg.framework \
+	-framework out-${X86_CATALYST_SDK}-${X86_CATALYST_ARCH}/Ogg.framework \
+	-framework out-${ARM_CATALYST_SDK}-${ARM_CATALYST_ARCH}/Ogg.framework \
 	-output ${OGG_OUTPUT}
 
 message Downloading libvorbis-${VORBIS_VERSION}
@@ -183,12 +207,20 @@ EOF
 popd
 
 build_libvorbis iOS ${IOS_ARCH} ${IOS_TARGET} ${IOS_HOST} ${IOS_SDK} "${IOS_CFLAGS}"
-build_libvorbis Simulator ${SIMULATOR_ARCH} ${SIMULATOR_TARGET} ${SIMULATOR_HOST} ${SIMULATOR_SDK} "${SIMULATOR_CFLAGS}"
-build_libvorbis Catalyst ${CATALYST_ARCH} ${CATALYST_TARGET} ${CATALYST_HOST} ${CATALYST_SDK} "${CATALYST_CFLAGS}"
+build_libvorbis "Simulator (x86-64)" ${X86_SIMULATOR_ARCH} ${X86_SIMULATOR_TARGET} ${X86_SIMULATOR_HOST} ${X86_SIMULATOR_SDK} "${X86_SIMULATOR_CFLAGS}"
+build_libvorbis "Simulator (arm64)" ${ARM_SIMULATOR_ARCH} ${ARM_SIMULATOR_TARGET} ${ARM_SIMULATOR_HOST} ${ARM_SIMULATOR_SDK} "${ARM_SIMULATOR_CFLAGS}"
+build_libvorbis "Catalyst (x86-64)" ${X86_CATALYST_ARCH} ${X86_CATALYST_TARGET} ${X86_CATALYST_HOST} ${X86_CATALYST_SDK} "${X86_CATALYST_CFLAGS}"
+build_libvorbis "Catalyst (arm64)" ${ARM_CATALYST_ARCH} ${ARM_CATALYST_TARGET} ${ARM_CATALYST_HOST} ${ARM_CATALYST_SDK} "${ARM_CATALYST_CFLAGS}"
 
 message Building Vorbis.xcframework
+if [ -d ${VORBIS_OUTPUT} ]; then
+	rm -rf ${VORBIS_OUTPUT}.bak
+	mv ${VORBIS_OUTPUT} ${VORBIS_OUTPUT}.bak
+fi
 xcodebuild -create-xcframework \
 	-framework out-${IOS_SDK}-${IOS_ARCH}/Vorbis.framework \
-	-framework out-${SIMULATOR_SDK}-${SIMULATOR_ARCH}/Vorbis.framework \
-	-framework out-${CATALYST_SDK}-${CATALYST_ARCH}/Vorbis.framework \
+	-framework out-${X86_SIMULATOR_SDK}-${X86_SIMULATOR_ARCH}/Vorbis.framework \
+	-framework out-${ARM_SIMULATOR_SDK}-${ARM_SIMULATOR_ARCH}/Vorbis.framework \
+	-framework out-${X86_CATALYST_SDK}-${X86_CATALYST_ARCH}/Vorbis.framework \
+	-framework out-${ARM_CATALYST_SDK}-${ARM_CATALYST_ARCH}/Vorbis.framework \
 	-output ${VORBIS_OUTPUT}
