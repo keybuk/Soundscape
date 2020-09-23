@@ -11,10 +11,13 @@ import CoreData
 
 extension Soundset {
     /// Returns an `NSFetchRequest` for soundsets sorted by title.
-    static func fetchRequestSorted(category: Category? = nil, matching search: String? = nil) -> NSFetchRequest<Soundset> {
+    static func fetchRequestSorted(campaign: Campaign? = nil, category: Category? = nil, matching search: String? = nil) -> NSFetchRequest<Soundset> {
         let fetchRequest: NSFetchRequest<Soundset> = Soundset.fetchRequest()
 
         var predicates: [NSPredicate] = []
+        if let campaign = campaign {
+            predicates.append(NSPredicate(format: "campaign == %@", campaign))
+        }
         if let category = category {
             predicates.append(NSPredicate(format: "categoryRawValue == %d", category.rawValue))
         }

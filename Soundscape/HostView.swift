@@ -12,7 +12,9 @@ import CoreData
 struct HostView: View {
     var body: some View {
         NavigationView {
+            CampaignsView()
             SoundsetsView()
+            EmptyView()
         }
     }
 }

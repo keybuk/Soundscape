@@ -16,6 +16,7 @@ struct PreviewContent {
     let persistentContainer: NSPersistentContainer
     var managedObjectContext: NSManagedObjectContext { persistentContainer.viewContext }
 
+    var campaigns: [Campaign]
     var soundsets: [Soundset]
 
     init() {
@@ -25,7 +26,12 @@ struct PreviewContent {
             if let error = error { fatalError("\(error.localizedDescription)") }
         }
 
+        campaigns = []
         soundsets = []
+
+        let campaign = Campaign(context: managedObjectContext)
+        campaign.title = "Classic Battles"
+        campaigns.append(campaign)
 
         var soundset = Soundset(context: managedObjectContext)
         soundset.categoryRawValue = Soundset.Category.fantasy.rawValue
@@ -1407,6 +1413,7 @@ struct PreviewContent {
         soundset.updatedDate = Date()
         soundset.downloadedDate = soundset.updatedDate
         soundset.activeImageData = UIImage(named: "RiseTiamat")?.jpegData(compressionQuality: 1.0)
+        soundset.addToCampaigns(campaign)
         soundsets.append(soundset)
 
         soundset = Soundset(context: managedObjectContext)
@@ -1417,6 +1424,7 @@ struct PreviewContent {
         soundset.updatedDate = Date()
         soundset.downloadedDate = soundset.updatedDate
         soundset.activeImageData = UIImage(named: "Beholder")?.jpegData(compressionQuality: 1.0)
+        soundset.addToCampaigns(campaign)
         soundsets.append(soundset)
 
         try! managedObjectContext.save()

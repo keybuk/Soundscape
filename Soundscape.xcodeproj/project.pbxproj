@@ -35,6 +35,10 @@
 		D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */; };
 		D250FFF9233024AC00EA515B /* Mood+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFF8233024AC00EA515B /* Mood+Sync.swift */; };
 		D250FFFB2330253100EA515B /* PlaylistParameter+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250FFFA2330253100EA515B /* PlaylistParameter+Sync.swift */; };
+		D2760153251C09BC00152B8C /* CampaignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760152251C09BC00152B8C /* CampaignsView.swift */; };
+		D2760157251C09CA00152B8C /* CampaignList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760156251C09CA00152B8C /* CampaignList.swift */; };
+		D276015A251C09D000152B8C /* CampaignRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760159251C09D000152B8C /* CampaignRow.swift */; };
+		D2760162251C0E5D00152B8C /* Campaign+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760161251C0E5D00152B8C /* Campaign+FetchRequests.swift */; };
 		D28D97A623D2FD5C0089EACD /* Soundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */; };
 		D28D97A823D2FDA50089EACD /* Soundset+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */; };
 		D28D97AA23D2FECC0089EACD /* Playlist+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */; };
@@ -114,6 +118,10 @@
 		D250FFF6232CB67E00EA515B /* AirPlayRoutePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayRoutePicker.swift; sourceTree = "<group>"; };
 		D250FFF8233024AC00EA515B /* Mood+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mood+Sync.swift"; sourceTree = "<group>"; };
 		D250FFFA2330253100EA515B /* PlaylistParameter+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaylistParameter+Sync.swift"; sourceTree = "<group>"; };
+		D2760152251C09BC00152B8C /* CampaignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignsView.swift; sourceTree = "<group>"; };
+		D2760156251C09CA00152B8C /* CampaignList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignList.swift; sourceTree = "<group>"; };
+		D2760159251C09D000152B8C /* CampaignRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignRow.swift; sourceTree = "<group>"; };
+		D2760161251C0E5D00152B8C /* Campaign+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Campaign+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
 		D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Properties.swift"; sourceTree = "<group>"; };
 		D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Kind.swift"; sourceTree = "<group>"; };
@@ -267,6 +275,16 @@
 			name = Syrinscape;
 			sourceTree = "<group>";
 		};
+		D2760151251C09AE00152B8C /* Campaigns View */ = {
+			isa = PBXGroup;
+			children = (
+				D2760152251C09BC00152B8C /* CampaignsView.swift */,
+				D2760156251C09CA00152B8C /* CampaignList.swift */,
+				D2760159251C09D000152B8C /* CampaignRow.swift */,
+			);
+			name = "Campaigns View";
+			sourceTree = "<group>";
+		};
 		D2AC66F72321809900548388 = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +364,7 @@
 				D2DCA96923D434A100E53507 /* SearchField.swift */,
 				D2261E6A23D568170080C7E6 /* Grid.swift */,
 				D2261E6C23D5768F0080C7E6 /* SectionedList.swift */,
+				D2760151251C09AE00152B8C /* Campaigns View */,
 				D21D137E23D516230097F2EB /* Soundsets View */,
 				D2261E6523D53F140080C7E6 /* Soundset View */,
 				D20E4B9223D589F600E63B7D /* One Shots View */,
@@ -359,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B255F7232983970065A48B /* Soundscape.xcdatamodeld */,
+				D2760161251C0E5D00152B8C /* Campaign+FetchRequests.swift */,
 				D21D137623D4914B0097F2EB /* Soundset+FetchRequests.swift */,
 				D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */,
 				D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */,
@@ -456,10 +476,13 @@
 				D21D137723D4914B0097F2EB /* Soundset+FetchRequests.swift in Sources */,
 				D2ACA4492362415300EECC2A /* Collection+SplitBetween.swift in Sources */,
 				D241A1EB232819F70009CFF3 /* SyrinscapeManifestClient.swift in Sources */,
+				D276015A251C09D000152B8C /* CampaignRow.swift in Sources */,
+				D2760157251C09CA00152B8C /* CampaignList.swift in Sources */,
 				D250FFFB2330253100EA515B /* PlaylistParameter+Sync.swift in Sources */,
 				D2DFD11023590213001CA9DC /* NowPlayingBottomBar.swift in Sources */,
 				D2B2560C2329A5B20065A48B /* HostView.swift in Sources */,
 				D2D8D125234ECA5800EF1F2B /* NowPlayingView.swift in Sources */,
+				D2760153251C09BC00152B8C /* CampaignsView.swift in Sources */,
 				D2AC67522321BF0000548388 /* AVAudioPlayerNode+OggVorbis.swift in Sources */,
 				D2261E7323D583B50080C7E6 /* Playlist+FetchRequests.swift in Sources */,
 				D2B25610232AD7540065A48B /* Playlist+Sync.swift in Sources */,
@@ -490,6 +513,7 @@
 				D2AC67302321A46300548388 /* Player.swift in Sources */,
 				D29993B5235431BE0060859D /* PlaylistList.swift in Sources */,
 				D2B256082329A2970065A48B /* SoundsetsView.swift in Sources */,
+				D2760162251C0E5D00152B8C /* Campaign+FetchRequests.swift in Sources */,
 				D21D138023D5242E0097F2EB /* PlaylistRow.swift in Sources */,
 				D2AC67262321964500548388 /* OggVorbisFile.swift in Sources */,
 				D2261E6023D536140080C7E6 /* Collection+Chunked.swift in Sources */,
@@ -581,7 +605,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -636,7 +660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

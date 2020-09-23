@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SoundsetsView: View {
+    var campaign: Campaign? = nil
     @State var category: Soundset.Category = .fantasy
     @State var search: String = ""
 
@@ -19,7 +20,7 @@ struct SoundsetsView: View {
                 SearchField(search: $search)
             }
 
-            SoundsetList(fetchRequest: Soundset.fetchRequestSorted(category: category, matching: search))
+            SoundsetList(fetchRequest: Soundset.fetchRequestSorted(campaign: campaign, category: category, matching: search))
         }
         .navigationBarTitle("Soundsets")
     }

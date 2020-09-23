@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Campaign" representedClassName="Campaign" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="soundsets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Soundset" inverseName="campaigns" inverseEntity="Soundset"/>
+    </entity>
     <entity name="Mood" representedClassName="Mood" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PlaylistParameter" inverseName="mood" inverseEntity="PlaylistParameter"/>
@@ -55,6 +59,7 @@
         <attribute name="title" attributeType="String"/>
         <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="campaigns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Campaign" inverseName="soundsets" inverseEntity="Campaign"/>
         <relationship name="moods" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Mood" inverseName="soundset" inverseEntity="Mood"/>
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Playlist" inverseName="soundset" inverseEntity="Playlist"/>
     </entity>
@@ -64,6 +69,7 @@
         <element name="PlaylistEntry" positionX="-9" positionY="144" width="128" height="103"/>
         <element name="PlaylistParameter" positionX="-27" positionY="144" width="128" height="103"/>
         <element name="Sample" positionX="-45" positionY="63" width="128" height="103"/>
-        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Soundset" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="Campaign" positionX="-36" positionY="135" width="128" height="73"/>
     </elements>
 </model>
