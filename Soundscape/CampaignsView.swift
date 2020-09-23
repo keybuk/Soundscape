@@ -14,7 +14,6 @@ struct CampaignsView: View {
             CampaignList(fetchRequest: Campaign.fetchRequestSorted())
         }
         .navigationBarTitle("Campaigns")
-        .listStyle(SidebarListStyle())
     }
 }
 
