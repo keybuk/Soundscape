@@ -19,7 +19,11 @@ extension Soundset {
             predicates.append(NSPredicate(format: "categoryRawValue == %d", category.rawValue))
         }
         if let search = search, !search.isEmpty {
-            predicates.append(NSPredicate(format: "title CONTAINS[cd] %@", search as NSString))
+            predicates.append(NSCompoundPredicate(orPredicateWithSubpredicates: [
+                NSPredicate(format: "title CONTAINS[cd] %@", search as NSString),
+                NSPredicate(format: "moods.title CONTAINS[cd] %@", search as NSString),
+                NSPredicate(format: "playlists.title CONTAINS[cd] %@", search as NSString)
+            ]))
         }
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
