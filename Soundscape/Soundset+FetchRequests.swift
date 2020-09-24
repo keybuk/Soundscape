@@ -16,7 +16,7 @@ extension Soundset {
 
         var predicates: [NSPredicate] = []
         if let campaign = campaign {
-            predicates.append(NSPredicate(format: "campaign == %@", campaign))
+            predicates.append(NSPredicate(format: "campaigns CONTAINS %@", campaign))
         }
         if let category = category {
             predicates.append(NSPredicate(format: "categoryRawValue == %d", category.rawValue))

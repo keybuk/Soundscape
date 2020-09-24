@@ -19,7 +19,7 @@ struct CampaignList: View {
 
     var body: some View {
         ForEach(campaigns) { campaign in
-            NavigationLink(destination: Text("\(campaign.title!)")) {
+            NavigationLink(destination: SoundsetsView(campaign: campaign)) {
                 CampaignRow(campaign: campaign)
             }
         }
