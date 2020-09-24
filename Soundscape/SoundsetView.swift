@@ -40,10 +40,20 @@ struct SoundsetView: View {
         }
         .background(Color(UIColor.systemGroupedBackground))
         .navigationBarTitle("", displayMode: .inline)
-        .navigationBarItems(trailing: HStack {
-            OneShotsButton(soundset: self.soundset)
-            NowPlayingButton()
-        })
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CampaignsButton(soundset: self.soundset)
+            }
+
+            ToolbarItem(placement: .primaryAction) {
+                OneShotsButton(soundset: self.soundset)
+            }
+
+            ToolbarItem(placement: .primaryAction) {
+                NowPlayingButton()
+            }
+
+        }
     }
 }
 

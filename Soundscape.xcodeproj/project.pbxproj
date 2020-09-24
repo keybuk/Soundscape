@@ -39,6 +39,7 @@
 		D2760157251C09CA00152B8C /* CampaignList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760156251C09CA00152B8C /* CampaignList.swift */; };
 		D276015A251C09D000152B8C /* CampaignRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760159251C09D000152B8C /* CampaignRow.swift */; };
 		D2760162251C0E5D00152B8C /* Campaign+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760161251C0E5D00152B8C /* Campaign+FetchRequests.swift */; };
+		D2760167251C166E00152B8C /* CampaignsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2760166251C166E00152B8C /* CampaignsButton.swift */; };
 		D28D97A623D2FD5C0089EACD /* Soundset+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */; };
 		D28D97A823D2FDA50089EACD /* Soundset+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */; };
 		D28D97AA23D2FECC0089EACD /* Playlist+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */; };
@@ -122,6 +123,7 @@
 		D2760156251C09CA00152B8C /* CampaignList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignList.swift; sourceTree = "<group>"; };
 		D2760159251C09D000152B8C /* CampaignRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignRow.swift; sourceTree = "<group>"; };
 		D2760161251C0E5D00152B8C /* Campaign+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Campaign+FetchRequests.swift"; sourceTree = "<group>"; };
+		D2760166251C166E00152B8C /* CampaignsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignsButton.swift; sourceTree = "<group>"; };
 		D28D97A523D2FD5C0089EACD /* Soundset+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Category.swift"; sourceTree = "<group>"; };
 		D28D97A723D2FDA50089EACD /* Soundset+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Soundset+Properties.swift"; sourceTree = "<group>"; };
 		D28D97A923D2FECC0089EACD /* Playlist+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Kind.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B256092329A3CB0065A48B /* SoundsetView.swift */,
+				D2760166251C166E00152B8C /* CampaignsButton.swift */,
 				D2261E6123D53BF70080C7E6 /* OneShotsButton.swift */,
 				D2261E6323D53C580080C7E6 /* NowPlayingButton.swift */,
 				D299938C2352E0F30060859D /* MoodGrid.swift */,
@@ -496,6 +499,7 @@
 				D241A1EF232824200009CFF3 /* SyrinscapeDownloadError.swift in Sources */,
 				D2261E6B23D568170080C7E6 /* Grid.swift in Sources */,
 				D28D97AA23D2FECC0089EACD /* Playlist+Kind.swift in Sources */,
+				D2760167251C166E00152B8C /* CampaignsButton.swift in Sources */,
 				D250FFF7232CB67E00EA515B /* AirPlayRoutePicker.swift in Sources */,
 				D2261E6223D53BF70080C7E6 /* OneShotsButton.swift in Sources */,
 				D2261E6423D53C580080C7E6 /* NowPlayingButton.swift in Sources */,
