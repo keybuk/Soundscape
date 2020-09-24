@@ -26,6 +26,7 @@ struct CampaignList: View {
     }
 }
 
+#if DEBUG
 struct CampaignList_Previews: PreviewProvider {
     static var previews: some View {
         List {
@@ -35,3 +36,5 @@ struct CampaignList_Previews: PreviewProvider {
         }
     }
 }
+#endif
+

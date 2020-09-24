@@ -32,6 +32,7 @@ struct CampaignsView: View {
     }
 }
 
+#if DEBUG
 struct CampaignsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -47,3 +48,5 @@ struct CampaignsView_Previews: PreviewProvider {
         .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
+#endif
+

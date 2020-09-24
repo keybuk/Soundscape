@@ -34,6 +34,7 @@ struct CampaignRow: View {
     }
 }
 
+#if DEBUG
 struct CampaignRow_Previews: PreviewProvider {
     static var previews: some View {
         List(previewContent.campaigns) { campaign in
@@ -41,3 +42,5 @@ struct CampaignRow_Previews: PreviewProvider {
         }
     }
 }
+#endif
+

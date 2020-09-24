@@ -49,9 +49,12 @@ struct CampaignsButton: View {
     }
 }
 
+#if DEBUG
 struct CampaignsButton_Previews: PreviewProvider {
     static var previews: some View {
         CampaignsButton(soundset: previewContent.soundsets[0])
             .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }
+#endif
+
