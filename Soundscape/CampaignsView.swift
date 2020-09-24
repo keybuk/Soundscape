@@ -11,6 +11,10 @@ import SwiftUI
 struct CampaignsView: View {
     var body: some View {
         List {
+            NavigationLink(destination: SoundsetsView()) {
+                Text("All Soundsets")
+            }
+
             CampaignList(fetchRequest: Campaign.fetchRequestSorted())
         }
         .navigationBarTitle("Campaigns")
