@@ -7,15 +7,26 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CampaignsView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
+
     var body: some View {
         List {
             NavigationLink(destination: SoundsetsView()) {
-                Text("All Soundsets")
+                Label("All Soundsets", systemImage: "")
             }
 
             CampaignList(fetchRequest: Campaign.fetchRequestSorted())
+
+            Button(action: {
+                managedObjectContext.performAndWait {
+                    let _ = Campaign(context: managedObjectContext)
+                }
+            }) {
+                Label("Add Campaign", systemImage: "plus.circle")
+            }
         }
         .navigationBarTitle("Campaigns")
     }

@@ -8,13 +8,28 @@
 
 import SwiftUI
 
+extension Binding where Value: Equatable {
+    init(_ source: Binding<Value?>, _ defaultValue: Value) {
+        self.init(
+            get: { source.wrappedValue ?? defaultValue },
+            set: { newValue in
+                source.wrappedValue = newValue
+        })
+    }
+}
+
 struct CampaignRow: View {
     @ObservedObject var campaign: Campaign
 
     var body: some View {
-        HStack {
-            Image(systemName: "flame")
-            Text("\(campaign.title!)")
+        if campaign.isInserted {
+            TextField("Title", text: Binding($campaign.title, ""), onCommit:  {
+                campaign.managedObjectContext!.performAndWait {
+                    try! campaign.managedObjectContext!.save()
+                }
+            })
+        } else {
+            Label("\(campaign.title!)", systemImage: "flame")
         }
     }
 }
