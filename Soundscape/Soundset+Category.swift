@@ -34,7 +34,7 @@ extension Soundset {
         /// Returns the URL from which the category can be downloaded.
         var url: URL {
             switch self {
-            case .homebrew: return URL(string: "https://bard.local/soundscape/chapters.xml")!
+            case .homebrew: return URL(string: "https://DungeonMaster.local/soundscape/chapters.xml")!
             default: return URL(string: "https://www.syrinscape.com/account/chapters/\(urlComponent)/1.2.1/")!
             }
         }

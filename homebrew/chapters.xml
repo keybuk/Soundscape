@@ -3,34 +3,34 @@
 		<ChapterOptions>
 			<Slug>x-arundor</Slug>
 			<Title>Arundor</Title>
-			<ManifestURL>https://bard.local/soundscape/manifest_arundor.xml</ManifestURL>
+			<ManifestURL>https://DungeonMaster.local/soundscape/manifest_arundor.xml</ManifestURL>
 			<DownloadUpdated>2020-03-24T15:24:00.000000-07:00</DownloadUpdated>
 			<IsPurchased>true</IsPurchased>
 
-			<BackgroundImage>https://bard.local/soundscape/background.jpg</BackgroundImage>
-			<InactiveBackgroundImage>https://bard.local/soundscape/inactive.jpg</InactiveBackgroundImage>
+			<BackgroundImage>https://DungeonMaster.local/soundscape/background.jpg</BackgroundImage>
+			<InactiveBackgroundImage>https://DungeonMaster.local/soundscape/inactive.jpg</InactiveBackgroundImage>
 		</ChapterOptions>
 
 		<ChapterOptions>
 			<Slug>x-arundor-players-fixed</Slug>
 			<Title>Players</Title>
-			<ManifestURL>https://bard.local/soundscape/manifest_players.xml</ManifestURL>
+			<ManifestURL>https://DungeonMaster.local/soundscape/manifest_players.xml</ManifestURL>
 			<DownloadUpdated>2020-03-24T15:30:00.000000-07:00</DownloadUpdated>
 			<IsPurchased>true</IsPurchased>
 
-			<BackgroundImage>https://bard.local/soundscape/background_players.jpg</BackgroundImage>
-			<InactiveBackgroundImage>https://bard.local/soundscape/inactive_players.jpg</InactiveBackgroundImage>
+			<BackgroundImage>https://DungeonMaster.local/soundscape/background_players.jpg</BackgroundImage>
+			<InactiveBackgroundImage>https://DungeonMaster.local/soundscape/inactive_players.jpg</InactiveBackgroundImage>
 		</ChapterOptions>
 
 		<ChapterOptions>
 			<Slug>x-arundor-aronkai</Slug>
 			<Title>Aron-Kai</Title>
-			<ManifestURL>https://bard.local/soundscape/manifest_aronkai.xml</ManifestURL>
+			<ManifestURL>https://DungeonMaster.local/soundscape/manifest_aronkai.xml</ManifestURL>
 			<DownloadUpdated>2020-03-24T15:23:00.000000-07:00</DownloadUpdated>
 			<IsPurchased>true</IsPurchased>
 
-			<BackgroundImage>https://bard.local/soundscape/background_aronkai.jpg</BackgroundImage>
-			<InactiveBackgroundImage>https://bard.local/soundscape/inactive_aronkai.jpg</InactiveBackgroundImage>
+			<BackgroundImage>https://DungeonMaster.local/soundscape/background_aronkai.jpg</BackgroundImage>
+			<InactiveBackgroundImage>https://DungeonMaster.local/soundscape/inactive_aronkai.jpg</InactiveBackgroundImage>
 		</ChapterOptions>
 	</Chapters>
 </Response>
