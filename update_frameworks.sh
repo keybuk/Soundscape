@@ -4,7 +4,7 @@ OGG_OUTPUT=$PWD/Ogg.xcframework
 OGG_VERSION=1.3.4
 
 VORBIS_OUTPUT=$PWD/Vorbis.xcframework
-VORBIS_VERSION=1.3.6
+VORBIS_VERSION=1.3.7
 
 SIMULATOR_SDK=iphonesimulator
 CATALYST_SDK=macosx
@@ -125,8 +125,8 @@ build_framework()
 	BUILD_VERSION_DIR=${BUILD_FRAMEWORK_DIR}/Versions/${BUILD_VERSION}
 
 	message Creating ${BUILD_FRAMEWORK}.framework for ${BUILD_SDK}
+	rm -rf ${BUILD_FRAMEWORK_DIR}
 	mkdir -p ${BUILD_VERSION_DIR}
-	rm -rf ${BUILD_VERSION_DIR}/Headers
 	cp -a out-${BUILD_SDK}-${BUILD_HEADERS_ARCH}/usr/local/include/${BUILD_HEADERS_DIR} ${BUILD_VERSION_DIR}/Headers
 	lipo -create -output ${BUILD_VERSION_DIR}/${BUILD_FRAMEWORK} ${BUILD_LIPO_ARGS}
 
