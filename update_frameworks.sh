@@ -7,45 +7,36 @@ VORBIS_OUTPUT=$PWD/Vorbis.xcframework
 VORBIS_VERSION=1.3.6
 
 SIMULATOR_SDK=iphonesimulator
+CATALYST_SDK=macosx
 
 IOS_ARCH=arm64
 IOS_TARGET=aarch64-apple-ios
 IOS_HOST=arm-apple-darwin
 IOS_SDK=iphoneos
-IOS_SDK_VERSION=`xcrun --sdk ${IOS_SDK} --show-sdk-version`
-IOS_SDK_PATH=`xcrun --sdk ${IOS_SDK} --show-sdk-path`
 IOS_CFLAGS="-miphoneos-version-min=7.0"
 
 X86_SIMULATOR_ARCH=x86_64
 X86_SIMULATOR_TARGET=x86_64-apple-ios-simulator
 X86_SIMULATOR_HOST=x86_64-apple-darwin
 X86_SIMULATOR_SDK=${SIMULATOR_SDK}
-X86_SIMULATOR_SDK_VERSION=`xcrun --sdk ${X86_SIMULATOR_SDK} --show-sdk-version`
-X86_SIMULATOR_SDK_PATH=`xcrun --sdk ${X86_SIMULATOR_SDK} --show-sdk-path`
 X86_SIMULATOR_CFLAGS="-mios-simulator-version-min=7.0"
 
 ARM_SIMULATOR_ARCH=arm64
 ARM_SIMULATOR_TARGET=aarch64-apple-ios-simulator
 ARM_SIMULATOR_HOST=arm-apple-darwin
 ARM_SIMULATOR_SDK=${SIMULATOR_SDK}
-ARM_SIMULATOR_SDK_VERSION=`xcrun --sdk ${ARM_SIMULATOR_SDK} --show-sdk-version`
-ARM_SIMULATOR_SDK_PATH=`xcrun --sdk ${ARM_SIMULATOR_SDK} --show-sdk-path`
 ARM_SIMULATOR_CFLAGS="-mios-simulator-version-min=7.0"
 
 X86_CATALYST_ARCH=x86_64
 X86_CATALYST_TARGET=x86_64-apple-ios13.0-macabi
 X86_CATALYST_HOST=x86_64-apple-darwin
-X86_CATALYST_SDK=macosx
-X86_CATALYST_SDK_VERSION=`xcrun --sdk ${X86_CATALYST_SDK} --show-sdk-version`
-X86_CATALYST_SDK_PATH=`xcrun --sdk ${X86_CATALYST_SDK} --show-sdk-path`
+X86_CATALYST_SDK=${CATALYST_SDK}
 X86_CATALYST_CFLAGS="-miphoneos-version-min=13.0"
 
 ARM_CATALYST_ARCH=arm64
-ARM_CATALYST_TARGET=aarch64-apple-ios14.0-macabi
+ARM_CATALYST_TARGET=arm64-apple-ios14.0-macabi
 ARM_CATALYST_HOST=arm-apple-darwin
-ARM_CATALYST_SDK=macosx
-ARM_CATALYST_SDK_VERSION=`xcrun --sdk ${ARM_CATALYST_SDK} --show-sdk-version`
-ARM_CATALYST_SDK_PATH=`xcrun --sdk ${ARM_CATALYST_SDK} --show-sdk-path`
+ARM_CATALYST_SDK=${CATALYST_SDK}
 ARM_CATALYST_CFLAGS="-miphoneos-version-min=13.0"
 
 message()
@@ -75,19 +66,6 @@ build_libogg()
 	make DESTDIR=${BUILD_ROOT}/${BUILD_PATH} install
 	make distclean
 	popd
-
-	message Building Ogg.framework for ${BUILD_FOR}
-	OGG_DIR=${BUILD_PATH}/Ogg.framework
-	OGG_VERSION_DIR=${OGG_DIR}/Versions/${OGG_VERSION}
-	mkdir -p ${OGG_VERSION_DIR}
-	cp -a ${BUILD_PATH}/usr/local/include/ogg ${OGG_VERSION_DIR}/Headers
-	#lipo -create -output ${OGG_VERSION_DIR}/Ogg \
-	#	-arch ${BUILD_ARCH} ${BUILD_PATH}/usr/local/lib/libogg.a
-	cp ${BUILD_PATH}/usr/local/lib/libogg.a ${OGG_VERSION_DIR}/Ogg
-
-	ln -sfh ${OGG_VERSION} ${OGG_DIR}/Versions/Current
-	ln -sfh Versions/Current/Headers ${OGG_DIR}/Headers
-	ln -sfh Versions/Current/Ogg ${OGG_DIR}/Ogg
 }
 
 build_libvorbis()
@@ -114,7 +92,7 @@ build_libvorbis()
 	make distclean
 	popd
 
-	message Creating libvorbisall.a for iOS
+	message Creating libvorbisall.a for ${BUILD_FOR}
 	OBJECTS_DIR=${BUILD_ROOT}/${BUILD_PATH}/usr/local/lib/objects
 	rm -rf ${OBJECTS_DIR}
 	mkdir ${OBJECTS_DIR}
@@ -122,19 +100,60 @@ build_libvorbis()
 	for lib in ../libvorbis*.a; do ar -x $lib; done
 	ar -rs ../libvorbisall.a *.o
 	popd
+}
 
-	message Building Vorbis.framework for ${BUILD_FOR}
-	VORBIS_DIR=${BUILD_PATH}/Vorbis.framework
-	VORBIS_VERSION_DIR=${VORBIS_DIR}/Versions/${VORBIS_VERSION}
-	mkdir -p ${VORBIS_VERSION_DIR}
-	cp -a ${BUILD_PATH}/usr/local/include/vorbis ${VORBIS_VERSION_DIR}/Headers
-	#lipo -create -output ${VORBIS_VERSION_DIR}/Vorbis \
-	#	-arch ${BUILD_ARCH} ${BUILD_PATH}/usr/local/lib/libvorbisall.a
-	cp ${BUILD_PATH}/usr/local/lib/libvorbisall.a ${VORBIS_VERSION_DIR}/Vorbis
+build_framework()
+{
+	BUILD_FRAMEWORK=$1
+	BUILD_VERSION=$2
+	BUILD_SDK=$3
+	BUILD_HEADERS_DIR=$4
+	BUILD_ARCHIVE_NAME=$5
+	shift 5
 
-	ln -sfh ${VORBIS_VERSION} ${VORBIS_DIR}/Versions/Current
-	ln -sfh Versions/Current/Headers ${VORBIS_DIR}/Headers
-	ln -sfh Versions/Current/Vorbis ${VORBIS_DIR}/Vorbis
+	BUILD_HEADERS_ARCH=$1
+	BUILD_LIPO_ARGS=""
+	while (( $# )); do
+		BUILD_ARCH=$1
+		shift 1
+
+		BUILD_LIPO_ARGS+=" -arch ${BUILD_ARCH} out-${BUILD_SDK}-${BUILD_ARCH}/usr/local/lib/${BUILD_ARCHIVE_NAME}"
+	done
+
+	BUILD_PATH=out-${BUILD_SDK}
+	BUILD_FRAMEWORK_DIR=${BUILD_PATH}/${BUILD_FRAMEWORK}.framework
+	BUILD_VERSION_DIR=${BUILD_FRAMEWORK_DIR}/Versions/${BUILD_VERSION}
+
+	message Creating ${BUILD_FRAMEWORK}.framework for ${BUILD_SDK}
+	mkdir -p ${BUILD_VERSION_DIR}
+	rm -rf ${BUILD_VERSION_DIR}/Headers
+	cp -a out-${BUILD_SDK}-${BUILD_HEADERS_ARCH}/usr/local/include/${BUILD_HEADERS_DIR} ${BUILD_VERSION_DIR}/Headers
+	lipo -create -output ${BUILD_VERSION_DIR}/${BUILD_FRAMEWORK} ${BUILD_LIPO_ARGS}
+
+	ln -sfh ${BUILD_VERSION} ${BUILD_FRAMEWORK_DIR}/Versions/Current
+	ln -sfh Versions/Current/Headers ${BUILD_FRAMEWORK_DIR}/Headers
+	ln -sfh Versions/Current/${BUILD_FRAMEWORK} ${BUILD_FRAMEWORK_DIR}/${BUILD_FRAMEWORK}
+}
+
+build_xcframework()
+{
+	BUILD_FRAMEWORK=$1
+	shift 1
+
+	BUILD_OUTPUT=${BUILD_FRAMEWORK}.xcframework
+
+	BUILD_FRAMEWORK_ARGS=""
+	while (( $# )); do
+		BUILD_SDK=$1
+		shift 1
+
+		BUILD_FRAMEWORK_ARGS+=" -framework out-${BUILD_SDK}/${BUILD_FRAMEWORK}.framework"
+	done
+
+	message Creating ${BUILD_FRAMEWORK}.xcframework
+
+	rm -rf ${BUILD_OUTPUT}
+	xcodebuild -create-xcframework ${BUILD_FRAMEWORK_ARGS} -output ${BUILD_OUTPUT}
 }
 
 
@@ -166,30 +185,13 @@ build_libogg iOS ${IOS_ARCH} ${IOS_TARGET} ${IOS_HOST} ${IOS_SDK} "${IOS_CFLAGS}
 build_libogg "Simulator (x86-64)" ${X86_SIMULATOR_ARCH} ${X86_SIMULATOR_TARGET} ${X86_SIMULATOR_HOST} ${X86_SIMULATOR_SDK} "${X86_SIMULATOR_CFLAGS}"
 build_libogg "Simulator (arm64)" ${ARM_SIMULATOR_ARCH} ${ARM_SIMULATOR_TARGET} ${ARM_SIMULATOR_HOST} ${ARM_SIMULATOR_SDK} "${ARM_SIMULATOR_CFLAGS}"
 build_libogg "Catalyst (x86-64)" ${X86_CATALYST_ARCH} ${X86_CATALYST_TARGET} ${X86_CATALYST_HOST} ${X86_CATALYST_SDK} "${X86_CATALYST_CFLAGS}"
-#build_libogg "Catalyst (arm64)" ${ARM_CATALYST_ARCH} ${ARM_CATALYST_TARGET} ${ARM_CATALYST_HOST} ${ARM_CATALYST_SDK} "${ARM_CATALYST_CFLAGS}"
+build_libogg "Catalyst (arm64)" ${ARM_CATALYST_ARCH} ${ARM_CATALYST_TARGET} ${ARM_CATALYST_HOST} ${ARM_CATALYST_SDK} "${ARM_CATALYST_CFLAGS}"
 
-message Building combined Ogg.framework for iOS Simulator
-OGG_VERSION_DIR=Ogg.framework/Versions/${OGG_VERSION}
-mkdir -p out-${SIMULATOR_SDK}/${OGG_VERSION_DIR}
-cp -a out-${X86_SIMULATOR_SDK}-${X86_SIMULATOR_ARCH}/${OGG_VERSION_DIR}/Headers out-${SIMULATOR_SDK}/${OGG_VERSION_DIR}
-lipo -create -output out-${SIMULATOR_SDK}/${OGG_VERSION_DIR}/Ogg \
-	-arch ${X86_SIMULATOR_ARCH} out-${X86_SIMULATOR_SDK}-${X86_SIMULATOR_ARCH}/${OGG_VERSION_DIR}/Ogg \
-	-arch ${ARM_SIMULATOR_ARCH} out-${ARM_SIMULATOR_SDK}-${ARM_SIMULATOR_ARCH}/${OGG_VERSION_DIR}/Ogg
-ln -sfh ${OGG_VERSION} out-${SIMULATOR_SDK}/Ogg.framework/Versions/Current
-ln -sfh Versions/Current/Headers out-${SIMULATOR_SDK}/Ogg.framework/Headers
-ln -sfh Versions/Current/Ogg out-${SIMULATOR_SDK}/Ogg.framework/Ogg
+build_framework Ogg ${OGG_VERSION} ${IOS_SDK} ogg libogg.a ${IOS_ARCH}
+build_framework Ogg ${OGG_VERSION} ${SIMULATOR_SDK} ogg libogg.a ${X86_SIMULATOR_ARCH} ${ARM_SIMULATOR_ARCH}
+build_framework Ogg ${OGG_VERSION} ${CATALYST_SDK} ogg libogg.a ${X86_CATALYST_ARCH} ${ARM_CATALYST_ARCH}
 
-message Building Ogg.xcframework
-if [ -d ${OGG_OUTPUT} ]; then
-	rm -rf ${OGG_OUTPUT}.bak
-	mv ${OGG_OUTPUT} ${OGG_OUTPUT}.bak
-fi
-
-xcodebuild -create-xcframework \
-	-framework out-${IOS_SDK}-${IOS_ARCH}/Ogg.framework \
-	-framework out-${SIMULATOR_SDK}/Ogg.framework \
-	-framework out-${X86_CATALYST_SDK}-${X86_CATALYST_ARCH}/Ogg.framework \
-	-output ${OGG_OUTPUT}
+build_xcframework Ogg ${IOS_SDK} ${SIMULATOR_SDK} ${CATALYST_SDK}
 
 message Downloading libvorbis-${VORBIS_VERSION}
 rm -rf libvorbis-${VORBIS_VERSION}
@@ -222,27 +224,14 @@ build_libvorbis iOS ${IOS_ARCH} ${IOS_TARGET} ${IOS_HOST} ${IOS_SDK} "${IOS_CFLA
 build_libvorbis "Simulator (x86-64)" ${X86_SIMULATOR_ARCH} ${X86_SIMULATOR_TARGET} ${X86_SIMULATOR_HOST} ${X86_SIMULATOR_SDK} "${X86_SIMULATOR_CFLAGS}"
 build_libvorbis "Simulator (arm64)" ${ARM_SIMULATOR_ARCH} ${ARM_SIMULATOR_TARGET} ${ARM_SIMULATOR_HOST} ${ARM_SIMULATOR_SDK} "${ARM_SIMULATOR_CFLAGS}"
 build_libvorbis "Catalyst (x86-64)" ${X86_CATALYST_ARCH} ${X86_CATALYST_TARGET} ${X86_CATALYST_HOST} ${X86_CATALYST_SDK} "${X86_CATALYST_CFLAGS}"
-#build_libvorbis "Catalyst (arm64)" ${ARM_CATALYST_ARCH} ${ARM_CATALYST_TARGET} ${ARM_CATALYST_HOST} ${ARM_CATALYST_SDK} "${ARM_CATALYST_CFLAGS}"
+build_libvorbis "Catalyst (arm64)" ${ARM_CATALYST_ARCH} ${ARM_CATALYST_TARGET} ${ARM_CATALYST_HOST} ${ARM_CATALYST_SDK} "${ARM_CATALYST_CFLAGS}"
 
-message Building combined Vorbis.framework for iOS Simulator
-VORBIS_VERSION_DIR=Vorbis.framework/Versions/${VORBIS_VERSION}
-mkdir -p out-${SIMULATOR_SDK}/${VORBIS_VERSION_DIR}
-cp -a out-${X86_SIMULATOR_SDK}-${X86_SIMULATOR_ARCH}/${VORBIS_VERSION_DIR}/Headers out-${SIMULATOR_SDK}/${VORBIS_VERSION_DIR}
-lipo -create -output out-${SIMULATOR_SDK}/${VORBIS_VERSION_DIR}/Vorbis \
-	-arch ${X86_SIMULATOR_ARCH} out-${X86_SIMULATOR_SDK}-${X86_SIMULATOR_ARCH}/${VORBIS_VERSION_DIR}/Vorbis \
-	-arch ${ARM_SIMULATOR_ARCH} out-${ARM_SIMULATOR_SDK}-${ARM_SIMULATOR_ARCH}/${VORBIS_VERSION_DIR}/Vorbis
-ln -sfh ${VORBIS_VERSION} out-${SIMULATOR_SDK}/Vorbis.framework/Versions/Current
-ln -sfh Versions/Current/Headers out-${SIMULATOR_SDK}/Vorbis.framework/Headers
-ln -sfh Versions/Current/Vorbis out-${SIMULATOR_SDK}/Vorbis.framework/Vorbis
+build_framework Vorbis ${VORBIS_VERSION} ${IOS_SDK} vorbis libvorbisall.a ${IOS_ARCH}
+build_framework Vorbis ${VORBIS_VERSION} ${SIMULATOR_SDK} vorbis libvorbisall.a ${X86_SIMULATOR_ARCH} ${ARM_SIMULATOR_ARCH}
+build_framework Vorbis ${VORBIS_VERSION} ${CATALYST_SDK} vorbis libvorbisall.a ${X86_CATALYST_ARCH} ${ARM_CATALYST_ARCH}
 
-message Building Vorbis.xcframework
-if [ -d ${VORBIS_OUTPUT} ]; then
-	rm -rf ${VORBIS_OUTPUT}.bak
-	mv ${VORBIS_OUTPUT} ${VORBIS_OUTPUT}.bak
-fi
-xcodebuild -create-xcframework \
-	-framework out-${IOS_SDK}-${IOS_ARCH}/Vorbis.framework \
-	-framework out-${SIMULATOR_SDK}/Vorbis.framework \
-	-framework out-${X86_CATALYST_SDK}-${X86_CATALYST_ARCH}/Vorbis.framework \
-	-output ${VORBIS_OUTPUT}
+build_xcframework Vorbis ${IOS_SDK} ${SIMULATOR_SDK} ${CATALYST_SDK}
 
+rm -rf ${OGG_OUTPUT} ${VORBIS_OUTPUT}
+mv Ogg.xcframework ${OGG_OUTPUT}
+mv Vorbis.xcframework ${VORBIS_OUTPUT}
