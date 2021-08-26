@@ -22,7 +22,7 @@ for chapter_file in chapter_*.xml; do
 	for sample in $samples; do
 		echo "\t\t<SoundsetFile>" >> .manifest_${chapter}.xml
 		echo "\t\t\t<Filename>${sample}.ogg</Filename>" >> .manifest_${chapter}.xml
-		echo "\t\t\t<Url>https://DungeonMaster.local/soundscape/${sample}.ogg</Url>" >> .manifest_${chapter}.xml
+		echo "\t\t\t<Url>https://netsplit.com/soundscape/${sample}.ogg</Url>" >> .manifest_${chapter}.xml
 		echo "\t\t</SoundsetFile>" >> .manifest_${chapter}.xml
 	done
 	sed -n -e '/END: Samples/,$p' manifest_${chapter}.xml >> .manifest_${chapter}.xml
