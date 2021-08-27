@@ -82,6 +82,39 @@
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
+
+		<Mood>
+			<Title>Kaldorkan Dungeon</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Field_Tem_Night</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Kaldorkan Battle</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Dan_D06</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Kaldorkan Boss</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Ban_14</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
 	</Moods>
 
 	<!-- All SampleFile must appear in Samples -->
@@ -127,6 +160,26 @@
 		</MusicElement>
 
 		<MusicElement>
+			<Slug>BGM_EX3_Field_Tem_Night</Slug>
+			<Title>FFXIV: Neath Dark Waters</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Field_Tem_Night</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
 			<Slug>BGM_EX3_Dan_D03</Slug>
 			<Title>FFXIV: Unwound</Title>
 
@@ -145,6 +198,47 @@
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Dan_D06</Slug>
+			<Title>FFXIV: Mortal Instants</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Dan_D06</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Ban_14</Slug>
+			<Title>FFXIV: To The Edge</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Ban_14</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
 
 		<MusicElement>
 			<Slug>BGM_EX3_BanFort_kkrn_Good</Slug>
@@ -358,8 +452,23 @@
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>
+			<Title>BGM_EX3_Field_Tem_Night</Title>
+			<Uuid>BGM_EX3_Field_Tem_Night</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
 			<Title>BGM_EX3_Dan_D03</Title>
 			<Uuid>BGM_EX3_Dan_D03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Dan_D06</Title>
+			<Uuid>BGM_EX3_Dan_D06</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Ban_14</Title>
+			<Uuid>BGM_EX3_Ban_14</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>

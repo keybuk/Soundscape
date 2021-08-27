@@ -16,8 +16,20 @@
 			<Url>https://netsplit.com/soundscape/BGM_EX3_Field_Rak_Night.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
+			<Filename>BGM_EX3_Field_Tem_Night.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_Field_Tem_Night.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
 			<Filename>BGM_EX3_Dan_D03.ogg</Filename>
 			<Url>https://netsplit.com/soundscape/BGM_EX3_Dan_D03.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_Dan_D06.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_Dan_D06.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_Ban_14.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_Ban_14.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_BanFort_kkrn_Good.ogg</Filename>
