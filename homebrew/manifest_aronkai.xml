@@ -59,6 +59,22 @@
 			<Filename>mus_80_zandalarilament_H.ogg</Filename>
 			<Url>https://netsplit.com/soundscape/mus_80_zandalarilament_H.ogg</Url>
 		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_MYC_04.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_MYC_04.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_Ytc_06.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_Ytc_06.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_Ytc_17.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_Ytc_17.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX3_Ytc_26.ogg</Filename>
+			<Url>https://netsplit.com/soundscape/BGM_EX3_Ytc_26.ogg</Url>
+		</SoundsetFile>
 		<!-- END: Samples -->
 	</Files>
 </SoundsetManifest>

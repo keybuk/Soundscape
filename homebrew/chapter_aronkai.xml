@@ -27,6 +27,50 @@
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
+
+		<Mood>
+			<Title>Dhr'k'naht Spooky</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Ytc_26</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Dhr'k'naht Exploration</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Ytc_06</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Dhr'k'naht Battle</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_Ytc_17</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Dhr'k'naht Boss</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX3_MYC_04</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
 	</Moods>
 
 	<!-- All SampleFile must appear in Samples -->
@@ -137,6 +181,86 @@
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_MYC_04</Slug>
+			<Title>FFXIV: MYC 04</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_MYC_04</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Ytc_06</Slug>
+			<Title>FFXIV: Ytc 06</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Ytc_06</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Ytc_17</Slug>
+			<Title>FFXIV: YTC 17</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Ytc_17</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX3_Ytc_26</Slug>
+			<Title>FFXIV: Ytc 26</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX3_Ytc_26</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
 	</MusicElements>
 
 	<Samples>
@@ -204,6 +328,26 @@
 		<SoundSample>
 			<Title>mus_80_zandalarilament_H</Title>
 			<Uuid>mus_80_zandalarilament_H</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_MYC_04</Title>
+			<Uuid>BGM_EX3_MYC_04</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Ytc_06</Title>
+			<Uuid>BGM_EX3_Ytc_06</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Ytc_17</Title>
+			<Uuid>BGM_EX3_Ytc_17</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX3_Ytc_26</Title>
+			<Uuid>BGM_EX3_Ytc_26</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<!-- END: Samples -->
