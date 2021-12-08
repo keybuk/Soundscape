@@ -1,0 +1,68 @@
+<SoundsetManifest>
+	<Files>
+		<!-- chapter.xml is a mandatory file -->
+		<SoundsetFile>
+			<Filename>chapter.xml</Filename>
+			<Url>https://DungeonMaster.local/soundscape/chapter_icewinddale.xml</Url>
+		</SoundsetFile>
+
+		<!-- BEGIN: Samples -->
+		<SoundsetFile>
+			<Filename>Braving_The_Cold.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Braving_The_Cold.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Under_The_Aurora.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Under_The_Aurora.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Tall_Tales_In_Ten_Towns.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Tall_Tales_In_Ten_Towns.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Levistus_Hear_My_Call.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Levistus_Hear_My_Call.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Norsu_The_Awakened.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Norsu_The_Awakened.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>The_Whales_Trust.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/The_Whales_Trust.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Death_From_Above.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Death_From_Above.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Sunblight.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Sunblight.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Aurils_Abode.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Aurils_Abode.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Tough_As_Nails.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Tough_As_Nails.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>No_Turning_Back.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/No_Turning_Back.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Buried_Secrets.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Buried_Secrets.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Winters_Wrath.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Winters_Wrath.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>Summer_Is_Coming.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/Summer_Is_Coming.ogg</Url>
+		</SoundsetFile>
+		<!-- END: Samples -->
+	</Files>
+</SoundsetManifest>

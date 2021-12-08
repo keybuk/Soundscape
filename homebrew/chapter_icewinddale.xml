@@ -1,0 +1,363 @@
+<Chapter>
+	<!-- All elements must appear in MusicElements -->
+	<Moods>
+	</Moods>
+
+	<!-- All SampleFile must appear in Samples -->
+	<MusicElements>
+		<MusicElement>
+			<Slug>Braving_The_Cold</Slug>
+			<Title>Braving The Cold</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Braving_The_Cold</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Under_The_Aurora</Slug>
+			<Title>Under The Aurora</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Under_The_Aurora</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Tall_Tales_In_Ten_Towns</Slug>
+			<Title>Tall Tales In Ten Towns</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Tall_Tales_In_Ten_Towns</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Levistus_Hear_My_Call</Slug>
+			<Title>Levistus, Hear My Call</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Levistus_Hear_My_Call</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Norsu_The_Awakened</Slug>
+			<Title>Norsu, The Awakened</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Norsu_The_Awakened</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>The_Whales_Trust</Slug>
+			<Title>The Whale's Trust</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>The_Whales_Trust</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Death_From_Above</Slug>
+			<Title>Death From Above</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Death_From_Above</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Sunblight</Slug>
+			<Title>Sunblight</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Sunblight</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Aurils_Abode</Slug>
+			<Title>Auril's Abode</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Aurils_Abode</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Tough_As_Nails</Slug>
+			<Title>Tough As Nails</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Tough_As_Nails</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>No_Turning_Back</Slug>
+			<Title>No Turning Back</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>No_Turning_Back</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Buried_Secrets</Slug>
+			<Title>Buried Secrets</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Buried_Secrets</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Winters_Wrath</Slug>
+			<Title>Winter's Wrath</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Winters_Wrath</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>Summer_Is_Coming</Slug>
+			<Title>Summer Is Coming</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>Summer_Is_Coming</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+	</MusicElements>
+
+	<Samples>
+		<!-- BEGIN: Samples -->
+		<SoundSample>
+			<Title>Braving_The_Cold</Title>
+			<Uuid>Braving_The_Cold</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Under_The_Aurora</Title>
+			<Uuid>Under_The_Aurora</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Tall_Tales_In_Ten_Towns</Title>
+			<Uuid>Tall_Tales_In_Ten_Towns</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Levistus_Hear_My_Call</Title>
+			<Uuid>Levistus_Hear_My_Call</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Norsu_The_Awakened</Title>
+			<Uuid>Norsu_The_Awakened</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>The_Whales_Trust</Title>
+			<Uuid>The_Whales_Trust</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Death_From_Above</Title>
+			<Uuid>Death_From_Above</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Sunblight</Title>
+			<Uuid>Sunblight</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Aurils_Abode</Title>
+			<Uuid>Aurils_Abode</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Tough_As_Nails</Title>
+			<Uuid>Tough_As_Nails</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>No_Turning_Back</Title>
+			<Uuid>No_Turning_Back</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Buried_Secrets</Title>
+			<Uuid>Buried_Secrets</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Winters_Wrath</Title>
+			<Uuid>Winters_Wrath</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>Summer_Is_Coming</Title>
+			<Uuid>Summer_Is_Coming</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<!-- END: Samples -->
+	</Samples>
+</Chapter>

@@ -32,5 +32,16 @@
 			<BackgroundImage>https://DungeonMaster.local/soundscape/background_aronkai.jpg</BackgroundImage>
 			<InactiveBackgroundImage>https://DungeonMaster.local/soundscape/inactive_aronkai.jpg</InactiveBackgroundImage>
 		</ChapterOptions>
+
+		<ChapterOptions>
+			<Slug>x-icewind-dale</Slug>
+			<Title>Icewind Dale</Title>
+			<ManifestURL>https://DungeonMaster.local/soundscape/manifest_icewinddale.xml</ManifestURL>
+			<DownloadUpdated>2021-12-07T23:13:00.000000-07:00</DownloadUpdated>
+			<IsPurchased>true</IsPurchased>
+
+			<BackgroundImage>https://DungeonMaster.local/soundscape/background_icewinddale.jpg</BackgroundImage>
+			<InactiveBackgroundImage>https://DungeonMaster.local/soundscape/inactive_icewinddale.jpg</InactiveBackgroundImage>
+		</ChapterOptions>
 	</Chapters>
 </Response>
