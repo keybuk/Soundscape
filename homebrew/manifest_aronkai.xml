@@ -75,6 +75,10 @@
 			<Filename>BGM_EX3_Ytc_26.ogg</Filename>
 			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Ytc_26.ogg</Url>
 		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX4_Field_Thav_Day.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Field_Thav_Day.ogg</Url>
+		</SoundsetFile>
 		<!-- END: Samples -->
 	</Files>
 </SoundsetManifest>

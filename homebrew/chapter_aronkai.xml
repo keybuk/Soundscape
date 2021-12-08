@@ -29,6 +29,17 @@
 		</Mood>
 
 		<Mood>
+			<Title>Aron-Kai History</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Field_Thav_Day</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
 			<Title>Dhr'k'naht Spooky</Title>
 			<ElementParameters>
 				<ElementParameter>
@@ -261,6 +272,26 @@
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX4_Field_Thav_Day</Slug>
+			<Title>FFXIV: Thavnair Day</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Field_Thav_Day</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
 	</MusicElements>
 
 	<Samples>
@@ -348,6 +379,11 @@
 		<SoundSample>
 			<Title>BGM_EX3_Ytc_26</Title>
 			<Uuid>BGM_EX3_Ytc_26</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX4_Field_Thav_Day</Title>
+			<Uuid>BGM_EX4_Field_Thav_Day</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<!-- END: Samples -->
