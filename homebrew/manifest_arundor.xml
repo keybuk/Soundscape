@@ -3,93 +3,93 @@
 		<!-- chapter.xml is a mandatory file -->
 		<SoundsetFile>
 			<Filename>chapter.xml</Filename>
-			<Url>https://netsplit.com/soundscape/chapter_arundor.xml</Url>
+			<Url>https://DungeonMaster.local/soundscape/chapter_arundor.xml</Url>
 		</SoundsetFile>
 
 		<!-- BEGIN: Samples -->
 		<SoundsetFile>
 			<Filename>BGM_EX3_Field_Rak_Day.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Field_Rak_Day.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Field_Rak_Day.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Field_Rak_Night.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Field_Rak_Night.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Field_Rak_Night.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Field_Tem_Night.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Field_Tem_Night.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Field_Tem_Night.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Dan_D03.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Dan_D03.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Dan_D03.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Dan_D06.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Dan_D06.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Dan_D06.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Ban_14.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Ban_14.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Ban_14.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_BanFort_kkrn_Good.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_BanFort_kkrn_Good.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_BanFort_kkrn_Good.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_StormsongValley_ShrineOfStorms_Intro.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_StormsongValley_ShrineOfStorms_Intro.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_StormsongValley_ShrineOfStorms_Intro.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_StormsongValley_ShrineofStorms_01.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_StormsongValley_ShrineofStorms_01.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_StormsongValley_ShrineofStorms_01.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_StormsongValley_ShrineofStorms_02.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_StormsongValley_ShrineofStorms_02.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_StormsongValley_ShrineofStorms_02.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_StormsongValley_ShrineofStorms_03.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_StormsongValley_ShrineofStorms_03.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_StormsongValley_ShrineofStorms_03.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_StormsongValley_ShrineofStorms_04.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_StormsongValley_ShrineofStorms_04.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_StormsongValley_ShrineofStorms_04.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_AtalDazar_01.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_AtalDazar_01.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_AtalDazar_01.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_AtalDazar_02.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_AtalDazar_02.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_AtalDazar_02.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_AtalDazar_03.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_AtalDazar_03.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_AtalDazar_03.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_AtalDazar_04.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_AtalDazar_04.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_AtalDazar_04.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Bazaar_01.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Bazaar_01.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Bazaar_01.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Bazaar_02.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Bazaar_02.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Bazaar_02.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_Event_StartGri.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_Event_StartGri.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_Event_StartGri.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Ban_08.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Ban_08.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Ban_08.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Dan_D10.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Dan_D10.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Dan_D10.ogg</Url>
 		</SoundsetFile>
 		<!-- END: Samples -->
 	</Files>

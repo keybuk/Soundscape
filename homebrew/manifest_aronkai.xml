@@ -3,77 +3,77 @@
 		<!-- chapter.xml is a mandatory file -->
 		<SoundsetFile>
 			<Filename>chapter.xml</Filename>
-			<Url>https://netsplit.com/soundscape/chapter_aronkai.xml</Url>
+			<Url>https://DungeonMaster.local/soundscape/chapter_aronkai.xml</Url>
 		</SoundsetFile>
 
 		<!-- BEGIN: Samples -->
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Intro.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Intro.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Intro.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Day_01.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Day_01.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_01.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Day_02.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Day_02.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_02.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Day_04.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Day_04.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_04.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Day_05.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Day_05.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_05.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Day_06.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Day_06.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Day_06.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Night_02.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Night_02.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_02.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Night_03.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Night_03.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_03.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Night_05.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Night_05.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_05.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>MUS_80_Zuldazar_Dazaralor_Night_06.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/MUS_80_Zuldazar_Dazaralor_Night_06.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/MUS_80_Zuldazar_Dazaralor_Night_06.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>mus_80_zandalarilament_A.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/mus_80_zandalarilament_A.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/mus_80_zandalarilament_A.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>mus_80_zandalarilament_B.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/mus_80_zandalarilament_B.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/mus_80_zandalarilament_B.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>mus_80_zandalarilament_H.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/mus_80_zandalarilament_H.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/mus_80_zandalarilament_H.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_MYC_04.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_MYC_04.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_MYC_04.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Ytc_06.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Ytc_06.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Ytc_06.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Ytc_17.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Ytc_17.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Ytc_17.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
 			<Filename>BGM_EX3_Ytc_26.ogg</Filename>
-			<Url>https://netsplit.com/soundscape/BGM_EX3_Ytc_26.ogg</Url>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX3_Ytc_26.ogg</Url>
 		</SoundsetFile>
 		<!-- END: Samples -->
 	</Files>
