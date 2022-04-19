@@ -20,6 +20,22 @@
 			<Url>https://DungeonMaster.local/soundscape/BGM_EX2_Dan_D03_fixed.ogg</Url>
 		</SoundsetFile>
 		<SoundsetFile>
+			<Filename>BGM_EX4_Ban_02.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Ban_02.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX4_Event_14_cut.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Event_14_cut.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX4_Event_04.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Event_04.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_ORCH_045_Answers.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_ORCH_045_Answers.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
 			<Filename>mus_82_mechagon_junkergnomes_1_a.ogg</Filename>
 			<Url>https://DungeonMaster.local/soundscape/mus_82_mechagon_junkergnomes_1_a.ogg</Url>
 		</SoundsetFile>

@@ -44,6 +44,50 @@
 				</ElementParameter>
 			</ElementParameters>
 		</Mood>
+
+		<Mood>
+			<Title>Dragon History</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Event_04</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Dragon Council</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Event_14</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Dragon Battle</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Ban_02</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Dragon Epic</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_ORCH_045_Answers</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
 	</Moods>
 
 	<!-- All SampleFile must appear in Samples -->
@@ -104,6 +148,86 @@
 			<Playlist>
 				<PlaylistEntry>
 					<SampleFile>BGM_EX2_Dan_D03_fixed</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX4_Ban_02</Slug>
+			<Title>FFXIV: Your Answer</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Ban_02</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX4_Event_14</Slug>
+			<Title>FFXIV: From the Ashes</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Event_14_cut</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX4_Event_04</Slug>
+			<Title>FFXIV: Answers (Piano)</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Event_04</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_ORCH_045_Answers</Slug>
+			<Title>FFXIV: Answers</Title>
+
+			<RepeatPlaylist>false</RepeatPlaylist>
+			<RandomisePlaylist>ordered</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_ORCH_045_Answers</SampleFile>
 				</PlaylistEntry>
 			</Playlist>
 		</MusicElement>
@@ -185,6 +309,26 @@
 		<SoundSample>
 			<Title>BGM_EX2_Dan_D03_fixed</Title>
 			<Uuid>BGM_EX2_Dan_D03_fixed</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX4_Ban_02</Title>
+			<Uuid>BGM_EX4_Ban_02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX4_Event_14_cut</Title>
+			<Uuid>BGM_EX4_Event_14_cut</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX4_Event_04</Title>
+			<Uuid>BGM_EX4_Event_04</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_ORCH_045_Answers</Title>
+			<Uuid>BGM_ORCH_045_Answers</Uuid>
 			<Extension>ogg</Extension>
 		</SoundSample>
 		<SoundSample>

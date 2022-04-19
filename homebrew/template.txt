@@ -1,0 +1,41 @@
+		<MusicElement>
+			<Slug>SLUG</Slug>
+			<Title>TITLE</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>SLUG</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+
+From WoW:
+			<MinTriggerWait>-5.0</MinTriggerWait>
+			<MaxTriggerWait>-5.0</MaxTriggerWait>
+
+For one-off play:
+			<RepeatPlaylist>false</RepeatPlaylist>
+			<RandomisePlaylist>ordered</RandomisePlaylist>
+
+
+Mood:
+		<Mood>
+			<Title>TITLE</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>SLUG</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
