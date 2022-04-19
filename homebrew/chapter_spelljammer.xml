@@ -1,0 +1,120 @@
+<Chapter>
+	<!-- All elements must appear in MusicElements -->
+	<Moods>
+		<Mood>
+			<Title>Broken World (Split Party)</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Field_Ult_Day01</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Broken World (Finding)</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Field_Ult_Day02</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+
+		<Mood>
+			<Title>Broken World (Together)</Title>
+			<ElementParameters>
+				<ElementParameter>
+					<ElementSlug>BGM_EX4_Field_Ult_Day03</ElementSlug>
+					<Plays>true</Plays>
+					<Volume>0.33</Volume>
+				</ElementParameter>
+			</ElementParameters>
+		</Mood>
+	</Moods>
+
+	<!-- All SampleFile must appear in Samples -->
+	<MusicElements>
+		<MusicElement>
+			<Slug>BGM_EX4_Field_Ult_Day01</Slug>
+			<Title>FFXIV: Echoes in the Distance</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Field_Ult_Day01</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX4_Field_Ult_Day02</Slug>
+			<Title>FFXIV: Close in the Distance (Instrumental)</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Field_Ult_Day02</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+
+		<MusicElement>
+			<Slug>BGM_EX4_Field_Ult_Day03</Slug>
+			<Title>FFXIV: Close in the Distance</Title>
+
+			<RepeatPlaylist>true</RepeatPlaylist>
+			<RandomisePlaylist>shuffle</RandomisePlaylist>
+
+			<InitialGain>0.33</InitialGain>
+			<MinStartDelay>0.0</MinStartDelay>
+			<MaxStartDelay>0.0</MaxStartDelay>
+			<MinTriggerWait>0.0</MinTriggerWait>
+			<MaxTriggerWait>0.0</MaxTriggerWait>
+
+			<Playlist>
+				<PlaylistEntry>
+					<SampleFile>BGM_EX4_Field_Ult_Day03</SampleFile>
+				</PlaylistEntry>
+			</Playlist>
+		</MusicElement>
+	</MusicElements>
+
+	<Samples>
+		<!-- BEGIN: Samples -->
+		<SoundSample>
+			<Title>BGM_EX4_Field_Ult_Day01</Title>
+			<Uuid>BGM_EX4_Field_Ult_Day01</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX4_Field_Ult_Day02</Title>
+			<Uuid>BGM_EX4_Field_Ult_Day02</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<SoundSample>
+			<Title>BGM_EX4_Field_Ult_Day03</Title>
+			<Uuid>BGM_EX4_Field_Ult_Day03</Uuid>
+			<Extension>ogg</Extension>
+		</SoundSample>
+		<!-- END: Samples -->
+	</Samples>
+</Chapter>

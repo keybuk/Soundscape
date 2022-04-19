@@ -1,0 +1,24 @@
+<SoundsetManifest>
+	<Files>
+		<!-- chapter.xml is a mandatory file -->
+		<SoundsetFile>
+			<Filename>chapter.xml</Filename>
+			<Url>https://DungeonMaster.local/soundscape/chapter_spelljammer.xml</Url>
+		</SoundsetFile>
+
+		<!-- BEGIN: Samples -->
+		<SoundsetFile>
+			<Filename>BGM_EX4_Field_Ult_Day01.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Field_Ult_Day01.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX4_Field_Ult_Day02.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Field_Ult_Day02.ogg</Url>
+		</SoundsetFile>
+		<SoundsetFile>
+			<Filename>BGM_EX4_Field_Ult_Day03.ogg</Filename>
+			<Url>https://DungeonMaster.local/soundscape/BGM_EX4_Field_Ult_Day03.ogg</Url>
+		</SoundsetFile>
+		<!-- END: Samples -->
+	</Files>
+</SoundsetManifest>

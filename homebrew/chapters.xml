@@ -34,6 +34,17 @@
 		</ChapterOptions>
 
 		<ChapterOptions>
+			<Slug>x-arundor-spelljammer</Slug>
+			<Title>After Arundor</Title>
+			<ManifestURL>https://DungeonMaster.local/soundscape/manifest_spelljammer.xml</ManifestURL>
+			<DownloadUpdated>2022-04-18T21:00:00.000000-07:00</DownloadUpdated>
+			<IsPurchased>true</IsPurchased>
+
+			<BackgroundImage>https://DungeonMaster.local/soundscape/background_spelljammer.jpg</BackgroundImage>
+			<InactiveBackgroundImage>https://DungeonMaster.local/soundscape/inactive_spelljammer.jpg</InactiveBackgroundImage>
+		</ChapterOptions>
+
+		<ChapterOptions>
 			<Slug>x-icewind-dale</Slug>
 			<Title>Icewind Dale</Title>
 			<ManifestURL>https://DungeonMaster.local/soundscape/manifest_icewinddale.xml</ManifestURL>
